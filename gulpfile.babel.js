@@ -67,11 +67,12 @@ gulp.task('server', ['assets', 'styles', 'scripts'], () => {
     proxy   : `http://localhost/${local}public/`,
     browser : 'Google Chrome'
   })
-  gulp.watch(`${config.src}assets/**/*.*`, ['assets'])
+  gulp.watch(`${config.sources}assets/**/*.*`, ['assets'])
   gulp.watch([
-    `${config.src}scss/**/*.scss`,
-    `${config.src}scss/*.scss`
+    `${config.sources}styles/**/*.scss`,
+    `${config.sources}styles/*.scss`
   ], ['styles'])
+  console.log(`${config.sources}styles/*.scss`)
 })
 
 // Assets
