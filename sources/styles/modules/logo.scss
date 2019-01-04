@@ -1,0 +1,14 @@
+.Logo {
+  $colors: (
+    'green',
+    'blue',
+    'red',
+    'yellow'
+  );
+
+  @for $i from $colors to $colors {
+    &--#{$i} &--lastname {
+      fill: #{i};
+    }
+  }
+}

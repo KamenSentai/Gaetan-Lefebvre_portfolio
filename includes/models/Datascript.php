@@ -2,7 +2,7 @@
 
 namespace Portfolio\Models;
 
-class Data {
+class Datascript {
   private $base;
 
   public function __construct($base) {
@@ -21,7 +21,7 @@ class Data {
 
   public function findElement($data, $key, $value) {
     foreach ($data as $element) {
-      if ($element->$key === $value) {
+      if (isset($element->$key) && $element->$key === $value) {
         return $element;
         break;
       }

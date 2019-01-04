@@ -216,4 +216,19 @@ a {
   outline: none;
   text-decoration: none; }
 
+html {
+  background-color: #141414; }
+
+.Header {
+  color: #FFFFFF;
+  background-color: #141414; }
+
+.Slide {
+  width: 100vw;
+  min-height: 100vh; }
+  .Slide--light {
+    background-color: #FFFFFF; }
+  .Slide--dark {
+    background-color: #141414; }
+
 /*# sourceMappingURL=app.css.map */
