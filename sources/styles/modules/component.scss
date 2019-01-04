@@ -1,0 +1,26 @@
+.Component {
+  display: flex;
+  justify-content: space-between;
+  width: grid(10);
+
+  &-title {
+    width: 100%;
+    font-size: 3.6rem;
+    margin-bottom: $margin-m;
+
+    &--trailed {
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        right: 100%;
+        top: 50%;
+        width: 100vw;
+        height: .1rem;
+        background-color: $white;
+        transform: translate(-#{$margin-s}, -50%);
+      }
+    }
+  }
+}

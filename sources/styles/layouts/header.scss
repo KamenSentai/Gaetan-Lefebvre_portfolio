@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100vw;
+  height: 100vh;
   color: $white;
   background-color: $black;
 
@@ -10,7 +12,7 @@
     justify-content: space-between;
     align-items: center;
     width: grid(12);
-    margin-top: $column * .75;
+    margin-top: $margin-s;
   }
 
   &-logo {
@@ -23,8 +25,8 @@
   }
 
   &-item {
-    font-weight: 900;
-    margin-right: $column * .75;
+    font-size: 1.8rem;
+    margin-right: $margin-s;
 
     &:last-child {
       margin-right: 0;

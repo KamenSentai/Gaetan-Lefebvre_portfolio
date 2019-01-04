@@ -1,0 +1,27 @@
+.Post {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: grid(10);
+
+  &--component {
+    margin-top: $margin-l;
+    margin-bottom: $margin-l;
+  }
+
+  &-title {
+    display: flex;
+    flex-direction: column;
+    width: grid(3);
+  }
+
+  &-text {
+    width: grid(7);
+  }
+
+  &-paragraph {
+    font-size: 2rem;
+    line-height: 1.5em;
+    margin-bottom: 1.5em;
+  }
+}

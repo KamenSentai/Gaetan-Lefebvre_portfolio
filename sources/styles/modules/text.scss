@@ -1,0 +1,38 @@
+.Text {
+  &--subtitle {
+    font-size: 5rem;
+    line-height: 1.25em;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--black {
+    color: $black;
+  }
+
+  &--grey {
+    color: $grey;
+  }
+
+  &--white {
+    color: $white;
+  }
+
+  &--green {
+    color: $green;
+  }
+
+  &--blue {
+    color: $blue;
+  }
+
+  &--red {
+    color: $red;
+  }
+
+  &--yellow {
+    color: $yellow;
+  }
+}
