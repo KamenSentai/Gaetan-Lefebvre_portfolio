@@ -14,3 +14,4 @@
   include $dir . 'modules/post.php';
   ?>
 </section>
+<?php include $dir . 'layouts/footer.php'; ?>

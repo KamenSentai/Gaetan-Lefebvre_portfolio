@@ -43,3 +43,4 @@
     </div>
   </div>
 </section>
+<?php include $dir . 'layouts/footer.php'; ?>
