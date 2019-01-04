@@ -1,14 +1,24 @@
 .Logo {
-  $colors: (
-    'green',
-    'blue',
-    'red',
-    'yellow'
-  );
+  // $colors: (
+  //   'green',
+  //   'blue',
+  //   'red',
+  //   'yellow'
+  // );
 
-  @for $i from $colors to $colors {
-    &--#{$i} &--lastname {
-      fill: #{i};
-    }
+  &--green &-lastname {
+    fill: $green;
+  }
+
+  &--blue &-lastname {
+    fill: $blue;
+  }
+
+  &--red &-lastname {
+    fill: $red;
+  }
+
+  &--yellow &-lastname {
+    fill: $yellow;
   }
 }
