@@ -1,12 +1,27 @@
 .Component {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   width: grid(10);
 
-  &-title {
+  &-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    font-size: 3.6rem;
     margin-bottom: $margin-m;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &-title {
+    font-size: 3.6rem;
+    margin-bottom: $margin-t;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
 
     &--trailed {
       position: relative;
@@ -22,5 +37,12 @@
         transform: translate(-#{$margin-s}, -50%);
       }
     }
+  }
+
+  &-subtitle {
+    width: grid(6);
+    font-size: 2rem;
+    line-height: 1.75em;
+    text-align: center;
   }
 }

@@ -3,5 +3,20 @@
     "name": "Pocketcare",
     "slug": "pocketcare",
     "color": "green"
+  },
+  {
+    "name": "Tesla",
+    "slug": "tesla",
+    "color": "blue"
+  },
+  {
+    "name": "Buddy Buddy",
+    "slug": "buddy-buddy",
+    "color": "red"
+  },
+  {
+    "name": "Personal",
+    "slug": "personal",
+    "color": "yellow"
   }
 ]

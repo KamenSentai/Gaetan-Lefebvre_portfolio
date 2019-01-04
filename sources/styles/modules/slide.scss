@@ -13,4 +13,16 @@
   &--dark {
     background-color: $black;
   }
+
+  &--page {
+    padding: $margin-l 0;
+
+    > * {
+      margin-bottom: $margin-l;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
 }

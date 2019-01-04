@@ -4,11 +4,6 @@
   justify-content: space-between;
   width: grid(10);
 
-  &--component {
-    margin-top: $margin-l;
-    margin-bottom: $margin-l;
-  }
-
   &-title {
     display: flex;
     flex-direction: column;
