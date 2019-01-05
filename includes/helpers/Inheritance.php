@@ -100,7 +100,7 @@ class Inheritance {
     $this->_ti_init($this->_ti_callingTrace());
   }
 
-  public function _ti_init($trace) {
+  private function _ti_init($trace) {
     $base =& $this->globals['_ti_base'];
     if ($base && !$this->_ti_inBaseOrChild($trace)) {
       $this->flushblocks();
@@ -122,7 +122,7 @@ class Inheritance {
     }
   }
 
-  public function _ti_newBlock($name, $filters, $trace) {
+  private function _ti_newBlock($name, $filters, $trace) {
     $base  =& $this->globals['_ti_base'];
     $stack =& $this->globals['_ti_stack'];
     while ($block = end($stack)) {
@@ -169,7 +169,7 @@ class Inheritance {
     );
   }
 
-  public function _ti_insertBlock($block) {
+  private function _ti_insertBlock($block) {
     $base  =& $this->globals['_ti_base'];
     $stack =& $this->globals['_ti_stack'];
     $hash  =& $this->globals['_ti_hash'];
@@ -202,7 +202,7 @@ class Inheritance {
     }
   }
 
-  public function _ti_bufferCallback($buffer) {
+  private function _ti_bufferCallback($buffer) {
     $base  =& $this->globals['_ti_base'];
     $stack =& $this->globals['_ti_stack'];
     $end   =& $this->globals['_ti_end'];
@@ -233,7 +233,7 @@ class Inheritance {
     }
   }
 
-  public function _ti_compile($block, $buffer) {
+  private function _ti_compile($block, $buffer) {
     $parts = array();
     $previ = $block['start'];
     foreach ($block['children'] as $child_anchor) {
@@ -259,7 +259,7 @@ class Inheritance {
     return $parts;
   }
 
-  public function _ti_warning($message, $trace, $warning_trace = null) {
+  private function _ti_warning($message, $trace, $warning_trace = null) {
     if (error_reporting() & E_USER_WARNING) {
       if (defined('STDIN')) {
         $format = "\nWarning: %s in %s on line %d\n";
@@ -278,7 +278,7 @@ class Inheritance {
     }
   }
 
-  public function _ti_callingTrace() {
+  private function _ti_callingTrace() {
     $trace = debug_backtrace();
     foreach ($trace as $i => $location) {
       if ($location['file'] !== __FILE__) {
@@ -287,11 +287,11 @@ class Inheritance {
     }
   }
 
-  public function _ti_inBase($trace) {
+  private function _ti_inBase($trace) {
     return $this->_ti_isSameFile($trace, $this->globals['_ti_base']['trace']);
   }
 
-  public function _ti_inBaseOrChild($trace) {
+  private function _ti_inBaseOrChild($trace) {
     $base_trace = $this->globals['_ti_base']['trace'];
     return
       $trace && $base_trace &&
@@ -299,14 +299,14 @@ class Inheritance {
       $trace[0]['file'] === $base_trace[count($base_trace)-count($trace)]['file'];
   }
 
-  public function _ti_isSameFile($trace1, $trace2) {
+  private function _ti_isSameFile($trace1, $trace2) {
     return
       $trace1 && $trace2 &&
       $trace1[0]['file'] === $trace2[0]['file'] &&
       array_slice($trace1, 1) === array_slice($trace2, 1);
   }
 
-  public function _ti_isSubtrace($trace1, $trace2) {
+  private function _ti_isSubtrace($trace1, $trace2) {
     $len1 = count($trace1);
     $len2 = count($trace2);
     if ($len1 > $len2) {
