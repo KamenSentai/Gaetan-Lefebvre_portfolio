@@ -43,6 +43,46 @@
     </div>
   </div>
 </section>
+<section class="Slide Slide--dark">
+
+</section>
+<section class="Slide Slide--light Slide--page">
+  <?php
+  $post = [
+    'title' => [
+      'top' => 'How',
+      'center' => 'I solved',
+      'bottom' => 'it ?',
+    ],
+    'paragraphs' => [
+      'Communication first and foremost. Each step was seen and reviewed by each member of the team. As for the final graphic charter, I realized with my partner on the mobile version. It was later declined on other media.',
+      'It was necessary to think and imagine how VR would settle in a vehicle. So we also decided to use a type of Oculus gloves that passengers will use during their experiences to navigate without problems.',
+    ],
+  ];
+  include $dir . 'modules/post.php';
+  ?>
+</section>
+<section class="Slide Slide--dark Slide--page">
+
+</section>
+<section class="Slide Slide--light Slide--page">
+  <?php
+  $post = [
+    'title' => [
+      'top' => 'Why',
+      'center' => 'that',
+      'bottom' => 'project ?',
+    ],
+    'paragraphs' => [
+      'It is certainly the project where I learned the most, and which amused me the most. It was necessary to think and imagine how VR would settle in a vehicle. It was a very interesting phase of reflection where each member of the team was able to propose ideas.',
+    ],
+  ];
+  include $dir . 'modules/post.php';
+  ?>
+</section>
+<section class="Slide Slide--dark Slide--page">
+
+</section>
 <section class="Slide Slide--light">
   <?php
   $article = [
