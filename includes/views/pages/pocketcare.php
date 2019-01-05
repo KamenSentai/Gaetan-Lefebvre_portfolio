@@ -18,7 +18,15 @@
 <section class="Slide Slide--dark">
   <div class="Component">
     <div class="Component-header">
-      <h3 class="Component-title Component-title--trailed Text Text--white">Colors and typography</h3>
+      <h3 class="Component-title Component-title--trailed Text--white">Colors and typography</h3>
+    </div>
+    <div class="Component-content">
+      <div class="Component-col">
+
+      </div>
+      <div class="Component-col">
+
+      </div>
     </div>
   </div>
 </section>
@@ -38,7 +46,7 @@
   ?>
   <div class="Component">
     <div class="Component-header">
-      <h3 class="Component-title Text Text--center">Onboarding</h3>
+      <h3 class="Component-title Text--center">Onboarding</h3>
     </div>
   </div>
   <?php
@@ -53,6 +61,32 @@
     ],
   ];
   include $dir . 'modules/post.php';
+  ?>
+</section>
+<section class="Slide Slide--dark">
+
+</section>
+<section class="Slide Slide--light Slide--page">
+
+</section>
+<section class="Slide Slide--dark Slide--page">
+
+</section>
+<section class="Slide Slide--light">
+  <?php
+  $article = [
+    'title' => [
+      'top' => 'How',
+      'center' => 'the team',
+      'bottom' => ' worked ?',
+    ],
+    'paragraphs' => [
+      'We worked on 6 on this project. All the team has participated in the UX phase, where we have listed different people. Subsequently, we went through 2 phases of wireframes, low and hight fie.',
+      'Then we worked on 3 on the UI by cutting into 3 large parts the project, namely, the onboarding and registration, the registration of the cards and prescriptions and the profile part.',
+      'Special thanks to Marina Ferreira Duarte and Clara Foggetti as UX / UI designer and Clarisse Garcia, Thomas Hénault and Marine Le Borgne as UX designer.',
+    ],
+  ];
+  include $dir . 'modules/article.php';
   ?>
 </section>
 <?php include $dir . 'layouts/footer.php'; ?>

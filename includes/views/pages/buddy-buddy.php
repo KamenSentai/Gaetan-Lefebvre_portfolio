@@ -18,7 +18,7 @@
 <section class="Slide Slide--dark">
   <div class="Component">
     <div class="Component-header">
-      <h3 class="Component-title Component-title--trailed Text Text--white">Colors and typography</h3>
+      <h3 class="Component-title Component-title--trailed Text--white">Colors and typography</h3>
     </div>
   </div>
 </section>
@@ -38,9 +38,25 @@
   ?>
   <div class="Component">
     <div class="Component-header">
-      <h3 class="Component-title Text Text--center">Case study home</h3>
+      <h3 class="Component-title Text--center">Case study home</h3>
       <p class="Component-subtitle">We can find on the home page of the case study a short vidéo of the project, with the comptences used by the team and 3 navigations tools (previous and next project) and the scroll.</p>
     </div>
   </div>
+</section>
+<section class="Slide Slide--light">
+  <?php
+  $article = [
+    'title' => [
+      'top' => 'How',
+      'center' => 'the team',
+      'bottom' => ' worked ?',
+    ],
+    'paragraphs' => [
+      'I worked in pairs on this project with an Heticien comrade. We cut ourselves the project as well. First list the strong and weak points of the site to solve the weak points. Achieve a competitive benchmark but also on the agencies of the moment. Implement guidelines strict enough not to be in difficulty on the other boxes studios. And finally structure the project in large parts.',
+      'Special thanks to Camille Pawlak as UX / UI designer and all the Buddy Buddy team witch helped me during this 4 months internship.',
+    ],
+  ];
+  include $dir . 'modules/article.php';
+  ?>
 </section>
 <?php include $dir . 'layouts/footer.php'; ?>

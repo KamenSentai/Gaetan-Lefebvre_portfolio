@@ -18,7 +18,7 @@
 <section class="Slide Slide--dark">
   <div class="Component">
     <div class="Component-header">
-      <h3 class="Component-title Component-title--trailed Text Text--white">Branding - Graphic charter</h3>
+      <h3 class="Component-title Component-title--trailed Text--white">Branding - Graphic charter</h3>
     </div>
   </div>
 </section>
@@ -39,8 +39,25 @@
   ?>
   <div class="Component">
     <div class="Component-header">
-      <h3 class="Component-title Text Text--center">Touchscreen</h3>
+      <h3 class="Component-title Text--center">Touchscreen</h3>
     </div>
   </div>
+</section>
+<section class="Slide Slide--light">
+  <?php
+  $article = [
+    'title' => [
+      'top' => 'How',
+      'center' => 'the team',
+      'bottom' => ' worked ?',
+    ],
+    'paragraphs' => [
+      'We were 5 on this project. 2 people on the tablet part, 2 on the mobile part and finally 1 on the watch. For my part I worked continuously with a friend for the mobile part. We were able to iterate on the Watch part.',
+      'What I liked a lot was also the prototype phase and especially the discovery of a way to visualize his Sketch models in VR, a task that required a lot of time and research.',
+      'Special thanks to Gabriel Duret, Marina Ferreira Duarte, Clara Foggetti and Thomas Hénault as UX / UI designer and Marina for helping me  for the prototypes.',
+    ],
+  ];
+  include $dir . 'modules/article.php';
+  ?>
 </section>
 <?php include $dir . 'layouts/footer.php'; ?>

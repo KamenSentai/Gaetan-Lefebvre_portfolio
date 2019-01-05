@@ -1,17 +1,18 @@
-.Post {
+.Article {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   width: grid(10);
 
   &-title {
     display: flex;
     flex-direction: column;
-    width: grid(3);
+    width: 100%;
+    margin-bottom: $margin-s;
   }
 
   &-text {
-    width: grid(7);
+    width: 100%;
   }
 
   &-paragraph {

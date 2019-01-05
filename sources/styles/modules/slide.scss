@@ -5,6 +5,7 @@
   align-items: center;
   width: 100vw;
   min-height: 100vh;
+  padding: $margin-l 0;
 
   &--light {
     background-color: $white;
@@ -15,10 +16,10 @@
   }
 
   &--page {
-    padding: $margin-l 0;
+    padding: $margin-g 0;
 
     > * {
-      margin-bottom: $margin-l;
+      margin-bottom: $margin-g;
 
       &:last-child {
         margin-bottom: 0;
