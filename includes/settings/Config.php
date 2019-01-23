@@ -7,6 +7,7 @@ class Config {
     define('INDEX_PATH', $_SERVER['PHP_SELF']);
     define('INDEX_FILE', 'index.php');
     define('BASE_URL',   str_replace(INDEX_FILE, '', INDEX_PATH));
-    define('WEBSITE', 'Gaëtan Lefebvre | Portfolio');
+    define('IMAGES_URL', BASE_URL . 'assets/images/');
+    define('WEBSITE',    'Gaëtan Lefebvre | Portfolio');
   }
 }

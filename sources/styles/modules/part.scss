@@ -1,24 +1,34 @@
-.Component {
+.Part {
   display: flex;
   flex-direction: column;
-  width: grid(10);
+  width: grid(8);
+  margin-bottom: $margin-s;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 
   &-header {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     width: 100%;
     margin-bottom: $margin-m;
 
     &:last-child {
       margin-bottom: 0;
     }
+
+    &--center {
+      align-items: center;
+    }
   }
 
   &-title {
+    width: 100%;
     font-size: 3.6rem;
     margin-bottom: $margin-t;
     white-space: pre;
+    font-weight: 700;
 
     &:last-child {
       margin-bottom: 0;
@@ -40,6 +50,22 @@
     }
   }
 
+  &-description {
+    width: grid(4);
+    margin-bottom: $margin-s;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1.75em;
+
+    &--large {
+      width: grid(6);
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
   &-subtitle {
     width: grid(6);
     font-size: 2rem;
@@ -56,5 +82,40 @@
 
   &-col {
     width: grid(4);
+  }
+
+  &-table {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &-half {
+    width: grid(5);
+  }
+
+  &-quarter {
+    width: grid(3);
+  }
+
+  &-quarter {
+    width: grid(3);
+  }
+
+  &-section {
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin-bottom: $margin-s;
+  }
+
+  &-text {
+    margin-bottom: $margin-s;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1.75em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }

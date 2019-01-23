@@ -1,0 +1,27 @@
+.Transition {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    background-color: $white;
+  }
+
+  &--10 {
+    &::before {
+      height: 10%;
+    }
+  }
+
+  &--20 {
+    &::before {
+      height: 20%;
+    }
+  }
+}

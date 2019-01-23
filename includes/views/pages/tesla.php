@@ -15,13 +15,15 @@
   include $dir . 'modules/post.php';
   ?>
 </section>
-<section class="Slide Slide--dark">
-  <div class="Component">
-    <div class="Component-header">
-      <h3 class="Component-title Component-title--trailed Text--white">Branding - Graphic charter</h3>
+<!-- <section class="Slide Slide--dark Text--white">
+  <div class="Part">
+    <div class="Part-header">
+      <h3 class="Part-title Part-title--trailed">Branding - Graphic charter</h3>
     </div>
   </div>
-</section>
+</section> -->
+<img src="<?= IMAGES_URL ?>CTt.png" alt="">
+<!--  -->
 <section class="Slide Slide--light Slide--page">
   <?php
   $post = [
@@ -37,14 +39,20 @@
   ];
   include $dir . 'modules/post.php';
   ?>
-  <div class="Component">
-    <div class="Component-header">
-      <h3 class="Component-title Text--center">Touchscreen</h3>
+  <div class="Part">
+    <div class="Part-header">
+      <h3 class="Part-title Text--center">Touchscreen</h3>
     </div>
   </div>
 </section>
-<section class="Slide Slide--dark">
-
+<section class="Slide Slide--dark Slide--block Slide--bottom Text--white">
+  <div class="Part">
+    <div class="Part-header Part-header--center">
+      <h3 class="Part-title Text--center">Inside the car</h3>
+      <p class="Part-description Part-description--large Text--center">The touchscreen is first of all the way to navigate and obtain all the informations about the Tesla Model 3. But it’s also the way to interact the the Oculus Rift for the passenger beside to the driver and the driver himself when the car is stopped.</p>
+    </div>
+  </div>
+  <img src="<?= IMAGES_URL ?>Tesla/Car.png" alt="Car">
 </section>
 <section class="Slide Slide--light Slide--page">
   <?php
@@ -61,10 +69,41 @@
   ];
   include $dir . 'modules/post.php';
   ?>
+  <div class="Part">
+    <div class="Part-header">
+      <h3 class="Part-title">Mobile app</h3>
+    </div>
+    <div class="Part-table">
+      <div class="Part-quarter">
+        <h4 class="Part-section">Charge and navigation</h4>
+        <p class="Part-text">When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation to return to the car.</p>
+        <p class="Part-text">The navigation will tell you the distance of the car and the localisation. You will also have an AR view of the street.</p>
+      </div>
+    </div>
+  </div>
 </section>
-<section class="Slide Slide--dark Slide--page">
-
+<section class="Slide Slide--dark Text--white">
+  <div class="Part">
+    <div class="Part-header">
+      <h3 class="Part-title">Oculus in your hand</h3>
+      <p class="Part-description">Here is the main part of the application. You will find the navigation process to acess to all the features a passenger need to have an Oculus experience.</p>
+      <p class="Part-description">There is also an onboarding to guide users install the Oculus settings and protect them.</p>
+    </div>
+    <img src="<?= IMAGES_URL ?>Tesla/Phone_1.png" alt="Phone_1" class="cheat-phone">
+    <img src="<?= IMAGES_URL ?>Tesla/Phone_2.png" alt="Phone_2" class="cheat-phone">
+    <img src="<?= IMAGES_URL ?>Tesla/Phone_3.png" alt="Phone_3" class="cheat-phone">
+  </div>
+  <div class="Part">
+    <div class="Part-header">
+      <h3 class="Part-title">Inside the Oculus</h3>
+      <p class="Part-description">Finally, you can find here the charging part. Then the localisation, same as the mobile part to find the car. And the little option to bring the car forward or backward in some specials situations.</p>
+    </div>
+    <img src="<?= IMAGES_URL ?>Tesla/Hands.png" alt="Hands">
+  </div>
 </section>
+<div class="Transition Transition--20">
+  <img src="<?= IMAGES_URL ?>Tesla/Helmet.png" alt="Helmet">
+</div>
 <section class="Slide Slide--light Slide--page">
   <?php
   $post = [
@@ -79,10 +118,30 @@
   ];
   include $dir . 'modules/post.php';
   ?>
+  <div class="Part">
+    <div class="Part-header">
+      <h3 class="Part-title">Watch and features</h3>
+    </div>
+    <div class="Part-table">
+      <img src="<?= IMAGES_URL ?>Tesla/Watch.png" alt="Watch">
+      <div class="Part-half">
+        <h4 class="Part-section">Oculus immersion</h4>
+        <p class="Part-text">When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation to return to the car. After you can start the navigation to return to the car.</p>
+      </div>
+    </div>
+  </div>
 </section>
-<section class="Slide Slide--dark Slide--page">
-
+<section class="Slide Slide--dark Slide--block Text--white">
+  <div class="Part">
+    <div class="Part-header Part-header--center">
+      <h3 class="Part-title Text--center">Other screens</h3>
+      <p class="Part-description Text--center">Finally, you can find here the charging part. Then the localisation, same as the mobile part to find the car. And the little option to bring the car forward or backward in some specials situations.</p>
+    </div>
+  </div>
 </section>
+<div class="Transition Transition--10">
+  <img src="<?= IMAGES_URL ?>Tesla/Watches.png" alt="Watches">
+</div>
 <section class="Slide Slide--light">
   <?php
   $article = [

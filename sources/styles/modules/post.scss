@@ -2,12 +2,13 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: grid(10);
+  width: grid(8);
 
   &-title {
     display: flex;
     flex-direction: column;
     width: grid(3);
+    font-weight: 700;
   }
 
   &-text {
@@ -16,6 +17,7 @@
 
   &-paragraph {
     font-size: 2rem;
+    font-weight: 300;
     line-height: 1.5em;
     margin-bottom: 1.5em;
 

@@ -15,13 +15,15 @@
   include $dir . 'modules/post.php';
   ?>
 </section>
-<section class="Slide Slide--dark">
-  <div class="Component">
-    <div class="Component-header">
-      <h3 class="Component-title Component-title--trailed Text--white">Colors and typography</h3>
+<!-- <section class="Slide Slide--dark">
+  <div class="Part">
+    <div class="Part-header">
+      <h3 class="Part-title Part-title--trailed Text--white">Colors and typography</h3>
     </div>
   </div>
-</section>
+</section> -->
+<img src="<?= IMAGES_URL ?>CTbb.png" alt="">
+<!--  -->
 <section class="Slide Slide--light Slide--page">
   <?php
   $post = [
@@ -36,12 +38,66 @@
   ];
   include $dir . 'modules/post.php';
   ?>
-  <div class="Component">
-    <div class="Component-header">
-      <h3 class="Component-title Text--center">Case study home</h3>
-      <p class="Component-subtitle">We can find on the home page of the case study a short vidéo of the project, with the comptences used by the team and 3 navigations tools (previous and next project) and the scroll.</p>
+  <div class="Part">
+    <div class="Part-header Part-header--center">
+      <h3 class="Part-title Text--center">Case study home</h3>
+      <p class="Part-description Text--center">We can find on the home page of the case study a short vidéo of the project, with the comptences used by the team and 3 navigations tools (previous and next project) and the scroll.</p>
+    </div>
+    <img src="<?= IMAGES_URL ?>Buddy-Buddy/Askeet.png" alt="Askeet">
+  </div>
+</section>
+<section class="Slide Slide--dark Text--white">
+  <div class="Part">
+    <div class="Part-header Part-header--center">
+      <h3 class="Part-title Text--center">The case study</h3>
+      <p class="Part-description Part-description--large Text--center">All the case study on the Buddy Buddy website have the same plan. The first part is the project presentation. Then we present the branding identity and the style guide. The last part is composed of the model won desktop and mobile.</p>
+    </div>
+    <img src="<?= IMAGES_URL ?>Buddy-Buddy/Macbook.png" alt="Macbook" class="cheat-macbook">
+  </div>
+</section>
+<section class="Slide Slide--light Slide--page">
+  <?php
+  $post = [
+    'title' => [
+      'top' => 'How',
+      'center' => 'we solved',
+      'bottom' => 'it ?',
+    ],
+    'paragraphs' => [
+      'I just had to informed myself and ask as many questions as possible to all members of the team. I made a lot of design watch and I choose the best trending websites and works of the moment. Then I tried to inspired myself and mix it the project content and the result is here.',
+    ],
+  ];
+  include $dir . 'modules/post.php';
+  ?>
+  <div class="Part">
+    <div class="Part-header Part-header--center">
+      <h3 class="Part-title Text--center">Case study page</h3>
+      <p class="Part-description Text--center">When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation.</p>
+      <img src="<?= IMAGES_URL ?>Buddy-Buddy/Screens.png" alt="Screens">
     </div>
   </div>
+</section>
+<section class="Slide Slide--dark Slide--block Text--white">
+  <div class="Part">
+    <div class="Part-header">
+      <h3 class="Part-title">Mobile</h3>
+    </div>
+  </div>
+</section>
+<div class="Transition Transition--10">
+  <img src="<?= IMAGES_URL ?>Buddy-Buddy/Mobile.png" alt="Mobile">
+</div>
+<section class="Slide Slide--light">
+  <div class="Part-header Part-header--center">
+    <h3 class="Part-title Text--center">Mobile case study</h3>
+    <p class="Part-description Text--center">When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation. </p>
+  </div>
+</section>
+
+
+
+<section class="Slide Slide--dark Slide--full">
+  <img src="<?= IMAGES_URL ?>Buddy-Buddy/Banner.png" alt="Banner">
 </section>
 <section class="Slide Slide--light">
   <?php

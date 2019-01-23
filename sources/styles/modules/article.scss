@@ -2,13 +2,14 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: grid(10);
+  width: grid(8);
 
   &-title {
     display: flex;
     flex-direction: column;
     width: 100%;
     margin-bottom: $margin-s;
+    font-weight: 700;
   }
 
   &-text {
@@ -19,6 +20,7 @@
     font-size: 2rem;
     line-height: 1.5em;
     margin-bottom: 1.5em;
+    font-weight: 300;
 
     &:last-child {
       margin-bottom: 0;

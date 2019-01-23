@@ -15,6 +15,10 @@
     background-color: $black;
   }
 
+  &--full {
+    padding: 0;
+  }
+
   &--page {
     padding: $margin-g 0;
 
@@ -25,5 +29,14 @@
         margin-bottom: 0;
       }
     }
+  }
+
+  &--block {
+    min-height: auto;
+    padding: $margin-m 0;
+  }
+
+  &--bottom {
+    padding-bottom: 0;
   }
 }

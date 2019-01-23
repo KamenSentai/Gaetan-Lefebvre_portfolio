@@ -15,21 +15,23 @@
   include $dir . 'modules/post.php';
   ?>
 </section>
-<section class="Slide Slide--dark">
-  <div class="Component">
-    <div class="Component-header">
-      <h3 class="Component-title Component-title--trailed Text--white">Colors and typography</h3>
+<!-- <section class="Slide Slide--dark Text--white">
+  <div class="Part">
+    <div class="Part-header">
+      <h3 class="Part-title Part-title--trailed">Colors and typography</h3>
     </div>
-    <div class="Component-content">
-      <div class="Component-col">
+    <div class="Part-content">
+      <div class="Part-col">
 
       </div>
-      <div class="Component-col">
+      <div class="Part-col">
 
       </div>
     </div>
   </div>
-</section>
+</section> -->
+<img src="<?= IMAGES_URL ?>CTp.png" alt="">
+<!--  -->
 <section class="Slide Slide--light Slide--page">
   <?php
   $post = [
@@ -44,9 +46,14 @@
   ];
   include $dir . 'modules/post.php';
   ?>
-  <div class="Component">
-    <div class="Component-header">
-      <h3 class="Component-title Text--center">Onboarding</h3>
+  <div class="Part">
+    <div class="Part-header">
+      <h3 class="Part-title Text--center">Onboarding</h3>
+    </div>
+    <div class="Part-table">
+      <img src="<?= IMAGES_URL ?>Pocketcare/Onboarding_1.png" alt="Onboarding">
+      <img src="<?= IMAGES_URL ?>Pocketcare/Onboarding_2.png" alt="Onboarding">
+      <img src="<?= IMAGES_URL ?>Pocketcare/Onboarding_3.png" alt="Onboarding">
     </div>
   </div>
   <?php
@@ -63,15 +70,31 @@
   include $dir . 'modules/post.php';
   ?>
 </section>
-<section class="Slide Slide--dark">
-
+<section class="Slide Slide--dark Slide--full">
+  <img src="<?= IMAGES_URL ?>Pocketcare/Banner_Inscription.png" alt="Banner Inscription">
 </section>
 <section class="Slide Slide--light Slide--page">
-
+  <div class="Part">
+    <div class="Part-header">
+      <h3 class="Part-title">Cards and prescriptions</h3>
+    </div>
+    <div class="Part-table">
+      <img src="<?= IMAGES_URL ?>Pocketcare/Step_1.png" alt="Screen" class="cheat-screen">
+      <img src="<?= IMAGES_URL ?>Pocketcare/Step_2.png" alt="Screen" class="cheat-screen">
+    </div>
+  </div>
 </section>
-<section class="Slide Slide--dark Slide--page">
-
+<section class="Slide Slide--dark Slide--block Text--white">
+  <div class="Part">
+    <div class="Part-header Part-header--center">
+      <h3 class="Part-title Text--center">Profil and settings</h3>
+      <p class="Part-description Text--center">To solve the problem of complexity of the application, we realized a simple onboarding with illustrations and easy to understand.</p>
+    </div>
+  </div>
 </section>
+<div class="Transition Transition--20">
+  <img src="<?= IMAGES_URL ?>Pocketcare/Screens.png" alt="Screens">
+</div>
 <section class="Slide Slide--light">
   <?php
   $article = [

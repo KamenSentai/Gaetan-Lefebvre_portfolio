@@ -15,8 +15,35 @@
 
 // Modules
 @import 'modules/article';
-@import 'modules/component';
+@import 'modules/loader';
 @import 'modules/logo';
+@import 'modules/part';
 @import 'modules/post';
 @import 'modules/slide';
 @import 'modules/text';
+@import 'modules/transition';
+
+.cheat {
+  &-screen {
+    &:last-child {
+      margin-top: 26rem;
+    }
+  }
+
+  &-phone {
+    width: grid(4);
+    height: auto;
+    margin-top: -360px;
+
+    &:nth-child(2n) {
+      margin-right: 0;
+      margin-left: auto;
+    }
+  }
+
+  &-macbook {
+    width: grid(8);
+    height: auto;
+    margin: auto;
+  }
+}
