@@ -30,7 +30,7 @@
     </div>
   </div>
 </section> -->
-<img src="<?= IMAGES_URL ?>CTp.png" alt="">
+<!-- <img src="<?= IMAGES_URL ?>CTp.png" alt=""> -->
 <!--  -->
 <section class="Slide Slide--light Slide--page">
   <?php
@@ -79,8 +79,8 @@
       <h3 class="Part-title">Cards and prescriptions</h3>
     </div>
     <div class="Part-table">
-      <img src="<?= IMAGES_URL ?>Pocketcare/Step_1.png" alt="Screen" class="cheat-screen">
-      <img src="<?= IMAGES_URL ?>Pocketcare/Step_2.png" alt="Screen" class="cheat-screen">
+      <!-- <img src="<?= IMAGES_URL ?>Pocketcare/Step_1.png" alt="Screen" class="cheat-screen"> -->
+      <!-- <img src="<?= IMAGES_URL ?>Pocketcare/Step_2.png" alt="Screen" class="cheat-screen"> -->
     </div>
   </div>
 </section>

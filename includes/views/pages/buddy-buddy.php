@@ -22,7 +22,7 @@
     </div>
   </div>
 </section> -->
-<img src="<?= IMAGES_URL ?>CTbb.png" alt="">
+<!-- <img src="<?= IMAGES_URL ?>CTbb.png" alt=""> -->
 <!--  -->
 <section class="Slide Slide--light Slide--page">
   <?php
@@ -85,7 +85,7 @@
   </div>
 </section>
 <div class="Transition Transition--10">
-  <img src="<?= IMAGES_URL ?>Buddy-Buddy/Mobile.png" alt="Mobile">
+  <!-- <img src="<?= IMAGES_URL ?>Buddy-Buddy/Mobile.png" alt="Mobile"> -->
 </div>
 <section class="Slide Slide--light">
   <div class="Part-header Part-header--center">

@@ -22,7 +22,7 @@
     </div>
   </div>
 </section> -->
-<img src="<?= IMAGES_URL ?>CTt.png" alt="">
+<!-- <img src="<?= IMAGES_URL ?>CTt.png" alt=""> -->
 <!--  -->
 <section class="Slide Slide--light Slide--page">
   <?php
