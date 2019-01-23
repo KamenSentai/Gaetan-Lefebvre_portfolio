@@ -140,7 +140,7 @@
   </div>
 </section>
 <div class="Transition Transition--10">
-  <img src="<?= IMAGES_URL ?>Tesla/Watches.png" alt="Watches">
+  <img src="<?= IMAGES_URL ?>Tesla/Watches.png" alt="Watches" class="Part-width">
 </div>
 <section class="Slide Slide--light">
   <?php

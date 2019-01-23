@@ -473,6 +473,9 @@ body {
     line-height: 1.75em; }
     .Part-text:last-child {
       margin-bottom: 0; }
+  .Part-width {
+    width: 100%;
+    height: auto; }
 
 .Post {
   display: -webkit-box;
