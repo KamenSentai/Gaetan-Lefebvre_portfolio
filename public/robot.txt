@@ -1,0 +1,10 @@
+User-Agent: *
+Disallow: /*
+Allow: /
+Allow: /about
+Allow: /contact
+Allow: /projects
+Allow: /projects/pocketcare
+Allow: /projects/tesla
+Allow: /projects/buddy-buddy
+Allow: /projects/personal
