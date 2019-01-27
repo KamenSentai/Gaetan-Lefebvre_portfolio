@@ -4,6 +4,11 @@
 
 <script>
 export default {
-
+  metaInfo: {
+    titleTemplate: '%s | About',
+    meta: [
+      {name: 'description', content: ''}
+    ]
+  }
 }
 </script>

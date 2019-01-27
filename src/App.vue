@@ -5,6 +5,9 @@
 
 <script>
 export default {
+  metaInfo: {
+    title: 'Gaëtan Lefebvre',
+  }
 }
 </script>
 
