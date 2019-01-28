@@ -9,7 +9,7 @@
       li <router-link to="/projects/tesla">/projects/tesla</router-link>
       li <router-link to="/projects/buddy-buddy">/projects/buddy-buddy</router-link>
       li <router-link to="/projects/personal">/projects/personal</router-link>
-    transition(name="Fade" mode="out-in")
+    transition(mode="out-in")
       router-view
 </template>
 
