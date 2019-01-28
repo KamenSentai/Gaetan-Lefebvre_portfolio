@@ -1,4 +1,4 @@
-<template>
+<template lang="pug">
   <div>Projects</div>
 </template>
 
@@ -7,7 +7,7 @@ export default {
   metaInfo: {
     titleTemplate: '%s | Projects',
     meta: [
-      {name: 'description', content: ''}
+      { name: 'description', content: '' }
     ]
   }
 }
