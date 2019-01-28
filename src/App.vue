@@ -1,5 +1,5 @@
 <template lang="pug">
-  #app
+  .App
     ul
       li <router-link to="/">/</router-link>
       li <router-link to="/about">/about</router-link>
