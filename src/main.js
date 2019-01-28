@@ -39,7 +39,7 @@ const router = new VueRouter({
       component: () => import('./views/projects/BuddyBuddy.vue'),
       name: 'buddy-buddy'
     }, {
-      path: '/projects/',
+      path: '/projects/personal',
       component: () => import('./views/projects/Personal.vue'),
       name: 'personal'
     }, {
