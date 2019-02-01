@@ -1,0 +1,133 @@
+<template lang="pug">
+  div
+    Header(color="red")
+    section.Slide
+      Post(
+        color="red"
+        top="What"
+        center="is the"
+        bottom="project ?"
+        :paragraphs="data.what_is_the_project"
+      )
+    section.Slide
+      .Content
+        .Content-header
+          h3.Content-title.Content-title--trailed Colors and typography
+        .Content-table
+          .Content-icons.Content-icons--half
+            RectangleIcon(color="#FF303F")
+            RectangleIcon(color="#FFD6D9")
+            RectangleIcon(color="#BDBDBD")
+            RectangleIcon(color="#FFFFFF")
+          .Content-charters.Content-charters--half
+            Charter(
+              name="CeraGR - Black"
+              font="CeraGRBlack"
+            )
+            Charter(
+              name="Bariol Regular"
+              font="BariolRegular"
+            )
+    section.Slide.Slide--page
+      Post(
+        color="red"
+        top="What"
+        center="was the"
+        bottom="problem ?"
+        :paragraphs="data.what_was_the_problem"
+      )
+      .Content
+        .Content-header.Content-header--center
+          h3.Content-title.Text--center Case study home
+          p.Content-description.Text--center We can find on the home page of the case study a short vidéo of the project, with the comptences used by the team and 3 navigations tools (previous and next project) and the scroll.
+          img.Content-main(src="../assets/images/BuddyBuddy/Computer.png" alt="Computer")
+    section.Slide.Slide--crossed
+      .Content
+        .Content-header.Content-header--center
+          h3.Content-title.Text--center The case study
+          p.Content-description.Content-description--large.Text--center All the case study on the Buddy Buddy website have the same plan. The first part is the project presentation. Then we present the branding identity and the style guide. The last part is composed of the model won desktop and mobile.
+        .Content-container
+          img.Content-main(src="../assets/images/BuddyBuddy/Laptop.png" alt="Laptop")
+          img.Content-main(src="../assets/images/BuddyBuddy/Animation.gif" alt="Animation")
+    section.Slide.Slide--page
+      Post(
+        color="red"
+        top="How"
+        center="we solved"
+        bottom="it ?"
+        :paragraphs="data.how_we_solved_it"
+      )
+      .Content
+        .Content-header.Content-header--center
+          h3.Content-title.Text--center Case study page
+          p.Content-description.Text--center When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation.
+          img.Content-main(src="../assets/images/BuddyBuddy/Screen_1.png" alt="Screen 1")
+          .Content-main
+            img.Content-sub(src="../assets/images/BuddyBuddy/Screen_2.png" alt="Screen 2")
+            img.Content-sub(src="../assets/images/BuddyBuddy/Screen_3.png" alt="Screen 3")
+    section.Slide.Slide--block
+      .Content
+        .Content-header
+          h3.Content-title Mobile
+        .Content-item
+          .Content-elements
+            h4.Content-section Home
+            p.Content-text All the case study on the Buddy Buddy website have the same plan. The first part is the project presentation. Then we present the branding identity and the style guide.
+          img(src="../assets/images/BuddyBuddy/Home.png" alt="Home")
+    .Intermediate.Intermediate--20
+      .Content.Text--white
+        .Content-item
+          .Content-elements
+            h4.Content-section Branding
+            p.Content-text All the case study on the Buddy Buddy website have the same plan. The first part is the project presentation.
+          img(src="../assets/images/BuddyBuddy/Branding.png" alt="Branding")
+    section.Slide
+      .Content
+        .Content-header.Content-header--center
+          h3.Content-title.Text--center Mobile case study
+          p.Content-description.Text--center When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation.
+    section.Slide.Slide--full
+      img(src="../assets/images/BuddyBuddy/Banner_Screenshots.png" alt="Banner Screenshots")
+    section.Slide
+      Article(
+        color="red"
+        top="How"
+        center="the team"
+        bottom="worked ?"
+        v-bind:paragraphs="data.how_the_team_worked"
+      )
+    Footer(
+      left="tesla"
+      project="buddy-buddy"
+      right="personal"
+    )
+</template>
+
+<script>
+import Header from '../components/Header'
+import Post from '../components/Post'
+import RectangleIcon from '../components/RectangleIcon'
+import Charter from '../components/Charter'
+import Article from '../components/Article'
+import Footer from '../components/Footer'
+
+export default {
+  metaInfo: {
+    titleTemplate: '%s | Buddy buddy',
+    meta: [
+      { name: 'description', content: '' }
+    ]
+  },
+  props: [
+    'data'
+  ],
+  components: {
+    Header,
+    Post,
+    RectangleIcon,
+    Charter,
+    Article,
+    Footer
+  }
+}
+</script>
