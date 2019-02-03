@@ -601,10 +601,6 @@
 
     &--partial {
       min-width: grid(6);
-
-      @media (min-width: $mq-l) {
-        width: grid(6) * 1.25;
-      }
     }
   }
 
