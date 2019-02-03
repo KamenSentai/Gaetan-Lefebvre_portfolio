@@ -1,7 +1,7 @@
 <template lang="pug">
   header.Header
     .Header-topbar
-      router-link(to="home")
+      router-link(:to="{ name: 'home'}")
         Logo(:color="color")
       ul.Header-navbar
         li.Header-item

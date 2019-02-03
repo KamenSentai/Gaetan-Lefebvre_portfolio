@@ -1,13 +1,16 @@
 <template lang="pug">
   .App
-    transition(mode="out-in")
-      router-view
+    Preload
 </template>
 
 <script>
+import Preload from './components/Preload'
 export default {
   metaInfo: {
     title: 'Gaëtan Lefebvre',
+  },
+  components: {
+    Preload
   }
 }
 </script>
