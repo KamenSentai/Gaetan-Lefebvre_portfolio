@@ -1,7 +1,7 @@
 .Part {
   display: flex;
   flex-direction: column;
-  width: grid(8);
+  width: grid(10);
   margin-bottom: $margin-s;
 
   &:last-of-type {
