@@ -27,8 +27,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/variables';
-@import '../styles/functions';
+@import '../styles/tools/variables';
+@import '../styles/tools/functions';
 
 .Header {
   display: flex;
@@ -45,6 +45,26 @@ export default {
     align-items: center;
     width: grid(12);
     margin-top: $margin-s;
+
+    @media (max-width: grid-media(12)) {
+      width: grid(10);
+    }
+
+    @media (max-width: grid-media(10)) {
+      width: grid(8);
+    }
+
+    @media (max-width: grid-media(8)) {
+      width: grid(6);
+    }
+
+    @media (max-width: grid-media(6)) {
+      width: grid(4);
+    }
+
+    @media (max-width: grid-media(4)) {
+      width: grid(3);
+  }
   }
 
   &-navbar {

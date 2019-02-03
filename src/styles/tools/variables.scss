@@ -9,16 +9,27 @@ $red:    #FF303F;
 $yellow: #DEA51C;
 
 // Fonts
-$font: 'Euclid Flex';
+$font:     'Euclid Flex';
+$charters: (
+  'CircularStd-Bold',
+  'CircularStd-Book',
+  'OculusSans-Regular',
+  'OculusSans-Bold',
+  'CeraGR-Bold',
+  'Bariol-Regular'
+);
 
 // Grid
-$column: 80px;
-$gutter: 20px;
+$column:  80px;
+$gutter:  20px;
+$lateral: $gutter * 2;
 
 // Sizes
 $margin-g: 300px;
 $margin-b: 240px;
 $margin-l: 160px;
 $margin-m: 120px;
+$margin-r: 90px;
 $margin-s: 60px;
 $margin-t: 30px;
+$margin-n: 15px;

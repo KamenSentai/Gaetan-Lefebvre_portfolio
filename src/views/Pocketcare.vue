@@ -15,18 +15,18 @@
           h3.Content-title.Content-title--trailed Colors and typography
         .Content-table
           .Content-icons.Content-icons--half
-            CircleIcon(color="#00D6CF")
-            CircleIcon(color="#FFCB4A")
-            CircleIcon(color="#4A4A4A")
-            CircleIcon(color="#D3D3D3")
+            Shape(color="#00D6CF" shape="circle")
+            Shape(color="#FFCB4A" shape="circle")
+            Shape(color="#4A4A4A" shape="circle")
+            Shape(color="#D3D3D3" shape="circle")
           .Content-charters.Content-charters--half
-            Charter(
+            Charter.Content-charter(
               name="Circular Std Bold"
-              font="CircularStdBold"
+              font="CircularStd-Bold"
             )
-            Charter(
+            Charter.Content-charter(
               name="Circular Std Book"
-              font="CircularStdBook"
+              font="CircularStd-Book"
             )
     section.Slide.Slide--page
       Post(
@@ -39,10 +39,10 @@
       .Content
         .Content-header
           h3.Content-title.Text--center Onboarding
-        .Content-table
-          img(src="../assets/images/Pocketcare/Onboarding_1.png" alt="Onboarding")
-          img(src="../assets/images/Pocketcare/Onboarding_2.png" alt="Onboarding")
-          img(src="../assets/images/Pocketcare/Onboarding_3.png" alt="Onboarding")
+        .Content-landscape
+          img.Shadow(src="../assets/images/Pocketcare/Onboarding_1.png" alt="Onboarding")
+          img.Shadow(src="../assets/images/Pocketcare/Onboarding_2.png" alt="Onboarding")
+          img.Shadow(src="../assets/images/Pocketcare/Onboarding_3.png" alt="Onboarding")
       Post(
         color="green"
         top="How"
@@ -51,28 +51,28 @@
         v-bind:paragraphs="data.how_i_solved_it"
       )
     section.Slide.Slide--full
-      img(src="../assets/images/Pocketcare/Banner_Inscription.png" alt="Inscription")
+      img.Content-full.Content-full--partial(src="../assets/images/Pocketcare/Banner_Inscription.png" alt="Inscription")
     section.Slide.Slide--page
       .Content
         .Content-header
           h3.Content-title Cards and prescriptions
         .Content-item
-          .Content-elements
+          .Content-post
             h4.Content-section Step 1
             p.Content-text To solve the problem of complexity of the application, we realized a simple onboarding with illustrations and easy to understand. We then thought it would be a good idea.
-          img(src="../assets/images/Pocketcare/Phone_1.gif" alt="Phone animation 1")
+          img.Content-poster(src="../assets/images/Pocketcare/Phone_1.gif" alt="Phone animation 1")
         .Content-item
-          .Content-elements
+          .Content-post
             h4.Content-section Step 2
             p.Content-text To solve the problem of complexity of the application, we realized a simple onboarding with illustrations and easy to understand.
-          img(src="../assets/images/Pocketcare/Phone_2.gif" alt="Phone animation 2")
+          img.Content-poster(src="../assets/images/Pocketcare/Phone_2.gif" alt="Phone animation 2")
     section.Slide.Slide--block
       .Content
         .Content-header.Content-header--center
           h3.Content-title.Text--center Profil and settings
           p.Content-description.Text--center To solve the problem of complexity of the application, we realized a simple onboarding with illustrations and easy to understand.
     .Intermediate.Intermediate--20
-      img(src="../assets/images/Pocketcare/Screens.png" alt="Screens")
+      img.Content-full(src="../assets/images/Pocketcare/Screens.png" alt="Screens")
     section.Slide
       Article(
         color="green"
@@ -91,7 +91,7 @@
 <script>
 import Header from '../components/Header'
 import Post from '../components/Post'
-import CircleIcon from '../components/CircleIcon'
+import Shape from '../components/Shape'
 import Charter from '../components/Charter'
 import Article from '../components/Article'
 import Footer from '../components/Footer'
@@ -109,7 +109,7 @@ export default {
   components: {
     Header,
     Post,
-    CircleIcon,
+    Shape,
     Charter,
     Article,
     Footer

@@ -21,18 +21,18 @@
             img(src="../assets/images/Tesla/Logo_=.png" alt="=")
             img(src="../assets/images/Tesla/Logo_TO.png" alt="TO")
           .Content-icons
-            TriangleIcon(color="#228DFC")
-            TriangleIcon(color="#1F1F1F")
-            TriangleIcon(color="#A7A7A7")
-            TriangleIcon(color="#FFFFFF")
+            Shape(color="#228DFC" shape="triangle")
+            Shape(color="#1F1F1F" shape="triangle")
+            Shape(color="#A7A7A7" shape="triangle")
+            Shape(color="#FFFFFF" shape="triangle")
           .Content-charters
-            Charter(
-              name="Oculus Sans KR"
-              font="OculusSansKR"
+            Charter.Content-charter(
+              name="Oculus Sans Bold"
+              font="OculusSans-Bold"
             )
-            Charter(
+            Charter.Content-charter(
               name="Oculus Sans Regular"
-              font="OculusSansRegular"
+              font="OculusSans-Regular"
             )
     section.Slide.Slide--page
       Post(
@@ -45,7 +45,7 @@
       .Content
         .Content-header
           h3.Content-title.Text--center Touchscreen
-    section.Slide.Slide--block.Slide--bottom
+    section.Slide.Slide--block.Slide--bottomless
       .Content
         .Content-header.Content-header--center
           h3.Content-title.Text--center Inside the car
@@ -62,29 +62,37 @@
       .Content
         .Content-header
           h3.Content-title Mobile app
-        .Content-table
-          .Content-quarter
+        .Content-article
+          .Content-post.Content-post--static.Content-post--quarter
             h4.Content-section Charge and navigation
             p.Content-text When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation to return to the car.
             p.Content-text The navigation will tell you the distance of the car and the localisation. You will also have an AR view of the street.
     section.Slide
       .Content
-        .Content-header
-          h3.Content-title Mobile app
-        .Content-table
-          .Content-quarter
+        .Content-article.Content-article--alternation
+          .Content-post.Content-post--static.Content-post--half
             h4.Content-section Charge and navigation
             p.Content-text When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation to return to the car.
             p.Content-text The navigation will tell you the distance of the car and the localisation. You will also have an AR view of the street.
-        img.Content-alternation(src="../assets/images/Tesla/Phone_1.png" alt="Phone 1")
-        img.Content-alternation(src="../assets/images/Tesla/Phone_2.png" alt="Phone 2")
-        img.Content-alternation(src="../assets/images/Tesla/Phone_3.png" alt="Phone 3")
-        .Content-header
-          h3.Content-title Inside the Oculus
-          p.Content-description Finally, you can find here the charging part. Then the localisation, same as the mobile part to find the car. And the little option to bring the car forward or backward in some specials situations.
+          .Content-alternated
+            img.Content-intern(src="../assets/images/Tesla/Phone_1.png" alt="Phone 1")
+            img.Absolute.Absolute--p11(src="../assets/images/Tesla/Phone_1-overflow_1.png" alt="")
+            img.Absolute.Absolute--p12(src="../assets/images/Tesla/Phone_1-overflow_2.png" alt="")
+            img.Absolute.Absolute--p13(src="../assets/images/Tesla/Phone_1-overflow_3.png" alt="")
+          .Content-alternated
+            img.Content-intern(src="../assets/images/Tesla/Phone_2.png" alt="Phone 2")
+            img.Absolute.Absolute--p23(src="../assets/images/Tesla/Phone_2-overflow_3.png" alt="")
+            img.Absolute.Absolute--p22(src="../assets/images/Tesla/Phone_2-overflow_2.png" alt="")
+            img.Absolute.Absolute--p21(src="../assets/images/Tesla/Phone_2-overflow_1.png" alt="")
+          .Content-alternated
+            img.Content-intern(src="../assets/images/Tesla/Phone_3.png" alt="Phone 3")
+        .Content-article
+          .Content-post.Content-post--static.Content-post--half
+            h4.Content-section Inside the Oculus
+            p.Content-text Finally, you can find here the charging part. Then the localisation, same as the mobile part to find the car. And the little option to bring the car forward or backward in some specials situations.
         img.Content-full(src="../assets/images/Tesla/Hands.png" alt="Hands")
     .Intermediate.Intermediate--20
-      img(src="../assets/images/Tesla/Helmet.png" alt="Helmet")
+      img.Content-breakpoints(src="../assets/images/Tesla/Helmet.png" alt="Helmet")
     section.Slide.Slide--page
       Post(
         color="blue"
@@ -96,9 +104,9 @@
       .Content
         .Content-header
           h3.Content-title Watch and features
-        .Content-table
-          img(src="../assets/images/Tesla/Watch.gif" alt="Watch")
-          .Content-half
+        .Content-article
+          img.Content-flyer(src="../assets/images/Tesla/Watch.gif" alt="Watch")
+          .Content-post.Content-post--static.Content-post--half
             h4.Content-section Oculus immersion
             p.Content-text When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation to return to the car. After you can start the navigation to return to the car.
     section.Slide.Slide--block
@@ -126,7 +134,7 @@
 <script>
 import Header from '../components/Header'
 import Post from '../components/Post'
-import TriangleIcon from '../components/TriangleIcon'
+import Shape from '../components/Shape'
 import Charter from '../components/Charter'
 import Article from '../components/Article'
 import Footer from '../components/Footer'
@@ -144,7 +152,7 @@ export default {
   components: {
     Header,
     Post,
-    TriangleIcon,
+    Shape,
     Charter,
     Article,
     Footer

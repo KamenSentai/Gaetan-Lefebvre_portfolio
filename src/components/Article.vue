@@ -3,8 +3,7 @@
     h2.Article-title.Text--subtitle
       span.Text--grey {{ top }}
       span.Text
-        span.Text--black {{ center }}
-        span &nbsp;
+        span.Text--black {{ center }}&nbsp;
         span(v-bind:class="`Text--${color}`") {{ bottom }}
     .Article-text
       p.Article-paragraph(v-for="paragraph in paragraphs") {{ paragraph }}
@@ -23,14 +22,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/variables';
-@import '../styles/functions';
+@import '../styles/tools/variables';
+@import '../styles/tools/functions';
 
 .Article {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: grid(10);
+
+  @media (max-width: #{grid-media(10)}) {
+    width: grid(8);
+  }
+
+  @media (max-width: #{grid-media(8)}) {
+    width: grid(6);
+  }
+
+  @media (max-width: #{grid-media(6)}) {
+    width: grid(4);
+  }
+
+  @media (max-width: #{grid-media(4)}) {
+    width: grid(3);
+  }
 
   &-title {
     display: flex;
@@ -49,6 +64,10 @@ export default {
     line-height: 1.5em;
     margin-bottom: 1.5em;
     font-weight: 300;
+
+    @media (max-width: #{grid-media(4)}) {
+      font-size: 1.8rem;
+    }
 
     &:last-child {
       margin-bottom: 0;

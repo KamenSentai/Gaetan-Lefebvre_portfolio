@@ -15,18 +15,18 @@
           h3.Content-title.Content-title--trailed Colors and typography
         .Content-table
           .Content-icons.Content-icons--half
-            RectangleIcon(color="#FF303F")
-            RectangleIcon(color="#FFD6D9")
-            RectangleIcon(color="#BDBDBD")
-            RectangleIcon(color="#FFFFFF")
+            Shape(color="#FF303F" shape="rectangle")
+            Shape(color="#FFD6D9" shape="rectangle")
+            Shape(color="#BDBDBD" shape="rectangle")
+            Shape(color="#FFFFFF" shape="rectangle")
           .Content-charters.Content-charters--half
-            Charter(
-              name="CeraGR - Black"
-              font="CeraGRBlack"
+            Charter.Content-charter(
+              name="CeraGR - Bold"
+              font="CeraGR-Bold"
             )
-            Charter(
+            Charter.Content-charter(
               name="Bariol Regular"
-              font="BariolRegular"
+              font="Bariol-Regular"
             )
     section.Slide.Slide--page
       Post(
@@ -61,33 +61,33 @@
         .Content-header.Content-header--center
           h3.Content-title.Text--center Case study page
           p.Content-description.Text--center When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation.
-          img.Content-main(src="../assets/images/BuddyBuddy/Screen_1.png" alt="Screen 1")
-          .Content-main
-            img.Content-sub(src="../assets/images/BuddyBuddy/Screen_2.png" alt="Screen 2")
-            img.Content-sub(src="../assets/images/BuddyBuddy/Screen_3.png" alt="Screen 3")
+          img.Content-full.Shadow(src="../assets/images/BuddyBuddy/Screen_1.png" alt="Screen 1")
+          .Content-full
+            img.Content-sub.Shadow(src="../assets/images/BuddyBuddy/Screen_2.png" alt="Screen 2")
+            img.Content-sub.Shadow(src="../assets/images/BuddyBuddy/Screen_3.png" alt="Screen 3")
     section.Slide.Slide--block
       .Content
         .Content-header
           h3.Content-title Mobile
         .Content-item
-          .Content-elements
+          .Content-post
             h4.Content-section Home
             p.Content-text All the case study on the Buddy Buddy website have the same plan. The first part is the project presentation. Then we present the branding identity and the style guide.
-          img(src="../assets/images/BuddyBuddy/Home.png" alt="Home")
+          img.Content-poster(src="../assets/images/BuddyBuddy/Home.png" alt="Home")
     .Intermediate.Intermediate--20
       .Content.Text--white
         .Content-item
-          .Content-elements
+          .Content-post
             h4.Content-section Branding
-            p.Content-text All the case study on the Buddy Buddy website have the same plan. The first part is the project presentation.
-          img(src="../assets/images/BuddyBuddy/Branding.png" alt="Branding")
+            p.Content-text.Content-text--intermediate All the case study on the Buddy Buddy website have the same plan. The first part is the project presentation.
+          img.Content-poster(src="../assets/images/BuddyBuddy/Branding.png" alt="Branding")
     section.Slide
       .Content
         .Content-header.Content-header--center
           h3.Content-title.Text--center Mobile case study
           p.Content-description.Text--center When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation.
     section.Slide.Slide--full
-      img(src="../assets/images/BuddyBuddy/Banner_Screenshots.png" alt="Banner Screenshots")
+      img.Content-full.Content-full--partial(src="../assets/images/BuddyBuddy/Banner_Screenshots.png" alt="Banner Screenshots")
     section.Slide
       Article(
         color="red"
@@ -106,7 +106,7 @@
 <script>
 import Header from '../components/Header'
 import Post from '../components/Post'
-import RectangleIcon from '../components/RectangleIcon'
+import Shape from '../components/Shape'
 import Charter from '../components/Charter'
 import Article from '../components/Article'
 import Footer from '../components/Footer'
@@ -124,7 +124,7 @@ export default {
   components: {
     Header,
     Post,
-    RectangleIcon,
+    Shape,
     Charter,
     Article,
     Footer

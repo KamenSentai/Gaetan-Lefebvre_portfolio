@@ -1,9 +1,17 @@
-@import 'fonts';
-@import 'variables';
-@import 'functions';
-@import 'mixins';
-@import 'animations';
-@import 'transitions';
-@import 'reset';
-@import 'general';
-@import 'guidelines';
+@import 'tools/fonts';
+@import 'tools/variables';
+@import 'tools/functions';
+@import 'tools/mixins';
+@import 'tools/animations';
+@import 'tools/transitions';
+
+@import 'bases/reset';
+@import 'bases/general';
+
+@import 'modules/absolute';
+@import 'modules/content';
+@import 'modules/intermediate';
+@import 'modules/shadow';
+@import 'modules/slide';
+@import 'modules/text';
+
