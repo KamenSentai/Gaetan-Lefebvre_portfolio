@@ -10,6 +10,10 @@
           router-link(:to="{ name: 'about' }") About
         li.Header-item
           router-link(:to="{ name: 'contact' }") Contact
+      .Header-burger
+        .Header-stripe
+        .Header-stripe
+        .Header-stripe
     .Header-jumbotron
 </template>
 
@@ -31,6 +35,10 @@ export default {
 @import '../styles/tools/functions';
 
 .Header {
+  $rootHeader: &;
+  $burger-width: 4rem;
+  $burger-height: 3rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -64,12 +72,16 @@ export default {
 
     @media (max-width: grid-media(4)) {
       width: grid(3);
-  }
+    }
   }
 
   &-navbar {
     display: flex;
     flex-direction: row;
+
+    @media (max-width: grid-media(6)) {
+      display: none;
+    }
   }
 
   &-item {
@@ -79,6 +91,45 @@ export default {
 
     &:last-child {
       margin-right: 0;
+    }
+  }
+
+  &-burger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: $burger-width;
+    height: $burger-height;
+    cursor: pointer;
+
+    &:hover {
+      #{$rootHeader}-stripe {
+        transform: scaleX(.75);
+
+        &:first-child,
+        &:last-child {
+          transform: scaleX(1);
+        }
+      }
+    }
+
+    @media (max-width: grid-media(6)) {
+      display: flex;
+    }
+  }
+
+  &-stripe {
+    height: .1rem;
+    width: $burger-width;
+    background-color: $white;
+    transform-origin: 100% 0;
+    transform: scaleX(1);
+    transition: transform .5s ease-in-out;
+    will-change: transform;
+
+    &:first-child,
+    &:last-child {
+      transform: scaleX(.75);
     }
   }
 }

@@ -2,9 +2,8 @@
   div
     Header(color="yellow")
     Footer(
-      left="buddy-buddy"
-      project="personal"
-      right="pocketcare"
+      to="pocketcare"
+      title="Pocketcare"
     )
 </template>
 

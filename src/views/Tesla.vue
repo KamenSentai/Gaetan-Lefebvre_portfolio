@@ -125,9 +125,8 @@
         v-bind:paragraphs="data.how_the_team_worked"
       )
     Footer(
-      left="pocketcare"
-      project="tesla"
-      right="buddy-buddy"
+      to="buddy-buddy"
+      title="Buddy Buddy"
     )
 </template>
 
