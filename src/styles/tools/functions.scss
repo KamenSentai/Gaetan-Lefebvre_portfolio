@@ -3,5 +3,5 @@
 }
 
 @function grid-media($n) {
-  @return grid($n) + $lateral * 2;
+  @return grid($n) + $gutter * 4;
 }

@@ -31,6 +31,10 @@ export default {
   justify-content: space-between;
   width: grid(10);
 
+  @media (min-width: $mq-l) {
+    width: grid(10) * 1.25;
+  }
+
   @media (max-width: #{grid-media(10)}) {
     width: grid(8);
   }

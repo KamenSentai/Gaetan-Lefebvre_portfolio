@@ -31,6 +31,10 @@ export default {
   justify-content: space-between;
   width: grid(10);
 
+  @media (min-width: $mq-l) {
+    width: grid(10) * 1.25;
+  }
+
   @media (max-width: #{grid-media(10)}) {
     width: grid(8);
   }
@@ -54,6 +58,10 @@ export default {
     width: grid(3);
     font-weight: 700;
 
+    @media (min-width: $mq-l) {
+      width: grid(3) * 1.25;
+    }
+
     @media (max-width: #{grid-media(8)}) {
       width: 100%;
       margin-bottom: $margin-s;
@@ -71,6 +79,10 @@ export default {
 
   &-text {
     width: grid(7);
+
+    @media (min-width: $mq-l) {
+      width: grid(7) * 1.25;
+    }
 
     @media (max-width: #{grid-media(10)}) {
       width: grid(5);

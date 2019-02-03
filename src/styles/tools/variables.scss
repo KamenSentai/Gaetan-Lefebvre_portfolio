@@ -19,10 +19,12 @@ $charters: (
   'Bariol-Regular'
 );
 
+// Screen
+$mq-l: 1680px;
+
 // Grid
 $column:  80px;
 $gutter:  20px;
-$lateral: $gutter * 2;
 
 // Margins
 $margin-g: 300px;

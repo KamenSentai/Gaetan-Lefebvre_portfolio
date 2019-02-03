@@ -54,6 +54,10 @@ export default {
     width: grid(12);
     margin-top: $margin-s;
 
+    @media (min-width: $mq-l) {
+      width: grid(12) * 1.25;
+    }
+
     @media (max-width: grid-media(12)) {
       width: grid(10);
     }

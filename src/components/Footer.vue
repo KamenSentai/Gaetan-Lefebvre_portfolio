@@ -85,6 +85,10 @@ export default {
     width: grid(10);
     height: 100%;
 
+    @media (min-width: $mq-l) {
+      width: grid(10) * 1.25;
+    }
+
     @media (max-width: #{grid-media(10)}) {
       width: grid(8);
     }
