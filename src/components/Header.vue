@@ -15,17 +15,21 @@
         .Header-stripe
         .Header-stripe
     .Header-jumbotron
+      Presentation(v-if="jumbotron === 'presentation'")
 </template>
 
 <script>
 import Logo from './Logo'
+import Presentation from './Presentation'
 
 export default {
   props: [
-    'color'
+    'color',
+    'jumbotron'
   ],
   components: {
-    Logo
+    Logo,
+    Presentation
   }
 }
 </script>
@@ -41,6 +45,7 @@ export default {
 
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   width: 100vw;
   height: 100vh;
@@ -54,27 +59,23 @@ export default {
     width: grid(12);
     margin-top: $margin-s;
 
-    @media (min-width: $mq-l) {
-      width: grid(12) * 1.25;
-    }
-
-    @media (max-width: grid-media(12)) {
+    @media (max-width: #{grid-media(12)}) {
       width: grid(10);
     }
 
-    @media (max-width: grid-media(10)) {
+    @media (max-width: #{grid-media(10)}) {
       width: grid(8);
     }
 
-    @media (max-width: grid-media(8)) {
+    @media (max-width: #{grid-media(8)}) {
       width: grid(6);
     }
 
-    @media (max-width: grid-media(6)) {
+    @media (max-width: #{grid-media(6)}) {
       width: grid(4);
     }
 
-    @media (max-width: grid-media(4)) {
+    @media (max-width: #{grid-media(4)}) {
       width: grid(3);
     }
   }
@@ -83,7 +84,7 @@ export default {
     display: flex;
     flex-direction: row;
 
-    @media (max-width: grid-media(6)) {
+    @media (max-width: #{grid-media(6)}) {
       display: none;
     }
   }
@@ -117,7 +118,7 @@ export default {
       }
     }
 
-    @media (max-width: grid-media(6)) {
+    @media (max-width: #{grid-media(6)}) {
       display: flex;
     }
   }
@@ -135,6 +136,14 @@ export default {
     &:last-child {
       transform: scaleX(.75);
     }
+  }
+
+  &-jumbotron {
+    display: flex;
+    justify-content: space-between;
+    flex: 1 0 auto;
+    width: grid(12);
+    margin-top: $margin-r;
   }
 }
 </style>

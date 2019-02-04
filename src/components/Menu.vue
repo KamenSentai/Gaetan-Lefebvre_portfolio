@@ -143,10 +143,6 @@ export default {
     height: auto;
     filter: grayscale(100%);
     transition: all .5s ease-in-out;
-
-    @media (min-width: $mq-l) {
-      width: grid(4) * 1.25;
-    }
   }
 
   &-title {
