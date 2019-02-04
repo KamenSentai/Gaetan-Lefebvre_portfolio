@@ -15,10 +15,10 @@
           h3.Content-title.Content-title--trailed Colors and typography
         .Content-table
           .Content-icons.Content-icons--half
-            Shape(color="#FF303F" shape="rectangle")
-            Shape(color="#FFD6D9" shape="rectangle")
-            Shape(color="#BDBDBD" shape="rectangle")
-            Shape(color="#FFFFFF" shape="rectangle")
+            Color(color="#FF303F" shape="rectangle")
+            Color(color="#FFD6D9" shape="rectangle")
+            Color(color="#BDBDBD" shape="rectangle")
+            Color(color="#FFFFFF" shape="rectangle")
           .Content-charters.Content-charters--half
             Charter.Content-charter(
               name="CeraGR - Bold"
@@ -105,7 +105,7 @@
 <script>
 import Header from '../components/Header'
 import Post from '../components/Post'
-import Shape from '../components/Shape'
+import Color from '../components/Color'
 import Charter from '../components/Charter'
 import Article from '../components/Article'
 import Footer from '../components/Footer'
@@ -123,7 +123,7 @@ export default {
   components: {
     Header,
     Post,
-    Shape,
+    Color,
     Charter,
     Article,
     Footer

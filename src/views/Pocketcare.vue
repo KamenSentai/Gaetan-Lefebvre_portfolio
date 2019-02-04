@@ -15,10 +15,10 @@
           h3.Content-title.Content-title--trailed Colors and typography
         .Content-table
           .Content-icons.Content-icons--half
-            Shape(color="#00D6CF" shape="circle")
-            Shape(color="#FFCB4A" shape="circle")
-            Shape(color="#4A4A4A" shape="circle")
-            Shape(color="#D3D3D3" shape="circle")
+            Color(color="#00D6CF" shape="circle")
+            Color(color="#FFCB4A" shape="circle")
+            Color(color="#4A4A4A" shape="circle")
+            Color(color="#D3D3D3" shape="circle")
           .Content-charters.Content-charters--half
             Charter.Content-charter(
               name="Circular Std Bold"
@@ -90,7 +90,7 @@
 <script>
 import Header from '../components/Header'
 import Post from '../components/Post'
-import Shape from '../components/Shape'
+import Color from '../components/Color'
 import Charter from '../components/Charter'
 import Article from '../components/Article'
 import Footer from '../components/Footer'
@@ -108,7 +108,7 @@ export default {
   components: {
     Header,
     Post,
-    Shape,
+    Color,
     Charter,
     Article,
     Footer

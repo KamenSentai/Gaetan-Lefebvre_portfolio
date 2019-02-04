@@ -21,10 +21,10 @@
             img(src="../assets/images/Tesla/Logo_=.png" alt="=")
             img(src="../assets/images/Tesla/Logo_TO.png" alt="TO")
           .Content-icons
-            Shape(color="#228DFC" shape="triangle")
-            Shape(color="#1F1F1F" shape="triangle")
-            Shape(color="#A7A7A7" shape="triangle")
-            Shape(color="#FFFFFF" shape="triangle")
+            Color(color="#228DFC" shape="triangle")
+            Color(color="#1F1F1F" shape="triangle")
+            Color(color="#A7A7A7" shape="triangle")
+            Color(color="#FFFFFF" shape="triangle")
           .Content-charters
             Charter.Content-charter(
               name="Oculus Sans Bold"
@@ -133,7 +133,7 @@
 <script>
 import Header from '../components/Header'
 import Post from '../components/Post'
-import Shape from '../components/Shape'
+import Color from '../components/Color'
 import Charter from '../components/Charter'
 import Article from '../components/Article'
 import Footer from '../components/Footer'
@@ -151,7 +151,7 @@ export default {
   components: {
     Header,
     Post,
-    Shape,
+    Color,
     Charter,
     Article,
     Footer

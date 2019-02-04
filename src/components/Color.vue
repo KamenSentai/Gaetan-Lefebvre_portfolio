@@ -1,12 +1,12 @@
 <template lang="pug">
-  .Shape
-    svg(v-if="shape === 'circle'" width="160px" height="160px" viewBox="0 0 160 160" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
+  .Color
+    svg.Color-shape(v-if="shape === 'circle'" width="160px" height="160px" viewBox="0 0 160 160" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
       circle(cx="80" cy="80" r="74" fill="none" stroke-width="12" v-bind:stroke="color")
-    svg(v-if="shape === 'rectangle'" width="160px" height="160px" viewBox="0 0 160 160" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
+    svg.Color-shape(v-if="shape === 'rectangle'" width="160px" height="160px" viewBox="0 0 160 160" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
       rect(x="6" y="6" width="148" height="148" fill="none" stroke-width="12" v-bind:stroke="color")
-    svg(v-if="shape === 'triangle'" width="200px" height="160px" viewBox="0 0 200 160" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
+    svg.Color-shape(v-if="shape === 'triangle'" width="200px" height="160px" viewBox="0 0 200 160" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
       polygon(transform="translate(114.000000, 80.000000) scale(-1, 1) translate(-114.000000, -80.000000) " points="44 80 184 150 184 10" fill="none" stroke-width="12" v-bind:stroke="color")
-    span.Shape-text {{ color }}
+    span.Color-text {{ color }}
 </template>
 
 <script>
@@ -22,24 +22,26 @@ export default {
 @import '../styles/tools/variables';
 @import '../styles/tools/functions';
 
-.Shape {
+.Color {
   position: relative;
   display: flex;
   flex-direction: column;
 
-  svg {
+  &-shape {
     width: auto;
+    max-width: 100%;
+      height: auto;
 
     @media (max-width: #{grid-media(10)}) {
-      height: $margin-r;
+      width: grid(1.5);
     }
 
     @media (max-width: #{grid-media(6)}) {
-      height: $margin-s;
+      width: grid(1);
     }
 
     @media (max-width: #{grid-media(4)}) {
-      height: $margin-t;
+      width: grid(.75);
     }
   }
 
@@ -49,6 +51,7 @@ export default {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 2rem;
+    font-weight: 300;
     text-align: center;
 
     @media (max-width: #{grid-media(10)}) {
