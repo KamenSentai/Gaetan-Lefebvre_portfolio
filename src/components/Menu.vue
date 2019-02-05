@@ -29,6 +29,7 @@ export default {
 
 .Menu {
   $rootMenu: &;
+  $item-percentage: 30;
 
   display: flex;
   flex-direction: column;
@@ -48,7 +49,7 @@ export default {
     overflow: hidden;
 
     &:hover {
-      flex-basis: 25%;
+      flex-basis: $item-percentage * 1%;
 
       > * {
         opacity: 1;
@@ -139,8 +140,8 @@ export default {
   }
 
   &-image {
-    width: grid(4);
-    height: auto;
+    width: auto;
+    height: $item-percentage * 1vh;
     filter: grayscale(100%);
     transition: all .5s ease-in-out;
   }
