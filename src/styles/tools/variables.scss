@@ -8,8 +8,15 @@ $blue:   #228DFC;
 $red:    #FF303F;
 $yellow: #DEA51C;
 
+$colors: (
+  green: $green,
+  blue: $blue,
+  red: $red,
+  yellow: $yellow
+);
+
 // Fonts
-$font:     'Euclid Flex';
+$font: 'Euclid Flex';
 $charters: (
   'CircularStd-Bold',
   'CircularStd-Book',

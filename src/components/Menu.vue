@@ -148,6 +148,7 @@ export default {
   &-title {
     font-size: 7rem;
     font-weight: 700;
+    letter-spacing: .125em;
     text-align: center;
     text-transform: uppercase;
     white-space: nowrap;

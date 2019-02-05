@@ -32,6 +32,7 @@ export default {
 <style lang="scss" scoped>
 @import '../styles/tools/variables';
 @import '../styles/tools/functions';
+@import '../styles/tools/mixins';
 
 .Footer {
   $rootFooter: &;
@@ -85,21 +86,7 @@ export default {
     width: grid(10);
     height: 100%;
 
-    @media (max-width: #{grid-media(10)}) {
-      width: grid(8);
-    }
-
-    @media (max-width: #{grid-media(8)}) {
-      width: grid(6);
-    }
-
-    @media (max-width: #{grid-media(6)}) {
-      width: grid(4);
-    }
-
-    @media (max-width: #{grid-media(4)}) {
-      width: grid(3);
-    }
+    @include grid-scale(10);
 
     &:hover {
       > * {
@@ -123,6 +110,7 @@ export default {
     left: 50%;
     font-size: 7rem;
     font-weight: 700;
+    letter-spacing: .125em;
     text-align: center;
     text-transform: uppercase;
     white-space: nowrap;

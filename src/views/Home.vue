@@ -1,7 +1,8 @@
 <template lang="pug">
   div
     Header(
-      color="green"
+      :color="themes[theme].color"
+      :shape="themes[theme].shape"
       jumbotron="presentation"
     )
 </template>
@@ -16,8 +17,22 @@ export default {
       { name: 'description', content: '' }
     ]
   },
+  data() {
+    return {
+      themes: [
+        { color: 'green', shape: 'circle' },
+        { color: 'blue', shape: 'triangle' },
+        { color: 'red', shape: 'square' },
+        { color: 'yellow', shape: 'pentagone' }
+      ],
+      theme: null
+    }
+  },
   components: {
     Header
+  },
+  beforeMount() {
+    this.theme = Math.floor(Math.random() * this.themes.length)
   }
 }
 </script>

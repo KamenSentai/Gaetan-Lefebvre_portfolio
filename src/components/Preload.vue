@@ -25,9 +25,5 @@ export default {
     height: 100vh;
     background-color: $black;
   }
-
-  &-loaded {
-    // display: none;
-  }
 }
 </style>

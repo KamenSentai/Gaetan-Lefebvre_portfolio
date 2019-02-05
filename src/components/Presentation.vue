@@ -1,14 +1,35 @@
 <template lang="pug">
   .Presentation
-    .Presentation-photo
+    .Presentation-portrait
+      img.Presentation-photo(src="../assets/images/Home/Gaetan.png" alt="Gaëtan Lefebvre")
+      img.Presentation-shape(:src="getImage(shape)" v-bind:alt="shape")
+      img.Presentation-cropped(src="../assets/images/Home/Gaetan-cropped.png" alt="Gaëtan Lefebvre")
     aside.Presentation-data
+      .Presentation-description
+        h1.Presentation-title
+          span.Presentation-above Hi, I'm&nbsp;
+          span.Presentation-name
+            span.Presentation-first Gaëtan&nbsp;
+            span(v-bind:class="['Presentation-last', `Presentation-last--${color}`]") Lefebvre
+        p.Presentation-text Passionate about design and motion design , I am currently a 4th year student at Hetic. I was recently UX/UI junior designer at BuddyBuddy. Now, I’m looking for an internship in interactive design.
+      .Presentation-push
+        span.Presentation-heavy Push&nbsp;
+        span.Presentation-thin the&nbsp;
+        span.Presentation-thin to continue
 </template>
 
 <script>
 export default {
   props: [
-    'color'
-  ]
+    'color',
+    'shape'
+  ],
+  methods: {
+    getImage(image) {
+      const images = require.context('../assets/images/Home', false, /\.png$/)
+      return images(`./${image}.png`)
+    }
+  }
 }
 </script>
 
@@ -19,17 +40,139 @@ export default {
 .Presentation {
   display: flex;
   justify-content: space-between;
-  flex: 1 0 auto;
   width: 100%;
   height: 100%;
   padding-top: $margin-t;
 
-  &-photo {
+  &-portrait {
+    position: relative;
     width: grid(7);
+    overflow: hidden;
+
+    @media (max-width: #{grid-media(12)}) {
+      width : grid(5);
+    }
+
+    @media (max-width: #{grid-media(10)}) {
+      width : grid(4);
+    }
+
+    @media (max-width: #{grid-media(8)}) {
+      width : grid(2);
+      order: 2;
+    }
+
+    @media (max-width: #{grid-media(6)}) {
+      display: none;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: $margin-s;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0), $black);
+    }
+  }
+
+  &-photo,
+  &-cropped,
+  &-shape {
+    width: 100%;
+    height: auto;
+  }
+
+  &-cropped,
+  &-shape {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   &-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: grid(5);
+
+    @media (max-width: #{grid-media(12)}) {
+      width : grid(5);
+    }
+
+    @media (max-width: #{grid-media(10)}) {
+      width : grid(4);
+    }
+
+    @media (max-width: #{grid-media(6)}) {
+      width : 100%;
+    }
+  }
+
+  &-description {
+    margin-bottom: $margin-n;
+  }
+
+  &-title {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $margin-t;
+    font-size: 4.5rem;
+    font-weight: 700;
+    letter-spacing: .075em;
+    line-height: 1.125em;
+
+    @media (max-width: #{grid-media(10)}) {
+      font-size: 3.6rem;
+    }
+
+    @media (max-width: #{grid-media(4)}) {
+      font-size: 2.8rem;
+    }
+  }
+
+  &-above {
+    color: $dark;
+  }
+
+  &-first {
+    color: $white;
+  }
+
+  &-last {
+    @each $key, $value in $colors {
+      &--#{$key} {
+        color: $value;
+      }
+    }
+  }
+
+  &-text {
+    font-size: 1.6rem;
+    font-weight: 300;
+    line-height: 1.75em;
+  }
+
+  &-push {
+    display: flex;
+    align-items: center;
+    flex: 1 0 auto;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+
+    @media (max-height: #{grid-media(5)}) {
+      display: none;
+    }
+  }
+
+  &-heavy {
+    font-weight: 700;
+  }
+
+  &-thin {
+    font-weight: 300;
   }
 }
 </style>

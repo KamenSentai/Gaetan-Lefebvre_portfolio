@@ -17,13 +17,6 @@ export default {
 @import '../styles/tools/functions';
 
 .Logo {
-  $colors: (
-    green: $green,
-    blue: $blue,
-    red: $red,
-    yellow: $yellow
-  );
-
   @each $key, $value in $colors {
     &--#{$key} &-lastname {
       fill: $value;

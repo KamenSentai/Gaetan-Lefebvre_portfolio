@@ -15,7 +15,11 @@
         .Header-stripe
         .Header-stripe
     .Header-jumbotron
-      Presentation(v-if="jumbotron === 'presentation'")
+      Presentation(
+        v-if="jumbotron === 'presentation'"
+        :color="color"
+        :shape="shape"
+      )
 </template>
 
 <script>
@@ -25,6 +29,7 @@ import Presentation from './Presentation'
 export default {
   props: [
     'color',
+    'shape',
     'jumbotron'
   ],
   components: {
@@ -37,6 +42,7 @@ export default {
 <style lang="scss" scoped>
 @import '../styles/tools/variables';
 @import '../styles/tools/functions';
+@import '../styles/tools/mixins';
 
 .Header {
   $rootHeader: &;
@@ -58,26 +64,7 @@ export default {
     align-items: center;
     width: grid(12);
     margin-top: $margin-s;
-
-    @media (max-width: #{grid-media(12)}) {
-      width: grid(10);
-    }
-
-    @media (max-width: #{grid-media(10)}) {
-      width: grid(8);
-    }
-
-    @media (max-width: #{grid-media(8)}) {
-      width: grid(6);
-    }
-
-    @media (max-width: #{grid-media(6)}) {
-      width: grid(4);
-    }
-
-    @media (max-width: #{grid-media(4)}) {
-      width: grid(3);
-    }
+    margin-bottom: $margin-r;
   }
 
   &-navbar {
@@ -141,9 +128,13 @@ export default {
   &-jumbotron {
     display: flex;
     justify-content: space-between;
-    flex: 1 0 auto;
+    flex: 1 0 calc(100% - #{$margin-s + $margin-r});
     width: grid(12);
-    margin-top: $margin-r;
+  }
+
+  &-topbar,
+  &-jumbotron {
+    @include grid-scale(12);
   }
 }
 </style>

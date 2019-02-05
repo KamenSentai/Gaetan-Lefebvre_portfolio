@@ -15,10 +15,10 @@
           h3.Content-title.Content-title--trailed Colors and typography
         .Content-table
           .Content-icons.Content-icons--half
-            Color(color="#FF303F" shape="rectangle")
-            Color(color="#FFD6D9" shape="rectangle")
-            Color(color="#BDBDBD" shape="rectangle")
-            Color(color="#FFFFFF" shape="rectangle")
+            Color(color="#FF303F" shape="square")
+            Color(color="#FFD6D9" shape="square")
+            Color(color="#BDBDBD" shape="square")
+            Color(color="#FFFFFF" shape="square")
           .Content-charters.Content-charters--half
             Charter.Content-charter(
               name="CeraGR - Bold"

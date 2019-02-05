@@ -24,6 +24,7 @@ export default {
 <style lang="scss" scoped>
 @import '../styles/tools/variables';
 @import '../styles/tools/functions';
+@import '../styles/tools/mixins';
 
 .Post {
   display: flex;
@@ -31,22 +32,7 @@ export default {
   justify-content: space-between;
   width: grid(10);
 
-  @media (max-width: #{grid-media(10)}) {
-    width: grid(8);
-  }
-
-  @media (max-width: #{grid-media(8)}) {
-    flex-direction: column;
-    width: grid(6);
-  }
-
-  @media (max-width: #{grid-media(6)}) {
-    width: grid(4);
-  }
-
-  @media (max-width: #{grid-media(4)}) {
-    width: grid(3);
-  }
+  @include grid-scale(10);
 
   &-title {
     display: flex;
