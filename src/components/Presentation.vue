@@ -16,6 +16,15 @@
         span.Presentation-heavy Push&nbsp;
         span.Presentation-thin the&nbsp;
         span.Presentation-thin to continue
+    ul.Presentation-links(v-if="type === 'about'")
+      li.Presentation-link
+        a(href="#" title="LinkedIn") LinkedIn
+      li.Presentation-link
+        a(href="#" title="Twitter") Twitter
+      li.Presentation-link
+        a(href="#" title="Behance") Behance
+      li.Presentation-link
+        a(href="#" title="Instagram") Instagram
 </template>
 
 <script>
@@ -43,6 +52,7 @@ export default {
 @import '../styles/tools/functions';
 
 .Presentation {
+  position: relative;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -193,6 +203,33 @@ export default {
 
   &-thin {
     font-weight: 300;
+  }
+
+  &-links {
+    display: flex;
+    position: absolute;
+    right: 0;
+    bottom: $margin-s;
+
+    @media (max-width: #{grid-media(8)}) {
+      right: auto;
+      left: 0;
+    }
+
+    @media (max-width: #{grid-media(6)}) {
+      display: none;
+    }
+  }
+
+  &-link {
+    margin-left: $margin-t;
+    font-size: 1.6rem;
+    font-weight: 300;
+    text-transform: uppercase;
+
+    &:first-child {
+      margin-left: 0;
+    }
   }
 }
 </style>

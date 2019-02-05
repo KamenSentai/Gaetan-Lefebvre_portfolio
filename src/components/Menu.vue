@@ -29,7 +29,7 @@ export default {
 
 .Menu {
   $rootMenu: &;
-  $item-percentage: 30;
+  $item-percentage: 40;
 
   display: flex;
   flex-direction: column;
