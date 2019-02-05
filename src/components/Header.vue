@@ -1,5 +1,5 @@
 <template lang="pug">
-  header.Header
+  header(v-bind:class="['Header', `Header--${color}`]")
     .Header-topbar
       router-link(:to="{ name: 'home'}")
         Logo(:color="color")
@@ -48,6 +48,15 @@ export default {
   $rootHeader: &;
   $burger-width: 4rem;
   $burger-height: 3rem;
+
+  @each $key, $value in $colors {
+    &--#{$key} {
+      *::selection {
+        color: $white;
+        background-color: $value;
+      }
+    }
+  }
 
   display: flex;
   flex-direction: column;

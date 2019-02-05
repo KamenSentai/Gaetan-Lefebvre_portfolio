@@ -1,5 +1,5 @@
 <template lang="pug">
-  .Presentation
+  div(v-bind:class="['Presentation', `Presentation--${color}`]")
     .Presentation-portrait
       img.Presentation-photo(src="../assets/images/Home/Gaetan.png" alt="Gaëtan Lefebvre")
       img.Presentation-shape(:src="getImage(shape)" v-bind:alt="shape")
@@ -44,10 +44,20 @@ export default {
   height: 100%;
   padding-top: $margin-t;
 
+  @each $key, $value in $colors {
+    &--#{$key} {
+      *::selection {
+        color: $white;
+        background-color: $value;
+      }
+    }
+  }
+
   &-portrait {
     position: relative;
     width: grid(7);
     overflow: hidden;
+    user-select: none;
 
     @media (max-width: #{grid-media(12)}) {
       width : grid(5);

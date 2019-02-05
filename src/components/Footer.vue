@@ -11,11 +11,6 @@
 
 <script>
 export default {
-  data() {
-    return {
-      url: `../assets/images/Menu/${this.to}.png`
-    }
-  },
   props: [
     'to',
     'title'
@@ -25,6 +20,45 @@ export default {
       const images = require.context('../assets/images/Menu', false, /\.png$/)
       return images(`./${image}.png`)
     }
+  },
+  mounted() {
+    const _footerContainer = this.$el.querySelector(".Footer-container")
+    let isEntered = false
+
+    const whichTransitionEvent = () => {
+      let t
+      const el = document.createElement('fakeelement')
+      const transitions = {
+        'transition':'transitionend',
+        'OTransition':'oTransitionEnd',
+        'MozTransition':'transitionend',
+        'WebkitTransition':'webkitTransitionEnd'
+      }
+
+      for (t in transitions) {
+        if (el.style[t] !== undefined) {
+          return transitions[t]
+        }
+      }
+    }
+
+    _footerContainer.addEventListener('mouseover', () => {
+      isEntered = true
+      const transitionEvent = whichTransitionEvent()
+        transitionEvent && _footerContainer.addEventListener(transitionEvent, () => {
+        if (isEntered) {
+          window.scroll({
+            top : document.documentElement.scrollHeight,
+            left : 0,
+            behavior : 'smooth'
+          })
+        }
+      })
+    })
+
+    _footerContainer.addEventListener('mouseleave', () => {
+      isEntered = false
+    })
   }
 }
 </script>
@@ -36,15 +70,16 @@ export default {
 
 .Footer {
   $rootFooter: &;
+  $height-size: 25rem;
   $line-size: $margin-b;
   $link-size: 4.4rem;
+  $scale-size: 5rem;
 
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 25rem;
   margin-top: $line-size;
   background-color: $black;
   border-bottom: .1rem solid $dark;
@@ -56,6 +91,7 @@ export default {
     position: absolute;
     bottom: 100%;
     height: $line-size;
+    transition: all .5s ease-in-out;
   }
 
   &::before {
@@ -74,8 +110,13 @@ export default {
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 100%;
+    height: $height-size;
     overflow: hidden;
+    transition: all .5s ease-in-out;
+
+    &:hover {
+      height: $height-size + $scale-size;
+    }
   }
 
   &-navigation {
