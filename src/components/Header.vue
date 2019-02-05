@@ -35,11 +35,16 @@
         last="really ?"
         :texts="data"
       )
+      Error(
+        v-if="jumbotron === 'error'"
+        :shape="shape"
+      )
 </template>
 
 <script>
 import Logo from './Logo'
 import Presentation from './Presentation'
+import Error from './Error'
 
 export default {
   props: [
@@ -50,7 +55,8 @@ export default {
   ],
   components: {
     Logo,
-    Presentation
+    Presentation,
+    Error
   }
 }
 </script>
