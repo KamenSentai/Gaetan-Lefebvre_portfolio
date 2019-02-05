@@ -16,9 +16,24 @@
         .Header-stripe
     .Header-jumbotron
       Presentation(
-        v-if="jumbotron === 'presentation'"
+        v-if="jumbotron === 'home'"
+        type="home"
         :color="color"
         :shape="shape"
+        above="Hi, I'm"
+        first="Gaëtan"
+        last="Lefebvre"
+        :texts="data"
+      )
+      Presentation(
+        v-if="jumbotron === 'about'"
+        type="about"
+        :color="color"
+        :shape="shape"
+        above="Who"
+        first="am I"
+        last="really ?"
+        :texts="data"
       )
 </template>
 
@@ -30,7 +45,8 @@ export default {
   props: [
     'color',
     'shape',
-    'jumbotron'
+    'jumbotron',
+    'data'
   ],
   components: {
     Logo,

@@ -7,12 +7,12 @@
     aside.Presentation-data
       .Presentation-description
         h1.Presentation-title
-          span.Presentation-above Hi, I'm&nbsp;
+          span.Presentation-above {{ above }}
           span.Presentation-name
-            span.Presentation-first Gaëtan&nbsp;
-            span(v-bind:class="['Presentation-last', `Presentation-last--${color}`]") Lefebvre
-        p.Presentation-text Passionate about design and motion design , I am currently a 4th year student at Hetic. I was recently UX/UI junior designer at BuddyBuddy. Now, I’m looking for an internship in interactive design.
-      .Presentation-push
+            span.Presentation-first {{ first }}&nbsp;
+            span(v-bind:class="['Presentation-last', `Presentation-last--${color}`]") {{ last }}
+        p.Presentation-text(v-for="text in texts") {{ text }}
+      .Presentation-push(v-if="type === 'home'")
         span.Presentation-heavy Push&nbsp;
         span.Presentation-thin the&nbsp;
         span.Presentation-thin to continue
@@ -21,8 +21,13 @@
 <script>
 export default {
   props: [
+    'type',
     'color',
-    'shape'
+    'shape',
+    'above',
+    'first',
+    'last',
+    'texts'
   ],
   methods: {
     getImage(image) {
@@ -160,9 +165,14 @@ export default {
   }
 
   &-text {
+    margin-bottom: $margin-t;
     font-size: 1.6rem;
     font-weight: 300;
     line-height: 1.75em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &-push {

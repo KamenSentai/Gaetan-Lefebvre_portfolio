@@ -7,7 +7,7 @@ import App from './App.vue'
 Vue.use(VueRouter)
 Vue.use(VueMeta)
 
-fetch('/data/projects.json')
+fetch('/data/texts.json')
 .then(res => res.json())
 .then(json => {
   const router = new VueRouter({
@@ -16,11 +16,13 @@ fetch('/data/projects.json')
       {
         path: '/',
         component: () => import('./views/Home.vue'),
-        name: 'home'
+        name: 'home',
+        props: { data: json.home }
       }, {
         path: '/about',
         component: () => import('./views/About.vue'),
-        name: 'about'
+        name: 'about',
+        props: { data: json.about }
       }, {
         path: '/contact',
         component: () => import('./views/Contact.vue'),

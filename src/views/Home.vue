@@ -3,7 +3,8 @@
     Header(
       :color="themes[theme].color"
       :shape="themes[theme].shape"
-      jumbotron="presentation"
+      jumbotron="home"
+      :data="data"
     )
 </template>
 
@@ -28,6 +29,9 @@ export default {
       theme: null
     }
   },
+  props: [
+    'data'
+  ],
   components: {
     Header
   },
