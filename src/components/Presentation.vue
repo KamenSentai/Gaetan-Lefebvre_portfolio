@@ -1,9 +1,11 @@
 <template lang="pug">
   div(v-bind:class="['Presentation', `Presentation--${color}`]")
-    .Presentation-portrait
+    .Presentation-portrait(v-if="type === 'home'")
       img.Presentation-photo(src="../assets/images/Home/Gaetan.png" alt="Gaëtan Lefebvre")
-      img.Presentation-shape(:src="getImage(shape)" v-bind:alt="shape")
+      img.Presentation-shape(:src="getImage(shape, type)" v-bind:alt="shape")
       img.Presentation-cropped(src="../assets/images/Home/Gaetan-cropped.png" alt="Gaëtan Lefebvre")
+    .Presentation-portrait.Presentation-portrait--picture(v-if="type === 'about'")
+      img.Presentation-shape(:src="getImage(shape, type)" v-bind:alt="shape")
     aside.Presentation-data
       .Presentation-description
         h1.Presentation-title
@@ -16,15 +18,15 @@
         span.Presentation-heavy Push&nbsp;
         span.Presentation-thin the&nbsp;
         span.Presentation-thin to continue
-    ul.Presentation-links(v-if="type === 'about'")
-      li.Presentation-link
-        a(href="#" title="LinkedIn") LinkedIn
-      li.Presentation-link
-        a(href="#" title="Twitter") Twitter
-      li.Presentation-link
-        a(href="#" title="Behance") Behance
-      li.Presentation-link
-        a(href="#" title="Instagram") Instagram
+      ul.Presentation-links(v-else-if="type === 'about'")
+        li.Presentation-link
+          a(href="#" title="LinkedIn") LinkedIn
+        li.Presentation-link
+          a(href="#" title="Twitter") Twitter
+        li.Presentation-link
+          a(href="#" title="Behance") Behance
+        li.Presentation-link
+          a(href="#" title="Instagram") Instagram
 </template>
 
 <script>
@@ -39,8 +41,16 @@ export default {
     'texts'
   ],
   methods: {
-    getImage(image) {
-      const images = require.context('../assets/images/Home', false, /\.png$/)
+    getImage(image, folder) {
+      let images
+      switch (folder) {
+        case 'home':
+          images = require.context('../assets/images/Home', false, /\.png$/)
+          break
+        case 'about':
+          images = require.context('../assets/images/About', false, /\.png$/)
+          break
+      }
       return images(`./${image}.png`)
     }
   }
@@ -52,7 +62,6 @@ export default {
 @import '../styles/tools/functions';
 
 .Presentation {
-  position: relative;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -74,12 +83,16 @@ export default {
     overflow: hidden;
     user-select: none;
 
+    &--picture {
+      width: grid(5);
+    }
+
     @media (max-width: #{grid-media(12)}) {
-      width : grid(5);
+      width : grid(4);
     }
 
     @media (max-width: #{grid-media(10)}) {
-      width : grid(4);
+      width : grid(3);
     }
 
     @media (max-width: #{grid-media(8)}) {
@@ -99,6 +112,10 @@ export default {
       width: 100%;
       height: $margin-s;
       background: linear-gradient(to bottom, rgba(0, 0, 0, 0), $black);
+
+      @media (max-width: #{grid-media(8)}) {
+        display: none;
+      }
     }
   }
 
@@ -118,6 +135,7 @@ export default {
   }
 
   &-data {
+    z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -137,7 +155,7 @@ export default {
   }
 
   &-description {
-    margin-bottom: $margin-n;
+    margin-bottom: $margin-s;
   }
 
   &-title {
@@ -208,14 +226,12 @@ export default {
 
   &-links {
     display: flex;
-    position: absolute;
-    right: 0;
-    bottom: $margin-s;
+    flex-wrap: wrap;
+    margin-bottom: $margin-s;
     letter-spacing: .125em;
 
     @media (max-width: #{grid-media(8)}) {
-      right: auto;
-      left: 0;
+      width: grid(6);
     }
 
     @media (max-width: #{grid-media(6)}) {
@@ -224,13 +240,14 @@ export default {
   }
 
   &-link {
-    margin-left: $margin-t;
+    margin-right: $margin-t;
     font-size: 1.6rem;
     font-weight: 300;
     text-transform: uppercase;
+    line-height: 1.75em;
 
-    &:first-child {
-      margin-left: 0;
+    &:last-child {
+      margin-right: 0;
     }
   }
 }

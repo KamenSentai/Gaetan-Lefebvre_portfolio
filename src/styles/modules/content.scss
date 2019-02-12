@@ -132,6 +132,18 @@
       #{$rootContent}-post {
         left: 0;
       }
+
+      #{$rootContent}-poster {
+        @media (max-width: #{grid-media(10)}) {
+          width: grid(2.75);
+          height: auto;
+          align-self: center;
+        }
+
+        @media (max-width: #{grid-media(8)}) {
+          margin-top: $margin-s;
+        }
+      }
     }
 
     &:nth-of-type(2n+1) {
@@ -139,6 +151,18 @@
 
       #{$rootContent}-post {
         right: 0;
+      }
+
+      #{$rootContent}-poster {
+        @media (max-width: #{grid-media(10)}) {
+          width: grid(3.5);
+          height: auto;
+          align-self: center;
+        }
+
+        @media (max-width: #{grid-media(8)}) {
+          margin-top: $margin-s;
+        }
       }
     }
   }
@@ -225,16 +249,6 @@
 
   &-poster {
     z-index: 1;
-
-    @media (max-width: #{grid-media(10)}) {
-      width: grid(3.5);
-      height: auto;
-      align-self: center;
-    }
-
-    @media (max-width: #{grid-media(8)}) {
-      margin-top: $margin-s;
-    }
   }
 
   &-flyer {

@@ -1,9 +1,7 @@
 <template lang="pug">
   .Error
     .Error-code
-      span 4
       img.Error-image(:src="getImage(shape)" v-bind:alt="shape")
-      span 4
     .Error-message
       h1.Error-title Page not found
       p.Error-text We are sorry. We can’t find the URL you are looking for.&nbsp;
@@ -29,8 +27,6 @@ export default {
 @import '../styles/tools/functions';
 
 .Error {
-  $code-size: 30rem;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,13 +39,14 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 40rem;
     font-weight: 300;
   }
 
   &-image {
     width: auto;
-    height: 40rem;
+    height: auto;
+    max-width: 100%;
+    max-height: 40rem;
   }
 
   &-message {
