@@ -147,7 +147,7 @@ export default {
     background-color: $white;
     transform-origin: 100% 0;
     transform: scaleX(1);
-    transition: transform .5s ease-in-out;
+    transition: transform 1s cubic-bezier(0.72, 0, 0.21, 1);
     will-change: transform;
 
     &:first-child,

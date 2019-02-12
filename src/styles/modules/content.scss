@@ -429,9 +429,17 @@
     }
   }
 
-  &-landscape {
+  &-listing {
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: #{grid-media(10)}) {
+      img {
+        align-self: center;
+        width: 25%;
+        height: auto;
+      }
+    }
   }
 
   &-table {

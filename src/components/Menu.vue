@@ -45,7 +45,7 @@ export default {
     flex: 1 0 20%;
     border-top: .1rem solid $dark;
     border-bottom: .1rem solid $dark;
-    transition: flex .5s ease-in-out;
+    transition: flex 1s cubic-bezier(0.72, 0, 0.21, 1);
     overflow: hidden;
 
     &:hover {
@@ -66,7 +66,7 @@ export default {
       left: 50%;
       transform: translate(-50%, -50%);
       opacity: .4;
-      transition: opacity .5s ease-in-out;
+      transition: opacity 1s cubic-bezier(0.72, 0, 0.21, 1);
       will-change: opacity;
     }
   }
@@ -114,7 +114,7 @@ export default {
     top: 50%;
     left: calc(50% - #{$line-size});
     opacity: .4;
-    transition: opacity .5s ease-in-out;
+    transition: opacity 1s cubic-bezier(0.72, 0, 0.21, 1);
     will-change: opacity;
 
     &::before,
@@ -143,7 +143,7 @@ export default {
     width: auto;
     height: $item-percentage * 1vh;
     filter: grayscale(100%);
-    transition: all .5s ease-in-out;
+    transition: all 1s cubic-bezier(0.72, 0, 0.21, 1);
   }
 
   &-title {

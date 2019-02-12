@@ -39,7 +39,7 @@
       .Content
         .Content-header
           h3.Content-title.Text--center Onboarding
-        .Content-landscape
+        .Content-listing
           img.Shadow(src="../assets/images/Pocketcare/Onboarding_1.png" alt="Onboarding")
           img.Shadow(src="../assets/images/Pocketcare/Onboarding_2.png" alt="Onboarding")
           img.Shadow(src="../assets/images/Pocketcare/Onboarding_3.png" alt="Onboarding")
