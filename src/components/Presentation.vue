@@ -84,7 +84,7 @@ export default {
     user-select: none;
 
     &--picture {
-      width: grid(5);
+      width: grid(6);
     }
 
     @media (max-width: #{grid-media(12)}) {
@@ -96,11 +96,6 @@ export default {
     }
 
     @media (max-width: #{grid-media(8)}) {
-      width : grid(2);
-      order: 2;
-    }
-
-    @media (max-width: #{grid-media(6)}) {
       display: none;
     }
 
@@ -149,7 +144,7 @@ export default {
       width : grid(4);
     }
 
-    @media (max-width: #{grid-media(6)}) {
+    @media (max-width: #{grid-media(8)}) {
       width : 100%;
     }
   }
