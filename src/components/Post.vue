@@ -34,6 +34,10 @@ export default {
 
   @include grid-scale(10);
 
+  @media (max-width: #{grid-media(8)}) {
+    flex-direction: column;
+  }
+
   &-title {
     display: flex;
     flex-direction: column;

@@ -440,6 +440,20 @@
         height: auto;
       }
     }
+
+    @media (max-width: #{grid-media(6)}) {
+      flex-direction: column;
+
+      img {
+        width: grid(2);
+        height: auto;
+        margin-bottom: $margin-s;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
   }
 
   &-table {
