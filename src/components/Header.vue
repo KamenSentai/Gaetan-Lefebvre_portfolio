@@ -5,7 +5,7 @@
         Logo(:color="color")
       ul.Header-navbar
         li.Header-item
-          router-link(to="#") Projects
+          a(href="#" @click="toggleMenu") Projects
         li.Header-item
           router-link(:to="{ name: 'about' }") About
       .Header-burger
@@ -37,6 +37,7 @@
         v-if="jumbotron === 'error'"
         :shape="shape"
       )
+    Menu
 </template>
 
 <script>
@@ -57,6 +58,12 @@ export default {
     Menu,
     Presentation,
     Error
+  },
+  methods: {
+    toggleMenu: (event) => {
+      event.preventDefault()
+      document.querySelector('.Menu').classList.add('is-active')
+    }
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template lang="pug">
-  div.Menu
+  .Menu
     router-link.Menu-link(:to="{ name: 'pocketcare' }")
       img.Menu-image(src="../assets/images/Menu/pocketcare.png" alt="Pocketcare")
       span.Menu-title Pocketcare
@@ -7,7 +7,7 @@
       img.Menu-image(src="../assets/images/Menu/tesla.png" alt="Tesla")
       span.Menu-title Tesla
     span.Menu-float
-      a.Menu-back(@click="$router.go(-1)")
+      a.Menu-back(@click="toggleMenu")
         .Menu-cross
     router-link.Menu-link(:to="{ name: 'buddy-buddy' }")
       img.Menu-image(src="../assets/images/Menu/buddy-buddy.png" alt="Buddy Buddy")
@@ -19,7 +19,12 @@
 
 <script>
 export default {
-
+  methods: {
+    toggleMenu: () => {
+      document.querySelector('.Menu').classList.remove('is-active')
+      console.log('ok')
+    }
+  }
 }
 </script>
 
@@ -31,14 +36,23 @@ export default {
   $rootMenu: &;
   $item-percentage: 40;
 
-  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   width: 100vw;
   height: 100vh;
+  background-color: $black;
   overflow: hidden;
   cursor: pointer;
   user-select: none;
+
+  &.is-active {
+    display: flex;
+  }
 
   &-link {
     position: relative;

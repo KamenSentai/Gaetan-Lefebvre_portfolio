@@ -41,7 +41,7 @@
           .Content-header.Content-header--center
             h3.Content-title.Text--center Case study home
             p.Content-description.Text--center We can find on the home page of the case study a short vidéo of the project, with the comptences used by the team and 3 navigations tools (previous and next project) and the scroll.
-            img.Content-main(src="../assets/images/BuddyBuddy/Computer.png" alt="Computer")
+            img.Content-sub(src="../assets/images/BuddyBuddy/Computer.png" alt="Computer")
       section.Slide.Slide--crossed
         .Content
           .Content-header.Content-header--center
