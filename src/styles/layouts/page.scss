@@ -1,0 +1,10 @@
+.Page {
+  @each $key, $value in $colors {
+    &--#{$key} {
+      *::selection {
+        color: $white;
+        background-color: $value;
+      }
+    }
+  }
+}

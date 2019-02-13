@@ -1,6 +1,7 @@
 <template lang="pug">
   div
     Header(color="yellow")
+    .Page.Page--yellow
     Footer(
       to="pocketcare"
       title="Pocketcare"
