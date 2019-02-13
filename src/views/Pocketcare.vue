@@ -50,8 +50,8 @@
         bottom="solved it ?"
         v-bind:paragraphs="data.how_i_solved_it"
       )
-    section.Slide.Slide--full
-      img.Content-full.Content-full--partial(src="../assets/images/Pocketcare/Banner_Inscription.png" alt="Inscription")
+    section.Slide.Slide--banner
+      img.Content-banner(src="../assets/images/Pocketcare/Banner_Inscription.png" alt="Inscription")
     section.Slide.Slide--page
       .Content
         .Content-header
@@ -72,7 +72,7 @@
           h3.Content-title.Text--center Profil and settings
           p.Content-description.Text--center To solve the problem of complexity of the application, we realized a simple onboarding with illustrations and easy to understand.
     .Intermediate.Intermediate--20
-      img.Content-full(src="../assets/images/Pocketcare/Screens.png" alt="Screens")
+      img.Content-banner(src="../assets/images/Pocketcare/Screens.png" alt="Screens")
     section.Slide
       Article(
         color="green"

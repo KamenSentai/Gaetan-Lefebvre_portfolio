@@ -86,8 +86,8 @@
         .Content-header.Content-header--center
           h3.Content-title.Text--center Mobile case study
           p.Content-description.Text--center When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation.
-    section.Slide.Slide--full
-      img.Content-full.Content-full--partial(src="../assets/images/BuddyBuddy/Banner_Screenshots.png" alt="Banner Screenshots")
+    section.Slide.Slide--banner
+      img.Content-banner(src="../assets/images/BuddyBuddy/Banner_Screenshots.png" alt="Banner Screenshots")
     section.Slide
       Article(
         color="red"

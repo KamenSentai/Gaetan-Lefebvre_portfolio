@@ -203,7 +203,7 @@ export default {
     align-items: center;
     flex: 1 0 auto;
     font-size: 1.6rem;
-    letter-spacing: .125em;
+    letter-spacing: .25em;
     text-transform: uppercase;
 
     @media (max-height: #{grid-media(5)}) {

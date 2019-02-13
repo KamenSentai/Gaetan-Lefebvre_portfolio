@@ -570,9 +570,17 @@
     @media (max-width: #{grid-media(8)}) {
       flex-wrap: wrap;
     }
+  }
 
-    &--partial {
-      min-width: grid(6);
+  &-banner {
+    align-self: center;
+
+    @media (max-width: #{grid-media(8)}) {
+      width: grid(10);
+    }
+
+    @media (max-width: #{grid-media(6)}) {
+      width: grid(8);
     }
   }
 

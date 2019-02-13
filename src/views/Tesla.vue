@@ -115,7 +115,7 @@
           h3.Content-title.Text--center Other screens
           p.Content-description.Text--center Finally, you can find here the charging part. Then the localisation, same as the mobile part to find the car. And the little option to bring the car forward or backward in some specials situations.
     .Intermediate.Intermediate--10
-      img.Content-full(src="../assets/images/Tesla/Watches.png" alt="Watches")
+      img.Content-banner(src="../assets/images/Tesla/Watches.png" alt="Watches")
     section.Slide
       Article(
         color="blue"

@@ -22,7 +22,7 @@ export default {
     }
   },
   mounted() {
-    const _footerContainer = this.$el.querySelector(".Footer-container")
+    const _footerContainer = this.$el.querySelector('.Footer-container')
     let isEntered = false
 
     const whichTransitionEvent = () => {
