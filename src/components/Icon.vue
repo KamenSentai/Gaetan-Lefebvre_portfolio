@@ -82,7 +82,7 @@ export default {
     fill: $white;
     transform-origin: 50% 50%;
     transform: scale(0);
-    transition: transform 1s cubic-bezier(0.72, 0, 0.21, 1);
+    transition: transform $easing;
     will-change: transform;
 
     &.is-active {

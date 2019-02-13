@@ -91,7 +91,7 @@ export default {
     position: absolute;
     bottom: 100%;
     height: $line-size;
-    transition: all 1s cubic-bezier(0.72, 0, 0.21, 1);
+    transition: all $easing;
   }
 
   &::before {
@@ -112,7 +112,7 @@ export default {
     width: 100%;
     height: $height-size;
     overflow: hidden;
-    transition: all 1s cubic-bezier(0.72, 0, 0.21, 1);
+    transition: all $easing;
 
     &:hover {
       height: $height-size + $scale-size;
@@ -157,7 +157,7 @@ export default {
     white-space: nowrap;
     opacity: .4;
     transform: translate(-50%, -50%);
-    transition: opacity 1s cubic-bezier(0.72, 0, 0.21, 1);
+    transition: opacity $easing;
     will-change: opacity;
 
     @media (max-width: #{grid-media(10)}) {
@@ -184,7 +184,7 @@ export default {
     max-width: 100%;
     filter: grayscale(100%);
     opacity: .4;
-    transition: all 1s cubic-bezier(0.72, 0, 0.21, 1);
+    transition: all $easing;
     will-change: opacity;
   }
 
@@ -209,7 +209,7 @@ export default {
     top: 50%;
     left: 50%;
     opacity: .4;
-    transition: opacity 1s cubic-bezier(0.72, 0, 0.21, 1), transform 1s cubic-bezier(0.72, 0, 0.21, 1);
+    transition: opacity $easing, transform $easing;
     will-change: opacity, transform;
 
     &::before,

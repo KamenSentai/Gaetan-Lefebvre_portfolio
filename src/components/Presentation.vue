@@ -213,8 +213,9 @@ export default {
     letter-spacing: .25em;
     text-transform: uppercase;
 
-    @media (max-height: #{grid-media(5)}) {
-      display: none;
+    @media (max-width: #{grid-media(4)}) {
+      font-size: 1.4rem;
+      justify-content: space-between;
     }
   }
 
