@@ -1,5 +1,5 @@
 <template lang="pug">
-  header(v-bind:class="['Header', `Header--${color}`]")
+  header.Header(v-bind:class="`Header--${color}`")
     .Header-topbar
       router-link(:to="{ name: 'home'}")
         Logo(:color="color")

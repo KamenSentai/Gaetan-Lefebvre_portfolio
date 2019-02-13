@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(v-bind:class="['Presentation', `Presentation--${color}`]")
+  div.Presentation(v-bind:class="`Presentation--${color}`")
     .Presentation-portrait(v-if="type === 'home'")
       img.Presentation-photo(src="../assets/images/Home/Gaetan.png" alt="Gaëtan Lefebvre")
       img.Presentation-shape(:src="getImage(shape, type)" v-bind:alt="shape")
@@ -12,24 +12,25 @@
           span.Presentation-above {{ above }}
           span.Presentation-name
             span.Presentation-first {{ first }}&nbsp;
-            span(v-bind:class="['Presentation-last', `Presentation-last--${color}`]") {{ last }}
+            span.Presentation-last(v-bind:class="`Presentation-last--${color}`") {{ last }}
         p.Presentation-text(v-for="text in texts") {{ text }}
       .Presentation-push(v-if="type === 'home'")
         span.Presentation-heavy Push&nbsp;
         span.Presentation-thin the&nbsp;
-        span.Presentation-thin to continue
+        Icon(:shape="shape")
+        span.Presentation-thin &nbsp;to continue
       ul.Presentation-links(v-else-if="type === 'about'")
         li.Presentation-link
           a(href="#" title="LinkedIn") LinkedIn
         li.Presentation-link
           a(href="#" title="Twitter") Twitter
         li.Presentation-link
-          a(href="#" title="Behance") Behance
-        li.Presentation-link
           a(href="#" title="Instagram") Instagram
 </template>
 
 <script>
+import Icon from './Icon'
+
 export default {
   props: [
     'type',
@@ -40,6 +41,9 @@ export default {
     'last',
     'texts'
   ],
+  components: {
+    Icon
+  },
   methods: {
     getImage(image, folder) {
       let images
