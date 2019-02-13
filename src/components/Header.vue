@@ -1,8 +1,8 @@
 <template lang="pug">
-  header.Header(v-bind:class="`Header--${color}`")
+  header.Header(v-bind:class="`Header--${color || about[about.colors[indexColor]].color}`")
     .Header-topbar
       router-link(:to="{ name: 'home'}")
-        Logo(:color="color")
+        Logo(:color="color || about[about.colors[indexColor]].color")
       ul.Header-navbar
         li.Header-item
           a(href="#" @click="toggleMenu") Projects
@@ -18,20 +18,20 @@
         type="home"
         :color="color"
         :shape="shape"
-        above="Hi, I'm"
-        first="Gaëtan"
-        last="Lefebvre"
-        :texts="data"
+        :above="data.above"
+        :first="data.first"
+        :last="data.last"
+        :texts="data.paragraphs"
       )
       Presentation(
         v-if="jumbotron === 'about'"
         type="about"
-        :color="color"
-        :shape="shape"
-        above="Who"
-        first="am I"
-        last="really ?"
-        :texts="data"
+        :color="about[about.colors[indexColor]].color"
+        :shape="about[about.colors[indexColor]].shape"
+        :above="about[about.colors[indexColor]].above"
+        :first="about[about.colors[indexColor]].first"
+        :last="about[about.colors[indexColor]].last"
+        :texts="about[about.colors[indexColor]].paragraphs"
       )
       Error(
         v-if="jumbotron === 'error'"
@@ -47,11 +47,17 @@ import Presentation from './Presentation'
 import Error from './Error'
 
 export default {
+  data() {
+    return {
+      indexColor: 0
+    }
+  },
   props: [
     'color',
     'shape',
     'jumbotron',
-    'data'
+    'data',
+    'about'
   ],
   components: {
     Logo,
@@ -63,6 +69,22 @@ export default {
     toggleMenu: (event) => {
       event.preventDefault()
       document.querySelector('.Menu').classList.add('is-active')
+    }
+  },
+  mounted() {
+    if (this.about) {
+      let isScrolling = false
+
+      window.addEventListener('wheel', () => {
+        if (!isScrolling) {
+          isScrolling = true
+          this.indexColor = (this.indexColor + 1) % this.about.colors.length
+
+          setTimeout(() => {
+            isScrolling = false
+          }, 500)
+        }
+      })
     }
   }
 }

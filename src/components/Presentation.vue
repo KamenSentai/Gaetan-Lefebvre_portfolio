@@ -212,6 +212,7 @@ export default {
     font-size: 1.6rem;
     letter-spacing: .25em;
     text-transform: uppercase;
+    user-select: none;
 
     @media (max-width: #{grid-media(4)}) {
       font-size: 1.4rem;
