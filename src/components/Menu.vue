@@ -22,7 +22,6 @@ export default {
   methods: {
     toggleMenu: () => {
       document.querySelector('.Menu').classList.remove('is-active')
-      console.log('ok')
     }
   }
 }

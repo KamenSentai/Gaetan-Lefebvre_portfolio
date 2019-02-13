@@ -82,17 +82,15 @@ export default {
     width: grid(7);
     overflow: hidden;
     user-select: none;
-
-    &--picture {
-      width: grid(6);
-    }
+    transform: translateX(-#{grid(1)});
 
     @media (max-width: #{grid-media(12)}) {
-      width : grid(4);
+      width : grid(5);
+      transform: translateX(-#{grid(.5)});
     }
 
     @media (max-width: #{grid-media(10)}) {
-      width : grid(3);
+      width : grid(4);
     }
 
     @media (max-width: #{grid-media(8)}) {
