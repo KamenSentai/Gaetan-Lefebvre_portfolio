@@ -5,11 +5,9 @@
         Logo(:color="color")
       ul.Header-navbar
         li.Header-item
-          router-link(:to="{ name: 'projects' }") Projects
+          router-link(to="#") Projects
         li.Header-item
           router-link(:to="{ name: 'about' }") About
-        li.Header-item
-          router-link(:to="{ name: 'contact' }") Contact
       .Header-burger
         .Header-stripe
         .Header-stripe
@@ -43,6 +41,7 @@
 
 <script>
 import Logo from './Logo'
+import Menu from './Menu'
 import Presentation from './Presentation'
 import Error from './Error'
 
@@ -55,6 +54,7 @@ export default {
   ],
   components: {
     Logo,
+    Menu,
     Presentation,
     Error
   }
