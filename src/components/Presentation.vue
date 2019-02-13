@@ -84,6 +84,11 @@ export default {
     user-select: none;
     transform: translateX(-#{grid(1)});
 
+    &--picture {
+      width: grid(6);
+      transform: none;
+    }
+
     @media (max-width: #{grid-media(12)}) {
       width : grid(5);
       transform: translateX(-#{grid(.5)});
