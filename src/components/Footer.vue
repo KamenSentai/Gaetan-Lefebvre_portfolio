@@ -4,9 +4,9 @@
       router-link.Footer-navigation(:to="{ name: to }" v-bind:title="title")
         img.Footer-image(:src="getImage(to)" v-bind:alt="title")
         span.Footer-title {{ title }}
-        router-link.Footer-link(:to="{ name: to }" v-bind:title="title")
-          .Footer-arrow.Footer-arrow--first
-          .Footer-arrow.Footer-arrow--last
+        router-link.Footer-link.Push.Push--light.Push--right(:to="{ name: to }" v-bind:title="title")
+          .Footer-arrow.Push-arrow
+          .Footer-arrow.Push-arrow
 </template>
 
 <script>
@@ -140,7 +140,7 @@ export default {
 
       #{$rootFooter}-arrow {
         opacity: 1;
-        transform: translateX(#{$link-size});
+        transform: translateX(0);
       }
     }
   }
@@ -192,51 +192,9 @@ export default {
     position: absolute;
     top: calc(50% - #{$link-size} / 2);
     right: 0;
-    display: block;
-    width: $link-size;
-    height: $link-size;
-    border-radius: 100%;
-    border: .1rem solid $dark;
-    overflow: hidden;
 
     @media (max-width: #{grid-media(6)}) {
       display: none;
-    }
-  }
-
-  &-arrow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    opacity: .4;
-    transition: opacity $easing, transform $easing;
-    will-change: opacity, transform;
-
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-      width: .1rem;
-      height: 1.2rem;
-      background-color: $white;
-    }
-
-    &::before {
-      bottom: 0;
-      left: .4rem;
-      transform-origin: 50% 100%;
-      transform: rotateZ(-30deg);
-    }
-
-    &::after {
-      top: 0;
-      left: .4rem;
-      transform-origin: 50% 0%;
-      transform: rotateZ(30deg);
-    }
-
-    &--last {
-      margin-left: - $link-size;
     }
   }
 }

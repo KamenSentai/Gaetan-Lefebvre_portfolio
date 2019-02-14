@@ -35,7 +35,7 @@
           top="What"
           center="was the"
           bottom="problem ?"
-          v-bind:paragraphs="data.what_was_the_problem"
+          :paragraphs="data.what_was_the_problem"
         )
         .Content
           .Content-header
@@ -49,7 +49,7 @@
           top="How"
           center="the team"
           bottom="solved it ?"
-          v-bind:paragraphs="data.how_i_solved_it"
+          :paragraphs="data.how_i_solved_it"
         )
       section.Slide.Slide--banner
         img.Content-banner(src="../assets/images/Pocketcare/Banner_Inscription.png" alt="Inscription")
@@ -80,7 +80,7 @@
           top="How"
           center="the team"
           bottom="worked ?"
-          v-bind:paragraphs="data.how_the_team_worked"
+          :paragraphs="data.how_the_team_worked"
         )
     Footer(
       to="tesla"

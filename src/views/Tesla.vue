@@ -123,7 +123,7 @@
           top="How"
           center="the team"
           bottom="worked ?"
-          v-bind:paragraphs="data.how_the_team_worked"
+          :paragraphs="data.how_the_team_worked"
         )
     Footer(
       to="buddy-buddy"

@@ -87,6 +87,10 @@
           .Content-header.Content-header--center
             h3.Content-title.Text--center Mobile case study
             p.Content-description.Text--center When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation.
+          Carousel(
+            folder="BuddyBuddy"
+            :images="['Mobile_1', 'Mobile_2', 'Mobile_3', 'Mobile_4']"
+          )
       section.Slide.Slide--banner
         img.Content-banner(src="../assets/images/BuddyBuddy/Banner_Screenshots.png" alt="Banner Screenshots")
       section.Slide
@@ -95,7 +99,7 @@
           top="How"
           center="the team"
           bottom="worked ?"
-          v-bind:paragraphs="data.how_the_team_worked"
+          :paragraphs="data.how_the_team_worked"
         )
     Footer(
       to="personal"
@@ -109,6 +113,7 @@ import Post from '../components/Post'
 import Color from '../components/Color'
 import Charter from '../components/Charter'
 import Article from '../components/Article'
+import Carousel from '../components/Carousel'
 import Footer from '../components/Footer'
 
 export default {
@@ -127,6 +132,7 @@ export default {
     Color,
     Charter,
     Article,
+    Carousel,
     Footer
   }
 }
