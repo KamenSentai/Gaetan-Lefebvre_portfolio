@@ -24,13 +24,10 @@ fetch('/data/texts.json')
         name: 'about',
         props: { data: json.about }
       }, {
-        path: '/contact',
-        component: () => import('./views/Contact.vue'),
-        name: 'contact'
-      }, {
         path: '/projects',
         component: () => import('./views/Projects.vue'),
-        name: 'projects'
+        name: 'projects',
+        props: { data: json.projects }
       }, {
         path: '/projects/pocketcare',
         component: () => import('./views/Pocketcare.vue'),

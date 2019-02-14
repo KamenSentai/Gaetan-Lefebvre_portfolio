@@ -1,5 +1,17 @@
 {
   "home": {
+    "colors": [
+      "green",
+      "blue",
+      "red",
+      "yellow"
+    ],
+    "shapes": [
+      "circle",
+      "triangle",
+      "square",
+      "yellow"
+    ],
     "above": "Hi, I'm",
     "first": "Gaëtan",
     "last": "Lefebvre",
@@ -12,6 +24,12 @@
       "green",
       "blue",
       "red",
+      "yellow"
+    ],
+    "shapes": [
+      "circle",
+      "triangle",
+      "square",
       "yellow"
     ],
     "green": {
@@ -58,6 +76,28 @@
       ]
     }
   },
+  "projects": [
+    {
+      "name": "Pocketcare",
+      "color": "green",
+      "shape": "circle"
+    },
+    {
+      "name": "Tesla",
+      "color": "blue",
+      "shape": "triangle"
+    },
+    {
+      "name": "Buddy Buddy",
+      "color": "red",
+      "shape": "square"
+    },
+    {
+      "name": "Personal",
+      "color": "yellow",
+      "shape": "pentagone"
+    }
+  ],
   "pocketcare": {
     "what_is_the_project": [
       "Pocketcare was born from a student project. The goal was to design an innovative solution for the medical field.",

@@ -1,13 +1,13 @@
 <template lang="pug">
   header.Header(v-bind:class="`Header--${color || about[about.colors[indexColor]].color}`")
     .Header-topbar
-      router-link(:to="{ name: 'home'}")
+      router-link(:to="{ name: 'home', params: { color: color || about[about.colors[indexColor]].color, shape: shape || about[about.colors[indexColor]].shape }}")
         Logo(:color="color || about[about.colors[indexColor]].color")
       ul.Header-navbar
         li.Header-item
           a(href="#" @click="toggleMenu") Projects
         li.Header-item
-          router-link(:to="{ name: 'about' }") About
+          router-link(:to="{ name: 'about', params: { color: color || about[about.colors[indexColor]].color, shape: shape || about[about.colors[indexColor]].shape }}") About
       .Header-burger
         .Header-stripe
         .Header-stripe
@@ -18,10 +18,10 @@
         type="home"
         :color="color"
         :shape="shape"
-        :above="data.above"
-        :first="data.first"
-        :last="data.last"
-        :texts="data.paragraphs"
+        :above="home.above"
+        :first="home.first"
+        :last="home.last"
+        :texts="home.paragraphs"
       )
       Presentation(
         v-if="jumbotron === 'about'"
@@ -55,8 +55,9 @@ export default {
   props: [
     'color',
     'shape',
+    'index',
     'jumbotron',
-    'data',
+    'home',
     'about'
   ],
   components: {
@@ -71,18 +72,23 @@ export default {
       document.querySelector('.Menu').classList.add('is-active')
     }
   },
+  beforeMount() {
+    if (this.index && this.index >= 0) this.indexColor = this.index
+  },
   mounted() {
     if (this.about) {
       let isScrolling = false
 
-      window.addEventListener('wheel', () => {
+      this.$el.querySelector('.Header-jumbotron').addEventListener('wheel', (event) => {
+        event.preventDefault()
+
         if (!isScrolling) {
           isScrolling = true
           this.indexColor = (this.indexColor + 1) % this.about.colors.length
 
           setTimeout(() => {
             isScrolling = false
-          }, 500)
+          }, 1000)
         }
       })
     }

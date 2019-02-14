@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    Header(color="green")
+    Header(color="green" shape="circle")
     .Page.Page--green
       section.Slide
         Post(
@@ -8,7 +8,7 @@
           top="What"
           center="is the"
           bottom="project ?"
-          v-bind:paragraphs="data.what_is_the_project"
+          :paragraphs="data.what_is_the_project"
         )
       section.Slide
         .Content

@@ -12,7 +12,7 @@
           polygon(v-if="shape === 'triangle'" transform="translate(19.360294, 28.493055) rotate(136.000000) translate(-19.360294, -28.493055) " points="11.1624486 11.1720037 36.6712247 35.5739934 2.04936286 45.8141065")
           rect(v-if="shape === 'square'" x="2.5" y="2.5" width="34" height="34")
           path(v-if="shape === 'pentagone'" d="M19.5,2.61803399 L1.54218318,15.6651516 L8.40145884,36.7758314 L30.5985412,36.7758314 L37.4578168,15.6651516 L19.5,2.61803399 Z")
-    router-link.Icon-link(:to="{ name: 'projects' }")
+    router-link.Icon-link(:to="{ name: 'projects', params: { color: color, shape: shape } }")
 </template>
 
 <script>
@@ -23,6 +23,7 @@ export default {
     }
   },
   props: [
+    'color',
     'shape'
   ],
   methods: {

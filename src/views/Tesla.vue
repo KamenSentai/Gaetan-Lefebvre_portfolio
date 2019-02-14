@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    Header(color="blue")
+    Header(color="blue" shape="triangle")
     .Page.Page--blue
       section.Slide
         Post(

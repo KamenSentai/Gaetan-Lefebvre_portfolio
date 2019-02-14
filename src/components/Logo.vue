@@ -21,6 +21,10 @@ export default {
     &--#{$key} &-lastname {
       fill: $value;
     }
+
+    &-lastname {
+      transition: fill $easing;
+    }
   }
 }
 </style>

@@ -1,10 +1,10 @@
 <template lang="pug">
   div
     Header(
-      :color="themes[theme].color"
-      :shape="themes[theme].shape"
+      :color="color || data.colors[0]"
+      :shape="shape || data.shapes[0]"
       jumbotron="home"
-      :data="data"
+      :home="data"
     )
 </template>
 
@@ -20,23 +20,19 @@ export default {
   },
   data() {
     return {
-      themes: [
-        { color: 'green', shape: 'circle' },
-        { color: 'blue', shape: 'triangle' },
-        { color: 'red', shape: 'square' },
-        { color: 'yellow', shape: 'pentagone' }
-      ],
-      theme: null
+      color: null,
+      shape: null
     }
+  },
+  created() {
+    this.color = this.$route.params.color
+    this.shape = this.$route.params.shape
   },
   props: [
     'data'
   ],
   components: {
     Header
-  },
-  beforeMount() {
-    this.theme = Math.floor(Math.random() * this.themes.length)
   }
 }
 </script>

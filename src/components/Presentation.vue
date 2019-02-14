@@ -17,7 +17,10 @@
       .Presentation-push(v-if="type === 'home'")
         span.Presentation-heavy Push&nbsp;
         span.Presentation-thin the&nbsp;
-        Icon(:shape="shape")
+        Icon(
+          :color="color"
+          :shape="shape"
+        )
         span.Presentation-thin &nbsp;to continue
       ul.Presentation-links(v-else-if="type === 'about'")
         li.Presentation-link
