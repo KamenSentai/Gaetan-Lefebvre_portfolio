@@ -16,12 +16,12 @@
         p.Presentation-text(v-for="text in texts") {{ text }}
       .Presentation-push(v-if="type === 'home'")
         span.Presentation-heavy Push&nbsp;
-        span.Presentation-thin the&nbsp;
+        span.Presentation-thin the
         Icon(
           :color="color"
           :shape="shape"
         )
-        span.Presentation-thin &nbsp;to continue
+        span.Presentation-thin to continue
       ul.Presentation-links(v-else-if="type === 'about'")
         li.Presentation-link
           a(href="#" title="LinkedIn") LinkedIn

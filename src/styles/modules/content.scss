@@ -574,13 +574,34 @@
 
   &-banner {
     align-self: center;
+    max-width: grid(24);
+
+    @media (max-width: #{grid-media(18)}) {
+      width: grid(22);
+    }
+
+    @media (max-width: #{grid-media(16)}) {
+      width: grid(20);
+    }
+
+    @media (max-width: #{grid-media(14)}) {
+      width: grid(18);
+    }
+
+    @media (max-width: #{grid-media(12)}) {
+      width: grid(16);
+    }
+
+    @media (max-width: #{grid-media(10)}) {
+      width: grid(14);
+    }
 
     @media (max-width: #{grid-media(8)}) {
-      width: grid(10);
+      width: grid(12);
     }
 
     @media (max-width: #{grid-media(6)}) {
-      width: grid(8);
+      width: grid(10);
     }
   }
 

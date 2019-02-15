@@ -48,11 +48,7 @@ export default {
         'WebkitTransition':'webkitTransitionEnd'
       }
 
-      for (t in transitions) {
-        if (el.style[t] !== undefined) {
-          return transitions[t]
-        }
-      }
+      for (t in transitions) if (el.style[t] !== undefined) return transitions[t]
     }
 
     _iconShape.addEventListener('mousedown', () => {
@@ -73,6 +69,7 @@ export default {
 @import '../styles/tools/functions';
 
 .Icon {
+  margin: 0 1rem;
   cursor: pointer;
 
   &-strokes {
@@ -84,6 +81,7 @@ export default {
     transform-origin: 50% 50%;
     transform: scale(0);
     transition: transform $easing;
+    transition-duration: 2s;
     will-change: transform;
 
     &.is-active {

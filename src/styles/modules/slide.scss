@@ -71,7 +71,9 @@
 
   &--banner {
     padding: 0;
+    height: 100vh;
     min-height: auto;
+    overflow: hidden;
   }
 
   &--page {

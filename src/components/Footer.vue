@@ -35,11 +35,7 @@ export default {
         'WebkitTransition':'webkitTransitionEnd'
       }
 
-      for (t in transitions) {
-        if (el.style[t] !== undefined) {
-          return transitions[t]
-        }
-      }
+      for (t in transitions) if (el.style[t] !== undefined) return transitions[t]
     }
 
     _footerContainer.addEventListener('mouseover', () => {
