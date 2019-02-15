@@ -13,8 +13,12 @@ export default {
   data() {
     return {
       path: '../assets/images/',
-      carouselImages: [],
-      isClicked: false
+      isClicked: false,
+      elements: [],
+      total: 0,
+      count: 0,
+      margins: 0,
+      duration: 0
     }
   },
   props: [
@@ -45,64 +49,63 @@ export default {
 
       if (!this.isClicked) {
         this.isClicked = true
+        const mod = this.count % this.total
 
-        const firstImage = this.carouselImages[0]
-        firstImage.classList.add('is-fading')
+        for (let i = 0 ; i < this.total ; i++) {
+          if (i === mod) {
+            this.elements[i].style.zIndex = '0'
+            this.elements[i].style.opacity = '0'
 
-        for (let i = 1 ; i < this.carouselImages.length ; i++) {
-          this.carouselImages[i].classList.add('is-sliding')
+            setTimeout(() => {
+              this.elements[i].style.transform = `translateX(calc(${i > mod ? - mod - 1 : this.total - mod - 1} * (100% + ${this.margins}px)))`
+              setTimeout(() => {
+                this.elements[i].style.opacity = '1'
+              }, this.duration)
+              this.isClicked = false
+            }, this.duration)
+          } else {
+            this.elements[i].style.zIndex = '10'
+            this.elements[i].style.transform = `translateX(calc(${i > mod ? - mod - 1 : this.total - mod - 1} * (100% + ${this.margins}px)))`
+          }
         }
 
-        this.carouselImages.shift()
+        this.count++
 
-        const whichTransitionEvent = () => {
-          let t
-          const el = document.createElement('fakeelement')
-          const transitions = {
-            'transition':'transitionend',
-            'OTransition':'oTransitionEnd',
-            'MozTransition':'transitionend',
-            'WebkitTransition':'webkitTransitionEnd'
+        for (let i = 0 ; i < this.total ; i++) {
+          if (i === this.count % this.total) {
+            this.elements[i].style.zIndex = '0'
+            break
           }
-
-          for (t in transitions) if (el.style[t] !== undefined) return transitions[t]
         }
-
-        const transitionEvent = whichTransitionEvent()
-        transitionEvent && firstImage.addEventListener(transitionEvent, () => {
-          firstImage.parentNode.removeChild(firstImage)
-
-          for (const carouselImage of this.carouselImages) {
-            carouselImage.classList.remove('is-sliding')
-          }
-
-          this.doubleImage()
-          this.isClicked = false
-        })
       }
-    },
-    doubleImage() {
-      const _carouselImages = Array.from(this.$el.querySelectorAll('.Carousel-image'))
-      const doubledImage = new Image()
-
-      for (let key in _carouselImages[0].dataset) {
-        doubledImage.dataset[`${key}`] = ''
-      }
-
-      doubledImage.src = _carouselImages[0].getAttribute('src')
-
-      for (const classImage of _carouselImages[0].classList) {
-        doubledImage.classList.add(classImage)
-      }
-
-      this.$el.querySelector('.Carousel-images').appendChild(doubledImage)
-
-      _carouselImages.push(doubledImage)
-      this.carouselImages = _carouselImages
     }
   },
   mounted() {
-    this.doubleImage()
+    const _carouselImages = this.$el.querySelector('.Carousel-images')
+    const _images = Array.from(_carouselImages.querySelectorAll('.Carousel-image'))
+
+    for (const _carouselImage of _images) {
+      const _clonedImage = new Image()
+
+      for (let key in _carouselImage.dataset) {
+        _clonedImage.dataset[`${key}`] = ''
+      }
+
+      _clonedImage.src = _carouselImage.getAttribute('src')
+
+      for (const classImage of _carouselImage.classList) {
+        _clonedImage.classList.add(classImage)
+      }
+
+      _carouselImages.appendChild(_clonedImage)
+    }
+
+    const style = _images[0].currentStyle || window.getComputedStyle(_images[0])
+
+    this.elements = Array.from(_carouselImages.querySelectorAll('.Carousel-image'))
+    this.total = this.elements.length
+    this.margins = parseFloat(style.marginLeft) + parseFloat(style.marginRight) + parseFloat(style.paddingLeft) + parseFloat(style.paddingRight)
+    this.duration = parseFloat(style.transitionDuration) * 1000
   }
 }
 </script>
@@ -167,14 +170,6 @@ export default {
 
     @media (max-width: #{grid-media(4)}) {
       max-width: grid(2);
-    }
-
-    &.is-fading {
-      opacity: 0;
-    }
-
-    &.is-sliding {
-      transform: translateX(calc(-100% - #{$images-margin}));
     }
   }
 }
