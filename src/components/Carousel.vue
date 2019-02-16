@@ -1,6 +1,7 @@
 <template lang="pug">
   .Carousel(v-bind:class="automatic ? 'Carousel--automatic' : ''")
     .Carousel-button
+      canvas.Carousel-loading(:data-color="color")
       a.Push.Push--left(@click="turnCarousel" href="#")
         .Push-arrow
         .Push-arrow
@@ -22,12 +23,12 @@ export default {
     return {
       path: '../assets/images/',
       isClicked: false,
-      canAutoplay: true,
       elements: [],
       total: 0,
       count: 0,
       margins: 0,
-      duration: 0
+      duration: 0,
+      timing: 0
     }
   },
   props: [
@@ -35,7 +36,8 @@ export default {
     'images',
     'mockup',
     'automatic',
-    'interval'
+    'interval',
+    'color'
   ],
   methods: {
     getImage(image) {
@@ -61,7 +63,7 @@ export default {
 
       if (!this.isClicked) {
         this.isClicked = true
-        this.canAutoplay = false
+        this.timing = 0
         const mod = this.count % this.total
 
         for (let i = 0 ; i < this.total ; i++) {
@@ -110,20 +112,46 @@ export default {
   mounted() {
     const _carouselImages = this.$el.querySelector('.Carousel-images')
     const _images = Array.from(_carouselImages.querySelectorAll('.Carousel-image'))
-    const style = _images[0].currentStyle || window.getComputedStyle(_images[0])
+    const _imagesStyle = _images[0].currentStyle || window.getComputedStyle(_images[0])
 
     this.elements = _images
     this.total = this.elements.length
-    this.margins = parseFloat(style.marginLeft) + parseFloat(style.marginRight) + parseFloat(style.paddingLeft) + parseFloat(style.paddingRight)
-    this.duration = parseFloat(style.transitionDuration) * 1000
+    this.margins = parseFloat(_imagesStyle.marginLeft) + parseFloat(_imagesStyle.marginRight) + parseFloat(_imagesStyle.paddingLeft) + parseFloat(_imagesStyle.paddingRight)
+    this.duration = parseFloat(_imagesStyle.transitionDuration) * 1000
 
     if (this.automatic) {
       const _push = this.$el.querySelector('.Push')
+      const _carouselLoading = this.$el.querySelector('.Carousel-loading')
 
-      window.setInterval(() => {
-        if (this.canAutoplay) _push.click()
-        this.canAutoplay = true
-      }, this.interval)
+      const _pushStyle = _push.currentStyle || window.getComputedStyle(_push)
+      const _loadingStyle = _carouselLoading.currentStyle || window.getComputedStyle(_carouselLoading)
+
+      _carouselLoading.width = _carouselLoading.offsetWidth
+      _carouselLoading.height = _carouselLoading.offsetHeight
+      const w = _carouselLoading.width
+      const h = _carouselLoading.height
+
+      const context = _carouselLoading.getContext('2d')
+      context.lineWidth = (parseFloat(_loadingStyle.width) - parseFloat(_pushStyle.width)) / 2
+      context.strokeStyle = `${_loadingStyle.color}`
+
+      const fraction = Math.PI * 2 / this.duration
+
+      const autoplayCarousel = () => {
+        this.timing += fraction
+        context.clearRect(0, 0, w, h)
+        context.beginPath()
+        context.arc(w / 2, h / 2, (w - context.lineWidth) / 2, 0, this.timing, false)
+        context.stroke()
+
+        if (this.timing >= Math.PI * 2) {
+          this.timing = 0
+          _push.click()
+        }
+
+        window.requestAnimationFrame(autoplayCarousel)
+      }
+      autoplayCarousel()
     }
   }
 }
@@ -216,6 +244,7 @@ export default {
   }
 
   &-button {
+    position: relative;
     z-index: 1;
 
     &--hidden {
@@ -299,6 +328,23 @@ export default {
 
     @media (max-width: #{grid-media(4)}) {
       max-width: grid(2);
+    }
+  }
+
+  &-loading {
+    $overflow-size: .8rem;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(100% + #{$overflow-size});
+    height: calc(100% + #{$overflow-size});
+    transform: translate(-50%, -50%);
+
+    @each $key, $value in $colors {
+      &[data-color=#{$key}] {
+        color: $value;
+      }
     }
   }
 }

@@ -53,6 +53,7 @@
               mockup="Tablet_mockup"
               automatic="true"
               interval="5000"
+              color="blue"
             )
             .Field-inputs
               input(type="radio" id="black" v-model="tabletTheme" value="black")
@@ -87,6 +88,7 @@
               mockup="Mobile_mockup"
               automatic="true"
               interval="5000"
+              color="blue"
             )
       section.Slide
         .Content
