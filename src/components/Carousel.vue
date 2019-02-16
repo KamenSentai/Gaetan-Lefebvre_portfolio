@@ -1,5 +1,5 @@
 <template lang="pug">
-  .Carousel
+  .Carousel(v-bind:class="automatic ? 'Carousel--automatic' : ''")
     .Carousel-button
       a.Push.Push--left(@click="turnCarousel" href="#")
         .Push-arrow
@@ -22,6 +22,7 @@ export default {
     return {
       path: '../assets/images/',
       isClicked: false,
+      canAutoplay: true,
       elements: [],
       total: 0,
       count: 0,
@@ -32,7 +33,9 @@ export default {
   props: [
     'folder',
     'images',
-    'mockup'
+    'mockup',
+    'automatic',
+    'interval'
   ],
   methods: {
     getImage(image) {
@@ -58,6 +61,7 @@ export default {
 
       if (!this.isClicked) {
         this.isClicked = true
+        this.canAutoplay = false
         const mod = this.count % this.total
 
         for (let i = 0 ; i < this.total ; i++) {
@@ -112,6 +116,15 @@ export default {
     this.total = this.elements.length
     this.margins = parseFloat(style.marginLeft) + parseFloat(style.marginRight) + parseFloat(style.paddingLeft) + parseFloat(style.paddingRight)
     this.duration = parseFloat(style.transitionDuration) * 1000
+
+    if (this.automatic) {
+      const _push = this.$el.querySelector('.Push')
+
+      window.setInterval(() => {
+        if (this.canAutoplay) _push.click()
+        this.canAutoplay = true
+      }, this.interval)
+    }
   }
 }
 </script>
@@ -130,6 +143,7 @@ export default {
   width: 100%;
 
   &--item {
+    position: relative;
     justify-content: flex-start;
     margin-left: $gutter * 2 + grid(1);
 
@@ -142,6 +156,17 @@ export default {
 
     #{$rootCarousel}-content {
       margin-left: $margin-s;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: calc(50% - .1rem);
+        left: - $margin-s;
+        z-index: -1;
+        width: 100vw;
+        height: .1rem;
+        background-color: $grey;
+      }
     }
 
     #{$rootCarousel}-image {
@@ -179,6 +204,13 @@ export default {
     #{$rootCarousel}-button {
       @media (max-width: #{grid-media(6)}) {
         display: none;
+      }
+    }
+
+    #{$rootCarousel}-content {
+      @media (max-width: #{grid-media(6)}) {
+        margin-right: auto;
+        margin-left: auto;
       }
     }
   }
