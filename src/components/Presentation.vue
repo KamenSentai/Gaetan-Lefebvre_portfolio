@@ -29,6 +29,8 @@
           a(href="#" title="Twitter") Twitter
         li.Presentation-link
           a(href="#" title="Instagram") Instagram
+        li.Presentation-link(v-bind:class="`Text--${color}`")
+          a(href="#" title="Contact") Contact
 </template>
 
 <script>
@@ -218,7 +220,7 @@ export default {
     user-select: none;
 
     @media (max-width: #{grid-media(4)}) {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       justify-content: space-between;
     }
   }

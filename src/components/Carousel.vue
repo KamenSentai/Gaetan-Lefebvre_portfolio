@@ -9,11 +9,9 @@
       img.Carousel-mockup(draggable="false" :src="getImage(mockup)")
       .Carousel-images
         img.Carousel-image.Shadow(v-for="image in images" :src="getImage(image)")
-        img.Carousel-image.Shadow(v-for="image in images" :src="getImage(image)")
     .Carousel-button.Carousel-button--hidden(v-if="mockup")
       .Push
     .Carousel-images(v-else)
-      img.Carousel-image.Shadow(v-for="image in images" :src="getImage(image)")
       img.Carousel-image.Shadow(v-for="image in images" :src="getImage(image)")
 </template>
 
@@ -28,7 +26,7 @@ export default {
       count: 0,
       margins: 0,
       duration: 0,
-      timing: 0
+      start: ''
     }
   },
   props: [
@@ -63,7 +61,7 @@ export default {
 
       if (!this.isClicked) {
         this.isClicked = true
-        this.timing = 0
+        this.start = new Date()
         const mod = this.count % this.total
 
         for (let i = 0 ; i < this.total ; i++) {
@@ -82,9 +80,9 @@ export default {
                 `
               setTimeout(() => {
                 this.elements[i].style.opacity = '1'
-              }, this.duration)
-              this.isClicked = false
-            }, this.duration)
+                this.isClicked = false
+              }, this.duration / 2)
+            }, this.duration / 2)
           } else {
             this.elements[i].style.zIndex = '10'
             this.elements[i].style.transform = `
@@ -135,17 +133,19 @@ export default {
       context.lineWidth = (parseFloat(_loadingStyle.width) - parseFloat(_pushStyle.width)) / 2
       context.strokeStyle = `${_loadingStyle.color}`
 
-      const fraction = Math.PI * 2 / this.duration
+      this.start = new Date()
 
       const autoplayCarousel = () => {
-        this.timing += fraction
+        const elapsed = (new Date() - this.start)
+        const fraction = Math.PI * 2 * elapsed / this.interval
+
         context.clearRect(0, 0, w, h)
         context.beginPath()
-        context.arc(w / 2, h / 2, (w - context.lineWidth) / 2, 0, this.timing, false)
+        context.arc(w / 2, h / 2, (w - context.lineWidth) / 2, 0, fraction, false)
         context.stroke()
 
-        if (this.timing >= Math.PI * 2) {
-          this.timing = 0
+        if (fraction >= Math.PI * 2) {
+          this.start = new Date()
           _push.click()
         }
 
