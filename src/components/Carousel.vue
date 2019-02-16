@@ -4,7 +4,15 @@
       a.Push.Push--left(@click="turnCarousel" href="#")
         .Push-arrow
         .Push-arrow
-    .Carousel-images
+    .Carousel-content(v-if="mockup")
+      img.Carousel-mockup(draggable="false" :src="getImage(mockup)")
+      .Carousel-images
+        img.Carousel-image.Shadow(v-for="image in images" :src="getImage(image)")
+        img.Carousel-image.Shadow(v-for="image in images" :src="getImage(image)")
+    .Carousel-button.Carousel-button--hidden(v-if="mockup")
+      .Push
+    .Carousel-images(v-else)
+      img.Carousel-image.Shadow(v-for="image in images" :src="getImage(image)")
       img.Carousel-image.Shadow(v-for="image in images" :src="getImage(image)")
 </template>
 
@@ -23,7 +31,8 @@ export default {
   },
   props: [
     'folder',
-    'images'
+    'images',
+    'mockup'
   ],
   methods: {
     getImage(image) {
@@ -57,7 +66,14 @@ export default {
             this.elements[i].style.opacity = '0'
 
             setTimeout(() => {
-              this.elements[i].style.transform = `translateX(calc(${i > mod ? - mod - 1 : this.total - mod - 1} * (100% + ${this.margins}px)))`
+              this.elements[i].style.transform = `
+                translateX(
+                  calc(
+                    ${i > mod ? - mod - 1 : this.total - mod - 1} * (100% + ${this.margins}px)
+                  )
+                )
+                ${this.mockup ? 'scale(.75)' : ''}
+                `
               setTimeout(() => {
                 this.elements[i].style.opacity = '1'
               }, this.duration)
@@ -65,7 +81,14 @@ export default {
             }, this.duration)
           } else {
             this.elements[i].style.zIndex = '10'
-            this.elements[i].style.transform = `translateX(calc(${i > mod ? - mod - 1 : this.total - mod - 1} * (100% + ${this.margins}px)))`
+            this.elements[i].style.transform = `
+              translateX(
+                calc(
+                  ${i > mod ? - mod - 1 : this.total - mod - 1} * (100% + ${this.margins}px)
+                )
+              )
+              ${this.mockup && i !== (this.count + 1) % this.total ? 'scale(.75)' : ''}
+            `
           }
         }
 
@@ -83,26 +106,9 @@ export default {
   mounted() {
     const _carouselImages = this.$el.querySelector('.Carousel-images')
     const _images = Array.from(_carouselImages.querySelectorAll('.Carousel-image'))
-
-    for (const _carouselImage of _images) {
-      const _clonedImage = new Image()
-
-      for (let key in _carouselImage.dataset) {
-        _clonedImage.dataset[`${key}`] = ''
-      }
-
-      _clonedImage.src = _carouselImage.getAttribute('src')
-
-      for (const classImage of _carouselImage.classList) {
-        _clonedImage.classList.add(classImage)
-      }
-
-      _carouselImages.appendChild(_clonedImage)
-    }
-
     const style = _images[0].currentStyle || window.getComputedStyle(_images[0])
 
-    this.elements = Array.from(_carouselImages.querySelectorAll('.Carousel-image'))
+    this.elements = _images
     this.total = this.elements.length
     this.margins = parseFloat(style.marginLeft) + parseFloat(style.marginRight) + parseFloat(style.paddingLeft) + parseFloat(style.paddingRight)
     this.duration = parseFloat(style.transitionDuration) * 1000
@@ -115,6 +121,7 @@ export default {
 @import '../styles/tools/functions';
 
 .Carousel {
+  $rootCarousel: &;
   $images-margin: $margin-s;
 
   display: flex;
@@ -122,8 +129,92 @@ export default {
   align-items: center;
   width: 100%;
 
+  &--item {
+    justify-content: flex-start;
+    margin-left: $gutter * 2 + grid(1);
+
+    @media (max-width: #{grid-media(8)}) {
+      order: 2;
+      margin: 0;
+      margin-top: $margin-s;
+      width: 100%;
+    }
+
+    #{$rootCarousel}-content {
+      margin-left: $margin-s;
+    }
+
+    #{$rootCarousel}-image {
+      margin-right: $margin-t;
+      transform-origin: 100% 50%;
+    }
+  }
+
+  &--full {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: calc(50% - .1rem);
+      left: -100%;
+      width: 200vw;
+      height: .1rem;
+      background-color: $grey;
+    }
+
+    #{$rootCarousel}-image,
+    #{$rootCarousel}-mockup {
+      @media (max-width: #{grid-media(4)}) {
+        max-width: grid(3);
+      }
+    }
+  }
+
+  &--automatic {
+    @media (max-width: #{grid-media(6)}) {
+      justify-content: center;
+    }
+
+    #{$rootCarousel}-button {
+      @media (max-width: #{grid-media(6)}) {
+        display: none;
+      }
+    }
+  }
+
   &-button {
     z-index: 1;
+
+    &--hidden {
+      visibility: hidden;
+    }
+  }
+
+  &-content {
+    position: relative;
+    z-index: 1;
+
+    #{$rootCarousel}-images {
+      z-index: -1;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      padding-left: 0;
+      transform: translateY(-50%);
+
+      &::before {
+        display: none;
+      }
+    }
+
+    #{$rootCarousel}-image {
+      transform: scale(.75);
+
+      &:first-child {
+        transform: none;
+      }
+    }
   }
 
   &-images {
@@ -152,8 +243,14 @@ export default {
   }
 
   &-image {
-    max-width: grid(8);
     margin-right: $images-margin;
+    transform-origin: 50% 50%;
+  }
+
+  &-mockup,
+  &-image {
+    max-width: grid(8);
+    max-height: grid(6);
     transition: all $easing;
 
     @media (max-width: #{grid-media(10)}) {

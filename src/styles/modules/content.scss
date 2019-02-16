@@ -239,6 +239,7 @@
     }
 
     &--quarter {
+      flex: 1 0 auto;
       width: grid(3);
 
       @media (max-width: #{grid-media(8)}) {

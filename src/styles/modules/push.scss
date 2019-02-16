@@ -7,14 +7,16 @@
   flex-direction: column;
   width: $link-size;
   height: $link-size;
+  background-color: $white;
   border-radius: 100%;
   border: .2rem solid $dark;
   overflow: hidden;
   cursor: pointer;
 
   &--light {
+    background-color: $black;
+
     #{$rootPush}-arrow {
-      background-color: red;
       &::before,
       &::after {
         background-color: $white;
