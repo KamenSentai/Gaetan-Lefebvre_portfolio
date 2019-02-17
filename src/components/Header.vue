@@ -1,13 +1,13 @@
 <template lang="pug">
-header.Header(v-bind:class="`Header--${color || about.pages[about.colors[range]].color}`")
+header.Header(v-bind:class="`Header--${color || about.colors[range]}`")
   .Header-topbar
-    router-link(:to="{ name: 'home', params: { color: color || about.pages[about.colors[range]].color, shape: shape || about.pages[about.colors[range]].shape }}")
-      Logo(:color="color || about.pages[about.colors[range]].color")
+    router-link(:to="{ name: 'home', params: { color: color || about.colors[range], shape: shape || about.shapes[range] }}")
+      Logo(:color="color || about.colors[range]")
     ul.Header-navbar
       li.Header-item
         a(href="#" @click="toggleMenu") Projects
       li.Header-item
-        router-link(:to="{ name: 'about', params: { color: color || about.pages[about.colors[range]].color, shape: shape || about.pages[about.colors[range]].shape }}") About
+        router-link(:to="{ name: 'about', params: { color: color || about.colors[range], shape: shape || about.shapes[range] }}") About
     .Header-burger
       .Header-stripe
       .Header-stripe
