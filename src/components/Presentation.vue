@@ -1,19 +1,25 @@
 <template lang="pug">
-  div.Presentation(v-bind:class="`Presentation--${color}`")
+  div.Presentation(v-bind:class="`Presentation--${color || content.colors[range]}`")
     .Presentation-portrait(v-if="type === 'home'")
-      img.Presentation-photo(src="../assets/images/Home/Gaetan.png" alt="Gaëtan Lefebvre")
+      img.Presentation-back(src="../assets/images/Home/Gaetan.png" alt="Gaëtan Lefebvre")
       img.Presentation-shape(:src="getImage(shape, type)" v-bind:alt="shape")
-      img.Presentation-cropped(src="../assets/images/Home/Gaetan-cropped.png" alt="Gaëtan Lefebvre")
-    .Presentation-portrait.Presentation-portrait--picture(v-if="type === 'about'")
-      img.Presentation-shape(:src="getImage(shape, type)" v-bind:alt="shape")
+      img.Presentation-front(src="../assets/images/Home/Gaetan-cropped.png" alt="Gaëtan Lefebvre")
+    .Presentation-portrait.Presentation-portrait--pictures(v-if="type === 'about'")
+      img.Presentation-front.Presentation-front--slide(v-for="page in content.pages" :src="getImage(`${page.shape}_back`, type)" v-bind:class="checkIndex(page)")
+      img.Presentation-shape.Presentation-shape--slide(v-for="page in content.pages" :src="getImage(page.shape, type)" v-bind:class="checkIndex(page)")
+      img.Presentation-back.Presentation-back--slide(v-for="page in content.pages" :src="getImage(`${page.shape}_front`, type)" v-bind:class="checkIndex(page)")
+      span.Presentation-scroll
     aside.Presentation-data
       .Presentation-description
         h1.Presentation-title
-          span.Presentation-above {{ above }}
-          span.Presentation-name
-            span.Presentation-first {{ first }}&nbsp;
-            span.Presentation-last(v-bind:class="`Presentation-last--${color}`") {{ last }}
-        p.Presentation-text(v-for="text in texts") {{ text }}
+          span.Presentation-titles(v-for="page in content.pages" v-bind:class="checkIndex(page)")
+            span.Presentation-above {{ page.above }}
+            span.Presentation-name
+              span.Presentation-first {{ page.first }}&nbsp;
+              span.Presentation-last(v-bind:class="`Presentation-last--${color || page.color}`") {{ page.last }}
+        .Presentation-texts
+          .Presentation-paragraphs(v-for="page in content.pages" v-bind:class="checkIndex(page)")
+            p.Presentation-paragraph(v-for="paragraph in page.paragraphs") {{ paragraph }}
       .Presentation-push(v-if="type === 'home'")
         span.Presentation-heavy Push&nbsp;
         span.Presentation-thin the
@@ -29,8 +35,9 @@
           a(href="#" title="Twitter") Twitter
         li.Presentation-link
           a(href="#" title="Instagram") Instagram
-        li.Presentation-link(v-bind:class="`Text--${color}`")
+        li.Presentation-link(v-bind:class="`Text--${color || content.colors[range]}`")
           a(href="#" title="Contact") Contact
+      span.Presentation-scroll.Presentation-scroll--data(v-if="type === 'about'")
 </template>
 
 <script>
@@ -41,10 +48,8 @@ export default {
     'type',
     'color',
     'shape',
-    'above',
-    'first',
-    'last',
-    'texts'
+    'content',
+    'range'
   ],
   components: {
     Icon
@@ -61,6 +66,9 @@ export default {
           break
       }
       return images(`./${image}.png`)
+    },
+    checkIndex(page) {
+      return page.index === this.range ? 'is-active' : page.index === (this.range + 1) % Object.keys(this.content.pages).length ? 'is-appearing' : ''
     }
   }
 }
@@ -93,8 +101,10 @@ export default {
     user-select: none;
     transform: translateX(-#{grid(1)});
 
-    &--picture {
+    &--pictures {
       width: grid(6);
+      margin: 0 auto;
+      margin-top: - grid(1);
       transform: none;
     }
 
@@ -126,22 +136,116 @@ export default {
     }
   }
 
-  &-photo,
-  &-cropped,
   &-shape {
+    transform: translateX(-50%);
+
+    &--slide {
+      transform-origin: 50% 50%;
+      transform: translateX(-50%) scale(0);
+      transition: transform $easing;
+      transition-delay: .5s;
+      will-change: transform;
+
+      &.is-active {
+        transform: translateX(-50%) scale(1);
+      }
+
+      &.is-appearing {
+        transform: translateX(-50%) scale(0);
+      }
+    }
+  }
+
+  &-front,
+  &-back {
+    &--slide {
+      opacity: 0;
+      transition: opacity $easing;
+      will-change: opacity;
+
+      &.is-active {
+        opacity: 1;
+        transition-delay: 1s;
+      }
+
+      &.is-appearing {
+        opacity: 0;
+        transition-delay: 0s;
+      }
+    }
+  }
+
+  &-back {
+    transform: translateX(-50%);
+  }
+
+  &-front,
+  &-back,
+  &-shape {
+    position: absolute;
     width: 100%;
     height: auto;
   }
 
-  &-cropped,
+  &-back,
   &-shape {
-    position: absolute;
     top: 0;
     left: 50%;
-    transform: translateX(-50%);
+  }
+
+  &-scroll {
+    $bar-size: .1rem;
+
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    z-index: 1;
+    padding-right: $margin-t + $margin-n;
+    font-size: 1.6rem;
+    letter-spacing: .125rem;
+    text-transform: uppercase;
+    transform-origin: 0 100%;
+    transform: rotateZ(90deg) translate(-100%, 50%);
+
+    &::before {
+      content: 'Scroll';
+
+      @media (max-height: #{grid-media(6) + $gutter}) {
+        display: none;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: calc(50% - #{$bar-size} / 2);
+      right: 0;
+      width: $margin-t;
+      height: $bar-size;
+      background-color: $white;
+    }
+
+    &--data {
+      display: none;
+
+      @media (max-width: #{grid-media(8)}) {
+        display: inline;
+        left: auto;
+        right: 0;
+        transform-origin: 100% 100%;
+        transform: rotateZ(90deg) translateY(100%);
+      }
+
+      @media (max-width: #{grid-media(6)}) {
+        display: inline;
+        right: 50%;
+        transform: rotateZ(90deg) translateY(50%);
+      }
+    }
   }
 
   &-data {
+    position: relative;
     z-index: 1;
     display: flex;
     flex-direction: column;
@@ -166,8 +270,7 @@ export default {
   }
 
   &-title {
-    display: flex;
-    flex-direction: column;
+    position: relative;
     margin-bottom: $margin-t;
     font-size: 4.5rem;
     font-weight: 700;
@@ -180,6 +283,33 @@ export default {
 
     @media (max-width: #{grid-media(4)}) {
       font-size: 2.8rem;
+    }
+  }
+
+  &-titles,
+  &-paragraphs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(-#{$margin-t});
+    transition: opacity $easing, transform $easing;
+    will-change: opacity, transform;
+
+    &:first-child {
+      position: static;
+    }
+
+    &.is-active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &.is-appearing {
+      opacity: 0;
+      transform: translateY(#{$margin-t});
     }
   }
 
@@ -199,7 +329,11 @@ export default {
     }
   }
 
-  &-text {
+  &-texts {
+    position: relative;
+  }
+
+  &-paragraph {
     margin-bottom: $margin-t;
     font-size: 1.6rem;
     font-weight: 300;
@@ -254,6 +388,7 @@ export default {
     font-weight: 300;
     text-transform: uppercase;
     line-height: 1.75em;
+    transition: all $easing;
 
     &:last-child {
       margin-right: 0;

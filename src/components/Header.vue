@@ -1,13 +1,13 @@
 <template lang="pug">
-  header.Header(v-bind:class="`Header--${color || about[about.colors[indexColor]].color}`")
+  header.Header(v-bind:class="`Header--${color || about.pages[about.colors[range]].color}`")
     .Header-topbar
-      router-link(:to="{ name: 'home', params: { color: color || about[about.colors[indexColor]].color, shape: shape || about[about.colors[indexColor]].shape }}")
-        Logo(:color="color || about[about.colors[indexColor]].color")
+      router-link(:to="{ name: 'home', params: { color: color || about.pages[about.colors[range]].color, shape: shape || about.pages[about.colors[range]].shape }}")
+        Logo(:color="color || about.pages[about.colors[range]].color")
       ul.Header-navbar
         li.Header-item
           a(href="#" @click="toggleMenu") Projects
         li.Header-item
-          router-link(:to="{ name: 'about', params: { color: color || about[about.colors[indexColor]].color, shape: shape || about[about.colors[indexColor]].shape }}") About
+          router-link(:to="{ name: 'about', params: { color: color || about.pages[about.colors[range]].color, shape: shape || about.pages[about.colors[range]].shape }}") About
       .Header-burger
         .Header-stripe
         .Header-stripe
@@ -18,20 +18,14 @@
         type="home"
         :color="color"
         :shape="shape"
-        :above="home.above"
-        :first="home.first"
-        :last="home.last"
-        :texts="home.paragraphs"
+        :content="home"
+        :range="0"
       )
       Presentation(
         v-if="jumbotron === 'about'"
         type="about"
-        :color="about[about.colors[indexColor]].color"
-        :shape="about[about.colors[indexColor]].shape"
-        :above="about[about.colors[indexColor]].above"
-        :first="about[about.colors[indexColor]].first"
-        :last="about[about.colors[indexColor]].last"
-        :texts="about[about.colors[indexColor]].paragraphs"
+        :content="about"
+        :range="range"
       )
       Error(
         v-if="jumbotron === 'error'"
@@ -49,7 +43,7 @@ import Error from './Error'
 export default {
   data() {
     return {
-      indexColor: 0
+      range: 0
     }
   },
   props: [
@@ -73,18 +67,18 @@ export default {
     }
   },
   beforeMount() {
-    if (this.index && this.index >= 0) this.indexColor = this.index
+    if (this.index && this.index >= 0) this.range = this.index
   },
   mounted() {
     if (this.about) {
       let isScrolling = false
 
-      this.$el.querySelector('.Header-jumbotron').addEventListener('wheel', (event) => {
+      window.addEventListener('wheel', (event) => {
         event.preventDefault()
 
         if (!isScrolling) {
           isScrolling = true
-          this.indexColor = (this.indexColor + 1) % this.about.colors.length
+          this.range = (this.range + 1) % this.about.colors.length
 
           setTimeout(() => {
             isScrolling = false
