@@ -5,9 +5,9 @@
       img.Presentation-shape(:src="getImage(shape, type)" v-bind:alt="shape")
       img.Presentation-front(src="../assets/images/Home/Gaetan-cropped.png" alt="Gaëtan Lefebvre")
     .Presentation-portrait.Presentation-portrait--pictures(v-if="type === 'about'")
-      img.Presentation-front.Presentation-front--slide(v-for="page in content.pages" :src="getImage(`${page.shape}_back`, type)" v-bind:class="checkIndex(page)")
-      img.Presentation-shape.Presentation-shape--slide(v-for="page in content.pages" :src="getImage(page.shape, type)" v-bind:class="checkIndex(page)")
-      img.Presentation-back.Presentation-back--slide(v-for="page in content.pages" :src="getImage(`${page.shape}_front`, type)" v-bind:class="checkIndex(page)")
+      img.Presentation-front.Presentation-front--slide(v-for="page in content.pages" :src="getImage(`${page.shape}_back`, type)" v-bind:class="checkIndex(page)" draggable="false")
+      img.Presentation-shape.Presentation-shape--slide(v-for="page in content.pages" :src="getImage(page.shape, type)" v-bind:class="checkIndex(page)" draggable="false")
+      img.Presentation-back.Presentation-back--slide(v-for="page in content.pages" :src="getImage(`${page.shape}_front`, type)" v-bind:class="checkIndex(page)" draggable="false")
       span.Presentation-scroll
     aside.Presentation-data
       .Presentation-description

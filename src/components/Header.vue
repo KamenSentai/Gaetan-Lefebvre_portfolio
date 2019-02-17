@@ -68,7 +68,6 @@ export default {
   },
   beforeMount() {
     if (this.index && this.index >= 0) this.range = this.index
-
   },
   mounted() {
     const _headerScrollable = this.$el.querySelector('.Header-scrollable')
