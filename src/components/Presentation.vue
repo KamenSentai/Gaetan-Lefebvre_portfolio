@@ -1,13 +1,28 @@
 <template lang="pug">
-div.Presentation(v-bind:class="`Presentation--${color || content.colors[range]}`")
+div.Presentation(v-bind:class="`Presentation--${content.colors[range]}`")
   .Presentation-portrait(v-if="type === 'home'")
     img.Presentation-back(src="../assets/images/Home/Gaetan.png" alt="Gaëtan Lefebvre")
-    img.Presentation-shape(:src="getImage(shape, type)" v-bind:alt="shape")
+    img.Presentation-shape(:src="getImage(content.shapes[range], type)")
     img.Presentation-front(src="../assets/images/Home/Gaetan-cropped.png" alt="Gaëtan Lefebvre")
   .Presentation-portrait.Presentation-portrait--pictures(v-if="type === 'about'")
-    img.Presentation-front.Presentation-front--slide(v-for="page in content.pages" :src="getImage(`${page.shape}_back`, type)" v-bind:class="checkIndex(page)" draggable="false")
-    img.Presentation-shape.Presentation-shape--slide(v-for="page in content.pages" :src="getImage(page.shape, type)" v-bind:class="checkIndex(page)" draggable="false")
-    img.Presentation-back.Presentation-back--slide(v-for="page in content.pages" :src="getImage(`${page.shape}_front`, type)" v-bind:class="checkIndex(page)" draggable="false")
+    img.Presentation-front.Presentation-front--slide(
+      v-for="page in content.pages"
+      :src="getImage(`${page.shape}_back`, type)"
+      v-bind:class="checkIndex(page)"
+      draggable="false"
+    )
+    img.Presentation-shape.Presentation-shape--slide(
+      v-for="page in content.pages"
+      :src="getImage(page.shape, type)"
+      v-bind:class="checkIndex(page)"
+      draggable="false"
+    )
+    img.Presentation-back.Presentation-back--slide(
+      v-for="page in content.pages"
+      :src="getImage(`${page.shape}_front`, type)"
+      v-bind:class="checkIndex(page)"
+      draggable="false"
+    )
     span.Presentation-scroll
   aside.Presentation-data
     .Presentation-description
@@ -16,7 +31,7 @@ div.Presentation(v-bind:class="`Presentation--${color || content.colors[range]}`
           span.Presentation-above {{ page.above }}
           span.Presentation-name
             span.Presentation-first {{ page.first }}&nbsp;
-            span.Presentation-last(v-bind:class="`Presentation-last--${color || page.color}`") {{ page.last }}
+            span.Presentation-last(v-bind:class="`Presentation-last--${page.color || content.colors[range]}`") {{ page.last }}
       .Presentation-texts
         .Presentation-paragraphs(v-for="page in content.pages" v-bind:class="checkIndex(page)")
           p.Presentation-paragraph(v-for="paragraph in page.paragraphs") {{ paragraph }}
@@ -24,8 +39,8 @@ div.Presentation(v-bind:class="`Presentation--${color || content.colors[range]}`
       span.Presentation-heavy Push&nbsp;
       span.Presentation-thin the
       Icon(
-        :color="color"
-        :shape="shape"
+        :color="content.colors[range]"
+        :shape="content.shapes[range]"
       )
       span.Presentation-thin to continue
     ul.Presentation-links(v-else-if="type === 'about'")
@@ -35,7 +50,7 @@ div.Presentation(v-bind:class="`Presentation--${color || content.colors[range]}`
         a(href="#" title="Twitter") Twitter
       li.Presentation-link
         a(href="#" title="Instagram") Instagram
-      li.Presentation-link(v-bind:class="`Text--${color || content.colors[range]}`")
+      li.Presentation-link(v-bind:class="`Text--${content.colors[range]}`")
         a(href="#" title="Contact") Contact
     span.Presentation-scroll.Presentation-scroll--data(v-if="type === 'about'")
 </template>
@@ -46,8 +61,6 @@ import Icon from './Icon'
 export default {
   props: [
     'type',
-    'color',
-    'shape',
     'content',
     'range'
   ],
@@ -68,7 +81,7 @@ export default {
       return images(`./${image}.png`)
     },
     checkIndex(page) {
-      return page.index === this.range ? 'is-active' : page.index === (this.range + 1) % Object.keys(this.content.pages).length ? 'is-appearing' : ''
+      return page.index === this.range || this.content.pages.length === 1 ? 'is-active' : page.index === (this.range + 1) % Object.keys(this.content.pages).length ? 'is-appearing' : ''
     }
   }
 }

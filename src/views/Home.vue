@@ -1,8 +1,7 @@
 <template lang="pug">
 div
   Header(
-    :color="color || data.colors[0]"
-    :shape="shape || data.shapes[0]"
+    :index="data.colors.indexOf(color) || data.colors.indexOf(shape)"
     jumbotron="home"
     :data="data"
   )

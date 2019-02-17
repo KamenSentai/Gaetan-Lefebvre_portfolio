@@ -16,10 +16,8 @@ header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
     Presentation(
       v-if="jumbotron === 'home'"
       type="home"
-      :color="color"
-      :shape="shape"
       :content="data"
-      :range="0"
+      :range="range"
     )
     Presentation.Header-scrollable(
       v-if="jumbotron === 'about'"
