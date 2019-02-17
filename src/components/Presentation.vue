@@ -103,7 +103,6 @@ export default {
 
     &--pictures {
       width: grid(6);
-      margin: 0 auto;
       margin-top: - grid(1);
       transform: none;
     }

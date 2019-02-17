@@ -21,7 +21,7 @@
         :content="home"
         :range="0"
       )
-      Presentation(
+      Presentation.Header-scrollable(
         v-if="jumbotron === 'about'"
         type="about"
         :content="about"
@@ -73,7 +73,7 @@ export default {
     if (this.about) {
       let isScrolling = false
 
-      window.addEventListener('wheel', (event) => {
+      this.$el.querySelector('.Header-scrollable').addEventListener('wheel', (event) => {
         event.preventDefault()
 
         if (!isScrolling) {
