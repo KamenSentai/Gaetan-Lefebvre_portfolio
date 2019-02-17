@@ -3,7 +3,7 @@ div
   Header(
     :index="data.colors.indexOf(color) || data.colors.indexOf(shape)"
     jumbotron="about"
-    :about="data"
+    :data="data"
   )
 </template>
 

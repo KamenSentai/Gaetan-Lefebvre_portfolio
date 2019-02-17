@@ -4,7 +4,7 @@ div
     :color="color || data.colors[0]"
     :shape="shape || data.shapes[0]"
     jumbotron="home"
-    :home="data"
+    :data="data"
   )
 </template>
 

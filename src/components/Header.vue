@@ -1,13 +1,13 @@
 <template lang="pug">
-header.Header(v-bind:class="`Header--${color || about.colors[range]}`")
+header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
   .Header-topbar
-    router-link(:to="{ name: 'home', params: { color: color || about.colors[range], shape: shape || about.shapes[range] }}")
-      Logo(:color="color || about.colors[range]")
+    router-link(:to="{ name: 'home', params: { color: color || data.colors[range], shape: shape || data.shapes[range] }}")
+      Logo(:color="color || data.colors[range]")
     ul.Header-navbar
       li.Header-item
         a(href="#" @click="toggleMenu") Projects
       li.Header-item
-        router-link(:to="{ name: 'about', params: { color: color || about.colors[range], shape: shape || about.shapes[range] }}") About
+        router-link(:to="{ name: 'about', params: { color: color || data.colors[range], shape: shape || data.shapes[range] }}") About
     .Header-burger
       .Header-stripe
       .Header-stripe
@@ -18,13 +18,13 @@ header.Header(v-bind:class="`Header--${color || about.colors[range]}`")
       type="home"
       :color="color"
       :shape="shape"
-      :content="home"
+      :content="data"
       :range="0"
     )
     Presentation.Header-scrollable(
       v-if="jumbotron === 'about'"
       type="about"
-      :content="about"
+      :content="data"
       :range="range"
     )
     Error(
@@ -51,8 +51,7 @@ export default {
     'shape',
     'index',
     'jumbotron',
-    'home',
-    'about'
+    'data'
   ],
   components: {
     Logo,
@@ -82,7 +81,7 @@ export default {
       const timeoutDelay = Math.max(_shapeDurationDelay, _layersDurationDelay) * 1000
 
       const scrollJumbotron = () => {
-        this.range = (this.range + 1) % this.about.colors.length
+        this.range = (this.range + 1) % this.data.colors.length
         _headerScrollable.removeEventListener('wheel', scrollJumbotron)
 
         setTimeout(() => {
