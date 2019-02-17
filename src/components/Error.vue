@@ -1,11 +1,11 @@
 <template lang="pug">
-  .Error
-    .Error-code
-      img.Error-image(:src="getImage(shape)" v-bind:alt="shape")
-    .Error-message
-      h1.Error-title Page not found
-      p.Error-text We are sorry. We can’t find the URL you are looking for.&nbsp;
-      p.Error-text Please refresh your page and try again.
+.Error
+  .Error-code
+    img.Error-image(:src="getImage(shape)" v-bind:alt="shape")
+  .Error-message
+    h1.Error-title Page not found
+    p.Error-text We are sorry. We can’t find the URL you are looking for.&nbsp;
+    p.Error-text Please refresh your page and try again.
 </template>
 
 <script>

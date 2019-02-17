@@ -1,11 +1,11 @@
 <template lang="pug">
-  div
-    Header(color="yellow" shape="pentagone")
-    .Page.Page--yellow
-    Footer(
-      to="pocketcare"
-      title="Pocketcare"
-    )
+div
+  Header(color="yellow" shape="pentagone")
+  .Page.Page--yellow
+  Footer(
+    to="pocketcare"
+    title="Pocketcare"
+  )
 </template>
 
 <script>

@@ -1,12 +1,12 @@
 <template lang="pug">
-  .Post
-    h2.Post-title.Text--subtitle
-      span.Text--grey {{ top }}
-      span.Post-endline
-        span.Text--black {{ center }}&nbsp;
-        span(v-bind:class="`Text--${color}`") {{ bottom }}
-    .Post-text
-      p.Post-paragraph(v-for="paragraph in paragraphs") {{ paragraph }}
+.Post
+  h2.Post-title.Text--subtitle
+    span.Text--grey {{ top }}
+    span.Post-endline
+      span.Text--black {{ center }}&nbsp;
+      span(v-bind:class="`Text--${color}`") {{ bottom }}
+  .Post-text
+    p.Post-paragraph(v-for="paragraph in paragraphs") {{ paragraph }}
 </template>
 
 <script>

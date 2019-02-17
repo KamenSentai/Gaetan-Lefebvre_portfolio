@@ -1,20 +1,20 @@
 <template lang="pug">
-  .Menu
-    router-link.Menu-link(:to="{ name: 'pocketcare' }")
-      img.Menu-image(src="../assets/images/Menu/pocketcare.png" alt="Pocketcare")
-      span.Menu-title Pocketcare
-    router-link.Menu-link(:to="{ name: 'tesla' }")
-      img.Menu-image(src="../assets/images/Menu/tesla.png" alt="Tesla")
-      span.Menu-title Tesla
-    span.Menu-float
-      a.Menu-back(@click="toggleMenu")
-        .Menu-cross
-    router-link.Menu-link(:to="{ name: 'buddy-buddy' }")
-      img.Menu-image(src="../assets/images/Menu/buddy-buddy.png" alt="Buddy Buddy")
-      span.Menu-title Buddy Buddy
-    router-link.Menu-link(:to="{ name: 'personal' }")
-      img.Menu-image(src="../assets/images/Menu/personal.png" alt="Personal")
-      span.Menu-title Personal
+.Menu
+  router-link.Menu-link(:to="{ name: 'pocketcare' }")
+    img.Menu-image(src="../assets/images/Menu/pocketcare.png" alt="Pocketcare")
+    span.Menu-title Pocketcare
+  router-link.Menu-link(:to="{ name: 'tesla' }")
+    img.Menu-image(src="../assets/images/Menu/tesla.png" alt="Tesla")
+    span.Menu-title Tesla
+  span.Menu-float
+    a.Menu-back(@click="toggleMenu")
+      .Menu-cross
+  router-link.Menu-link(:to="{ name: 'buddy-buddy' }")
+    img.Menu-image(src="../assets/images/Menu/buddy-buddy.png" alt="Buddy Buddy")
+    span.Menu-title Buddy Buddy
+  router-link.Menu-link(:to="{ name: 'personal' }")
+    img.Menu-image(src="../assets/images/Menu/personal.png" alt="Personal")
+    span.Menu-title Personal
 </template>
 
 <script>

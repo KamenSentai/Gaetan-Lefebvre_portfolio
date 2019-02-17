@@ -1,10 +1,10 @@
 <template lang="pug">
-  div
-    Header(
-      :color="color || data[0].color"
-      :shape="shape || data[0].shape"
-      jumbotron="slider"
-    )
+div
+  Header(
+    :color="color || data[0].color"
+    :shape="shape || data[0].shape"
+    jumbotron="slider"
+  )
 </template>
 
 <script>

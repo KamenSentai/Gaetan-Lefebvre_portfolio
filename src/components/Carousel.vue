@@ -1,18 +1,18 @@
 <template lang="pug">
-  .Carousel(v-bind:class="automatic ? 'Carousel--automatic' : ''")
-    .Carousel-button
-      canvas.Carousel-loading(:data-color="color")
-      a.Push.Push--left(@click="turnCarousel" href="#")
-        .Push-arrow
-        .Push-arrow
-    .Carousel-content(v-if="mockup")
-      img.Carousel-mockup(draggable="false" :src="getImage(mockup)")
-      .Carousel-images
-        img.Carousel-image.Shadow(v-for="image in images" :src="getImage(image)")
-    .Carousel-button.Carousel-button--hidden(v-if="mockup")
-      .Push
-    .Carousel-images(v-else)
+.Carousel(v-bind:class="automatic ? 'Carousel--automatic' : ''")
+  .Carousel-button
+    canvas.Carousel-loading(:data-color="color")
+    a.Push.Push--left(@click="turnCarousel" href="#")
+      .Push-arrow
+      .Push-arrow
+  .Carousel-content(v-if="mockup")
+    img.Carousel-mockup(draggable="false" :src="getImage(mockup)")
+    .Carousel-images
       img.Carousel-image.Shadow(v-for="image in images" :src="getImage(image)")
+  .Carousel-button.Carousel-button--hidden(v-if="mockup")
+    .Push
+  .Carousel-images(v-else)
+    img.Carousel-image.Shadow(v-for="image in images" :src="getImage(image)")
 </template>
 
 <script>

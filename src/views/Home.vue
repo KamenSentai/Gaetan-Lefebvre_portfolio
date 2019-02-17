@@ -1,11 +1,11 @@
 <template lang="pug">
-  div
-    Header(
-      :color="color || data.colors[0]"
-      :shape="shape || data.shapes[0]"
-      jumbotron="home"
-      :home="data"
-    )
+div
+  Header(
+    :color="color || data.colors[0]"
+    :shape="shape || data.shapes[0]"
+    jumbotron="home"
+    :home="data"
+  )
 </template>
 
 <script>

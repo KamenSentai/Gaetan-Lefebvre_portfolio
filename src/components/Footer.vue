@@ -1,12 +1,12 @@
 <template lang="pug">
-  footer.Footer
-    .Footer-container
-      router-link.Footer-navigation(:to="{ name: to }" v-bind:title="title")
-        img.Footer-image(:src="getImage(to)" v-bind:alt="title")
-        span.Footer-title {{ title }}
-        router-link.Footer-link.Push.Push--light.Push--right(:to="{ name: to }" v-bind:title="title")
-          .Footer-arrow.Push-arrow
-          .Footer-arrow.Push-arrow
+footer.Footer
+  .Footer-container
+    router-link.Footer-navigation(:to="{ name: to }" v-bind:title="title")
+      img.Footer-image(:src="getImage(to)" v-bind:alt="title")
+      span.Footer-title {{ title }}
+      router-link.Footer-link.Push.Push--light.Push--right(:to="{ name: to }" v-bind:title="title")
+        .Footer-arrow.Push-arrow
+        .Footer-arrow.Push-arrow
 </template>
 
 <script>

@@ -1,6 +1,6 @@
 <template lang="pug">
-  .App
-    Preload
+.App
+  Preload
 </template>
 
 <script>

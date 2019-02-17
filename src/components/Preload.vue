@@ -1,9 +1,9 @@
 <template lang="pug">
-  .Preload
-    .Preload-loader
-    .Preload-loaded
-      transition(mode="out-in")
-        router-view
+.Preload
+  .Preload-loader
+  .Preload-loaded
+    transition(mode="out-in")
+      router-view
 </template>
 
 <script>

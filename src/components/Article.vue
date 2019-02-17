@@ -1,12 +1,12 @@
 <template lang="pug">
-  .Article
-    h2.Article-title.Text--subtitle
-      span.Text--grey {{ top }}
-      span.Text
-        span.Text--black {{ center }}&nbsp;
-        span(v-bind:class="`Text--${color}`") {{ bottom }}
-    .Article-text
-      p.Article-paragraph(v-for="paragraph in paragraphs") {{ paragraph }}
+.Article
+  h2.Article-title.Text--subtitle
+    span.Text--grey {{ top }}
+    span.Text
+      span.Text--black {{ center }}&nbsp;
+      span(v-bind:class="`Text--${color}`") {{ bottom }}
+  .Article-text
+    p.Article-paragraph(v-for="paragraph in paragraphs") {{ paragraph }}
 </template>
 
 <script>

@@ -1,9 +1,9 @@
 <template lang="pug">
-  .Charter(v-bind:class="`Charter--${font}`")
-    p.Charter-name {{ name }}
-    p.Charter-uppercase ABCDEFGHIJKLMNOPQRSTUVWXYZ
-    p.Charter-lowercase abcdefghijklmnopqrstuvwxyz
-    p.Charter-number 0123456789
+.Charter(v-bind:class="`Charter--${font}`")
+  p.Charter-name {{ name }}
+  p.Charter-uppercase ABCDEFGHIJKLMNOPQRSTUVWXYZ
+  p.Charter-lowercase abcdefghijklmnopqrstuvwxyz
+  p.Charter-number 0123456789
 </template>
 
 <script>
@@ -36,6 +36,14 @@ export default {
 
   &-name {
     margin-bottom: $margin-t;
+  }
+
+  &-uppercase {
+    text-transform: uppercase;
+  }
+
+  &-lowercase {
+    text-transform: lowercase;
   }
 }
 </style>

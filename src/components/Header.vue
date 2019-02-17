@@ -1,37 +1,37 @@
 <template lang="pug">
-  header.Header(v-bind:class="`Header--${color || about.pages[about.colors[range]].color}`")
-    .Header-topbar
-      router-link(:to="{ name: 'home', params: { color: color || about.pages[about.colors[range]].color, shape: shape || about.pages[about.colors[range]].shape }}")
-        Logo(:color="color || about.pages[about.colors[range]].color")
-      ul.Header-navbar
-        li.Header-item
-          a(href="#" @click="toggleMenu") Projects
-        li.Header-item
-          router-link(:to="{ name: 'about', params: { color: color || about.pages[about.colors[range]].color, shape: shape || about.pages[about.colors[range]].shape }}") About
-      .Header-burger
-        .Header-stripe
-        .Header-stripe
-        .Header-stripe
-    .Header-jumbotron
-      Presentation(
-        v-if="jumbotron === 'home'"
-        type="home"
-        :color="color"
-        :shape="shape"
-        :content="home"
-        :range="0"
-      )
-      Presentation.Header-scrollable(
-        v-if="jumbotron === 'about'"
-        type="about"
-        :content="about"
-        :range="range"
-      )
-      Error(
-        v-if="jumbotron === 'error'"
-        :shape="shape"
-      )
-    Menu
+header.Header(v-bind:class="`Header--${color || about.pages[about.colors[range]].color}`")
+  .Header-topbar
+    router-link(:to="{ name: 'home', params: { color: color || about.pages[about.colors[range]].color, shape: shape || about.pages[about.colors[range]].shape }}")
+      Logo(:color="color || about.pages[about.colors[range]].color")
+    ul.Header-navbar
+      li.Header-item
+        a(href="#" @click="toggleMenu") Projects
+      li.Header-item
+        router-link(:to="{ name: 'about', params: { color: color || about.pages[about.colors[range]].color, shape: shape || about.pages[about.colors[range]].shape }}") About
+    .Header-burger
+      .Header-stripe
+      .Header-stripe
+      .Header-stripe
+  .Header-jumbotron
+    Presentation(
+      v-if="jumbotron === 'home'"
+      type="home"
+      :color="color"
+      :shape="shape"
+      :content="home"
+      :range="0"
+    )
+    Presentation.Header-scrollable(
+      v-if="jumbotron === 'about'"
+      type="about"
+      :content="about"
+      :range="range"
+    )
+    Error(
+      v-if="jumbotron === 'error'"
+      :shape="shape"
+    )
+  Menu
 </template>
 
 <script>
