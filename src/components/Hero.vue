@@ -1,58 +1,58 @@
 <template lang="pug">
-div.Presentation(v-bind:class="`Presentation--${content.colors[range]}`")
-  .Presentation-portrait(v-if="type === 'home'")
-    img.Presentation-back(src="../assets/images/Home/Gaetan.png" alt="Gaëtan Lefebvre")
-    img.Presentation-shape(:src="getImage(content.shapes[range], type)")
-    img.Presentation-front(src="../assets/images/Home/Gaetan-cropped.png" alt="Gaëtan Lefebvre")
-  .Presentation-portrait.Presentation-portrait--pictures(v-if="type === 'about'")
-    img.Presentation-front.Presentation-front--slide(
+.Hero(v-bind:class="`Hero--${content.colors[range]}`")
+  .Hero-portrait(v-if="type === 'home'")
+    img.Hero-back(src="../assets/images/Home/Gaetan.png" alt="Gaëtan Lefebvre")
+    img.Hero-shape(:src="getImage(content.shapes[range], type)")
+    img.Hero-front(src="../assets/images/Home/Gaetan-cropped.png" alt="Gaëtan Lefebvre")
+  .Hero-portrait.Hero-portrait--pictures(v-if="type === 'about'")
+    img.Hero-front.Hero-front--slide(
       v-for="page in content.pages"
       :src="getImage(`${page.shape}_back`, type)"
       v-bind:class="checkIndex(page)"
       draggable="false"
     )
-    img.Presentation-shape.Presentation-shape--slide(
+    img.Hero-shape.Hero-shape--slide(
       v-for="page in content.pages"
       :src="getImage(page.shape, type)"
       v-bind:class="checkIndex(page)"
       draggable="false"
     )
-    img.Presentation-back.Presentation-back--slide(
+    img.Hero-back.Hero-back--slide(
       v-for="page in content.pages"
       :src="getImage(`${page.shape}_front`, type)"
       v-bind:class="checkIndex(page)"
       draggable="false"
     )
-    span.Presentation-scroll
-  aside.Presentation-data
-    .Presentation-description
-      h1.Presentation-title
-        span.Presentation-titles(v-for="page in content.pages" v-bind:class="checkIndex(page)")
-          span.Presentation-above {{ page.above }}
-          span.Presentation-name
-            span.Presentation-first {{ page.first }}&nbsp;
-            span.Presentation-last(v-bind:class="`Presentation-last--${page.color || content.colors[range]}`") {{ page.last }}
-      .Presentation-texts
-        .Presentation-paragraphs(v-for="page in content.pages" v-bind:class="checkIndex(page)")
-          p.Presentation-paragraph(v-for="paragraph in page.paragraphs") {{ paragraph }}
-    .Presentation-push(v-if="type === 'home'")
-      span.Presentation-heavy Push&nbsp;
-      span.Presentation-thin the
+    span.Hero-scroll
+  aside.Hero-data
+    .Hero-description
+      h1.Hero-title
+        span.Hero-titles(v-for="page in content.pages" v-bind:class="checkIndex(page)")
+          span.Hero-above {{ page.above }}
+          span.Hero-name
+            span.Hero-first {{ page.first }}&nbsp;
+            span.Hero-last(v-bind:class="`Hero-last--${page.color || content.colors[range]}`") {{ page.last }}
+      .Hero-texts
+        .Hero-paragraphs(v-for="page in content.pages" v-bind:class="checkIndex(page)")
+          p.Hero-paragraph(v-for="paragraph in page.paragraphs") {{ paragraph }}
+    .Hero-push(v-if="type === 'home'")
+      span.Hero-heavy Push&nbsp;
+      span.Hero-thin the
       Icon(
         :color="content.colors[range]"
         :shape="content.shapes[range]"
       )
-      span.Presentation-thin to continue
-    ul.Presentation-links(v-else-if="type === 'about'")
-      li.Presentation-link
+      span.Hero-thin to continue
+    ul.Hero-links(v-else-if="type === 'about'")
+      li.Hero-link
         a(href="#" title="LinkedIn") LinkedIn
-      li.Presentation-link
+      li.Hero-link
         a(href="#" title="Twitter") Twitter
-      li.Presentation-link
+      li.Hero-link
         a(href="#" title="Instagram") Instagram
-      li.Presentation-link(v-bind:class="`Text--${content.colors[range]}`")
+      li.Hero-link(v-bind:class="`Text--${content.colors[range]}`")
         a(href="#" title="Contact") Contact
-    span.Presentation-scroll.Presentation-scroll--data(v-if="type === 'about'")
+    span.Hero-scroll.Hero-scroll--data(v-if="type === 'about'")
 </template>
 
 <script>
@@ -91,7 +91,7 @@ export default {
 @import '../styles/tools/variables';
 @import '../styles/tools/functions';
 
-.Presentation {
+.Hero {
   display: flex;
   justify-content: space-between;
   width: 100%;

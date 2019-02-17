@@ -23,7 +23,7 @@ export default {
     }
 
     &-lastname {
-      transition: fill $easing;
+      transition: fill $easing .5s;
     }
   }
 }

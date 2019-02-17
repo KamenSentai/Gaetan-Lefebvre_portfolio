@@ -13,13 +13,13 @@ header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
       .Header-stripe
       .Header-stripe
   .Header-jumbotron
-    Presentation(
+    Hero(
       v-if="jumbotron === 'home'"
       type="home"
       :content="data"
       :range="range"
     )
-    Presentation.Header-scrollable(
+    Hero.Header-scrollable(
       v-if="jumbotron === 'about'"
       type="about"
       :content="data"
@@ -35,7 +35,7 @@ header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
 <script>
 import Logo from './Logo'
 import Menu from './Menu'
-import Presentation from './Presentation'
+import Hero from './Hero'
 import Error from './Error'
 
 export default {
@@ -54,7 +54,7 @@ export default {
   components: {
     Logo,
     Menu,
-    Presentation,
+    Hero,
     Error
   },
   methods: {
@@ -70,10 +70,10 @@ export default {
     const _headerScrollable = this.$el.querySelector('.Header-scrollable')
 
     if (_headerScrollable) {
-      const _presentationShape = this.$el.querySelector('.Presentation-shape.is-active')
-      const _presentationLayers = this.$el.querySelector('.Presentation-front.is-active') || this.$el.querySelector('.Presentation-back')
-      const _shapeStyle = _presentationShape.currentStyle || window.getComputedStyle(_presentationShape)
-      const _layersStyle = _presentationLayers.currentStyle || window.getComputedStyle(_presentationLayers)
+      const _heroShape = this.$el.querySelector('.Hero-shape.is-active')
+      const _heroLayers = this.$el.querySelector('.Hero-front.is-active') || this.$el.querySelector('.Hero-back')
+      const _shapeStyle = _heroShape.currentStyle || window.getComputedStyle(_heroShape)
+      const _layersStyle = _heroLayers.currentStyle || window.getComputedStyle(_heroLayers)
       const _shapeDurationDelay = parseFloat(_shapeStyle.transitionDuration) + parseFloat(_shapeStyle.transitionDelay)
       const _layersDurationDelay = parseFloat(_layersStyle.transitionDuration) + parseFloat(_layersStyle.transitionDelay)
       const timeoutDelay = Math.max(_shapeDurationDelay, _layersDurationDelay) * 1000
