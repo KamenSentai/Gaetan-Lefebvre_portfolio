@@ -102,9 +102,20 @@ export default {
     transform: translateX(-#{grid(1)});
 
     &--pictures {
-      width: grid(6);
-      margin-top: - grid(1);
+      width: grid(7);
       transform: none;
+
+      @media (max-height: #{grid-media(10)}) {
+        width: grid(6);
+      }
+
+      @media (max-height: #{grid-media(8)}) {
+        width: grid(5);
+      }
+
+      @media (max-height: #{grid-media(6)}) {
+        width: grid(4);
+      }
     }
 
     @media (max-width: #{grid-media(12)}) {
@@ -190,57 +201,6 @@ export default {
   &-shape {
     top: 0;
     left: 50%;
-  }
-
-  &-scroll {
-    $bar-size: .1rem;
-
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    z-index: 1;
-    padding-right: $margin-t + $margin-n;
-    font-size: 1.6rem;
-    letter-spacing: .125rem;
-    text-transform: uppercase;
-    transform-origin: 0 100%;
-    transform: rotateZ(90deg) translate(-100%, 50%);
-
-    &::before {
-      content: 'Scroll';
-
-      @media (max-height: #{grid-media(6) + $gutter}) {
-        display: none;
-      }
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: calc(50% - #{$bar-size} / 2);
-      right: 0;
-      width: $margin-t;
-      height: $bar-size;
-      background-color: $white;
-    }
-
-    &--data {
-      display: none;
-
-      @media (max-width: #{grid-media(8)}) {
-        display: inline;
-        left: auto;
-        right: 0;
-        transform-origin: 100% 100%;
-        transform: rotateZ(90deg) translateY(100%);
-      }
-
-      @media (max-width: #{grid-media(6)}) {
-        display: inline;
-        right: 50%;
-        transform: rotateZ(90deg) translateY(50%);
-      }
-    }
   }
 
   &-data {
@@ -334,12 +294,20 @@ export default {
 
   &-paragraph {
     margin-bottom: $margin-t;
-    font-size: 1.6rem;
+    font-size: 2rem;
     font-weight: 300;
     line-height: 1.75em;
 
     &:last-child {
       margin-bottom: 0;
+    }
+
+    @media (max-height: #{grid-media(8)}) {
+      font-size: 1.8rem;
+    }
+
+    @media (max-height: #{grid-media(6)}) {
+      font-size: 1.6rem;
     }
   }
 
@@ -391,6 +359,57 @@ export default {
 
     &:last-child {
       margin-right: 0;
+    }
+  }
+
+  &-scroll {
+    $bar-size: .1rem;
+
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    z-index: 1;
+    padding-right: $margin-t + $margin-n;
+    font-size: 1.6rem;
+    letter-spacing: .125rem;
+    text-transform: uppercase;
+    transform-origin: 0 100%;
+    transform: rotateZ(90deg) translate(-100%, 50%);
+
+    &::before {
+      content: 'Scroll';
+
+      @media (max-height: #{grid-media(6) + $gutter}) {
+        display: none;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: calc(50% - #{$bar-size} / 2);
+      right: 0;
+      width: $margin-t;
+      height: $bar-size;
+      background-color: $white;
+    }
+
+    &--data {
+      display: none;
+
+      @media (max-width: #{grid-media(8)}) {
+        display: inline;
+        left: auto;
+        right: 0;
+        transform-origin: 100% 100%;
+        transform: rotateZ(90deg) translateY(100%);
+      }
+
+      @media (max-width: #{grid-media(6)}) {
+        display: inline;
+        right: 50%;
+        transform: rotateZ(90deg) translateY(50%);
+      }
     }
   }
 }

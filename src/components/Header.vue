@@ -68,22 +68,32 @@ export default {
   },
   beforeMount() {
     if (this.index && this.index >= 0) this.range = this.index
+
   },
   mounted() {
-    if (this.about) {
-      let isScrolling = false
+    const _headerScrollable = this.$el.querySelector('.Header-scrollable')
 
-      this.$el.querySelector('.Header-scrollable').addEventListener('wheel', (event) => {
+    if (_headerScrollable) {
+      const _presentationShape = this.$el.querySelector('.Presentation-shape.is-active')
+      const _presentationLayers = this.$el.querySelector('.Presentation-front.is-active') || this.$el.querySelector('.Presentation-back')
+      const _shapeStyle = _presentationShape.currentStyle || window.getComputedStyle(_presentationShape)
+      const _layersStyle = _presentationLayers.currentStyle || window.getComputedStyle(_presentationLayers)
+      const _shapeDurationDelay = parseFloat(_shapeStyle.transitionDuration) + parseFloat(_shapeStyle.transitionDelay)
+      const _layersDurationDelay = parseFloat(_layersStyle.transitionDuration) + parseFloat(_layersStyle.transitionDelay)
+      const timeoutDelay = Math.max(_shapeDurationDelay, _layersDurationDelay) * 1000
+
+      const scrollJumbotron = () => {
+        this.range = (this.range + 1) % this.about.colors.length
+        _headerScrollable.removeEventListener('wheel', scrollJumbotron)
+
+        setTimeout(() => {
+          _headerScrollable.addEventListener('wheel', scrollJumbotron)
+        }, timeoutDelay)
+      }
+
+      _headerScrollable.addEventListener('wheel', scrollJumbotron)
+      _headerScrollable.addEventListener('wheel', (event) => {
         event.preventDefault()
-
-        if (!isScrolling) {
-          isScrolling = true
-          this.range = (this.range + 1) % this.about.colors.length
-
-          setTimeout(() => {
-            isScrolling = false
-          }, 1000)
-        }
       })
     }
   }
