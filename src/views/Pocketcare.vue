@@ -1,7 +1,7 @@
 <template lang="pug">
 div
-  Header(color="green" shape="circle")
-  .Page.Page--green
+  Header(:color="data.color" :shape="data.shape")
+  .Page(v-bind:class="`Page--${data.color}`")
     section.Slide
       Post(
         :color="data.color"
@@ -13,10 +13,10 @@ div
           h3.Content-title.Content-title--trailed Colors and typography
         .Content-table
           .Content-icons.Content-icons--half
-            Color(color="#00D6CF" shape="circle")
-            Color(color="#FFCB4A" shape="circle")
-            Color(color="#4A4A4A" shape="circle")
-            Color(color="#D3D3D3" shape="circle")
+            Color(color="#00D6CF" :shape="data.shape")
+            Color(color="#FFCB4A" :shape="data.shape")
+            Color(color="#4A4A4A" :shape="data.shape")
+            Color(color="#D3D3D3" :shape="data.shape")
           .Content-charters.Content-charters--half
             Charter.Content-charter(
               name="Circular Std Bold"

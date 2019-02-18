@@ -1,7 +1,7 @@
 <template lang="pug">
 div
-  Header(color="blue" shape="triangle")
-  .Page.Page--blue
+  Header(:color="data.color" :shape="data.shape")
+  .Page(v-bind:class="`Page--${data.color}`")
     section.Slide
       Post(
         :color="data.color"
@@ -19,10 +19,10 @@ div
             img(src="../assets/images/Tesla/Logo_=.png" alt="=")
             img(src="../assets/images/Tesla/Logo_TO.png" alt="TO")
           .Content-icons
-            Color(color="#228DFC" shape="triangle")
-            Color(color="#1F1F1F" shape="triangle")
-            Color(color="#A7A7A7" shape="triangle")
-            Color(color="#FFFFFF" shape="triangle")
+            Color(color="#228DFC" :shape="data.shape")
+            Color(color="#1F1F1F" :shape="data.shape")
+            Color(color="#A7A7A7" :shape="data.shape")
+            Color(color="#FFFFFF" :shape="data.shape")
           .Content-charters
             Charter.Content-charter(
               name="Oculus Sans Bold"
@@ -47,13 +47,13 @@ div
             mockup="Tablet_mockup"
             automatic="true"
             interval="5000"
-            color="blue"
+            :color="data.color"
           )
           .Field-inputs
             input(type="radio" id="black" v-model="tabletTheme" value="black")
             label.Field--black(for="black") Dark theme
             input(type="radio" id="white" v-model="tabletTheme" value="white")
-            label.Field--blue(for="white") Light theme
+            label(v-bind:class="`Field--${data.color}`" for="white") Light theme
     section.Slide.Slide--block.Slide--bottomless
       .Content
         .Content-header.Content-header--center
@@ -79,7 +79,7 @@ div
             mockup="Mobile_mockup"
             automatic="true"
             interval="5000"
-            color="blue"
+            :color="data.color"
           )
     section.Slide
       .Content

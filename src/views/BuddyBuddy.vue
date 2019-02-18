@@ -1,7 +1,7 @@
 <template lang="pug">
 div
-  Header(color="red" shape="square")
-  .Page.Page--red
+  Header(:color="data.color" :shape="data.shape")
+  .Page(v-bind:class="`Page--${data.color}`")
     section.Slide
       Post(
         :color="data.color"
@@ -13,10 +13,10 @@ div
           h3.Content-title.Content-title--trailed Colors and typography
         .Content-table
           .Content-icons.Content-icons--half
-            Color(color="#FF303F" shape="square")
-            Color(color="#FFD6D9" shape="square")
-            Color(color="#BDBDBD" shape="square")
-            Color(color="#FFFFFF" shape="square")
+            Color(color="#FF303F" :shape="data.shape")
+            Color(color="#FFD6D9" :shape="data.shape")
+            Color(color="#BDBDBD" :shape="data.shape")
+            Color(color="#FFFFFF" :shape="data.shape")
           .Content-charters.Content-charters--half
             Charter.Content-charter(
               name="CeraGR - Bold"

@@ -1,7 +1,7 @@
 <template lang="pug">
 div
-  Header(color="yellow" shape="pentagone")
-  .Page.Page--yellow
+  Header(:color="data.color" :shape="data.shape")
+  .Page(v-bind:class="`Page--${data.color}`")
   Footer(
     to="pocketcare"
     title="Pocketcare"
