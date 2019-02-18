@@ -14,14 +14,8 @@ header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
       .Header-stripe
   .Header-jumbotron
     Hero(
-      v-if="jumbotron === 'home'"
-      type="home"
-      :data="data"
-      :range="range"
-    )
-    Hero.Header-scrollable(
-      v-else-if="jumbotron === 'about'"
-      type="about"
+      v-if="jumbotron === 'hero'"
+      :type="type"
       :data="data"
       :range="range"
     )
@@ -49,6 +43,7 @@ export default {
     'shape',
     'index',
     'jumbotron',
+    'type',
     'data'
   ],
   components: {

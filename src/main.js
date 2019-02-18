@@ -17,17 +17,17 @@ fetch('/data/texts.json')
         path: '/',
         component: () => import('./views/Home.vue'),
         name: 'home',
-        props: { data: json.home }
+        props: { data: json }
       }, {
         path: '/about',
         component: () => import('./views/About.vue'),
         name: 'about',
-        props: { data: json.about }
+        props: { data: json }
       }, {
         path: '/projects',
         component: () => import('./views/Projects.vue'),
         name: 'projects',
-        props: { data: json.projects }
+        props: { data: json }
       }, {
         path: '/projects/pocketcare',
         component: () => import('./views/Pocketcare.vue'),

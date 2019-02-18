@@ -1,17 +1,17 @@
 {
+  "colors": [
+    "green",
+    "blue",
+    "red",
+    "yellow"
+  ],
+  "shapes": [
+    "circle",
+    "triangle",
+    "square",
+    "pentagone"
+  ],
   "home": {
-    "colors": [
-      "green",
-      "blue",
-      "red",
-      "yellow"
-    ],
-    "shapes": [
-      "circle",
-      "triangle",
-      "square",
-      "pentagone"
-    ],
     "pages": [
       {
         "above": "Hi, I'm",
@@ -24,18 +24,6 @@
     ]
   },
   "about": {
-    "colors": [
-      "green",
-      "blue",
-      "red",
-      "yellow"
-    ],
-    "shapes": [
-      "circle",
-      "triangle",
-      "square",
-      "pentagone"
-    ],
     "pages": [
       {
         "color": "green",
@@ -80,36 +68,28 @@
     ]
   },
   "projects": {
-    "colors": [
-      "green",
-      "blue",
-      "red",
-      "yellow"
-    ],
-    "shapes": [
-      "circle",
-      "triangle",
-      "square",
-      "pentagone"
-    ],
     "items": [
       {
         "name": "Pocketcare",
+        "slug": "pocketcare",
         "color": "green",
         "shape": "circle"
       },
       {
         "name": "Tesla",
+        "slug": "tesla",
         "color": "blue",
         "shape": "triangle"
       },
       {
         "name": "Buddy Buddy",
+        "slug": "buddy-buddy",
         "color": "red",
         "shape": "square"
       },
       {
         "name": "Personal",
+        "slug": "personal",
         "color": "yellow",
         "shape": "pentagone"
       }

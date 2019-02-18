@@ -1,24 +1,24 @@
 <template lang="pug">
-.Hero(v-bind:class="`Hero--${data.colors[range]}`")
+.Hero(v-bind:class="[`Hero--${data.colors[range]}`, type === 'about' ? 'Header-scrollable' : '']")
   .Hero-portrait(v-if="type === 'home'")
     img.Hero-back(src="../assets/images/Home/Gaetan.png" alt="Gaëtan Lefebvre")
     img.Hero-shape(:src="getImage(data.shapes[range], type)")
     img.Hero-front(src="../assets/images/Home/Gaetan-cropped.png" alt="Gaëtan Lefebvre")
   .Hero-portrait.Hero-portrait--pictures(v-if="type === 'about'")
     img.Hero-front.Hero-front--slide(
-      v-for="page in data.pages"
+      v-for="page in data[type].pages"
       :src="getImage(`${page.shape}_back`, type)"
       v-bind:class="checkIndex(page)"
       draggable="false"
     )
     img.Hero-shape.Hero-shape--slide(
-      v-for="page in data.pages"
+      v-for="page in data[type].pages"
       :src="getImage(page.shape, type)"
       v-bind:class="checkIndex(page)"
       draggable="false"
     )
     img.Hero-back.Hero-back--slide(
-      v-for="page in data.pages"
+      v-for="page in data[type].pages"
       :src="getImage(`${page.shape}_front`, type)"
       v-bind:class="checkIndex(page)"
       draggable="false"
@@ -27,13 +27,13 @@
   aside.Hero-data
     .Hero-description
       h1.Hero-title
-        span.Hero-titles(v-for="page in data.pages" v-bind:class="checkIndex(page)")
+        span.Hero-titles(v-for="page in data[type].pages" v-bind:class="checkIndex(page)")
           span.Hero-above {{ page.above }}
           span.Hero-name
             span.Hero-first {{ page.first }}&nbsp;
             span.Hero-last(v-bind:class="`Hero-last--${page.color || data.colors[range]}`") {{ page.last }}
       .Hero-texts
-        .Hero-paragraphs(v-for="page in data.pages" v-bind:class="checkIndex(page)")
+        .Hero-paragraphs(v-for="page in data[type].pages" v-bind:class="checkIndex(page)")
           p.Hero-paragraph(v-for="paragraph in page.paragraphs") {{ paragraph }}
     .Hero-push(v-if="type === 'home'")
       span.Hero-heavy Push&nbsp;
@@ -81,8 +81,11 @@ export default {
       return images(`./${image}.png`)
     },
     checkIndex(page) {
-      const indexPage = this.data.pages.indexOf(page)
-      return indexPage === this.range || this.data.pages.length === 1 ? 'is-active' : indexPage === (this.range + 1) % Object.keys(this.data.pages).length ? 'is-appearing' : ''
+      const indexPage = this.data[this.type].pages.indexOf(page)
+      return indexPage === this.range || this.data[this.type].pages.length === 1 ?
+        'is-active' :
+        indexPage === (this.range + 1) % Object.keys(this.data[this.type].pages).length ?
+          'is-appearing' : ''
     }
   }
 }
