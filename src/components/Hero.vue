@@ -1,24 +1,24 @@
 <template lang="pug">
-.Hero(v-bind:class="`Hero--${content.colors[range]}`")
+.Hero(v-bind:class="`Hero--${data.colors[range]}`")
   .Hero-portrait(v-if="type === 'home'")
     img.Hero-back(src="../assets/images/Home/Gaetan.png" alt="Gaëtan Lefebvre")
-    img.Hero-shape(:src="getImage(content.shapes[range], type)")
+    img.Hero-shape(:src="getImage(data.shapes[range], type)")
     img.Hero-front(src="../assets/images/Home/Gaetan-cropped.png" alt="Gaëtan Lefebvre")
   .Hero-portrait.Hero-portrait--pictures(v-if="type === 'about'")
     img.Hero-front.Hero-front--slide(
-      v-for="page in content.pages"
+      v-for="page in data.pages"
       :src="getImage(`${page.shape}_back`, type)"
       v-bind:class="checkIndex(page)"
       draggable="false"
     )
     img.Hero-shape.Hero-shape--slide(
-      v-for="page in content.pages"
+      v-for="page in data.pages"
       :src="getImage(page.shape, type)"
       v-bind:class="checkIndex(page)"
       draggable="false"
     )
     img.Hero-back.Hero-back--slide(
-      v-for="page in content.pages"
+      v-for="page in data.pages"
       :src="getImage(`${page.shape}_front`, type)"
       v-bind:class="checkIndex(page)"
       draggable="false"
@@ -27,20 +27,20 @@
   aside.Hero-data
     .Hero-description
       h1.Hero-title
-        span.Hero-titles(v-for="page in content.pages" v-bind:class="checkIndex(page)")
+        span.Hero-titles(v-for="page in data.pages" v-bind:class="checkIndex(page)")
           span.Hero-above {{ page.above }}
           span.Hero-name
             span.Hero-first {{ page.first }}&nbsp;
-            span.Hero-last(v-bind:class="`Hero-last--${page.color || content.colors[range]}`") {{ page.last }}
+            span.Hero-last(v-bind:class="`Hero-last--${page.color || data.colors[range]}`") {{ page.last }}
       .Hero-texts
-        .Hero-paragraphs(v-for="page in content.pages" v-bind:class="checkIndex(page)")
+        .Hero-paragraphs(v-for="page in data.pages" v-bind:class="checkIndex(page)")
           p.Hero-paragraph(v-for="paragraph in page.paragraphs") {{ paragraph }}
     .Hero-push(v-if="type === 'home'")
       span.Hero-heavy Push&nbsp;
       span.Hero-thin the
       Icon(
-        :color="content.colors[range]"
-        :shape="content.shapes[range]"
+        :color="data.colors[range]"
+        :shape="data.shapes[range]"
       )
       span.Hero-thin to continue
     ul.Hero-links(v-else-if="type === 'about'")
@@ -50,7 +50,7 @@
         a(href="#" title="Twitter") Twitter
       li.Hero-link
         a(href="#" title="Instagram") Instagram
-      li.Hero-link(v-bind:class="`Text--${content.colors[range]}`")
+      li.Hero-link(v-bind:class="`Text--${data.colors[range]}`")
         a(href="#" title="Contact") Contact
     span.Hero-scroll.Hero-scroll--data(v-if="type === 'about'")
 </template>
@@ -61,7 +61,7 @@ import Icon from './Icon'
 export default {
   props: [
     'type',
-    'content',
+    'data',
     'range'
   ],
   components: {
@@ -81,8 +81,8 @@ export default {
       return images(`./${image}.png`)
     },
     checkIndex(page) {
-      const indexPage = this.content.pages.indexOf(page)
-      return indexPage === this.range || this.content.pages.length === 1 ? 'is-active' : indexPage === (this.range + 1) % Object.keys(this.content.pages).length ? 'is-appearing' : ''
+      const indexPage = this.data.pages.indexOf(page)
+      return indexPage === this.range || this.data.pages.length === 1 ? 'is-active' : indexPage === (this.range + 1) % Object.keys(this.data.pages).length ? 'is-appearing' : ''
     }
   }
 }
@@ -94,7 +94,7 @@ export default {
 
 .Hero {
   display: flex;
-  justify-content: space-between;
+  justify-data: space-between;
   width: 100%;
   height: 100%;
   padding-top: $margin-t;
