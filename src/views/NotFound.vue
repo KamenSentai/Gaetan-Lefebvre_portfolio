@@ -1,10 +1,9 @@
 <template lang="pug">
-div
-  Header(
-    :color="themes[theme].color"
-    :shape="themes[theme].shape"
-    jumbotron="error"
-  )
+Header(
+  :color="themes[theme].color"
+  :shape="themes[theme].shape"
+  jumbotron="error"
+)
 </template>
 
 <script>

@@ -1,10 +1,9 @@
 <template lang="pug">
-div
-  Header(
-    :index="data.colors.indexOf(color) || data.colors.indexOf(shape)"
-    jumbotron="slider"
-    :data="data"
-  )
+Header(
+  :index="data.colors.indexOf(color) || data.colors.indexOf(shape)"
+  jumbotron="slider"
+  :data="data"
+)
 </template>
 
 <script>
