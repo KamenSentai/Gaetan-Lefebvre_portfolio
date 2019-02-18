@@ -1,9 +1,9 @@
 <template lang="pug">
 div
   Header(
-    :color="color || data[0].color"
-    :shape="shape || data[0].shape"
+    :index="data.colors.indexOf(color) || data.colors.indexOf(shape)"
     jumbotron="slider"
+    :data="data"
   )
 </template>
 

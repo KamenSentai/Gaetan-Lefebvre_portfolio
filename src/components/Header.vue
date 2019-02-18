@@ -58,7 +58,7 @@ export default {
     Error
   },
   methods: {
-    toggleMenu: (event) => {
+    toggleMenu: event => {
       event.preventDefault()
       document.querySelector('.Menu').classList.add('is-active')
     }
@@ -88,7 +88,7 @@ export default {
       }
 
       _headerScrollable.addEventListener('wheel', scrollJumbotron)
-      _headerScrollable.addEventListener('wheel', (event) => {
+      _headerScrollable.addEventListener('wheel', event => {
         event.preventDefault()
       })
     }
