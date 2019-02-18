@@ -1,13 +1,13 @@
 <template lang="pug">
 header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
   .Header-topbar
-    router-link(:to="{ name: 'home', params: { color: color || data.colors[range], shape: shape || data.shapes[range] }}")
+    router-link(:to="{ name: 'home', params: sendData() }")
       Logo(:color="color || data.colors[range]")
     ul.Header-navbar
       li.Header-item
         a(href="#" @click="toggleMenu") Projects
       li.Header-item
-        router-link(:to="{ name: 'about', params: { color: color || data.colors[range], shape: shape || data.shapes[range] }}") About
+        router-link(:to="{ name: 'about', params: sendData() }") About
     .Header-burger
       .Header-stripe
       .Header-stripe
@@ -53,6 +53,12 @@ export default {
     Error
   },
   methods: {
+    sendData: function() {
+      return {
+        color: this.color || this.data.colors[this.range],
+        shape: this.shape || this.data.shapes[this.range]
+      }
+    },
     toggleMenu: event => {
       event.preventDefault()
       document.querySelector('.Menu').classList.add('is-active')
