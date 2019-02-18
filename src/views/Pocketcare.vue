@@ -4,11 +4,8 @@ div
   .Page.Page--green
     section.Slide
       Post(
-        color="green"
-        top="What"
-        center="is the"
-        bottom="project ?"
-        :paragraphs="data.what_is_the_project"
+        :color="data.color"
+        :post="data.posts[0]"
       )
     section.Slide
       .Content
@@ -31,11 +28,8 @@ div
             )
     section.Slide.Slide--page
       Post(
-        color="green"
-        top="What"
-        center="was the"
-        bottom="problem ?"
-        :paragraphs="data.what_was_the_problem"
+        :color="data.color"
+        :post="data.posts[1]"
       )
       .Content
         .Content-header
@@ -45,11 +39,8 @@ div
           img.Shadow(src="../assets/images/Pocketcare/Onboarding_2.png" alt="Onboarding")
           img.Shadow(src="../assets/images/Pocketcare/Onboarding_3.png" alt="Onboarding")
       Post(
-        color="green"
-        top="How"
-        center="the team"
-        bottom="solved it ?"
-        :paragraphs="data.how_i_solved_it"
+        :color="data.color"
+        :post="data.posts[2]"
       )
     section.Slide.Slide--banner
       img.Content-banner(src="../assets/images/Pocketcare/Banner_Inscription.png" alt="Inscription")
@@ -76,11 +67,8 @@ div
       img.Content-banner(src="../assets/images/Pocketcare/Screens.png" alt="Screens")
     section.Slide
       Article(
-        color="green"
-        top="How"
-        center="the team"
-        bottom="worked ?"
-        :paragraphs="data.how_the_team_worked"
+        :color="data.color"
+        :post="data.posts[3]"
       )
   Footer(
     to="tesla"

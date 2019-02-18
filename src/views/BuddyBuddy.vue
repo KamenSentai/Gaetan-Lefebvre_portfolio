@@ -4,11 +4,8 @@ div
   .Page.Page--red
     section.Slide
       Post(
-        color="red"
-        top="What"
-        center="is the"
-        bottom="project ?"
-        :paragraphs="data.what_is_the_project"
+        :color="data.color"
+        :post="data.posts[0]"
       )
     section.Slide
       .Content
@@ -31,11 +28,8 @@ div
             )
     section.Slide.Slide--page
       Post(
-        color="red"
-        top="What"
-        center="was the"
-        bottom="problem ?"
-        :paragraphs="data.what_was_the_problem"
+        :color="data.color"
+        :post="data.posts[1]"
       )
       .Content
         .Content-header.Content-header--center
@@ -52,11 +46,8 @@ div
           img.Content-main(src="../assets/images/BuddyBuddy/Animation.gif" alt="Animation")
     section.Slide.Slide--page
       Post(
-        color="red"
-        top="How"
-        center="we solved"
-        bottom="it ?"
-        :paragraphs="data.how_we_solved_it"
+        :color="data.color"
+        :post="data.posts[2]"
       )
       .Content
         .Content-header.Content-header--center
@@ -95,11 +86,8 @@ div
       img.Content-banner(src="../assets/images/BuddyBuddy/Banner_Screenshots.png" alt="Banner Screenshots")
     section.Slide
       Article(
-        color="red"
-        top="How"
-        center="the team"
-        bottom="worked ?"
-        :paragraphs="data.how_the_team_worked"
+        :color="data.color"
+        :post="data.posts[3]"
       )
   Footer(
     to="personal"

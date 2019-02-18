@@ -1,22 +1,19 @@
 <template lang="pug">
 .Post
   h2.Post-title.Text--subtitle
-    span.Text--grey {{ top }}
+    span.Text--grey {{ post.top }}
     span.Post-endline
-      span.Text--black {{ center }}&nbsp;
-      span(v-bind:class="`Text--${color}`") {{ bottom }}
+      span.Text--black {{ post.center }}&nbsp;
+      span(v-bind:class="`Text--${color}`") {{ post.bottom }}
   .Post-text
-    p.Post-paragraph(v-for="paragraph in paragraphs") {{ paragraph }}
+    p.Post-paragraph(v-for="paragraph in post.paragraphs") {{ paragraph }}
 </template>
 
 <script>
 export default {
   props: [
     'color',
-    'top',
-    'center',
-    'bottom',
-    'paragraphs'
+    'post'
   ]
 }
 </script>

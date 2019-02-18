@@ -4,11 +4,8 @@ div
   .Page.Page--blue
     section.Slide
       Post(
-        color="blue"
-        top="What"
-        center="is the"
-        bottom="project ?"
-        :paragraphs="data.what_is_the_project"
+        :color="data.color"
+        :post="data.posts[0]"
       )
     section.Slide
       .Content
@@ -37,11 +34,8 @@ div
             )
     section.Slide.Slide--page
       Post(
-        color="blue"
-        top="What"
-        center="was the"
-        bottom="problem ?"
-        :paragraphs="data.what_was_the_problem"
+        :color="data.color"
+        :post="data.posts[1]"
       )
       .Content
         .Content-header
@@ -68,11 +62,8 @@ div
       img(src="../assets/images/Tesla/Car.png" alt="Car")
     section.Slide.Slide--page
       Post(
-        color="blue"
-        top="How"
-        center="I solved"
-        bottom="it ?"
-        :paragraphs="data.how_i_solved_it"
+        :color="data.color"
+        :post="data.posts[2]"
       )
       .Content
         .Content-header
@@ -118,11 +109,8 @@ div
       img.Content-breakpoints(src="../assets/images/Tesla/Helmet.png" alt="Helmet")
     section.Slide.Slide--page
       Post(
-        color="blue"
-        top="Why"
-        center="that"
-        bottom="project ?"
-        :paragraphs="data.why_that_project"
+        :color="data.color"
+        :post="data.posts[3]"
       )
       .Content
         .Content-header
@@ -141,11 +129,8 @@ div
       img.Content-banner(src="../assets/images/Tesla/Watches.png" alt="Watches")
     section.Slide
       Article(
-        color="blue"
-        top="How"
-        center="the team"
-        bottom="worked ?"
-        :paragraphs="data.how_the_team_worked"
+        :color="data.color"
+        :post="data.posts[4]"
       )
   Footer(
     to="buddy-buddy"
