@@ -20,13 +20,13 @@ header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
       :range="range"
     )
     Hero.Header-scrollable(
-      v-if="jumbotron === 'about'"
+      v-else-if="jumbotron === 'about'"
       type="about"
       :content="data"
       :range="range"
     )
     Error(
-      v-if="jumbotron === 'error'"
+      v-else-if="jumbotron === 'error'"
       :shape="shape"
     )
   Menu
