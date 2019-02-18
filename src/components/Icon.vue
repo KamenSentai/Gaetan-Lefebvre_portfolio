@@ -73,6 +73,7 @@ export default {
   cursor: pointer;
 
   &-strokes {
+    fill: none;
     stroke: $white;
     stroke-width: 1;
   }
