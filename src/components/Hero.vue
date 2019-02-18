@@ -81,7 +81,8 @@ export default {
       return images(`./${image}.png`)
     },
     checkIndex(page) {
-      return page.index === this.range || this.content.pages.length === 1 ? 'is-active' : page.index === (this.range + 1) % Object.keys(this.content.pages).length ? 'is-appearing' : ''
+      const indexPage = this.content.pages.indexOf(page)
+      return indexPage === this.range || this.content.pages.length === 1 ? 'is-active' : indexPage === (this.range + 1) % Object.keys(this.content.pages).length ? 'is-appearing' : ''
     }
   }
 }

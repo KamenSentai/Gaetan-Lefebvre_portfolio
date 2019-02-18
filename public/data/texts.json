@@ -14,7 +14,6 @@
     ],
     "pages": [
       {
-        "index": 0,
         "above": "Hi, I'm",
         "first": "Gaëtan",
         "last": "Lefebvre",
@@ -39,7 +38,6 @@
     ],
     "pages": [
       {
-        "index": 0,
         "color": "green",
         "shape": "circle",
         "above": "Who",
@@ -50,7 +48,6 @@
           "I am in the quest for learning. It is during these future years that I hope I can become the person I wish to be."
         ]
       }, {
-        "index": 1,
         "color": "blue",
         "shape": "triangle",
         "above": "What",
@@ -61,7 +58,6 @@
           "I always love to draw. Maybe that's what led me to my current path. Finally, cultural outings are activities that I would never refuse you!"
         ]
       }, {
-        "index": 2,
         "color": "red",
         "shape": "square",
         "above": "Where",
@@ -72,7 +68,6 @@
           "I am currently working on the redesign of the Manucurist site and perform other freelance missions in Paris. I also realize a memoir for my 4th year at HETIC."
         ]
       }, {
-        "index": 3,
         "color": "yellow",
         "shape": "pentagone",
         "above": "What",
