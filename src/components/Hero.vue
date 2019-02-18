@@ -94,7 +94,7 @@ export default {
 
 .Hero {
   display: flex;
-  justify-data: space-between;
+  justify-content: space-between;
   width: 100%;
   height: 100%;
   padding-top: $margin-t;
