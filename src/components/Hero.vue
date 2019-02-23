@@ -388,7 +388,7 @@ export default {
     z-index: 1;
     padding-right: $margin-t + $margin-n;
     font-size: 1.6rem;
-    letter-spacing: .125rem;
+    letter-spacing: .25rem;
     text-transform: uppercase;
     transform-origin: 0 100%;
     transform: rotateZ(90deg) translate(-100%, 50%);
