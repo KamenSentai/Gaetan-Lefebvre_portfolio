@@ -41,7 +41,7 @@ div
         .Content-header
           h3.Content-title.Text--center Touchscreen
         .Field
-          Carousel.Carousel--full(
+          Slider.Slider--full(
             folder="Tesla"
             :images="[`Tablet_${slider_theme}_1`, `Tablet_${slider_theme}_2`, `Tablet_${slider_theme}_3`, `Tablet_${slider_theme}_4`, `Tablet_${slider_theme}_5`, `Tablet_${slider_theme}_6`]"
             mockup="Tablet_mockup"
@@ -73,7 +73,7 @@ div
             h4.Content-section Charge and navigation
             p.Content-text When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation to return to the car.
             p.Content-text The navigation will tell you the distance of the car and the localisation. You will also have an AR view of the street.
-          Carousel.Carousel--item(
+          Slider.Slider--item(
             folder="Tesla"
             :images="['Mobile_1', 'Mobile_2', 'Mobile_3', 'Mobile_4', 'Mobile_5', 'Mobile_6', 'Mobile_7', 'Mobile_8']"
             mockup="Mobile_mockup"
@@ -144,7 +144,7 @@ import Post from '../components/Post'
 import Color from '../components/Color'
 import Charter from '../components/Charter'
 import Article from '../components/Article'
-import Carousel from '../components/Carousel'
+import Slider from '../components/Slider'
 import Footer from '../components/Footer'
 
 export default {
@@ -168,7 +168,7 @@ export default {
     Color,
     Charter,
     Article,
-    Carousel,
+    Slider,
     Footer
   }
 }

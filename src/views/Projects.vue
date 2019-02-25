@@ -1,7 +1,7 @@
 <template lang="pug">
 Header(
   :index="data.colors.indexOf(color) || data.colors.indexOf(shape)"
-  jumbotron="slider"
+  jumbotron="carousel"
   :data="data"
 )
 </template>

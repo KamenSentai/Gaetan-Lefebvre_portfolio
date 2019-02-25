@@ -78,7 +78,7 @@ div
         .Content-header.Content-header--center
           h3.Content-title.Text--center Mobile case study
           p.Content-description.Text--center When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation.
-        Carousel(
+        Slider(
           folder="BuddyBuddy"
           :images="['Mobile_1', 'Mobile_2', 'Mobile_3', 'Mobile_4']"
         )
@@ -101,7 +101,7 @@ import Post from '../components/Post'
 import Color from '../components/Color'
 import Charter from '../components/Charter'
 import Article from '../components/Article'
-import Carousel from '../components/Carousel'
+import Slider from '../components/Slider'
 import Footer from '../components/Footer'
 
 export default {
@@ -120,7 +120,7 @@ export default {
     Color,
     Charter,
     Article,
-    Carousel,
+    Slider,
     Footer
   }
 }

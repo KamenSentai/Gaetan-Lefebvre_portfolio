@@ -19,6 +19,9 @@ header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
       :data="data"
       :range="range"
     )
+    Carousel(
+      v-if="jumbotron === 'carousel'"
+    )
     Error(
       v-else-if="jumbotron === 'error'"
       :shape="shape"
@@ -30,6 +33,7 @@ header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
 import Logo from './Logo'
 import Menu from './Menu'
 import Hero from './Hero'
+import Carousel from './Carousel'
 import Error from './Error'
 
 export default {
@@ -50,6 +54,7 @@ export default {
     Logo,
     Menu,
     Hero,
+    Carousel,
     Error
   },
   methods: {
