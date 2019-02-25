@@ -1,8 +1,8 @@
 <template lang="pug">
 .Carousel(v-bind:class="automatic ? 'Carousel--automatic' : ''")
   .Carousel-button
-    canvas.Carousel-loading(:data-color="color")
-    a.Push.Push--left(@click="turnCarousel" href="#")
+    canvas.Carousel-loading
+    a.Carousel-push.Push.Push--left(@click="turnCarousel" href="#")
       .Push-arrow
       .Push-arrow
   .Carousel-content(v-if="mockup")
@@ -332,20 +332,20 @@ export default {
   }
 
   &-loading {
-    $overflow-size: .8rem;
+    $overflow-size: .4rem;
 
     position: absolute;
     top: 50%;
     left: 50%;
     width: calc(100% + #{$overflow-size});
     height: calc(100% + #{$overflow-size});
+    color: $black;
     transform: translate(-50%, -50%);
+  }
 
-    @each $key, $value in $colors {
-      &[data-color=#{$key}] {
-        color: $value;
-      }
-    }
+  &-push {
+    background-color: $grey;
+    border: none;
   }
 }
 </style>
