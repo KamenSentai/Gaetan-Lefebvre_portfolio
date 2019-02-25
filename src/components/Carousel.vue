@@ -8,11 +8,11 @@
   .Carousel-content(v-if="mockup")
     img.Carousel-mockup(draggable="false" :src="getImage(mockup)")
     .Carousel-images
-      img.Carousel-image.Shadow(v-for="image in images" :src="getImage(image)")
+      img.Carousel-image(v-for="image in images" :src="getImage(image)")
   .Carousel-button.Carousel-button--hidden(v-if="mockup")
     .Push
   .Carousel-images(v-else)
-    img.Carousel-image.Shadow(v-for="image in images" :src="getImage(image)")
+    img.Carousel-image(v-for="image in images" :src="getImage(image)")
 </template>
 
 <script>
