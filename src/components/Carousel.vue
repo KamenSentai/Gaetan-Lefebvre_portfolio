@@ -114,7 +114,11 @@ export default {
 
     this.elements = _images
     this.total = this.elements.length
-    this.margins = parseFloat(_imagesStyle.marginLeft) + parseFloat(_imagesStyle.marginRight) + parseFloat(_imagesStyle.paddingLeft) + parseFloat(_imagesStyle.paddingRight)
+    this.margins =
+      parseFloat(_imagesStyle.marginLeft) +
+      parseFloat(_imagesStyle.marginRight) +
+      parseFloat(_imagesStyle.paddingLeft) +
+      parseFloat(_imagesStyle.paddingRight)
     this.duration = parseFloat(_imagesStyle.transitionDuration) * 1000
 
     if (this.automatic) {

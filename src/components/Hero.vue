@@ -1,9 +1,20 @@
 <template lang="pug">
 .Hero(v-bind:class="[`Hero--${data.colors[range]}`, type === 'about' ? 'Header-scrollable' : '']")
   .Hero-portrait(v-if="type === 'home'")
-    img.Hero-back(src="../assets/images/Home/Gaetan.png" alt="Gaëtan Lefebvre")
-    img.Hero-shape(:src="getImage(data.shapes[range], type)")
-    img.Hero-front(src="../assets/images/Home/Gaetan-cropped.png" alt="Gaëtan Lefebvre")
+    img.Hero-back(
+      src="../assets/images/Home/Gaetan.png"
+      alt="Gaëtan Lefebvre"
+      draggable="false"
+    )
+    img.Hero-shape(
+      :src="getImage(data.shapes[range], type)"
+      draggable="false"
+    )
+    img.Hero-front(
+      src="../assets/images/Home/Gaetan-cropped.png"
+      alt="Gaëtan Lefebvre"
+      draggable="false"
+    )
   .Hero-portrait.Hero-portrait--pictures(v-if="type === 'about'")
     img.Hero-front.Hero-front--slide(
       v-for="page in data[type].pages"
