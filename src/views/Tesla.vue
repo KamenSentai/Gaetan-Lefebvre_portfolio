@@ -43,16 +43,16 @@ div
         .Field
           Carousel.Carousel--full(
             folder="Tesla"
-            :images="[`Tablet_${tabletTheme}_1`, `Tablet_${tabletTheme}_2`, `Tablet_${tabletTheme}_3`, `Tablet_${tabletTheme}_4`, `Tablet_${tabletTheme}_5`, `Tablet_${tabletTheme}_6`]"
+            :images="[`Tablet_${slider_theme}_1`, `Tablet_${slider_theme}_2`, `Tablet_${slider_theme}_3`, `Tablet_${slider_theme}_4`, `Tablet_${slider_theme}_5`, `Tablet_${slider_theme}_6`]"
             mockup="Tablet_mockup"
             automatic="true"
             interval="5000"
             :color="data.color"
           )
           .Field-inputs
-            input(type="radio" id="black" v-model="tabletTheme" value="black")
+            input(type="radio" id="black" v-model="slider_theme" value="black")
             label.Field--black(for="black") Dark theme
-            input(type="radio" id="white" v-model="tabletTheme" value="white")
+            input(type="radio" id="white" v-model="slider_theme" value="white")
             label(v-bind:class="`Field--${data.color}`" for="white") Light theme
     section.Slide.Slide--block.Slide--bottomless
       .Content
@@ -156,7 +156,7 @@ export default {
   },
   data() {
     return {
-      tabletTheme: 'black'
+      slider_theme: 'black'
     }
   },
   props: [

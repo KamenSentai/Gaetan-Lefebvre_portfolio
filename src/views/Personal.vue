@@ -21,6 +21,9 @@ export default {
       { name: 'description', content: '' }
     ]
   },
+  props: [
+    'data'
+  ],
   components: {
     Header,
     Post,
