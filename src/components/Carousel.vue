@@ -81,8 +81,8 @@ export default {
               setTimeout(() => {
                 this.elements[i].style.opacity = '1'
                 this.isClicked = false
-              }, this.duration / 2)
-            }, this.duration / 2)
+              }, this.duration)
+            }, this.duration)
           } else {
             this.elements[i].style.zIndex = '10'
             this.elements[i].style.transform = `
