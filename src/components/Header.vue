@@ -68,9 +68,9 @@ export default {
         shape: this.shape || this.data.shapes[this.range]
       }
     },
-    toggleMenu: event => {
+    toggleMenu: function(event) {
       event.preventDefault()
-      if (!this.projects) document.querySelector('.Menu').classList.add('is-active')
+      if (!this.project) document.querySelector('.Menu').classList.add('is-active')
     },
     modulo: (n, m) => {
       return ((n % m) + m) % m;
@@ -84,7 +84,7 @@ export default {
     const _headerCarousel = this.$el.querySelector('.Header-carousel')
 
     if (_headerScrollable) {
-      const _heroShape = this.$el.querySelector('.Hero-button.is-active')
+      const _heroShape = this.$el.querySelector('.Hero-shape.is-active')
       const _heroLayers = this.$el.querySelector('.Hero-front.is-active') || this.$el.querySelector('.Hero-back')
       const _shapeStyle = _heroShape.currentStyle || window.getComputedStyle(_heroShape)
       const _layersStyle = _heroLayers.currentStyle || window.getComputedStyle(_heroLayers)
