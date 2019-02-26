@@ -67,34 +67,29 @@
       }
     ]
   },
-  "projects": {
-    "items": [
-      {
-        "name": "Pocketcare",
-        "slug": "pocketcare",
-        "color": "green",
-        "shape": "circle"
-      },
-      {
-        "name": "Tesla",
-        "slug": "tesla",
-        "color": "blue",
-        "shape": "triangle"
-      },
-      {
-        "name": "Buddy Buddy",
-        "slug": "buddy-buddy",
-        "color": "red",
-        "shape": "square"
-      },
-      {
-        "name": "Personal",
-        "slug": "personal",
-        "color": "yellow",
-        "shape": "pentagone"
-      }
-    ]
-  },
+  "projects": [
+    {
+      "name": "Pocketcare",
+      "slug": "pocketcare",
+      "color": "green",
+      "shape": "circle"
+    }, {
+      "name": "Tesla",
+      "slug": "tesla",
+      "color": "blue",
+      "shape": "triangle"
+    }, {
+      "name": "Buddy Buddy",
+      "slug": "buddy-buddy",
+      "color": "red",
+      "shape": "square"
+    }, {
+      "name": "Personal",
+      "slug": "personal",
+      "color": "yellow",
+      "shape": "pentagone"
+    }
+  ],
   "pocketcare": {
     "color": "green",
     "shape": "circle",

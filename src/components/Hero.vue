@@ -1,5 +1,5 @@
 <template lang="pug">
-.Hero(v-bind:class="[`Hero--${data.colors[range]}`, type === 'about' ? 'Header-scrollable' : '']")
+.Hero(v-bind:class="`Hero--${data.colors[range]}`")
   .Hero-portrait(v-if="type === 'home'")
     img.Hero-back(
       src="../assets/images/Home/Gaetan.png"
