@@ -22,20 +22,7 @@ export default {
   props: [
     'data',
     'range'
-  ],
-  methods: {
-    modulo(n, m) {
-      return ((n % m) + m) % m;
-    },
-    downRange() {
-      console.log('down');
-      this.range = this.modulo(this.range - 1, this.data.projects.length);
-    },
-    upRange() {
-      console.log('up');
-      this.range = this.modulo(this.range + 1, this.data.projects.length);
-    }
-  }
+  ]
 }
 </script>
 

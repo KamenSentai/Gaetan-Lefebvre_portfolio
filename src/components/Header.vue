@@ -4,7 +4,7 @@ header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
     router-link(:to="{ name: 'home', params: sendData() }")
       Logo(:color="color || data.colors[range]")
     ul.Header-navbar
-      li.Header-item
+      li.Header-item(:class="project ? 'is-hidden': ''")
         a(href="#" @click="toggleMenu") Projects
       li.Header-item
         router-link(:to="{ name: 'about', params: sendData() }") About
@@ -51,6 +51,7 @@ export default {
     'index',
     'jumbotron',
     'type',
+    'project',
     'data'
   ],
   components: {
@@ -69,7 +70,7 @@ export default {
     },
     toggleMenu: event => {
       event.preventDefault()
-      document.querySelector('.Menu').classList.add('is-active')
+      if (!this.projects) document.querySelector('.Menu').classList.add('is-active')
     },
     modulo: (n, m) => {
       return ((n % m) + m) % m;
@@ -175,9 +176,18 @@ export default {
     font-size: 1.8rem;
     margin-right: $margin-s;
     font-weight: 700;
+    opacity: 1;
 
     &:last-child {
       margin-right: 0;
+    }
+
+    &.is-hidden {
+      opacity: 0;
+
+      a {
+        cursor: default;
+      }
     }
   }
 

@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  Header(:color="data.color" :shape="data.shape")
+  Header(:color="data.color" :shape="data.shape" :project="true")
   .Page(v-bind:class="`Page--${data.color}`")
     section.Slide
       Post(
