@@ -1,7 +1,7 @@
 <template lang="pug">
 .Icon
   router-link.Icon-link(:to="{ name: 'projects', params: { color: color, shape: shape } }")
-  svg.Icon-shape(@mousedown="mouseDown" @mouseup="mouseUp" width="40px" height="40px" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
+  svg.Icon-shape(@mousedown="mouseDown" @mouseup="mouseUp" width="40px" height="40px" viewBox="0 0 40 40")
     defs
       g#shape
         circle(v-if="shape === 'circle'" cx="20" cy="20" r="18.8")
