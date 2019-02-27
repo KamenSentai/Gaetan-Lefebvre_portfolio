@@ -4,25 +4,31 @@
       .Carousel-content
       .Carousel-buttons
         svg.Carousel-button.Carousel-button--left(width="40px" height="40px" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
-          g.Carousel-shape
-            circle#circle(v-if="range === 1" cx="20" cy="20" r="18.8")
-            polygon#triangle(v-if="range === 2" points="20,1.1 1.2,33.6 38.8,33.6")
-            rect#square(v-if="range === 3" x="6.7" y="6.7" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -8.2843 20)" width="26.5" height="26.5")
-            polygon#pentagone(v-if="range === 0" points="20,1.2 1.2,14.8 8.4,36.9 31.6,36.9 38.8,14.8")
+          path#left-1.Carousel-shape(:class="index === 1 ? 'is-active' : ''" d="M20,38.8C9.6,38.8,1.2,30.4,1.2,20S9.6,1.2,20,1.2S38.8,9.6,38.8,20S30.4,38.8,20,38.8z")
+          path#left-2.Carousel-shape(:class="index === 2 ? 'is-active' : ''" d="M38.8,33.6H1.2L20,1.1L38.8,33.6z")
+          path#left-3.Carousel-shape(:class="index === 3 ? 'is-active' : ''" d="M20,1.2L38.8,20L20,38.8L1.2,20L20,1.2z")
+          path#left-0.Carousel-shape(:class="index === 0 ? 'is-active' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
         svg.Carousel-button.Carousel-button--right(width="40px" height="40px" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
-          g.Carousel-shape
-            circle#circle(v-if="range === 3" cx="20" cy="20" r="18.8")
-            polygon#triangle(v-if="range === 0" points="20,1.1 1.2,33.6 38.8,33.6")
-            rect#square(v-if="range === 1" x="6.7" y="6.7" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -8.2843 20)" width="26.5" height="26.5")
-            polygon#pentagone(v-if="range === 2" points="20,1.2 1.2,14.8 8.4,36.9 31.6,36.9 38.8,14.8")
+          path#right-3.Carousel-shape(:class="index === 3 ? 'is-active' : ''" d="M20,38.8C9.6,38.8,1.2,30.4,1.2,20S9.6,1.2,20,1.2S38.8,9.6,38.8,20S30.4,38.8,20,38.8z")
+          path#right-0.Carousel-shape(:class="index === 0 ? 'is-active' : ''" d="M38.8,33.6H1.2L20,1.1L38.8,33.6z")
+          path#right-1.Carousel-shape(:class="index === 1 ? 'is-active' : ''" d="M20,1.2L38.8,20L20,38.8L1.2,20L20,1.2z")
+          path#right-2.Carousel-shape(:class="index === 2 ? 'is-active' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      index: 0
+    }
+  },
   props: [
     'data',
     'range'
-  ]
+  ],
+  beforeMount() {
+    this.index = this.range
+  }
 }
 </script>
 
@@ -84,6 +90,11 @@ export default {
     fill: $black;
     stroke: $white;
     stroke-width: 1;
+    visibility: hidden;
+
+    &.is-active {
+      visibility: visible;
+    }
   }
 }
 </style>
