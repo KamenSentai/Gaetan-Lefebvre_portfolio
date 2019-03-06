@@ -159,7 +159,7 @@ export default {
   &-label {
     position: fixed;
     left: 50%;
-    bottom: - $margin-b - $margin-s;
+    bottom: - $margin-b - $margin-r;
     display: flex;
     flex-direction: column;
     align-items: center;
