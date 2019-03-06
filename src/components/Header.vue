@@ -7,6 +7,14 @@ header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
           .Header-stripe
           .Header-stripe
           .Header-stripe
+        .Header-tree
+          router-link.Header-branch(:to="{ name: 'home', params: sendData() }") Home
+          router-link.Header-branch(:to="{ name: 'projects', params: sendData() }") Projects
+          router-link.Header-branch(:to="{ name: 'about', params: sendData() }") About
+          .Header-branch.Header-branch--more
+            a(href="#") LinkedIn
+            a(href="#") Behance
+            a(href="#") Dribble
     router-link.Header-logo(v-bind:class="isNavigating ? 'is-toggled' : ''" :to="{ name: 'home', params: sendData() }")
       Logo(:color="color || data.colors[range]")
     ul.Header-navbar
@@ -45,7 +53,8 @@ export default {
   data() {
     return {
       range: 0,
-      isNavigating: false
+      isNavigating: false,
+      isToggable: true
     }
   },
   props: [
@@ -72,7 +81,22 @@ export default {
       }
     },
     toggleNavigation: function() {
-      this.isNavigating = !this.isNavigating
+      if (this.isToggable) {
+        this.isToggable = false
+        this.isNavigating = !this.isNavigating
+
+        if (this.isNavigating) {
+          this.$el.querySelector('.Header-navigation').style.zIndex = '1000'
+        } else {
+          setTimeout(() => {
+            this.$el.querySelector('.Header-navigation').style.zIndex = '0'
+          }, 2000)
+        }
+
+        setTimeout(() => {
+          this.isToggable = true
+        }, 2000)
+      }
     },
     toggleMenu: function(event) {
       event.preventDefault()
@@ -167,18 +191,22 @@ export default {
     margin-top: $margin-s;
     margin-bottom: $margin-r;
     transition: all $easing;
+    transition-delay: 1s;
 
     &.is-toggled {
       margin-bottom: $margin-r + $margin-s;
+      transition-delay: 0s;
     }
   }
 
   &-logo {
     transition: transform $easing;
+    transition-delay: 1s;
     will-change: transform;
 
     &.is-toggled {
       transform: translateY(-#{$margin-s});
+      transition-delay: 0s;
     }
   }
 
@@ -234,55 +262,94 @@ export default {
       background-color: $black;
       opacity: 0;
       transition: opacity $easing;
+      transition-delay: 1s;
       will-change: opacity;
     }
 
     &::after {
-      content: '';
-      position: absolute;
-      top: 0;
       left: calc(50vw - .1rem);
       width: .1rem;
       background-color: $dark;
       transform-origin: 50% 0;
       transform: scaleY(0);
       transition: transform $easing;
+      transition-delay: 0s;
       will-change: transform;
+    }
+
+    &.is-toggled {
+      &::before {
+        opacity: 1;
+        transition-delay: 0s;
+      }
+
+      &::after {
+        transform: scaleY(1);
+        transition-delay: 1s;
+      }
+
+      #{$rootHeader}-subnav {
+        &::before {
+          z-index: -1;
+        }
+      }
+
+      #{$rootHeader}-branch {
+        opacity: 1;
+        transform: none;
+
+        &:nth-child(1) {
+          transition-delay: 1.125s;
+        }
+
+        &:nth-child(2) {
+          transition-delay: 1.25s;
+        }
+
+        &:nth-child(3) {
+          transition-delay: 1.5s;
+        }
+
+        &:nth-child(4) {
+          transition-delay: 1.75s;
+        }
+      }
     }
 
     @media (max-width: #{grid-media(6)}) {
       display: flex;
     }
-
-    &.is-toggled {
-      z-index: 1000;
-
-      &::before {
-        opacity: 1;
-      }
-
-      &::after {
-        transform: scaleY(1);
-      }
-    }
   }
 
   &-subnav {
     position: relative;
+    z-index: 2000;
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
     @include grid-scale(12);
-    height: 0;
     margin-top: $margin-s;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &-burger {
+    z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     width: $burger-width;
     height: $burger-height;
     margin-top: - $burger-height / 2;
+    margin-right: 0;
+    margin-left: auto;
     cursor: pointer;
 
     &:hover {
@@ -323,6 +390,37 @@ export default {
     &:first-child,
     &:last-child {
       transform: scaleX(.75);
+    }
+  }
+
+  &-tree {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex: 1;
+    margin-top: $margin-s;
+    font-size: 2.8rem;
+    font-weight: 700;
+  }
+
+  &-branch {
+    margin: auto;
+    opacity: 0;
+    transform: translateY(#{$margin-t});
+    transition: opacity $easing, transform $easing;
+    will-change: opacity, transform;
+
+    &--more {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: $margin-s;
+      margin-bottom: $margin-s;
+      font-size: 1.2rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: .125em;
     }
   }
 
