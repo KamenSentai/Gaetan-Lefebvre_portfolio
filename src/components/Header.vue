@@ -1,6 +1,12 @@
 <template lang="pug">
 header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
   .Header-topbar(v-bind:class="isNavigating ? 'is-toggled' : ''")
+    .Header-navigation(v-bind:class="isNavigating ? 'is-toggled' : ''")
+      .Header-subnav
+        .Header-burger(v-bind:class="isNavigating ? 'is-active' : ''" @click="toggleNavigation")
+          .Header-stripe
+          .Header-stripe
+          .Header-stripe
     router-link.Header-logo(v-bind:class="isNavigating ? 'is-toggled' : ''" :to="{ name: 'home', params: sendData() }")
       Logo(:color="color || data.colors[range]")
     ul.Header-navbar
@@ -8,12 +14,6 @@ header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
         a(href="#" @click="toggleMenu") Projects
       li.Header-item
         router-link(:to="{ name: 'about', params: sendData() }") About
-    .Header-navigation(v-bind:class="isNavigating ? 'is-toggled' : ''")
-      .Header-subnav
-        .Header-burger(v-bind:class="isNavigating ? 'is-active' : ''" @click="toggleNavigation")
-          .Header-stripe
-          .Header-stripe
-          .Header-stripe
   .Header-jumbotron
     Hero.Header-hero(
       :class="type === 'about' ? 'Header-scrollable' : ''"
@@ -215,22 +215,43 @@ export default {
     position: fixed;
     top: 0;
     left: 0;
-    display: flex;
+    display: none;
     justify-content: center;
     width: 100vw;
     height: 100vh;
 
-    &::before {
+    &::before,
+    &::after {
       content: '';
       position: absolute;
       top: 0;
+      height: 100vh;
+    }
+
+    &::before {
       left: 0;
       width: 100vw;
-      height: 100vh;
       background-color: $black;
       opacity: 0;
       transition: opacity $easing;
-      will-change: opacity
+      will-change: opacity;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: calc(50vw - .1rem);
+      width: .1rem;
+      background-color: $dark;
+      transform-origin: 50% 0;
+      transform: scaleY(0);
+      transition: transform $easing;
+      will-change: transform;
+    }
+
+    @media (max-width: #{grid-media(6)}) {
+      display: flex;
     }
 
     &.is-toggled {
@@ -238,6 +259,10 @@ export default {
 
       &::before {
         opacity: 1;
+      }
+
+      &::after {
+        transform: scaleY(1);
       }
     }
   }
@@ -252,7 +277,7 @@ export default {
   }
 
   &-burger {
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: space-around;
     width: $burger-width;
@@ -283,10 +308,6 @@ export default {
           transform: rotateZ(30deg);
         }
       }
-    }
-
-    @media (max-width: #{grid-media(6)}) {
-      display: flex;
     }
   }
 
