@@ -64,6 +64,7 @@ export default {
       range: 0,
       isNavigating: false,
       isToggable: true,
+      isTurnable: true,
       route: ''
     }
   },
@@ -114,7 +115,7 @@ export default {
     },
     modulo: (n, m) => {
       return ((n % m) + m) % m;
-    },
+    }
   },
   beforeMount() {
     if (this.index && this.index >= 0) this.range = this.index
@@ -153,11 +154,23 @@ export default {
       const _heroCarouselButtonRight = this.$el.querySelector('.Carousel-button--right')
 
       _heroCarouselButtonLeft.addEventListener('click', () => {
-        this.range = this.modulo(this.range - 1, this.data.projects.length);
+        if (this.isTurnable) {
+          this.isTurnable = false
+          this.range = this.modulo(this.range - 1, this.data.projects.length);
+          setTimeout(() => {
+            this.isTurnable = true
+          }, 1000)
+        }
       })
 
       _heroCarouselButtonRight.addEventListener('click', () => {
-        this.range = this.modulo(this.range + 1, this.data.projects.length);
+        if (this.isTurnable) {
+          this.isTurnable = false
+          this.range = this.modulo(this.range + 1, this.data.projects.length);
+          setTimeout(() => {
+            this.isTurnable = true
+          }, 1000)
+        }
       })
     }
   }
