@@ -190,12 +190,14 @@ export default {
     width: grid(12);
     margin-top: $margin-s;
     margin-bottom: $margin-r;
-    transition: all $easing;
+    transition: margin-bottom $easing;
     transition-delay: 1s;
 
-    &.is-toggled {
-      margin-bottom: $margin-r + $margin-s;
-      transition-delay: 0s;
+    @media (max-width: #{grid-media(6)}) {
+      &.is-toggled {
+        margin-bottom: $margin-r + $margin-s;
+        transition-delay: 0s;
+      }
     }
   }
 
@@ -204,9 +206,11 @@ export default {
     transition-delay: 1s;
     will-change: transform;
 
-    &.is-toggled {
-      transform: translateY(-#{$margin-s});
-      transition-delay: 0s;
+    @media (max-width: #{grid-media(6)}) {
+      &.is-toggled {
+        transform: translateY(-#{$margin-s});
+        transition-delay: 0s;
+      }
     }
   }
 
