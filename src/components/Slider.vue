@@ -312,6 +312,10 @@ export default {
     transform-origin: 50% 50%;
   }
 
+  &-mockup {
+    transform: scale(.995);
+  }
+
   &-mockup,
   &-image {
     max-width: grid(8);
