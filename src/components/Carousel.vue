@@ -156,6 +156,10 @@ export default {
     }
   }
 
+  &-image {
+    user-select: none;
+  }
+
   &-label {
     position: fixed;
     left: 50%;
