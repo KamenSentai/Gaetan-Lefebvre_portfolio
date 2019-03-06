@@ -8,9 +8,18 @@ header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
           .Header-stripe
           .Header-stripe
         .Header-tree
-          router-link.Header-branch(v-bind:class="route === 'home' ? `is-active--${color || data.colors[range]}` : ''" :to="{ name: 'home', params: sendData() }") Home
-          router-link.Header-branch(v-bind:class="route === 'projects' ? `is-active--${color || data.colors[range]}` : ''" :to="{ name: 'projects', params: sendData() }") Projects
-          router-link.Header-branch(v-bind:class="route === 'about' ? `is-active--${color || data.colors[range]}` : ''" :to="{ name: 'about', params: sendData() }") About
+          router-link.Header-branch(
+            v-bind:class="route === 'home' ? `is-active--${color || data.colors[range]}` : ''"
+            :to="{ name: 'home', params: sendData() }"
+          ) Home
+          router-link.Header-branch(
+            v-bind:class="route === 'projects' ? `is-active--${color || data.colors[range]}` : ''"
+            :to="{ name: 'projects', params: sendData() }"
+          ) Projects
+          router-link.Header-branch(
+            v-bind:class="route === 'about' ? `is-active--${color || data.colors[range]}` : ''"
+            :to="{ name: 'about', params: sendData() }"
+          ) About
           .Header-branch.Header-branch--more
             a(href="#") LinkedIn
             a(href="#") Behance
@@ -304,20 +313,10 @@ export default {
         opacity: 1;
         transform: none;
 
-        &:nth-child(1) {
-          transition-delay: 1.125s;
-        }
-
-        &:nth-child(2) {
-          transition-delay: 1.25s;
-        }
-
-        &:nth-child(3) {
-          transition-delay: 1.5s;
-        }
-
-        &:nth-child(4) {
-          transition-delay: 1.75s;
+        @for $i from 1 through 4 {
+          &:nth-child(#{$i}) {
+            transition-delay: 1s + $i * .125s;
+          }
         }
       }
     }
