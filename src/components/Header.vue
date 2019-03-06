@@ -1,17 +1,19 @@
 <template lang="pug">
 header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
-  .Header-topbar
-    router-link(:to="{ name: 'home', params: sendData() }")
+  .Header-topbar(v-bind:class="isNavigating ? 'is-toggled' : ''")
+    router-link.Header-logo(v-bind:class="isNavigating ? 'is-toggled' : ''" :to="{ name: 'home', params: sendData() }")
       Logo(:color="color || data.colors[range]")
     ul.Header-navbar
       li.Header-item(:class="project ? 'is-hidden': ''")
         a(href="#" @click="toggleMenu") Projects
       li.Header-item
         router-link(:to="{ name: 'about', params: sendData() }") About
-    .Header-burger
-      .Header-stripe
-      .Header-stripe
-      .Header-stripe
+    .Header-navigation(v-bind:class="isNavigating ? 'is-toggled' : ''")
+      .Header-subnav
+        .Header-burger(v-bind:class="isNavigating ? 'is-active' : ''" @click="toggleNavigation")
+          .Header-stripe
+          .Header-stripe
+          .Header-stripe
   .Header-jumbotron
     Hero.Header-hero(
       :class="type === 'about' ? 'Header-scrollable' : ''"
@@ -42,7 +44,8 @@ import Error from './Error'
 export default {
   data() {
     return {
-      range: 0
+      range: 0,
+      isNavigating: false
     }
   },
   props: [
@@ -67,6 +70,9 @@ export default {
         color: this.color || this.data.colors[this.range],
         shape: this.shape || this.data.shapes[this.range]
       }
+    },
+    toggleNavigation: function() {
+      this.isNavigating = !this.isNavigating
     },
     toggleMenu: function(event) {
       event.preventDefault()
@@ -160,6 +166,20 @@ export default {
     width: grid(12);
     margin-top: $margin-s;
     margin-bottom: $margin-r;
+    transition: all $easing;
+
+    &.is-toggled {
+      margin-bottom: $margin-r + $margin-s;
+    }
+  }
+
+  &-logo {
+    transition: transform $easing;
+    will-change: transform;
+
+    &.is-toggled {
+      transform: translateY(-#{$margin-s});
+    }
   }
 
   &-navbar {
@@ -191,12 +211,53 @@ export default {
     }
   }
 
+  &-navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: $black;
+      opacity: 0;
+      transition: opacity $easing;
+      will-change: opacity
+    }
+
+    &.is-toggled {
+      z-index: 1000;
+
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &-subnav {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    @include grid-scale(12);
+    height: 0;
+    margin-top: $margin-s;
+  }
+
   &-burger {
     display: none;
     flex-direction: column;
     justify-content: space-around;
     width: $burger-width;
     height: $burger-height;
+    margin-top: - $burger-height / 2;
     cursor: pointer;
 
     &:hover {
@@ -206,6 +267,20 @@ export default {
         &:first-child,
         &:last-child {
           transform: scaleX(1);
+        }
+      }
+    }
+
+    &.is-active {
+      #{$rootHeader}-stripe {
+        transform: scaleX(0);
+
+        &:first-child {
+          transform: rotateZ(-30deg);
+        }
+
+        &:last-child {
+          transform: rotateZ(30deg);
         }
       }
     }
