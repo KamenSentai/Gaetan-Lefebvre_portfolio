@@ -2,17 +2,17 @@
   .Carousel
     .Carousel-container
       .Carousel-buttons
-        svg.Carousel-button.Carousel-button--left(width="40px" height="40px" viewBox="0 0 40 40")
-          path#left-1.Carousel-shape(:class="index === 1 ? 'is-active' : ''" d="M20,38.8C9.6,38.8,1.2,30.4,1.2,20S9.6,1.2,20,1.2S38.8,9.6,38.8,20S30.4,38.8,20,38.8z")
-          path#left-2.Carousel-shape(:class="index === 2 ? 'is-active' : ''" d="M38.8,33.6H1.2L20,1.1L38.8,33.6z")
-          path#left-3.Carousel-shape(:class="index === 3 ? 'is-active' : ''" d="M20,1.2L38.8,20L20,38.8L1.2,20L20,1.2z")
-          path#left-0.Carousel-shape(:class="index === 0 ? 'is-active' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
+        svg.Carousel-button.Carousel-button--left(width="40px" height="40px" viewBox="0 0 40 40" @click="turnLeft")
+          path#left-1.Carousel-shape.Carousel-shape--left(:class="index === 1 ? 'is-active' : ''" d="M20,38.8C9.6,38.8,1.2,30.4,1.2,20S9.6,1.2,20,1.2S38.8,9.6,38.8,20S30.4,38.8,20,38.8z")
+          path#left-2.Carousel-shape.Carousel-shape--left(:class="index === 2 ? 'is-active' : ''" d="M38.8,33.6H1.2L20,1.1L38.8,33.6z")
+          path#left-3.Carousel-shape.Carousel-shape--left(:class="index === 3 ? 'is-active' : ''" d="M20,1.2L38.8,20L20,38.8L1.2,20L20,1.2z")
+          path#left-0.Carousel-shape.Carousel-shape--left(:class="index === 0 ? 'is-active' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
           polyline.Carousel-shape.is-active(points="25,25 20,20 15,25")
-        svg.Carousel-button.Carousel-button--right(width="40px" height="40px" viewBox="0 0 40 40")
-          path#right-3.Carousel-shape(:class="index === 3 ? 'is-active' : ''" d="M20,38.8C9.6,38.8,1.2,30.4,1.2,20S9.6,1.2,20,1.2S38.8,9.6,38.8,20S30.4,38.8,20,38.8z")
-          path#right-0.Carousel-shape(:class="index === 0 ? 'is-active' : ''" d="M38.8,33.6H1.2L20,1.1L38.8,33.6z")
-          path#right-1.Carousel-shape(:class="index === 1 ? 'is-active' : ''" d="M20,1.2L38.8,20L20,38.8L1.2,20L20,1.2z")
-          path#right-2.Carousel-shape(:class="index === 2 ? 'is-active' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
+        svg.Carousel-button.Carousel-button--right(width="40px" height="40px" viewBox="0 0 40 40" @click="turnRight")
+          path#right-3.Carousel-shape.Carousel-shape--right(:class="index === 3 ? 'is-active' : ''" d="M20,38.8C9.6,38.8,1.2,30.4,1.2,20S9.6,1.2,20,1.2S38.8,9.6,38.8,20S30.4,38.8,20,38.8z")
+          path#right-0.Carousel-shape.Carousel-shape--right(:class="index === 0 ? 'is-active' : ''" d="M38.8,33.6H1.2L20,1.1L38.8,33.6z")
+          path#right-1.Carousel-shape.Carousel-shape--right(:class="index === 1 ? 'is-active' : ''" d="M20,1.2L38.8,20L20,38.8L1.2,20L20,1.2z")
+          path#right-2.Carousel-shape.Carousel-shape--right(:class="index === 2 ? 'is-active' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
           polyline.Carousel-shape.is-active(points="25,25 20,20 15,25")
       .Carousel-content
         router-link.Carousel-item(v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ name: 'pocketcare' }")
@@ -26,6 +26,9 @@
 </template>
 
 <script>
+const kute = require("kute.js")
+require("kute.js/kute-svg")
+
 export default {
   data() {
     return {
@@ -39,10 +42,24 @@ export default {
   methods: {
     modulo: (n, m) => {
       return ((n % m) + m) % m;
+    },
+    turnLeft: function() {
+      const tweenLeft = kute.to('.Carousel-shape--left.is-active', { path: `#left-${this.modulo(this.range - 1, 4) }` })
+      const tweenRight = kute.to(`.Carousel-shape--right.is-active`, { path: `#right-${this.modulo(this.range - 1, 4) }` })
+      tweenLeft.start()
+      tweenRight.start()
+    },
+    turnRight: function() {
+      const tweenLeft = kute.to('.Carousel-shape--left.is-active', { path: `#left-${this.modulo(this.range + 1, 4) }` })
+      const tweenRight = kute.to(`.Carousel-shape--right.is-active`, { path: `#right-${this.modulo(this.range + 1, 4) }` })
+      tweenLeft.start()
+      tweenRight.start()
     }
   },
   beforeMount() {
     this.index = this.range
+  },
+  mounted() {
   }
 }
 </script>
