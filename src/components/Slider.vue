@@ -8,11 +8,11 @@
   .Slider-content(v-if="mockup")
     img.Slider-mockup(draggable="false" :src="getImage(mockup)")
     .Slider-images
-      img.Slider-image(v-for="image in images" :src="getImage(image)")
+      img.Slider-image.Shadow--image(v-for="image in images" :src="getImage(image)")
   .Slider-button.Slider-button--hidden(v-if="mockup")
     .Push
   .Slider-images(v-else)
-    img.Slider-image(v-for="image in images" :src="getImage(image)")
+    img.Slider-image.Shadow(v-for="image in images" :src="getImage(image)")
 </template>
 
 <script>
@@ -81,7 +81,7 @@ export default {
               setTimeout(() => {
                 this.elements[i].style.opacity = '1'
                 this.isClicked = false
-              }, this.duration)
+              }, this.duration / 2)
             }, this.duration)
           } else {
             this.elements[i].style.zIndex = '10'
