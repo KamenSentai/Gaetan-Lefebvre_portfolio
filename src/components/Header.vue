@@ -8,9 +8,9 @@ header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
           .Header-stripe
           .Header-stripe
         .Header-tree
-          router-link.Header-branch(:to="{ name: 'home', params: sendData() }") Home
-          router-link.Header-branch(:to="{ name: 'projects', params: sendData() }") Projects
-          router-link.Header-branch(:to="{ name: 'about', params: sendData() }") About
+          router-link.Header-branch(v-bind:class="route === 'home' ? `is-active--${color || data.colors[range]}` : ''" :to="{ name: 'home', params: sendData() }") Home
+          router-link.Header-branch(v-bind:class="route === 'projects' ? `is-active--${color || data.colors[range]}` : ''" :to="{ name: 'projects', params: sendData() }") Projects
+          router-link.Header-branch(v-bind:class="route === 'about' ? `is-active--${color || data.colors[range]}` : ''" :to="{ name: 'about', params: sendData() }") About
           .Header-branch.Header-branch--more
             a(href="#") LinkedIn
             a(href="#") Behance
@@ -54,7 +54,8 @@ export default {
     return {
       range: 0,
       isNavigating: false,
-      isToggable: true
+      isToggable: true,
+      route: ''
     }
   },
   props: [
@@ -108,6 +109,7 @@ export default {
   },
   beforeMount() {
     if (this.index && this.index >= 0) this.range = this.index
+    this.route = this.$router.currentRoute.name
   },
   mounted() {
     const _headerScrollable = this.$el.querySelector('.Header-scrollable')
@@ -425,6 +427,14 @@ export default {
       font-weight: 300;
       text-transform: uppercase;
       letter-spacing: .125em;
+    }
+
+    &.is-active {
+      @each $key, $value in $colors {
+        &--#{$key} {
+          color: $value;
+        }
+      }
     }
   }
 
