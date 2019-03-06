@@ -134,8 +134,10 @@ export default {
       const _layersDurationDelay = parseFloat(_layersStyle.transitionDuration) + parseFloat(_layersStyle.transitionDelay)
       const timeoutDelay = Math.max(_shapeDurationDelay, _layersDurationDelay) * 1000
 
-      const scrollJumbotron = () => {
-        this.range = (this.range + 1) % this.data.colors.length
+      const scrollJumbotron = event => {
+        if (event.deltaY < 0) this.range = this.modulo(this.range - 1, this.data.colors.length)
+        else if (event.deltaY > 0) this.range = this.modulo(this.range + 1, this.data.colors.length)
+
         _headerScrollable.removeEventListener('wheel', scrollJumbotron)
 
         setTimeout(() => {
