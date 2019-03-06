@@ -22,8 +22,8 @@ header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
           ) About
           .Header-branch.Header-branch--more
             a(href="#") LinkedIn
-            a(href="#") Behance
-            a(href="#") Dribble
+            a(href="#") Dribbble
+            a(href="#") Instagram
     router-link.Header-logo(v-bind:class="isNavigating ? 'is-toggled' : ''" :to="{ name: 'home', params: sendData() }")
       Logo(:color="color || data.colors[range]")
     ul.Header-navbar

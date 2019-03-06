@@ -58,7 +58,7 @@
       li.Hero-link
         a(href="#" title="LinkedIn") LinkedIn
       li.Hero-link
-        a(href="#" title="Twitter") Twitter
+        a(href="#" title="Dribbble") Dribbble
       li.Hero-link
         a(href="#" title="Instagram") Instagram
       li.Hero-link(v-bind:class="`Text--${data.colors[range]}`")
