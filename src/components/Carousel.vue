@@ -174,6 +174,7 @@ export default {
     color: $dark;
     font-size: 12rem;
     font-weight: 700;
+    text-transform: uppercase;
     white-space: nowrap;
   }
 
