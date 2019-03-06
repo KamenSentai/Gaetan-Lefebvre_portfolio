@@ -19,12 +19,32 @@
       .Carousel-content
         router-link.Carousel-item(v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ name: 'pocketcare' }")
           img.Carousel-image(src="../assets/images/Menu/pocketcare.png" alt="Pocketcare")
+        p.Carousel-label
+          span.Carousel-title Pocketcare
+          span.Carousel-subtitle
+            span.Text--bold School project
+            span.Text--light &nbsp;- 2017
         router-link.Carousel-item(v-bind:class="`Carousel-item--${modulo(range - 1, 4)}`" :to="{ name: 'tesla' }")
           img.Carousel-image(src="../assets/images/Menu/tesla.png" alt="Tesla")
+        p.Carousel-label
+          span.Carousel-title Tesla
+          span.Carousel-subtitle
+            span.Text--bold School project
+            span.Text--light &nbsp;- 2018
         router-link.Carousel-item(v-bind:class="`Carousel-item--${modulo(range - 2, 4)}`" :to="{ name: 'buddy-buddy' }")
           img.Carousel-image(src="../assets/images/Menu/buddy-buddy.png" alt="Buddy Buddy")
+        p.Carousel-label
+          span.Carousel-title Buddy Buddy
+          span.Carousel-subtitle
+            span.Text--bold Internship
+            span.Text--light &nbsp;- 2018
         router-link.Carousel-item(v-bind:class="`Carousel-item--${modulo(range - 3, 4)}`" :to="{ name: 'personal' }")
           img.Carousel-image(src="../assets/images/Menu/personal.png" alt="Personal")
+        p.Carousel-label
+          span.Carousel-title Personal
+          span.Carousel-subtitle
+            span.Text--bold Discovery
+            span.Text--light &nbsp;- 2016/2018
 </template>
 
 <script>
@@ -73,13 +93,14 @@ export default {
 @import '../styles/tools/functions';
 
 .Carousel {
+  $rootCarousel: &;
+
   width: 100%;
   height: 100%;
 
   &-container {
     position: relative;
     width: 100%;
-    height: 1px;
     margin-top: $margin-b;
 
     &::before {
@@ -112,7 +133,11 @@ export default {
     &--0 {
       left: 50%;
       opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
+      transform: translate(-50%, -50%) scale(.75);
+
+      + #{$rootCarousel}-label {
+        opacity: 1;
+      }
     }
 
     &--1 {
@@ -129,6 +154,31 @@ export default {
       left: 100%;
       transform: translate(-50%, -50%) scale(0);
     }
+  }
+
+  &-label {
+    position: fixed;
+    left: 50%;
+    bottom: - $margin-b - $margin-s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity $easing;
+    user-select: none;
+  }
+
+  &-title {
+    margin-bottom: $margin-t;
+    color: $dark;
+    font-size: 12rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  &-subtitle {
+    font-size: 2rem;
   }
 
   &-buttons {
