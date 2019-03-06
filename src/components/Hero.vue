@@ -261,7 +261,7 @@ export default {
     margin-bottom: $margin-t;
     font-size: 4.5rem;
     font-weight: 700;
-    letter-spacing: .075em;
+    letter-spacing: .0625em;
     line-height: 1.125em;
 
     @media (max-width: #{grid-media(10)}) {
