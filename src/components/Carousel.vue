@@ -109,6 +109,10 @@ export default {
   width: 100%;
   height: 100%;
 
+  @media (max-height: #{grid-media(7)}) and (min-width: #{grid-media(4)}) and (max-width: #{grid-media(6)}) {
+    // background-color: red;
+  }
+
   &-container {
     position: relative;
     width: 100%;
@@ -134,11 +138,19 @@ export default {
       margin-top: $margin-b;
     }
 
-    @media (max-height: #{grid-media(6)}) {
+    @media (max-height: #{grid-media(8)}) and (min-width: #{grid-media(6)}) {
       margin-top: $margin-l;
     }
 
-    @media (max-height: #{grid-media(4.5)}) {
+    @media (max-height: #{grid-media(7)}) and (max-width: #{grid-media(6)}) {
+      margin-top: $margin-l + $margin-t;
+    }
+
+    @media (max-height: #{grid-media(6)}) and (max-width: #{grid-media(6)}) {
+      margin-top: $margin-l;
+    }
+
+    @media (max-height: #{grid-media(4.5)}) and (min-width: #{grid-media(6)}) {
       margin-top: $margin-m;
     }
   }
@@ -160,7 +172,7 @@ export default {
       opacity: 1;
       transform: translate(-50%, -50%) scale(.75);
 
-      @media (max-width: #{grid-media(6)}) and (max-height: #{grid-media(6)}) {
+      @media (max-width: #{grid-media(6)}) and (max-height: #{grid-media(6.5)}) {
         transform: translate(-50%, -50%) scale(.5);
       }
 
@@ -310,7 +322,7 @@ export default {
       transform: translateY(-50%) rotateZ(90deg);
     }
 
-    @media (max-width: #{grid-media(6)}) and (max-height: #{grid-media(6)}) {
+    @media (max-width: #{grid-media(6)}) and (max-height: #{grid-media(6.5)}) {
       width: 100%;
       margin-left: 0;
     }
@@ -355,6 +367,18 @@ export default {
     }
 
     @media (max-height: #{grid-media(8)}) {
+      bottom: - $margin-b - $margin-m - $margin-s + $margin-n;
+    }
+
+    @media (max-height: #{grid-media(7.5)}) {
+      bottom: - $margin-b - $margin-m + $margin-t;
+    }
+
+    @media (max-height: #{grid-media(6.5)}) {
+      bottom: - $margin-b - $margin-m + $margin-r;
+    }
+
+    @media (max-height: #{grid-media(6)}) {
       display: none;
     }
   }
