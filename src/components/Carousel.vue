@@ -138,7 +138,7 @@ export default {
       margin-top: $margin-b;
     }
 
-    @media (max-height: #{grid-media(5.5)}) {
+    @media (max-height: #{grid-media(6)}) {
       margin-top: $margin-l;
     }
 
@@ -252,12 +252,13 @@ export default {
       font-size: 8rem;
     }
 
-    @media (max-height: #{grid-media(7)}) {
+    @media (max-height: #{grid-media(7.5)}) {
       position: absolute;
       color: $white;
       left: 50%;
       bottom: 100%;
-      transform: translate(-50%, calc(50% + #{$margin-t - $margin-b - $margin-m}));
+      margin-bottom: 0;
+      transform: translate(-50%, calc(50% + #{- $margin-b - $margin-m}));
     }
 
     @media (max-height: #{grid-media(7)}) and (max-width: #{grid-media(8)}) and (min-width: #{grid-media(6)}) {
@@ -270,7 +271,8 @@ export default {
       bottom: 100%;
       color: $white;
       font-size: 6rem;
-      transform: translate(-50%, calc(50% + #{$margin-t - $margin-b - $margin-m}));
+      margin-bottom: 0;
+      transform: translate(-50%, calc(50% + #{- $margin-b - $margin-m}));
     }
 
     @media (max-width: #{grid-media(4)}) {
@@ -282,6 +284,15 @@ export default {
     font-size: 2rem;
 
     @media (max-height: #{grid-media(7.5)}) {
+      height: 0;
+      margin-top: - $margin-m;
+    }
+
+    @media (max-height: #{grid-media(6.5)}) {
+      margin-top: - $margin-m - $margin-t;
+    }
+
+    @media (max-height: #{grid-media(5)}) {
       display: none;
     }
   }
