@@ -2,6 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueMeta from 'vue-meta'
 
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
 import App from './App.vue'
 
 Vue.use(VueRouter)
@@ -60,6 +63,12 @@ fetch('/data/texts.json')
   })
 
   new Vue({
+    created () {
+      AOS.init({
+        disable: 'mobile',
+        once: true
+      })
+    },
     render: h => h(App),
     router
   }).$mount('#App')
