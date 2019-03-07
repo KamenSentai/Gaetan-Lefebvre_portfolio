@@ -109,6 +109,10 @@ export default {
   width: 100%;
   height: 100%;
 
+  @media (max-width: #{grid-media(4)}) and (max-height: #{grid-media(6.5)}) {
+    // background-color: red;
+  }
+
   &-container {
     position: relative;
     width: 100%;
@@ -174,6 +178,10 @@ export default {
 
       @media (max-width: #{grid-media(4)}) {
         transform: translate(-50%, -50%) scale(.5);
+      }
+
+      @media (max-width: #{grid-media(4)}) and (max-height: #{grid-media(6.5)}) {
+        transform: translate(-50%, -50%) scale(.375);
       }
 
       + #{$rootCarousel}-label {
@@ -265,7 +273,7 @@ export default {
       transform: translate(-50%, calc(50% + #{- $margin-b - $margin-m}));
     }
 
-    @media (max-height: #{grid-media(7)}) and (max-width: #{grid-media(8)}) and (min-width: #{grid-media(6)}) {
+    @media (max-height: #{grid-media(7.5)}) and (max-width: #{grid-media(8)}) and (min-width: #{grid-media(6)}) {
       font-size: 5rem;
     }
 
