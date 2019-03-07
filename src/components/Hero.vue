@@ -420,6 +420,8 @@ export default {
       width: $margin-t;
       height: $bar-size;
       background-color: $white;
+      transform-origin: 100% 0;
+      animation: scrollbar-sliding 2.5s linear infinite;
     }
 
     &--data {
