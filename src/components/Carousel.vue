@@ -109,10 +109,6 @@ export default {
   width: 100%;
   height: 100%;
 
-  @media (max-height: #{grid-media(7)}) and (min-width: #{grid-media(4)}) and (max-width: #{grid-media(6)}) {
-    // background-color: red;
-  }
-
   &-container {
     position: relative;
     width: 100%;
@@ -150,7 +146,7 @@ export default {
       margin-top: $margin-l;
     }
 
-    @media (max-height: #{grid-media(4.5)}) and (min-width: #{grid-media(6)}) {
+    @media (max-height: #{grid-media(4.5)}) {
       margin-top: $margin-m;
     }
   }
