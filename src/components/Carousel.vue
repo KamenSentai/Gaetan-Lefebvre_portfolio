@@ -285,7 +285,7 @@ export default {
 
     @media (max-height: #{grid-media(7.5)}) {
       height: 0;
-      margin-top: - $margin-m;
+      margin-top: - $margin-r;
     }
 
     @media (max-height: #{grid-media(6.5)}) {
