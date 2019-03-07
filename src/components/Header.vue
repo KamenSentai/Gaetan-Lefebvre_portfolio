@@ -20,6 +20,7 @@ header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
             v-bind:class="route === 'about' ? `is-active--${color || data.colors[range]}` : ''"
             :to="{ name: 'about', params: sendData() }"
           ) About
+          a(href="mailto:gaetan.lefebvre@hetic.net").Header-branch Contact
           .Header-branch.Header-branch--more
             a(href="#") LinkedIn
             a(href="#") Dribbble
@@ -328,7 +329,7 @@ export default {
         opacity: 1;
         transform: none;
 
-        @for $i from 1 through 4 {
+        @for $i from 1 through 5 {
           &:nth-child(#{$i}) {
             transition-delay: 1s + $i * .125s;
           }
