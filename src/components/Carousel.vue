@@ -1,60 +1,60 @@
 <template lang="pug">
-  .Carousel
-    .Carousel-container
-      .Carousel-buttons
-        svg.Carousel-button.Carousel-button--left(width="40px" height="40px" viewBox="0 0 40 40" @click="turnLeft")
-          path#left-1.Carousel-shape.Carousel-shape--left(:class="index === 1 ? 'is-chosen' : ''" d="M20,38.8C9.6,38.8,1.2,30.4,1.2,20S9.6,1.2,20,1.2S38.8,9.6,38.8,20S30.4,38.8,20,38.8z")
-          path#left-2.Carousel-shape.Carousel-shape--left(:class="index === 2 ? 'is-chosen' : ''" d="M38.8,33.6H1.2L20,1.1L38.8,33.6z")
-          path#left-3.Carousel-shape.Carousel-shape--left(:class="index === 3 ? 'is-chosen' : ''" d="M20,1.2L38.8,20L20,38.8L1.2,20L20,1.2z")
-          path#left-0.Carousel-shape.Carousel-shape--left(:class="index === 0 ? 'is-chosen' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
-          path#left.Carousel-shape.is-active
-          polyline.Carousel-shape.is-active(points="25,22.5 20,17.5 15,22.5")
-        svg.Carousel-button.Carousel-button--right(width="40px" height="40px" viewBox="0 0 40 40" @click="turnRight")
-          path#right-3.Carousel-shape.Carousel-shape--right(:class="index === 3 ? 'is-chosen' : ''" d="M20,38.8C9.6,38.8,1.2,30.4,1.2,20S9.6,1.2,20,1.2S38.8,9.6,38.8,20S30.4,38.8,20,38.8z")
-          path#right-0.Carousel-shape.Carousel-shape--right(:class="index === 0 ? 'is-chosen' : ''" d="M38.8,33.6H1.2L20,1.1L38.8,33.6z")
-          path#right-1.Carousel-shape.Carousel-shape--right(:class="index === 1 ? 'is-chosen' : ''" d="M20,1.2L38.8,20L20,38.8L1.2,20L20,1.2z")
-          path#right-2.Carousel-shape.Carousel-shape--right(:class="index === 2 ? 'is-chosen' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
-          path#right.Carousel-shape.is-active
-          polyline.Carousel-shape.is-active(points="25,22.5 20,17.5 15,22.5")
-      .Carousel-content
-        router-link.Carousel-item(v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ name: 'pocketcare' }")
-          img.Carousel-image(src="../assets/images/Menu/pocketcare.png" alt="Pocketcare")
-        p.Carousel-label
-          span.Carousel-title Pocketcare
-          span.Carousel-subtitle
-            span.Text--bold School project
-            span.Text--light &nbsp;- 2017
-        router-link.Carousel-item(v-bind:class="`Carousel-item--${modulo(range - 1, 4)}`" :to="{ name: 'tesla' }")
-          img.Carousel-image(src="../assets/images/Menu/tesla.png" alt="Tesla")
-        p.Carousel-label
-          span.Carousel-title Tesla
-          span.Carousel-subtitle
-            span.Text--bold School project
-            span.Text--light &nbsp;- 2018
-        router-link.Carousel-item(v-bind:class="`Carousel-item--${modulo(range - 2, 4)}`" :to="{ name: 'buddy-buddy' }")
-          img.Carousel-image(src="../assets/images/Menu/buddy-buddy.png" alt="Buddy Buddy")
-        p.Carousel-label
-          span.Carousel-title Buddy Buddy
-          span.Carousel-subtitle
-            span.Text--bold Internship
-            span.Text--light &nbsp;- 2018
-        router-link.Carousel-item(v-bind:class="`Carousel-item--${modulo(range - 3, 4)}`" :to="{ name: 'personal' }")
-          img.Carousel-image(src="../assets/images/Menu/personal.png" alt="Personal")
-        p.Carousel-label
-          span.Carousel-title Personal
-          span.Carousel-subtitle
-            span.Text--bold Discovery
-            span.Text--light &nbsp;- 2016/2018
-        .Carousel-progress
-          p.Carousel-indicator Swipe
-          svg.Carousel-step(:class="range === 0 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
-            path(d="M38.8,15.8l-7.2,21.9H8.4L1.2,15.8L20,2.2L38.8,15.8z")
-          svg.Carousel-step(:class="range === 1 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
-            path(d="M37.8,37.8H2.2V2.2h35.4L37.8,37.8L37.8,37.8z")
-          svg.Carousel-step(:class="range === 2 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
-            path(d="M38.8,37.8H1.2L20,2.2L38.8,37.8z")
-          svg.Carousel-step(:class="range === 3 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
-            path(d="M20,37.8c-9.8,0-17.8-7.9-17.8-17.8S10.2,2.2,20,2.2S37.8,10.2,37.8,20S29.8,37.8,20,37.8z")
+.Carousel
+  .Carousel-container
+    .Carousel-buttons
+      svg.Carousel-button.Carousel-button--left(width="40px" height="40px" viewBox="0 0 40 40" @click="turnLeft")
+        path#left-1.Carousel-shape.Carousel-shape--left(:class="index === 1 ? 'is-chosen' : ''" d="M20,38.8C9.6,38.8,1.2,30.4,1.2,20S9.6,1.2,20,1.2S38.8,9.6,38.8,20S30.4,38.8,20,38.8z")
+        path#left-2.Carousel-shape.Carousel-shape--left(:class="index === 2 ? 'is-chosen' : ''" d="M38.8,33.6H1.2L20,1.1L38.8,33.6z")
+        path#left-3.Carousel-shape.Carousel-shape--left(:class="index === 3 ? 'is-chosen' : ''" d="M20,1.2L38.8,20L20,38.8L1.2,20L20,1.2z")
+        path#left-0.Carousel-shape.Carousel-shape--left(:class="index === 0 ? 'is-chosen' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
+        path#left.Carousel-shape.is-active
+        polyline.Carousel-shape.is-active(points="25,22.5 20,17.5 15,22.5")
+      svg.Carousel-button.Carousel-button--right(width="40px" height="40px" viewBox="0 0 40 40" @click="turnRight")
+        path#right-3.Carousel-shape.Carousel-shape--right(:class="index === 3 ? 'is-chosen' : ''" d="M20,38.8C9.6,38.8,1.2,30.4,1.2,20S9.6,1.2,20,1.2S38.8,9.6,38.8,20S30.4,38.8,20,38.8z")
+        path#right-0.Carousel-shape.Carousel-shape--right(:class="index === 0 ? 'is-chosen' : ''" d="M38.8,33.6H1.2L20,1.1L38.8,33.6z")
+        path#right-1.Carousel-shape.Carousel-shape--right(:class="index === 1 ? 'is-chosen' : ''" d="M20,1.2L38.8,20L20,38.8L1.2,20L20,1.2z")
+        path#right-2.Carousel-shape.Carousel-shape--right(:class="index === 2 ? 'is-chosen' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
+        path#right.Carousel-shape.is-active
+        polyline.Carousel-shape.is-active(points="25,22.5 20,17.5 15,22.5")
+    .Carousel-content
+      router-link.Carousel-item(v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ name: 'pocketcare' }")
+        img.Carousel-image(src="../assets/images/Menu/pocketcare.png" alt="Pocketcare")
+      p.Carousel-label
+        span.Carousel-title Pocketcare
+        span.Carousel-subtitle
+          span.Text--bold School project
+          span.Text--light &nbsp;- 2017
+      router-link.Carousel-item(v-bind:class="`Carousel-item--${modulo(range - 1, 4)}`" :to="{ name: 'tesla' }")
+        img.Carousel-image(src="../assets/images/Menu/tesla.png" alt="Tesla")
+      p.Carousel-label
+        span.Carousel-title Tesla
+        span.Carousel-subtitle
+          span.Text--bold School project
+          span.Text--light &nbsp;- 2018
+      router-link.Carousel-item(v-bind:class="`Carousel-item--${modulo(range - 2, 4)}`" :to="{ name: 'buddy-buddy' }")
+        img.Carousel-image(src="../assets/images/Menu/buddy-buddy.png" alt="Buddy Buddy")
+      p.Carousel-label
+        span.Carousel-title Buddy Buddy
+        span.Carousel-subtitle
+          span.Text--bold Internship
+          span.Text--light &nbsp;- 2018
+      router-link.Carousel-item(v-bind:class="`Carousel-item--${modulo(range - 3, 4)}`" :to="{ name: 'personal' }")
+        img.Carousel-image(src="../assets/images/Menu/personal.png" alt="Personal")
+      p.Carousel-label
+        span.Carousel-title Personal
+        span.Carousel-subtitle
+          span.Text--bold Discovery
+          span.Text--light &nbsp;- 2016/2018
+      .Carousel-progress
+        p.Carousel-indicator Swipe
+        svg.Carousel-step(:class="range === 0 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
+          path(d="M38.8,15.8l-7.2,21.9H8.4L1.2,15.8L20,2.2L38.8,15.8z")
+        svg.Carousel-step(:class="range === 1 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
+          path(d="M37.8,37.8H2.2V2.2h35.4L37.8,37.8L37.8,37.8z")
+        svg.Carousel-step(:class="range === 2 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
+          path(d="M38.8,37.8H1.2L20,2.2L38.8,37.8z")
+        svg.Carousel-step(:class="range === 3 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
+          path(d="M20,37.8c-9.8,0-17.8-7.9-17.8-17.8S10.2,2.2,20,2.2S37.8,10.2,37.8,20S29.8,37.8,20,37.8z")
 </template>
 
 <script>
