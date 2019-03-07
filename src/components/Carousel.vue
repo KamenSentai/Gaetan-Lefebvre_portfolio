@@ -130,6 +130,7 @@ export default {
     position: relative;
     width: 100%;
     margin-top: $margin-g;
+    transition: margin-top $easing;
 
     &::before {
       content: '';
@@ -178,6 +179,14 @@ export default {
         margin-bottom: 0;
         transform: translate(-50%, calc(50% + #{- $margin-b - $margin-m}));
 
+        @media (max-width: #{grid-media(10)}) {
+          font-size: 10rem;
+        }
+
+        @media (max-width: #{grid-media(8)}) {
+          font-size: 8rem;
+        }
+
         @media (max-width: #{grid-media(6)}) {
           font-size: 5rem;
         }
@@ -188,11 +197,30 @@ export default {
       }
 
       #{$rootCarousel}-buttons {
-        background-color: red;
         transform: translate(-50%, -50%) rotateZ(90deg);
 
         @media (min-width: #{grid-media(6)}) {
           width: grid(6) * 1.5;
+        }
+
+        @media (min-height: #{grid-media(8.5)}) {
+          width: grid(10);
+        }
+
+        @media (max-height: #{grid-media(7.5)}) {
+          width: grid(6) * 1.25;
+        }
+
+        @media (max-height: #{grid-media(6.5)}) {
+          width: grid(6);
+        }
+
+        @media (max-height: #{grid-media(6.5)}) {
+          width: grid(4);
+        }
+
+        @media (max-height: #{grid-media(4.5)}) {
+          opacity: 0;
         }
 
         > * {
@@ -293,6 +321,8 @@ export default {
 
   &-image {
     user-select: none;
+    transition: transform $easing;
+    will-change: transform;
 
     @media (max-height: #{grid-media(4)}) {
       transform: scale(.75);
