@@ -46,6 +46,7 @@
             span.Text--bold Discovery
             span.Text--light &nbsp;- 2016/2018
         .Carousel-progress
+          p.Carousel-indicator Swipe
           svg.Carousel-step(:class="range === 0 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
             path(d="M38.8,15.8l-7.2,21.9H8.4L1.2,15.8L20,2.2L38.8,15.8z")
           svg.Carousel-step(:class="range === 1 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
@@ -107,6 +108,10 @@ export default {
   width: 100%;
   height: 100%;
 
+  @media (max-width: #{grid-media(6)}) {
+    // background-color: red;
+  }
+
   &-container {
     position: relative;
     width: 100%;
@@ -120,7 +125,16 @@ export default {
       width: calc(100vw + 100vh);
       height: .1rem;
       background-color: $dark;
+      transform-origin: 50% 50%;
       transform: translate(-50%, -50%);
+
+      @media (max-width: #{grid-media(6)}) {
+        transform: translate(-50%, -50%) rotateZ(90deg);
+      }
+    }
+
+    @media (max-height: #{grid-media(9)}) {
+      margin-top: $margin-b;
     }
   }
 
@@ -176,10 +190,15 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    white-space: nowrap;
     transform: translateX(-50%);
     opacity: 0;
     transition: opacity $easing;
     user-select: none;
+
+    @media (max-height: #{grid-media(8.5)}) {
+      bottom: - $margin-b - $margin-m;
+    }
   }
 
   &-title {
@@ -189,7 +208,20 @@ export default {
     font-weight: 700;
     letter-spacing: .0625em;
     text-transform: uppercase;
-    white-space: nowrap;
+
+    @media (max-width: #{grid-media(8)}) {
+      font-size: 6rem;
+    }
+
+    @media (max-height: #{grid-media(8.5)}) {
+      font-size: 8rem;
+    }
+
+    @media (max-width: #{grid-media(6)}) {
+      color: $white;
+      font-size: 6rem;
+      transform: translateY(- #{$margin-b + $margin-s - $margin-n});
+    }
   }
 
   &-subtitle {
@@ -203,7 +235,17 @@ export default {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    transform-origin: 50% 50%;
     transform: translateY(-50%);
+    user-select: none;
+
+    @media (max-width: #{grid-media(6)}) {
+      $extraSize: $margin-r;
+
+      width: calc(100% + #{$extraSize});
+      margin-left: - $extraSize / 2;
+      transform: translateY(-50%) rotateZ(90deg);
+    }
   }
 
   &-button {
@@ -234,6 +276,39 @@ export default {
     left: 50%;
     bottom: - $margin-b - $margin-l - $margin-s;
     transform: translate(-50%, 100%);
+
+    @media (max-height: #{grid-media(8.5)}) {
+      bottom: - $margin-b - $margin-m - $margin-s;
+    }
+
+    @media (max-height: #{grid-media(8)}) {
+      display: none;
+    }
+  }
+
+  &-indicator {
+    position: relative;
+    display: none;
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: .5em;
+    text-transform: uppercase;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: -1;
+      width: 100%;
+      height: 300%;
+      background-color: $black;
+      transform: translate(-50%, -50%);
+    }
+
+    @media (max-width: #{grid-media(6)}) {
+      display: block;
+    }
   }
 
   &-step {
@@ -249,6 +324,10 @@ export default {
     &.is-active {
       fill: $white;
       transform: scale(1.5);
+    }
+
+    @media (max-width: #{grid-media(6)}) {
+      display: none;
     }
   }
 }
