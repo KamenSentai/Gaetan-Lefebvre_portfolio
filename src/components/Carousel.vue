@@ -19,32 +19,44 @@
     .Carousel-content
       router-link.Carousel-item(v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ name: 'pocketcare' }")
         img.Carousel-image(src="../assets/images/Menu/pocketcare.png" alt="Pocketcare")
-      p.Carousel-label
+      p.Carousel-label(v-if="parseInt(slide) === 0")
         span.Carousel-title Pocketcare
         span.Carousel-subtitle
           span.Text--bold School project
           span.Text--light &nbsp;- 2017
+          span.Carousel-additional
+            span.Text--bold Skills :
+            span.Text--light &nbsp;Branding, Illustration, Interactive design
       router-link.Carousel-item(v-bind:class="`Carousel-item--${modulo(range - 1, 4)}`" :to="{ name: 'tesla' }")
         img.Carousel-image(src="../assets/images/Menu/tesla.png" alt="Tesla")
-      p.Carousel-label
+      p.Carousel-label(v-if="parseInt(slide) === 1")
         span.Carousel-title Tesla
         span.Carousel-subtitle
           span.Text--bold School project
           span.Text--light &nbsp;- 2018
+          span.Carousel-additional
+            span.Text--bold Skills :
+            span.Text--light &nbsp;Branding, Illustration, Interactive design
       router-link.Carousel-item(v-bind:class="`Carousel-item--${modulo(range - 2, 4)}`" :to="{ name: 'buddy-buddy' }")
         img.Carousel-image(src="../assets/images/Menu/buddy-buddy.png" alt="Buddy Buddy")
-      p.Carousel-label
+      p.Carousel-label(v-if="parseInt(slide) === 2")
         span.Carousel-title Buddy Buddy
         span.Carousel-subtitle
           span.Text--bold Internship
           span.Text--light &nbsp;- 2018
+          span.Carousel-additional
+            span.Text--bold Skills :
+            span.Text--light &nbsp;Branding, Illustration, Interactive design
       router-link.Carousel-item(v-bind:class="`Carousel-item--${modulo(range - 3, 4)}`" :to="{ name: 'personal' }")
         img.Carousel-image(src="../assets/images/Menu/personal.png" alt="Personal")
-      p.Carousel-label
+      p.Carousel-label(v-if="parseInt(slide) === 3")
         span.Carousel-title Personal
         span.Carousel-subtitle
           span.Text--bold Discovery
           span.Text--light &nbsp;- 2016/2018
+          span.Carousel-additional
+            span.Text--bold Skills :
+            span.Text--light &nbsp;Animation, Illustration, Interactive design
       .Carousel-progress(v-if="!slide")
         p.Carousel-indicator Swipe
         svg.Carousel-step(:class="range === 0 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
@@ -110,6 +122,21 @@ export default {
     if (this.slide) {
       const tween = kute.to(`#right`, { path: `#right-${this.modulo(this.slide - 1, 4) }` })
       tween.start()
+
+      const _subtitleCarousel = this.$el.querySelector('.Carousel-subtitle')
+      const _additionalCarousel = this.$el.querySelector('.Carousel-additional')
+
+      setTimeout(() => {
+        _additionalCarousel.style.opacity = '1'
+
+        const subtitleWidth = _subtitleCarousel.getBoundingClientRect().width
+        const additionalWidth = _additionalCarousel.getBoundingClientRect().width
+        const gapWidth = _additionalCarousel.getBoundingClientRect().left - _subtitleCarousel.getBoundingClientRect().left - subtitleWidth
+
+        const translateWidth = - (additionalWidth + gapWidth) / 2
+
+        _subtitleCarousel.style.transform = `translateX(${translateWidth}px)`
+      }, 500);
     }
   }
 }
@@ -388,8 +415,10 @@ export default {
   }
 
   &-subtitle {
+    position: relative;
     font-size: 2rem;
     transition: all $easing;
+    will-change: transform;
 
     @media (max-height: #{grid-media(7.5)}) {
       height: 0;
@@ -403,6 +432,14 @@ export default {
     @media (max-height: #{grid-media(5)}) {
       display: none;
     }
+  }
+
+  &-additional {
+    position: absolute;
+    left: calc(100% + #{$margin-t});
+    opacity: 0;
+    transition: opacity $easing;
+    will-change: opacity;
   }
 
   &-buttons {
