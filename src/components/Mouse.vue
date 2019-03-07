@@ -26,20 +26,20 @@ export default {
     ) {
       this.className = 'is-hidden'
     } else {
+      const _body = document.body
       let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
       let position = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
 
       window.addEventListener('mousemove', event => {
-        mouse.x = event.clientX
-        mouse.y = event.clientY
-
-        _mousePointer.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`
+        mouse.x = event.clientX - _body.getBoundingClientRect().left
+        mouse.y = event.clientY - _body.getBoundingClientRect().top
       })
 
       const animateCircle = () => {
         position.x += (mouse.x - position.x) * .125
         position.y += (mouse.y - position.y) * .125
 
+        _mousePointer.style.transform = `translate(${mouse.x}px, ${mouse.y}px)`
         _mouseCircle.style.transform = `translate(${position.x}px, ${position.y}px)`
         window.requestAnimationFrame(animateCircle)
       }
