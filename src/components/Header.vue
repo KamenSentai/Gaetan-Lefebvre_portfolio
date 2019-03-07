@@ -153,7 +153,7 @@ export default {
       })
     }
 
-    if (_headerCarousel) {
+    if (_headerCarousel && !this.slide) {
       const _heroCarouselButtonLeft = this.$el.querySelector('.Carousel-button--left')
       const _heroCarouselButtonRight = this.$el.querySelector('.Carousel-button--right')
 

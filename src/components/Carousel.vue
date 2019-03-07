@@ -1,7 +1,7 @@
 <template lang="pug">
 .Carousel
   .Carousel-container(v-bind:class="slide ? 'Carousel-container--case' : ''")
-    .Carousel-buttons(v-if="!slide")
+    .Carousel-buttons
       svg.Carousel-button.Carousel-button--left(width="40px" height="40px" viewBox="0 0 40 40" @click="turnLeft")
         path#left-1.Carousel-shape.Carousel-shape--left(:class="index === 1 ? 'is-chosen' : ''" d="M20,38.8C9.6,38.8,1.2,30.4,1.2,20S9.6,1.2,20,1.2S38.8,9.6,38.8,20S30.4,38.8,20,38.8z")
         path#left-2.Carousel-shape.Carousel-shape--left(:class="index === 2 ? 'is-chosen' : ''" d="M38.8,33.6H1.2L20,1.1L38.8,33.6z")
@@ -151,6 +151,16 @@ export default {
             transform: translate(-50%, -50%) scale(.625);
           }
         }
+      }
+
+      #{$rootCarousel}-buttons {
+        // position: sticky;
+        // left: 50%;
+        // top: 50%;
+        // width: 100vh;
+        // width: calc(100% + #{$extraSize});
+        // margin-left: calc(- 100% - (#{grid(12)} - 100vh) / 2);
+        // transform: translate(-50%, -50%) rotateZ(90deg);
       }
     }
 
@@ -336,28 +346,27 @@ export default {
   &-buttons {
     position: absolute;
     top: 50%;
-    left: 0;
+    left: 50%;
     display: flex;
     justify-content: space-between;
     width: 100%;
     transform-origin: 50% 50%;
-    transform: translateY(-50%);
+    transform: translate(-50%, -50%);
+    transition: all $easing;
     user-select: none;
+    will-change: transform;
 
     @media (max-width: #{grid-media(6)}) {
       width: calc(100% + #{$extraSize});
-      margin-left: - $extraSize / 2;
-      transform: translateY(-50%) rotateZ(90deg);
+      transform: translate(-50%, -50%) rotateZ(90deg);
     }
 
     @media (max-width: #{grid-media(6)}) and (max-height: #{grid-media(6.5)}) {
       width: 100%;
-      margin-left: 0;
     }
 
     @media (max-width: #{grid-media(6)}) and (max-height: #{grid-media(5.5)}) and (min-width: #{grid-media(4)}) {
       width: calc(100% - #{$extraSize / 2});
-      margin-left: $extraSize / 4;
     }
   }
 
