@@ -327,7 +327,7 @@ export default {
       margin-left: 0;
     }
 
-    @media (max-width: #{grid-media(6)}) and (max-height: #{grid-media(4.25)}) and (min-width: #{grid-media(4)}) {
+    @media (max-width: #{grid-media(6)}) and (max-height: #{grid-media(5.5)}) and (min-width: #{grid-media(4)}) {
       width: calc(100% - #{$extraSize / 2});
       margin-left: $extraSize / 4;
     }
