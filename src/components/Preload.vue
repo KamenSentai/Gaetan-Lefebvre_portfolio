@@ -2,12 +2,18 @@
 .Preload
   .Preload-loader
   .Preload-loaded
+    Mouse
     transition(mode="out-in")
       router-view
 </template>
 
 <script>
+import Mouse from './Mouse';
+
 export default {
+  components: {
+    Mouse
+  }
 }
 </script>
 
