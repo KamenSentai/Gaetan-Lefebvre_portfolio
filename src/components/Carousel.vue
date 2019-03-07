@@ -178,6 +178,10 @@ export default {
         margin-bottom: 0;
         transform: translate(-50%, calc(50% + #{- $margin-b - $margin-m}));
 
+        @media (min-width: #{grid-media(10)}) {
+          font-size: 12rem;
+        }
+
         @media (max-width: #{grid-media(10)}) {
           font-size: 10rem;
         }
