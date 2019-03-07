@@ -16,14 +16,14 @@ export default {
     const _mousePointer = _mouse.querySelector('.Mouse-pointer')
     const _mouseCircle = _mouse.querySelector('.Mouse-circle')
 
-    if( navigator.userAgent.match(/Android/i)
+    if (navigator.userAgent.match(/Android/i)
     || navigator.userAgent.match(/webOS/i)
     || navigator.userAgent.match(/iPhone/i)
     || navigator.userAgent.match(/iPad/i)
     || navigator.userAgent.match(/iPod/i)
     || navigator.userAgent.match(/BlackBerry/i)
     || navigator.userAgent.match(/Windows Phone/i)
-    ){
+    ) {
       this.className = 'is-hidden'
     } else {
       let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
