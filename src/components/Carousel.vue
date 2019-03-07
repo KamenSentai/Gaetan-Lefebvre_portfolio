@@ -127,15 +127,33 @@ export default {
       const _additionalCarousel = this.$el.querySelector('.Carousel-additional')
 
       setTimeout(() => {
-        _additionalCarousel.style.opacity = '1'
+        const _additionalStyle = _additionalCarousel.currentStyle || window.getComputedStyle(_additionalCarousel)
+        const _subtitleWidth = _subtitleCarousel.getBoundingClientRect().width
 
-        const subtitleWidth = _subtitleCarousel.getBoundingClientRect().width
-        const additionalWidth = _additionalCarousel.getBoundingClientRect().width
-        const gapWidth = _additionalCarousel.getBoundingClientRect().left - _subtitleCarousel.getBoundingClientRect().left - subtitleWidth
+        let _additionalWidth = _additionalCarousel.getBoundingClientRect().width
+        let gapWidth = _additionalCarousel.getBoundingClientRect().left - _subtitleCarousel.getBoundingClientRect().left - _subtitleWidth
+        let translateWidth = - (_additionalWidth + gapWidth) / 2
 
-        const translateWidth = - (additionalWidth + gapWidth) / 2
-
-        _subtitleCarousel.style.transform = `translateX(${translateWidth}px)`
+        if (_additionalStyle.userSelect !== 'none') {
+          _additionalCarousel.style.opacity = '1'
+          _subtitleCarousel.style.transform = `translateX(${translateWidth}px)`
+        } else {
+          _additionalCarousel.style.opacity = '0'
+          _subtitleCarousel.style.transform = `none`
+        }
+        console.log(_additionalStyle.userSelect)
+        window.addEventListener('resize', () => {
+          if (_additionalStyle.userSelect !== 'none') {
+            _additionalWidth = _additionalCarousel.getBoundingClientRect().width
+            gapWidth = _additionalCarousel.getBoundingClientRect().left - _subtitleCarousel.getBoundingClientRect().left - _subtitleWidth
+            translateWidth = - (_additionalWidth + gapWidth) / 2
+            _additionalCarousel.style.opacity = '1'
+            _subtitleCarousel.style.transform = `translateX(${translateWidth}px)`
+          } else {
+            _additionalCarousel.style.opacity = '0'
+            _subtitleCarousel.style.transform = `none`
+          }
+        })
       }, 500);
     }
   }
@@ -184,6 +202,7 @@ export default {
 
       #{$rootCarousel}-item {
         &--0 {
+          transform-origin: 50% 25%;
           transform: translate(-50%, -50%);
 
           @media
@@ -223,6 +242,15 @@ export default {
 
         @media (max-width: #{grid-media(4)}) {
           font-size: 4rem;
+        }
+      }
+
+      #{$rootCarousel}-subtitle {
+        #{$rootCarousel}-additional {
+          user-select: auto;
+        @media (max-width: #{grid-media(8)}) {
+            user-select: none;
+          }
         }
       }
 
