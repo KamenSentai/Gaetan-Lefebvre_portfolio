@@ -255,6 +255,7 @@ export default {
     font-weight: 700;
     letter-spacing: .0625em;
     text-transform: uppercase;
+    pointer-events: none;
 
     @media (max-width: #{grid-media(8)}) {
       font-size: 6rem;
