@@ -154,17 +154,41 @@ export default {
           @media (max-width: #{grid-media(4)}) {
             transform: translate(-50%, -50%) scale(.625);
           }
+
+          @media (max-height: #{grid-media(6.5)}) {
+            transform: translate(-50%, -50%) scale(.75);
+          }
+        }
+      }
+
+      #{$rootCarousel}-title {
+        color: $white;
+        bottom: 100%;
+        margin-bottom: 0;
+        transform: translate(-50%, calc(50% + #{- $margin-b - $margin-m}));
+
+        @media (max-width: #{grid-media(6)}) {
+          font-size: 5rem;
+        }
+
+        @media (max-width: #{grid-media(4)}) {
+          font-size: 4rem;
         }
       }
 
       #{$rootCarousel}-buttons {
-        // position: sticky;
-        // left: 50%;
-        // top: 50%;
-        // width: 100vh;
-        // width: calc(100% + #{$extraSize});
-        // margin-left: calc(- 100% - (#{grid(12)} - 100vh) / 2);
-        // transform: translate(-50%, -50%) rotateZ(90deg);
+        background-color: red;
+        transform: translate(-50%, -50%) rotateZ(90deg);
+
+        @media (min-width: #{grid-media(6)}) {
+          width: grid(6) * 1.5;
+        }
+
+        > * {
+          &:first-child {
+            opacity: 0;
+          }
+        }
       }
     }
 
@@ -305,7 +329,7 @@ export default {
       font-size: 8rem;
     }
 
-    @media (max-height: #{grid-media(7.5)}) {
+    @media (max-height: #{grid-media(7.5)}), (max-width: #{grid-media(6)}) {
       color: $white;
       bottom: 100%;
       margin-bottom: 0;
@@ -314,14 +338,6 @@ export default {
 
     @media (max-height: #{grid-media(7.5)}) and (max-width: #{grid-media(8)}) and (min-width: #{grid-media(6)}) {
       font-size: 5rem;
-    }
-
-    @media (max-width: #{grid-media(6)}) {
-      bottom: 100%;
-      color: $white;
-      font-size: 6rem;
-      margin-bottom: 0;
-      transform: translate(-50%, calc(50% + #{- $margin-b - $margin-m}));
     }
 
     @media (max-width: #{grid-media(4)}) {
