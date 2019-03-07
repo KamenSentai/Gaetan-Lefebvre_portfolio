@@ -1,6 +1,12 @@
 <template lang="pug">
 div
-  Header(:color="data.color" :shape="data.shape" :project="true")
+  Header(
+    :color="data.color"
+    :shape="data.shape"
+    :project="true"
+    jumbotron="carousel"
+    slide="3"
+  )
   .Page(v-bind:class="`Page--${data.color}`")
   Footer(
     to="pocketcare"

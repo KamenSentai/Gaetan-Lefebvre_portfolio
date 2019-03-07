@@ -1,6 +1,12 @@
 <template lang="pug">
 div
-  Header(:color="data.color" :shape="data.shape" :project="true")
+  Header(
+    :color="data.color"
+    :shape="data.shape"
+    :project="true"
+    jumbotron="carousel"
+    slide="2"
+  )
   .Page(v-bind:class="`Page--${data.color}`")
     section.Slide
       Post(
