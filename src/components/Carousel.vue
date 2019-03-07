@@ -1,7 +1,7 @@
 <template lang="pug">
 .Carousel
-  .Carousel-container
-    .Carousel-buttons
+  .Carousel-container(v-bind:class="slide ? 'Carousel-container--case' : ''")
+    .Carousel-buttons(v-if="!slide")
       svg.Carousel-button.Carousel-button--left(width="40px" height="40px" viewBox="0 0 40 40" @click="turnLeft")
         path#left-1.Carousel-shape.Carousel-shape--left(:class="index === 1 ? 'is-chosen' : ''" d="M20,38.8C9.6,38.8,1.2,30.4,1.2,20S9.6,1.2,20,1.2S38.8,9.6,38.8,20S30.4,38.8,20,38.8z")
         path#left-2.Carousel-shape.Carousel-shape--left(:class="index === 2 ? 'is-chosen' : ''" d="M38.8,33.6H1.2L20,1.1L38.8,33.6z")
@@ -45,7 +45,7 @@
         span.Carousel-subtitle
           span.Text--bold Discovery
           span.Text--light &nbsp;- 2016/2018
-      .Carousel-progress
+      .Carousel-progress(v-if="!slide")
         p.Carousel-indicator Swipe
         svg.Carousel-step(:class="range === 0 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
           path(d="M38.8,15.8l-7.2,21.9H8.4L1.2,15.8L20,2.2L38.8,15.8z")
@@ -68,8 +68,8 @@ export default {
     }
   },
   props: [
-    'data',
-    'range'
+    'range',
+    'slide'
   ],
   methods: {
     modulo: (n, m) => {
@@ -92,8 +92,10 @@ export default {
     this.index = this.range
   },
   mounted() {
-    this.$el.querySelector('#left').setAttribute('d', this.$el.querySelector(`#left-${this.index}`).getAttribute('d'))
-    this.$el.querySelector('#right').setAttribute('d', this.$el.querySelector(`#right-${this.index}`).getAttribute('d'))
+    const _left = this.$el.querySelector('#left')
+    const _right = this.$el.querySelector('#right')
+    if (_left) _left.setAttribute('d', this.$el.querySelector(`#left-${this.index}`).getAttribute('d'))
+    if (_right) _right.setAttribute('d', this.$el.querySelector(`#right-${this.index}`).getAttribute('d'))
   }
 }
 </script>
@@ -108,10 +110,6 @@ export default {
 
   width: 100%;
   height: 100%;
-
-  @media (max-width: #{grid-media(4)}) and (max-height: #{grid-media(6.5)}) {
-    // background-color: red;
-  }
 
   &-container {
     position: relative;
@@ -128,9 +126,31 @@ export default {
       background-color: $dark;
       transform-origin: 50% 50%;
       transform: translate(-50%, -50%);
+      transition: transform $easing;
+      will-change: transform;
 
       @media (max-width: #{grid-media(6)}) {
         transform: translate(-50%, -50%) rotateZ(90deg);
+      }
+    }
+
+    &--case {
+      &::before {
+        transform: translate(-50%, -50%) rotateZ(90deg);
+      }
+
+      #{$rootCarousel}-item {
+        &--0 {
+          transform: translate(-50%, -50%);
+
+          @media (max-width: #{grid-media(6)}) {
+            transform: translate(-50%, -50%) scale(.75);
+          }
+
+          @media (max-width: #{grid-media(4)}) {
+            transform: translate(-50%, -50%) scale(.625);
+          }
+        }
       }
     }
 
@@ -249,6 +269,9 @@ export default {
   }
 
   &-title {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
     margin-bottom: $margin-t;
     color: $dark;
     font-size: 12rem;
@@ -256,6 +279,9 @@ export default {
     letter-spacing: .0625em;
     text-transform: uppercase;
     pointer-events: none;
+    transition: all $easing;
+    transform: translateX(-50%);
+    will-change: transform;
 
     @media (max-width: #{grid-media(8)}) {
       font-size: 6rem;
@@ -266,9 +292,7 @@ export default {
     }
 
     @media (max-height: #{grid-media(7.5)}) {
-      position: absolute;
       color: $white;
-      left: 50%;
       bottom: 100%;
       margin-bottom: 0;
       transform: translate(-50%, calc(50% + #{- $margin-b - $margin-m}));
@@ -279,8 +303,6 @@ export default {
     }
 
     @media (max-width: #{grid-media(6)}) {
-      position: absolute;
-      left: 50%;
       bottom: 100%;
       color: $white;
       font-size: 6rem;
@@ -295,6 +317,7 @@ export default {
 
   &-subtitle {
     font-size: 2rem;
+    transition: all $easing;
 
     @media (max-height: #{grid-media(7.5)}) {
       height: 0;

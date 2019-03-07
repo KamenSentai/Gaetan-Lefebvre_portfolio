@@ -42,8 +42,8 @@ header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
     )
     Carousel.Header-carousel(
       v-if="jumbotron === 'carousel'"
-      :data="data"
-      :range="range"
+      :range="parseInt(slide) || range"
+      :slide="slide"
     )
     Error.Header-error(
       v-else-if="jumbotron === 'error'"
@@ -76,7 +76,8 @@ export default {
     'jumbotron',
     'type',
     'project',
-    'data'
+    'data',
+    'slide'
   ],
   components: {
     Logo,
@@ -156,7 +157,7 @@ export default {
       const _heroCarouselButtonLeft = this.$el.querySelector('.Carousel-button--left')
       const _heroCarouselButtonRight = this.$el.querySelector('.Carousel-button--right')
 
-      _heroCarouselButtonLeft.addEventListener('click', () => {
+      if (_heroCarouselButtonLeft) _heroCarouselButtonLeft.addEventListener('click', () => {
         if (this.isTurnable) {
           this.isTurnable = false
           this.range = this.modulo(this.range - 1, this.data.projects.length);
@@ -166,7 +167,7 @@ export default {
         }
       })
 
-      _heroCarouselButtonRight.addEventListener('click', () => {
+      if (_heroCarouselButtonRight) _heroCarouselButtonRight.addEventListener('click', () => {
         if (this.isTurnable) {
           this.isTurnable = false
           this.range = this.modulo(this.range + 1, this.data.projects.length);
