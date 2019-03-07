@@ -159,16 +159,15 @@ export default {
         &--0 {
           transform: translate(-50%, -50%);
 
-          @media (max-width: #{grid-media(6)}) {
+          @media
+            (max-width: #{grid-media(6)}),
+            (max-height: #{grid-media(6.5)})
+          {
             transform: translate(-50%, -50%) scale(.75);
           }
 
           @media (max-width: #{grid-media(4)}) {
             transform: translate(-50%, -50%) scale(.625);
-          }
-
-          @media (max-height: #{grid-media(6.5)}) {
-            transform: translate(-50%, -50%) scale(.75);
           }
         }
       }
@@ -235,16 +234,15 @@ export default {
       margin-top: $margin-b;
     }
 
-    @media (max-height: #{grid-media(8)}) and (min-width: #{grid-media(6)}) {
+    @media
+      (max-height: #{grid-media(8)}) and (min-width: #{grid-media(6)}),
+      (max-height: #{grid-media(6)}) and (max-width: #{grid-media(6)})
+    {
       margin-top: $margin-l;
     }
 
     @media (max-height: #{grid-media(7)}) and (max-width: #{grid-media(6)}) {
       margin-top: $margin-l + $margin-t;
-    }
-
-    @media (max-height: #{grid-media(6)}) and (max-width: #{grid-media(6)}) {
-      margin-top: $margin-l;
     }
 
     @media (max-height: #{grid-media(4.5)}) {
@@ -269,11 +267,10 @@ export default {
       opacity: 1;
       transform: translate(-50%, -50%) scale(.75);
 
-      @media (max-width: #{grid-media(6)}) and (max-height: #{grid-media(6.5)}) {
-        transform: translate(-50%, -50%) scale(.5);
-      }
-
-      @media (max-width: #{grid-media(4)}) {
+      @media
+        (max-width: #{grid-media(6)}) and (max-height: #{grid-media(6.5)}),
+        (max-width: #{grid-media(4)})
+      {
         transform: translate(-50%, -50%) scale(.5);
       }
 
