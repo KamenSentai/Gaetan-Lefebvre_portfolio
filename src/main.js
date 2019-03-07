@@ -66,7 +66,9 @@ fetch('/data/texts.json')
     created () {
       AOS.init({
         disable: 'mobile',
-        once: true
+        once: true,
+        duration: 1000,
+        easing: 'cubic-bezier(0.72, 0, 0.21, 1)'
       })
     },
     render: h => h(App),
