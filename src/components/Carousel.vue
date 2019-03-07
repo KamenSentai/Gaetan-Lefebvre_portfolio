@@ -104,11 +104,12 @@ export default {
 
 .Carousel {
   $rootCarousel: &;
+  $extraSize: $margin-r;
 
   width: 100%;
   height: 100%;
 
-  @media (max-width: #{grid-media(6)}) {
+  @media (max-height: #{grid-media(7)}) {
     // background-color: red;
   }
 
@@ -136,27 +137,40 @@ export default {
     @media (max-height: #{grid-media(9)}) {
       margin-top: $margin-b;
     }
+
+    @media (max-height: #{grid-media(5.5)}) {
+      margin-top: $margin-l;
+    }
+
+    @media (max-height: #{grid-media(4.5)}) {
+      margin-top: $margin-m;
+    }
   }
 
   &-content {
     position: relative;
     width: 100%;
-    perspective: 500px;
   }
 
   &-item {
     position: absolute;
-    top: 0;
-    left: 0;
     opacity: 0;
-    transform: translate(-50%, -50%);
-    transition: left $easing, opacity $easing, transform $easing;
+    transform: translate(-50%, -50%) scale(0);
+    transition: all $easing;
     will-change: opacity, transform;
 
     &--0 {
       left: 50%;
       opacity: 1;
       transform: translate(-50%, -50%) scale(.75);
+
+      @media (max-width: #{grid-media(6)}) and (max-height: #{grid-media(6)}) {
+        transform: translate(-50%, -50%) scale(.5);
+      }
+
+      @media (max-width: #{grid-media(4)}) {
+        transform: translate(-50%, -50%) scale(.5);
+      }
 
       + #{$rootCarousel}-label {
         opacity: 1;
@@ -165,22 +179,43 @@ export default {
 
     &--1 {
       left: 0;
-      transform: translate(-50%, -50%) scale(0);
+
+      @media (max-width: #{grid-media(6)}) {
+        transform: translate(-50%, calc(-50% - #{(grid(4)+ $extraSize) / 2})) scale(0);
+      }
+
+      @media (max-width: #{grid-media(4)}) {
+        transform: translate(-50%, calc(-50% - #{(grid(3)+ $extraSize) / 2})) scale(0);
+      }
     }
 
     &--2 {
       left: 50%;
-      transform: translate(-50%, -50%) scale(0);
     }
 
     &--3 {
       left: 100%;
-      transform: translate(-50%, -50%) scale(0);
+
+      @media (max-width: #{grid-media(6)}) {
+        transform: translate(-50%, calc(-50% + #{(grid(4)+ $extraSize) / 2})) scale(0);
+      }
+
+      @media (max-width: #{grid-media(4)}) {
+        transform: translate(-50%, calc(-50% + #{(grid(3)+ $extraSize) / 2})) scale(0);
+      }
+    }
+
+    @media (max-width: #{grid-media(6)}) {
+      left: 50%;
     }
   }
 
   &-image {
     user-select: none;
+
+    @media (max-height: #{grid-media(4)}) {
+      transform: scale(.75);
+    }
   }
 
   &-label {
@@ -217,15 +252,38 @@ export default {
       font-size: 8rem;
     }
 
+    @media (max-height: #{grid-media(7)}) {
+      position: absolute;
+      color: $white;
+      left: 50%;
+      bottom: 100%;
+      transform: translate(-50%, calc(50% + #{$margin-t - $margin-b - $margin-m}));
+    }
+
+    @media (max-height: #{grid-media(7)}) and (max-width: #{grid-media(8)}) and (min-width: #{grid-media(6)}) {
+      font-size: 5rem;
+    }
+
     @media (max-width: #{grid-media(6)}) {
+      position: absolute;
+      left: 50%;
+      bottom: 100%;
       color: $white;
       font-size: 6rem;
-      transform: translateY(- #{$margin-b + $margin-s - $margin-n});
+      transform: translate(-50%, calc(50% + #{$margin-t - $margin-b - $margin-m}));
+    }
+
+    @media (max-width: #{grid-media(4)}) {
+      font-size: 4rem;
     }
   }
 
   &-subtitle {
     font-size: 2rem;
+
+    @media (max-height: #{grid-media(7.5)}) {
+      display: none;
+    }
   }
 
   &-buttons {
@@ -240,11 +298,14 @@ export default {
     user-select: none;
 
     @media (max-width: #{grid-media(6)}) {
-      $extraSize: $margin-r;
-
       width: calc(100% + #{$extraSize});
       margin-left: - $extraSize / 2;
       transform: translateY(-50%) rotateZ(90deg);
+    }
+
+    @media (max-width: #{grid-media(6)}) and (max-height: #{grid-media(6)}) {
+      width: 100%;
+      margin-left: 0;
     }
   }
 
