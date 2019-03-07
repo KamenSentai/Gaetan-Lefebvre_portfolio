@@ -137,11 +137,10 @@ export default {
         if (_additionalStyle.userSelect !== 'none') {
           _additionalCarousel.style.opacity = '1'
           _subtitleCarousel.style.transform = `translateX(${translateWidth}px)`
-        } else {
+        } else {
           _additionalCarousel.style.opacity = '0'
           _subtitleCarousel.style.transform = `none`
         }
-        console.log(_additionalStyle.userSelect)
         window.addEventListener('resize', () => {
           if (_additionalStyle.userSelect !== 'none') {
             _additionalWidth = _additionalCarousel.getBoundingClientRect().width
@@ -149,7 +148,7 @@ export default {
             translateWidth = - (_additionalWidth + gapWidth) / 2
             _additionalCarousel.style.opacity = '1'
             _subtitleCarousel.style.transform = `translateX(${translateWidth}px)`
-          } else {
+          } else {
             _additionalCarousel.style.opacity = '0'
             _subtitleCarousel.style.transform = `none`
           }
