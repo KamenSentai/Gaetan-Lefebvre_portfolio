@@ -7,9 +7,9 @@ body {
   position: relative;
   font-family: $font;
   color: $white;
-  // cursor: none;
+  cursor: none !important;
 
   * {
-    // cursor: none;
+    cursor: none !important;
   }
 }

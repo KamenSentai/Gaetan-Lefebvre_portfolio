@@ -66,6 +66,7 @@ export default {
   margin-top: - $cursorSize / 2;
   margin-left: - $cursorSize / 2;
   border-radius: 100%;
+  pointer-events: none;
 
   &.is-hidden {
     display: none;
