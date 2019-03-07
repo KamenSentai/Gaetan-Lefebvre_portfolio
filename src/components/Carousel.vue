@@ -89,6 +89,12 @@ export default {
         const tweenRight = kute.to(`#right`, { path: `#right-${this.modulo(this.range + 1, 4) }` })
         tweenLeft.start()
         tweenRight.start()
+      } else {
+        window.scroll({
+          top: window.innerHeight,
+          left: 0,
+          behavior: 'smooth'
+        })
       }
     }
   },
@@ -100,6 +106,11 @@ export default {
     const _right = this.$el.querySelector('#right')
     if (_left) _left.setAttribute('d', this.$el.querySelector(`#left-${this.index}`).getAttribute('d'))
     if (_right) _right.setAttribute('d', this.$el.querySelector(`#right-${this.index}`).getAttribute('d'))
+
+    if (this.slide) {
+      const tween = kute.to(`#right`, { path: `#right-${this.modulo(this.slide - 1, 4) }` })
+      tween.start()
+    }
   }
 }
 </script>
