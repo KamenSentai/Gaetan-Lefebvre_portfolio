@@ -76,16 +76,20 @@ export default {
       return ((n % m) + m) % m;
     },
     turnLeft: function() {
-      const tweenLeft = kute.to('#left', { path: `#left-${this.modulo(this.range - 1, 4) }` })
-      const tweenRight = kute.to(`#right`, { path: `#right-${this.modulo(this.range - 1, 4) }` })
-      tweenLeft.start()
-      tweenRight.start()
+      if (!this.slide) {
+        const tweenLeft = kute.to('#left', { path: `#left-${this.modulo(this.range - 1, 4) }` })
+        const tweenRight = kute.to(`#right`, { path: `#right-${this.modulo(this.range - 1, 4) }` })
+        tweenLeft.start()
+        tweenRight.start()
+      }
     },
     turnRight: function() {
-      const tweenLeft = kute.to('#left', { path: `#left-${this.modulo(this.range + 1, 4) }` })
-      const tweenRight = kute.to(`#right`, { path: `#right-${this.modulo(this.range + 1, 4) }` })
-      tweenLeft.start()
-      tweenRight.start()
+      if (!this.slide) {
+        const tweenLeft = kute.to('#left', { path: `#left-${this.modulo(this.range + 1, 4) }` })
+        const tweenRight = kute.to(`#right`, { path: `#right-${this.modulo(this.range + 1, 4) }` })
+        tweenLeft.start()
+        tweenRight.start()
+      }
     }
   },
   beforeMount() {
