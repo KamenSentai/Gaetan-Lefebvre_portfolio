@@ -436,7 +436,7 @@ export default {
       display: flex;
       justify-content: space-between;
       width: 100%;
-      margin-top: $margin-s;
+      margin-top: $margin-r;
       margin-bottom: $margin-s;
       font-size: 1.2rem;
       font-weight: 300;
