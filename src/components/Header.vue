@@ -137,17 +137,51 @@ export default {
       const _layersDurationDelay = parseFloat(_layersStyle.transitionDuration) + parseFloat(_layersStyle.transitionDelay)
       const timeoutDelay = Math.max(_shapeDurationDelay, _layersDurationDelay) * 1000
 
+      let initialX = null
+      let initialY = null
+
+      const startTouch = event => {
+        initialX = event.touches[0].clientX
+        initialY = event.touches[0].clientY
+      }
+
+      const moveTouch = event => {
+        event.preventDefault()
+
+        if (initialX === null || initialY === null) return
+
+        let currentX = event.touches[0].clientX
+        let currentY = event.touches[0].clientY
+
+        let diffX = initialX - currentX
+        let diffY = initialY - currentY
+
+        if (Math.abs(diffX) < Math.abs(diffY)) {
+          if (diffY > 0) this.range = this.modulo(this.range + 1, this.data.colors.length)
+          else this.range = this.modulo(this.range - 1, this.data.colors.length)
+
+          _headerScrollable.removeEventListener('touchmove', moveTouch)
+          setTimeout(() => {
+            _headerScrollable.addEventListener('touchmove', moveTouch)
+          }, timeoutDelay)
+        }
+
+        initialX = null
+        initialY = null
+      }
+
       const scrollJumbotron = event => {
         if (event.deltaY < 0) this.range = this.modulo(this.range - 1, this.data.colors.length)
         else if (event.deltaY > 0) this.range = this.modulo(this.range + 1, this.data.colors.length)
 
         _headerScrollable.removeEventListener('wheel', scrollJumbotron)
-
         setTimeout(() => {
           _headerScrollable.addEventListener('wheel', scrollJumbotron)
         }, timeoutDelay)
       }
 
+      _headerScrollable.addEventListener('touchstart', startTouch)
+      _headerScrollable.addEventListener('touchmove', moveTouch)
       _headerScrollable.addEventListener('wheel', scrollJumbotron)
       _headerScrollable.addEventListener('wheel', event => {
         event.preventDefault()
