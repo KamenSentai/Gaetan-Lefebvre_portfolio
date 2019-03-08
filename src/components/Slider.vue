@@ -5,7 +5,7 @@
     a.Push.Push--left(v-bind:class="automatic ? 'Slider-push' : ''" @click="turnSlider" href="#")
       .Push-arrow
       .Push-arrow
-  .Slider-content(v-if="mockup")
+  .Slider-content(v-if="mockup" @touchstart="touchStart" @touchmove="touchMove")
     img.Slider-mockup(draggable="false" :src="getImage(mockup)")
     .Slider-images
       img.Slider-image.Shadow--image(v-for="image in images" :src="getImage(image)")
@@ -26,7 +26,9 @@ export default {
       count: 0,
       margins: 0,
       duration: 0,
-      start: ''
+      start: '',
+      initialX: null,
+      initialY: null
     }
   },
   props: [
@@ -55,6 +57,26 @@ export default {
           break
       }
       return images(`./${image}.png`)
+    },
+    touchStart(event) {
+      this.initialX = event.touches[0].clientX
+      this.initialY = event.touches[0].clientY
+    },
+    touchMove(event) {
+      event.preventDefault()
+
+      if (this.initialX === null || this.initialY === null) return
+
+      let currentX = event.touches[0].clientX
+      let currentY = event.touches[0].clientY
+
+      let diffX = this.initialX - currentX
+      let diffY = this.initialY - currentY
+
+      if (Math.abs(diffX) > Math.abs(diffY) && diffX > 0) this.turnSlider(event)
+
+      this.initialX = null
+      this.initialY = null
     },
     turnSlider(event) {
       event.preventDefault()
