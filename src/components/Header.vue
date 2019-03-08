@@ -154,10 +154,10 @@ export default {
     }
 
     if (_headerCarousel && !this.slide) {
-      const _heroCarouselButtonLeft = this.$el.querySelector('.Carousel-button--left')
-      const _heroCarouselButtonRight = this.$el.querySelector('.Carousel-button--right')
+      const _heroCarouselButtonLeft = _headerCarousel.querySelector('.Carousel-button--left')
+      const _heroCarouselButtonRight = _headerCarousel.querySelector('.Carousel-button--right')
 
-      if (_heroCarouselButtonLeft) _heroCarouselButtonLeft.addEventListener('click', () => {
+      _heroCarouselButtonLeft.addEventListener('click', () => {
         if (this.isTurnable) {
           this.isTurnable = false
           this.range = this.modulo(this.range - 1, this.data.projects.length);
@@ -167,7 +167,7 @@ export default {
         }
       })
 
-      if (_heroCarouselButtonRight) _heroCarouselButtonRight.addEventListener('click', () => {
+      _heroCarouselButtonRight.addEventListener('click', () => {
         if (this.isTurnable) {
           this.isTurnable = false
           this.range = this.modulo(this.range + 1, this.data.projects.length);
