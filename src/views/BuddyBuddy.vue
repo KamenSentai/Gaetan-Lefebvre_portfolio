@@ -89,7 +89,7 @@ div
           folder="BuddyBuddy"
           :images="['Mobile_1', 'Mobile_2', 'Mobile_3', 'Mobile_4']"
         )
-    section.Slide.Slide--banner
+    section.Slide.Slide--banner.Slide--exception
       img.Content-banner(src="../assets/images/BuddyBuddy/Banner_Screenshots.png" alt="Banner Screenshots")
     section.Slide
       Article(

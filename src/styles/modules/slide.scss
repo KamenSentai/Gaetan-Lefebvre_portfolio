@@ -76,6 +76,14 @@
     overflow: hidden;
   }
 
+  &--exception {
+    justify-content: flex-start;
+
+    > * {
+      margin-top: - $margin-s;
+    }
+  }
+
   &--page {
     padding: $margin-b 0;
 
