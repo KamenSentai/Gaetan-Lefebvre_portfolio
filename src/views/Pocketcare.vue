@@ -16,14 +16,14 @@ div
     section.Slide
       .Content
         .Content-header
-          h3.Content-title.Content-title--trailed Colors and typography
+          h3.Content-title.Content-title--trailed(data-aos="fade-left") Colors and typography
         .Content-table
-          .Content-icons.Content-icons--half
+          .Content-icons.Content-icons--half(data-aos="fade-left")
             Color(color="#00D6CF" :shape="data.shape")
             Color(color="#FFCB4A" :shape="data.shape")
             Color(color="#4A4A4A" :shape="data.shape")
             Color(color="#D3D3D3" :shape="data.shape")
-          .Content-charters.Content-charters--half
+          .Content-charters.Content-charters--half(data-aos="fade-left" data-aos-delay="250")
             Charter.Content-charter(
               name="Circular Std Bold"
               font="CircularStd-Bold"
@@ -39,11 +39,11 @@ div
       )
       .Content
         .Content-header
-          h3.Content-title.Text--center Onboarding
+          h3.Content-title.Text--center(data-aos="fade-up") Onboarding
         .Content-listing
-          img.Shadow(src="../assets/images/Pocketcare/Onboarding_1.png" alt="Onboarding")
-          img.Shadow(src="../assets/images/Pocketcare/Onboarding_2.png" alt="Onboarding")
-          img.Shadow(src="../assets/images/Pocketcare/Onboarding_3.png" alt="Onboarding")
+          img.Shadow(data-aos="fade-left" data-aos-delay="0" src="../assets/images/Pocketcare/Onboarding_1.png" alt="Onboarding")
+          img.Shadow(data-aos="fade-left" data-aos-delay="250" src="../assets/images/Pocketcare/Onboarding_2.png" alt="Onboarding")
+          img.Shadow(data-aos="fade-left" data-aos-delay="500" src="../assets/images/Pocketcare/Onboarding_3.png" alt="Onboarding")
       Post(
         :color="data.color"
         :post="data.posts[2]"
@@ -53,24 +53,25 @@ div
     section.Slide.Slide--page
       .Content
         .Content-header
-          h3.Content-title Cards and prescriptions
+          h3.Content-title(data-aos="fade-up") Cards and prescriptions
         .Content-item
-          .Content-post
+          .Content-post(data-aos="fade-left")
             h4.Content-section Step 1
             p.Content-text To solve the problem of complexity of the application, we realized a simple onboarding with illustrations and easy to understand. We then thought it would be a good idea.
-          img.Content-poster(src="../assets/images/Pocketcare/Phone_1.gif" alt="Phone animation 1")
+          img.Content-poster(data-aos="fade-left" data-aos-delay="250" src="../assets/images/Pocketcare/Phone_1.gif" alt="Phone animation 1")
         .Content-item
-          .Content-post
+          .Content-post(data-aos="fade-right")
             h4.Content-section Step 2
             p.Content-text To solve the problem of complexity of the application, we realized a simple onboarding with illustrations and easy to understand.
-          img.Content-poster(src="../assets/images/Pocketcare/Phone_2.gif" alt="Phone animation 2")
+          img.Content-poster(data-aos="fade-right" data-aos-delay="250" src="../assets/images/Pocketcare/Phone_2.gif" alt="Phone animation 2")
     section.Slide.Slide--block
       .Content
-        .Content-header.Content-header--center
+        .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Profil and settings
           p.Content-description.Text--center To solve the problem of complexity of the application, we realized a simple onboarding with illustrations and easy to understand.
     .Intermediate.Intermediate--20
-      img.Content-banner(src="../assets/images/Pocketcare/Screens.png" alt="Screens")
+      .Intermediate-container
+        img(src="../assets/images/Pocketcare/Screens.png" alt="Screens")
     section.Slide
       Article(
         :color="data.color"

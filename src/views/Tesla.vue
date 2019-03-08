@@ -16,20 +16,20 @@ div
     section.Slide
       .Content
         .Content-header
-          h3.Content-title.Content-title--trailed Branding - Graphic charter
+          h3.Content-title.Content-title--trailed(data-aos="fade-left") Branding - Graphic charter
         .Content-suite
-          .Content-icons.Content-icons--main
+          .Content-icons.Content-icons--main(data-aos="fade-left")
             img(src="../assets/images/Tesla/Logo_T.png" alt="T")
             img(src="../assets/images/Tesla/Logo_+.png" alt="+")
             img(src="../assets/images/Tesla/Logo_O.png" alt="O")
             img(src="../assets/images/Tesla/Logo_=.png" alt="=")
             img(src="../assets/images/Tesla/Logo_TO.png" alt="TO")
-          .Content-icons
+          .Content-icons(data-aos="fade-left")
             Color(color="#228DFC" :shape="data.shape")
             Color(color="#1F1F1F" :shape="data.shape")
             Color(color="#A7A7A7" :shape="data.shape")
             Color(color="#FFFFFF" :shape="data.shape")
-          .Content-charters
+          .Content-charters(data-aos="fade-left")
             Charter.Content-charter(
               name="Oculus Sans Bold"
               font="OculusSans-Bold"
@@ -45,7 +45,7 @@ div
       )
       .Content
         .Content-header
-          h3.Content-title.Text--center Touchscreen
+          h3.Content-title.Text--center(data-aos="fade-up") Touchscreen
         .Field
           Slider.Slider--full(
             folder="Tesla"
@@ -55,14 +55,14 @@ div
             interval="5000"
             :color="data.color"
           )
-          .Field-inputs
+          .Field-inputs(data-aos="fade-up")
             input(type="radio" id="black" v-model="slider_theme" value="black")
             label.Field--black(for="black") Dark theme
             input(type="radio" id="white" v-model="slider_theme" value="white")
             label(v-bind:class="`Field--${data.color}`" for="white") Light theme
     section.Slide.Slide--block.Slide--bottomless
       .Content
-        .Content-header.Content-header--center
+        .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Inside the car
           p.Content-description.Content-description--large.Text--center The touchscreen is first of all the way to navigate and obtain all the informations about the Tesla Model 3. But it’s also the way to interact the the Oculus Rift for the passenger beside to the driver and the driver himself when the car is stopped.
       img(src="../assets/images/Tesla/Car.png" alt="Car")
@@ -73,9 +73,9 @@ div
       )
       .Content
         .Content-header
-          h3.Content-title Mobile app
+          h3.Content-title(data-aos="fade-left") Mobile app
         .Content-article
-          .Content-post.Content-post--static.Content-post--quarter
+          .Content-post.Content-post--static.Content-post--quarter(data-aos="fade-left")
             h4.Content-section Charge and navigation
             p.Content-text When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation to return to the car.
             p.Content-text The navigation will tell you the distance of the car and the localisation. You will also have an AR view of the street.
@@ -90,29 +90,38 @@ div
     section.Slide
       .Content
         .Content-article.Content-article--alternation
-          .Content-post.Content-post--static.Content-post--half
+          .Content-post.Content-post--static.Content-post--half(data-aos="fade-up")
             h4.Content-section Charge and navigation
             p.Content-text When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation to return to the car.
             p.Content-text The navigation will tell you the distance of the car and the localisation. You will also have an AR view of the street.
           .Content-alternated
-            img.Content-intern(src="../assets/images/Tesla/Phone_1.png" alt="Phone 1")
-            img.Absolute.Absolute--p11(src="../assets/images/Tesla/Phone_1-overflow_1.png" alt="")
-            img.Absolute.Absolute--p12(src="../assets/images/Tesla/Phone_1-overflow_2.png" alt="")
-            img.Absolute.Absolute--p13(src="../assets/images/Tesla/Phone_1-overflow_3.png" alt="")
+            .Content-group(data-aos="fade-up")
+              img.Content-intern(src="../assets/images/Tesla/Phone_1.png" alt="Phone 1")
+              img.Absolute.Absolute--p11(src="../assets/images/Tesla/Phone_1-overflow_1.png" alt="")
+              img.Absolute.Absolute--p12(src="../assets/images/Tesla/Phone_1-overflow_2.png" alt="")
+              img.Absolute.Absolute--p13(src="../assets/images/Tesla/Phone_1-overflow_3.png" alt="")
           .Content-alternated
-            img.Content-intern(src="../assets/images/Tesla/Phone_2.png" alt="Phone 2")
-            img.Absolute.Absolute--p23(src="../assets/images/Tesla/Phone_2-overflow_3.png" alt="")
-            img.Absolute.Absolute--p22(src="../assets/images/Tesla/Phone_2-overflow_2.png" alt="")
-            img.Absolute.Absolute--p21(src="../assets/images/Tesla/Phone_2-overflow_1.png" alt="")
+            .Content-group(data-aos="fade-up")
+              img.Content-intern(src="../assets/images/Tesla/Phone_2.png" alt="Phone 2")
+              img.Absolute.Absolute--p23(src="../assets/images/Tesla/Phone_2-overflow_3.png" alt="")
+              img.Absolute.Absolute--p22(src="../assets/images/Tesla/Phone_2-overflow_2.png" alt="")
+              img.Absolute.Absolute--p21(src="../assets/images/Tesla/Phone_2-overflow_1.png" alt="")
           .Content-alternated
-            img.Content-intern(src="../assets/images/Tesla/Phone_3.png" alt="Phone 3")
+            .Content-group(data-aos="fade-up")
+              img.Content-intern(src="../assets/images/Tesla/Phone_3.png" alt="Phone 3")
         .Content-article
-          .Content-post.Content-post--static.Content-post--half
+          .Content-post.Content-post--static.Content-post--half(data-aos="fade-up")
             h4.Content-section Inside the Oculus
             p.Content-text Finally, you can find here the charging part. Then the localisation, same as the mobile part to find the car. And the little option to bring the car forward or backward in some specials situations.
-        img.Content-full(src="../assets/images/Tesla/Hands.png" alt="Hands")
+        .Content-full
+          img(data-aos="fade-up" data-aos-delay="0" src="../assets/images/Tesla/Hand_1.png" alt="Hand")
+          img(data-aos="fade-up" data-aos-delay="250" src="../assets/images/Tesla/Hand_2.png" alt="Hand")
+          img(data-aos="fade-up" data-aos-delay="500" src="../assets/images/Tesla/Hand_3.png" alt="Hand")
+          img(data-aos="fade-up" data-aos-delay="750" src="../assets/images/Tesla/Hand_4.png" alt="Hand")
+          img(data-aos="fade-up" data-aos-delay="1000" src="../assets/images/Tesla/Hand_5.png" alt="Hand")
     .Intermediate.Intermediate--20
-      img.Content-breakpoints(src="../assets/images/Tesla/Helmet.png" alt="Helmet")
+      .Intermediate-container(data-aos="fade-up")
+        img.Content-breakpoints(src="../assets/images/Tesla/Helmet.png" alt="Helmet")
     section.Slide.Slide--page
       Post(
         :color="data.color"
@@ -120,19 +129,22 @@ div
       )
       .Content
         .Content-header
-          h3.Content-title Watch and features
+          h3.Content-title(data-aos="fade-left") Watch and features
         .Content-article
-          img.Content-flyer(src="../assets/images/Tesla/Watch.gif" alt="Watch")
-          .Content-post.Content-post--static.Content-post--half
+          img.Content-flyer(data-aos="fade-left" src="../assets/images/Tesla/Watch.gif" alt="Watch")
+          .Content-post.Content-post--static.Content-post--half(data-aos="fade-right")
             h4.Content-section Oculus immersion
             p.Content-text When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation to return to the car. After you can start the navigation to return to the car.
     section.Slide.Slide--block
       .Content
-        .Content-header.Content-header--center
+        .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Other screens
           p.Content-description.Text--center Finally, you can find here the charging part. Then the localisation, same as the mobile part to find the car. And the little option to bring the car forward or backward in some specials situations.
     .Intermediate.Intermediate--10
-      img.Content-banner(src="../assets/images/Tesla/Watches.png" alt="Watches")
+      .Intermediate-container(data-aos="fade-up")
+        img.Content-banner(src="../assets/images/Tesla/Watches_1.png" alt="Watches")
+      .Intermediate-container(data-aos="fade-up")
+        img.Content-banner(src="../assets/images/Tesla/Watches_2.png" alt="Watches")
     section.Slide
       Article(
         :color="data.color"

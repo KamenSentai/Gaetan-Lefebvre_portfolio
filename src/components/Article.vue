@@ -1,5 +1,5 @@
 <template lang="pug">
-.Article
+.Article(data-aos="fade-up")
   h2.Article-title.Text--subtitle
     span.Text--grey {{ post.top }}
     span.Text

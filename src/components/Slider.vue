@@ -1,5 +1,5 @@
 <template lang="pug">
-.Slider(v-bind:class="automatic ? 'Slider--automatic' : ''")
+.Slider(data-aos="fade-right" v-bind:class="automatic ? 'Slider--automatic' : ''")
   .Slider-button
     canvas.Slider-loading
     a.Push.Push--left(v-bind:class="automatic ? 'Slider-push' : ''" @click="turnSlider" href="#")
