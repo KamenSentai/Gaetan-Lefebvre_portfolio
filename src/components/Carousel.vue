@@ -331,7 +331,7 @@ export default {
       transform: translate(-50%, -50%) scale(.75);
 
       @media (min-height: #{grid-media(8.5)}) {
-        transform: translate(-50%, -50%) scale(1);
+        transform: translate(-50%, -50%) scale(.875);
       }
 
       @media
