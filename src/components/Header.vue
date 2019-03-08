@@ -156,8 +156,12 @@ export default {
     if (_headerCarousel && !this.slide) {
       const _heroCarouselButtonLeft = _headerCarousel.querySelector('.Carousel-button--left')
       const _heroCarouselButtonRight = _headerCarousel.querySelector('.Carousel-button--right')
+      const _headerCarouselStyle = _headerCarousel.currentStyle || window.getComputedStyle(_headerCarousel)
 
-      _heroCarouselButtonLeft.addEventListener('click', () => {
+      let initialX = null
+      let initialY = null
+
+      const decreaseRange = () => {
         if (this.isTurnable) {
           this.isTurnable = false
           this.range = this.modulo(this.range - 1, this.data.projects.length);
@@ -165,9 +169,9 @@ export default {
             this.isTurnable = true
           }, 1000)
         }
-      })
+      }
 
-      _heroCarouselButtonRight.addEventListener('click', () => {
+      const increaseRange = () => {
         if (this.isTurnable) {
           this.isTurnable = false
           this.range = this.modulo(this.range + 1, this.data.projects.length);
@@ -175,7 +179,41 @@ export default {
             this.isTurnable = true
           }, 1000)
         }
-      })
+      }
+
+      const startTouch = event => {
+        if (_headerCarouselStyle.userSelect === 'none') {
+          initialX = event.touches[0].clientX
+          initialY = event.touches[0].clientY
+        }
+      }
+
+      const moveTouch = event => {
+        if (_headerCarouselStyle.userSelect === 'none') {
+          event.preventDefault()
+
+          if (initialX === null || initialY === null) return
+
+          let currentX = event.touches[0].clientX
+          let currentY = event.touches[0].clientY
+
+          let diffX = initialX - currentX
+          let diffY = initialY - currentY
+
+          if (Math.abs(diffX) < Math.abs(diffY)) {
+            if (diffY > 0) increaseRange()
+            else decreaseRange()
+          }
+
+          initialX = null
+          initialY = null
+        }
+      }
+
+      _heroCarouselButtonLeft.addEventListener('click', decreaseRange)
+      _heroCarouselButtonRight.addEventListener('click', increaseRange)
+      _headerCarousel.addEventListener('touchstart', startTouch)
+      _headerCarousel.addEventListener('touchmove', moveTouch)
     }
   }
 

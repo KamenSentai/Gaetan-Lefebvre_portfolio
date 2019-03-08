@@ -170,6 +170,11 @@ export default {
   width: 100%;
   height: 100%;
 
+  @media (max-width: #{grid-media(6)}) {
+    user-select: none;
+  }
+
+
   &-container {
     position: relative;
     width: 100%;
@@ -432,7 +437,7 @@ export default {
       transform: translate(-50%, calc(50% + #{- $margin-b - $margin-m}));
     }
 
-    @media (max-height: #{grid-media(7.5)}) and (max-width: #{grid-media(8)}) {
+    @media (max-width: #{grid-media(8)}) {
       font-size: 5rem;
     }
 
