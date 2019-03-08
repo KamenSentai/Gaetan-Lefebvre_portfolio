@@ -80,6 +80,7 @@ div
             p.Content-text When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation to return to the car.
             p.Content-text The navigation will tell you the distance of the car and the localisation. You will also have an AR view of the street.
           Slider.Slider--item(
+            data-aos-delay="250"
             folder="Tesla"
             :images="['Mobile_1', 'Mobile_2', 'Mobile_3', 'Mobile_4', 'Mobile_5', 'Mobile_6', 'Mobile_7', 'Mobile_8']"
             mockup="Mobile_mockup"
