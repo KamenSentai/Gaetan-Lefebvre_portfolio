@@ -108,7 +108,7 @@ div
               img.Absolute.Absolute--p21(src="../assets/images/Tesla/Phone_2-overflow_1.png" alt="")
           .Content-alternated
             .Content-group(data-aos="fade-up")
-              img.Content-intern(src="../assets/images/Tesla/Phone_3.png" alt="Phone 3")
+              img.Content-intern(src="../assets/images/Tesla/Phone_3.gif" alt="Phone 3")
         .Content-article
           .Content-post.Content-post--static.Content-post--half(data-aos="fade-up")
             h4.Content-section Inside the Oculus
@@ -140,7 +140,7 @@ div
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Other screens
           p.Content-description.Text--center Finally, you can find here the charging part. Then the localisation, same as the mobile part to find the car. And the little option to bring the car forward or backward in some specials situations.
-    .Intermediate.Intermediate--10
+    .Intermediate.Intermediate--20
       .Intermediate-container(data-aos="fade-up")
         img.Content-banner(src="../assets/images/Tesla/Watches_1.png" alt="Watches")
       .Intermediate-container(data-aos="fade-up")
