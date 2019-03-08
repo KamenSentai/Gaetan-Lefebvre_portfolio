@@ -17,9 +17,9 @@
         path#right.Carousel-shape.is-active
         polyline.Carousel-shape.is-active(points="25,22.5 20,17.5 15,22.5")
     .Carousel-content
-      router-link.Carousel-item(v-if="!slide || parseInt(slide) === 0" v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ name: 'pocketcare' }" draggable="false")
+      router-link.Carousel-item(v-if="!slide || parseInt(slide) === 0" v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ name: 'pocketcare' }" draggable="false")
         img.Carousel-image(src="../assets/images/Menu/pocketcare.png" alt="Pocketcare" draggable="false")
-      p.Carousel-label(v-if="!slide || parseInt(slide) === 0")
+      p.Carousel-label(v-if="!slide || parseInt(slide) === 0")
         span.Carousel-title Pocketcare
         span.Carousel-subtitle
           span.Text--bold School project
@@ -27,9 +27,9 @@
           span.Carousel-additional
             span.Text--bold Skills :
             span.Text--light &nbsp;Branding, Illustration, Interactive design
-      router-link.Carousel-item(v-if="!slide || parseInt(slide) === 1" v-bind:class="`Carousel-item--${modulo(range - 1, 4)}`" :to="{ name: 'tesla' }")
+      router-link.Carousel-item(v-if="!slide || parseInt(slide) === 1" v-bind:class="`Carousel-item--${modulo(range - 1, 4)}`" :to="{ name: 'tesla' }")
         img.Carousel-image(src="../assets/images/Menu/tesla.png" alt="Tesla")
-      p.Carousel-label(v-if="!slide || parseInt(slide) === 1")
+      p.Carousel-label(v-if="!slide || parseInt(slide) === 1")
         span.Carousel-title Tesla
         span.Carousel-subtitle
           span.Text--bold School project
@@ -37,9 +37,9 @@
           span.Carousel-additional
             span.Text--bold Skills :
             span.Text--light &nbsp;Branding, Illustration, Interactive design
-      router-link.Carousel-item(v-if="!slide || parseInt(slide) === 2" v-bind:class="`Carousel-item--${modulo(range - 2, 4)}`" :to="{ name: 'buddy-buddy' }")
+      router-link.Carousel-item(v-if="!slide || parseInt(slide) === 2" v-bind:class="`Carousel-item--${modulo(range - 2, 4)}`" :to="{ name: 'buddy-buddy' }")
         img.Carousel-image(src="../assets/images/Menu/buddy-buddy.png" alt="Buddy Buddy")
-      p.Carousel-label(v-if="!slide || parseInt(slide) === 2")
+      p.Carousel-label(v-if="!slide || parseInt(slide) === 2")
         span.Carousel-title Buddy Buddy
         span.Carousel-subtitle
           span.Text--bold Internship
@@ -47,9 +47,9 @@
           span.Carousel-additional
             span.Text--bold Skills :
             span.Text--light &nbsp;Branding, Illustration, Interactive design
-      router-link.Carousel-item(v-if="!slide || parseInt(slide) === 3" v-bind:class="`Carousel-item--${modulo(range - 3, 4)}`" :to="{ name: 'personal' }")
+      router-link.Carousel-item(v-if="!slide || parseInt(slide) === 3" v-bind:class="`Carousel-item--${modulo(range - 3, 4)}`" :to="{ name: 'personal' }")
         img.Carousel-image(src="../assets/images/Menu/personal.png" alt="Personal")
-      p.Carousel-label(v-if="!slide || parseInt(slide) === 3")
+      p.Carousel-label(v-if="!slide || parseInt(slide) === 3")
         span.Carousel-title Personal
         span.Carousel-subtitle
           span.Text--bold Discovery
