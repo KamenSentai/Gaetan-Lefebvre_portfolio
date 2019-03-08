@@ -92,7 +92,7 @@ export default {
     width: .8rem;
     height: .8rem;
     background-color: $white;
-    box-shadow: 0 0 .8rem rgba($black, .75);
+    box-shadow: $shadow-regular;
   }
 
   &-circle {

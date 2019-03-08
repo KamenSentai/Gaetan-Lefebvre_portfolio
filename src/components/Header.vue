@@ -305,6 +305,7 @@ export default {
   }
 
   &-logo {
+    filter: drop-shadow(#{$shadow-light});
     transition: transform $easing;
     transition-delay: 1s;
     will-change: transform;
@@ -331,6 +332,7 @@ export default {
     font-size: 1.8rem;
     margin-right: $margin-s;
     font-weight: 700;
+    text-shadow: $shadow-regular;
     opacity: 1;
 
     &:last-child {

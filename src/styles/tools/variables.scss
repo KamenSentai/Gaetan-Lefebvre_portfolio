@@ -47,3 +47,7 @@ $back-menu-s: 72px;
 
 // Easing
 $easing: 1s cubic-bezier(0.72, 0, 0.21, 1);
+
+// Shadows
+$shadow-regular: 0 0 .4rem rgba($black, .5);
+$shadow-light: 0 0 .4rem rgba($black, .125);
