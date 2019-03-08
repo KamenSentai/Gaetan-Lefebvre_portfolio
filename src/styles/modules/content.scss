@@ -565,8 +565,30 @@
     height: auto;
     align-self: center;
 
+    &--online {
+      flex-wrap: nowrap;
+    }
+
     @media (max-width: #{grid-media(8)}) {
       flex-wrap: wrap;
+
+      &--online {
+        flex-wrap: nowrap;
+      }
+    }
+  }
+
+  &-online {
+    @media (max-width: #{grid-media(8)}) {
+      height: $margin-m;
+    }
+
+    @media (max-width: #{grid-media(6)}) {
+      height: $margin-r;
+    }
+
+    @media (max-width: #{grid-media(4)}) {
+      height: $margin-s;
     }
   }
 

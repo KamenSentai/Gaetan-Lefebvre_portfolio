@@ -114,12 +114,12 @@ div
           .Content-post.Content-post--static.Content-post--half(data-aos="fade-up")
             h4.Content-section Inside the Oculus
             p.Content-text Finally, you can find here the charging part. Then the localisation, same as the mobile part to find the car. And the little option to bring the car forward or backward in some specials situations.
-        .Content-full
-          img(data-aos="fade-up" data-aos-delay="0" src="../assets/images/Tesla/Hand_1.png" alt="Hand")
-          img(data-aos="fade-up" data-aos-delay="250" src="../assets/images/Tesla/Hand_2.png" alt="Hand")
-          img(data-aos="fade-up" data-aos-delay="500" src="../assets/images/Tesla/Hand_3.png" alt="Hand")
-          img(data-aos="fade-up" data-aos-delay="750" src="../assets/images/Tesla/Hand_4.png" alt="Hand")
-          img(data-aos="fade-up" data-aos-delay="1000" src="../assets/images/Tesla/Hand_5.png" alt="Hand")
+        .Content-full.Content-full--online
+          img.Content-online(data-aos="fade-up" data-aos-delay="0" src="../assets/images/Tesla/Hand_1.png" alt="Hand")
+          img.Content-online(data-aos="fade-up" data-aos-delay="250" src="../assets/images/Tesla/Hand_2.png" alt="Hand")
+          img.Content-online(data-aos="fade-up" data-aos-delay="500" src="../assets/images/Tesla/Hand_3.png" alt="Hand")
+          img.Content-online(data-aos="fade-up" data-aos-delay="750" src="../assets/images/Tesla/Hand_4.png" alt="Hand")
+          img.Content-online(data-aos="fade-up" data-aos-delay="1000" src="../assets/images/Tesla/Hand_5.png" alt="Hand")
     .Intermediate.Intermediate--20
       .Intermediate-container(data-aos="fade-up")
         img.Content-breakpoints(src="../assets/images/Tesla/Helmet.png" alt="Helmet")
