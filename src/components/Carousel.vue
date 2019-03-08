@@ -60,13 +60,13 @@
       .Carousel-progress(v-if="!slide")
         p.Carousel-indicator Swipe
         svg.Carousel-step(:class="range === 0 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
-          path(d="M38.8,15.8l-7.2,21.9H8.4L1.2,15.8L20,2.2L38.8,15.8z")
-        svg.Carousel-step(:class="range === 1 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
-          path(d="M37.8,37.8H2.2V2.2h35.4L37.8,37.8L37.8,37.8z")
-        svg.Carousel-step(:class="range === 2 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
-          path(d="M38.8,37.8H1.2L20,2.2L38.8,37.8z")
-        svg.Carousel-step(:class="range === 3 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
           path(d="M20,37.8c-9.8,0-17.8-7.9-17.8-17.8S10.2,2.2,20,2.2S37.8,10.2,37.8,20S29.8,37.8,20,37.8z")
+        svg.Carousel-step(:class="range === 1 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
+          path(d="M38.8,37.8H1.2L20,2.2L38.8,37.8z")
+        svg.Carousel-step(:class="range === 2 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
+          path(d="M37.8,37.8H2.2V2.2h35.4L37.8,37.8L37.8,37.8z")
+        svg.Carousel-step(:class="range === 3 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
+          path(d="M38.8,15.8l-7.2,21.9H8.4L1.2,15.8L20,2.2L38.8,15.8z")
 </template>
 
 <script>
@@ -329,6 +329,10 @@ export default {
       left: 50%;
       opacity: 1;
       transform: translate(-50%, -50%) scale(.75);
+
+      @media (min-height: #{grid-media(10)}) {
+        transform: translate(-50%, -50%) scale(1);
+      }
 
       @media
         (max-width: #{grid-media(6)}) and (max-height: #{grid-media(6.5)}),
