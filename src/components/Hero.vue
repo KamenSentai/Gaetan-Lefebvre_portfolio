@@ -134,7 +134,7 @@ export default {
       transform: none;
 
       @media (max-height: #{grid-media(10)}) {
-        width: grid(6);
+        width: grid(6.5);
       }
 
       @media (max-height: #{grid-media(8)}) {
