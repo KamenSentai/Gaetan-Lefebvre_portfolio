@@ -164,11 +164,14 @@ export default {
       const autoplaySlider = () => {
         const elapsed = (new Date() - this.start)
         const fraction = Math.PI * 2 * elapsed / this.interval
+        const radius = (w - context.lineWidth) / 2
 
-        context.clearRect(0, 0, w, h)
-        context.beginPath()
-        context.arc(w / 2, h / 2, (w - context.lineWidth) / 2, 0, fraction, false)
-        context.stroke()
+        if (radius >= 0) {
+          context.clearRect(0, 0, w, h)
+          context.beginPath()
+          context.arc(w / 2, h / 2, radius, 0, fraction, false)
+          context.stroke()
+        }
 
         if (fraction >= Math.PI * 2) {
           this.start = new Date()
