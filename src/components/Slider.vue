@@ -152,14 +152,21 @@ export default {
 
       _SliderLoading.width = _SliderLoading.offsetWidth
       _SliderLoading.height = _SliderLoading.offsetHeight
-      const w = _SliderLoading.width
-      const h = _SliderLoading.height
+      let w = _SliderLoading.width
+      let h = _SliderLoading.height
 
       const context = _SliderLoading.getContext('2d')
       context.lineWidth = (parseFloat(_loadingStyle.width) - parseFloat(_pushStyle.width)) / 2
       context.strokeStyle = `${_loadingStyle.color}`
 
       this.start = new Date()
+
+      window.addEventListener('resize', () => {
+        _SliderLoading.width = _SliderLoading.offsetWidth
+        _SliderLoading.height = _SliderLoading.offsetHeight
+        w = _SliderLoading.width
+        h = _SliderLoading.height
+      })
 
       const autoplaySlider = () => {
         const elapsed = (new Date() - this.start)
