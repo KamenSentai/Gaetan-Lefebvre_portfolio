@@ -271,6 +271,14 @@ export default {
     @media (max-width: #{grid-media(4)}) {
       font-size: 2.8rem;
     }
+
+    @media (max-height: #{grid-media(5)}) {
+      font-size: 2.8rem;
+    }
+
+    @media (max-height: #{grid-media(4.5)}) {
+      margin-top: - $margin-t;
+    }
   }
 
   &-titles,
@@ -303,6 +311,10 @@ export default {
   &-above {
     margin-top: 1em;
     color: $dark;
+
+    @media (max-width: #{grid-media(6)}) {
+      margin-top: 0;
+    }
   }
 
   &-first {
@@ -332,11 +344,20 @@ export default {
     }
 
     @media (max-height: #{grid-media(8)}) {
+      line-height: 1.5em;
+    }
+
+    @media (max-height: #{grid-media(6.5)}) {
       font-size: 1.8rem;
     }
 
     @media (max-height: #{grid-media(6)}) {
       font-size: 1.6rem;
+    }
+
+    @media (max-height: #{grid-media(5.25)}) {
+      font-size: 1.4rem;
+      margin-bottom: $margin-n;
     }
   }
 
@@ -408,7 +429,11 @@ export default {
     &::before {
       content: 'Scroll';
 
-      @media (max-height: #{grid-media(6) + $gutter}) {
+      @media
+        (max-height: #{grid-media(7)}),
+        (max-width: #{grid-media(6)}) and (max-height: #{grid-media(7)}),
+        (max-width: #{grid-media(4)}) and (max-height: #{grid-media(7.5)})
+      {
         display: none;
       }
     }

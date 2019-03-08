@@ -295,6 +295,8 @@ export default {
     transition-delay: 1s;
 
     @media (max-width: #{grid-media(6)}) {
+      margin-bottom: $margin-s;
+
       &.is-toggled {
         margin-bottom: $margin-r + $margin-s;
         transition-delay: 0s;
