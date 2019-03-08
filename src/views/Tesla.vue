@@ -65,7 +65,7 @@ div
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Inside the car
           p.Content-description.Content-description--large.Text--center The touchscreen is first of all the way to navigate and obtain all the informations about the Tesla Model 3. But it’s also the way to interact the the Oculus Rift for the passenger beside to the driver and the driver himself when the car is stopped.
-      img(src="../assets/images/Tesla/Car.png" alt="Car")
+      img.Exception--car(src="../assets/images/Tesla/Car.png" alt="Car")
     section.Slide.Slide--page
       Post(
         :color="data.color"

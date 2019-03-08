@@ -1,0 +1,15 @@
+.Exception {
+  &--car {
+    @media (max-width: #{grid-media(4)}) {
+      transform: scale(.75);
+    }
+  }
+
+  &--screens {
+    align-self: center;
+
+    @media (max-width: #{grid-media(10)}) {
+      width: 150%;
+    }
+  }
+}

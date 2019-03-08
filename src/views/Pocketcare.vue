@@ -71,7 +71,7 @@ div
           p.Content-description.Text--center To solve the problem of complexity of the application, we realized a simple onboarding with illustrations and easy to understand.
     .Intermediate.Intermediate--20
       .Intermediate-container
-        img(src="../assets/images/Pocketcare/Screens.png" alt="Screens")
+        img.Exception--screens(src="../assets/images/Pocketcare/Screens.png" alt="Screens")
     section.Slide
       Article(
         :color="data.color"
