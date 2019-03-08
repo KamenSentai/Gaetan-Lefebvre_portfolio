@@ -25,13 +25,14 @@ header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
             a(href="#") LinkedIn
             a(href="#") Dribbble
             a(href="#") Instagram
-    router-link.Header-logo(v-bind:class="isNavigating ? 'is-toggled' : ''" :to="{ name: 'home', params: sendData() }")
-      Logo(:color="color || data.colors[range]")
-    ul.Header-navbar
-      li.Header-item(:class="project ? 'is-hidden': ''")
-        a(href="#" @click="toggleMenu") Projects
-      li.Header-item
-        router-link(:to="{ name: 'about', params: sendData() }") About
+    .Header-mainnav
+      router-link.Header-logo(v-bind:class="isNavigating ? 'is-toggled' : ''" :to="{ name: 'home', params: sendData() }")
+        Logo(:color="color || data.colors[range]")
+      ul.Header-navbar
+        li.Header-item(:class="project ? 'is-hidden': ''")
+          a(href="#" @click="toggleMenu") Projects
+        li.Header-item
+          router-link(:to="{ name: 'about', params: sendData() }") About
   .Header-jumbotron
     Hero.Header-hero(
       :class="type === 'about' ? 'Header-scrollable' : ''"
@@ -381,6 +382,15 @@ export default {
     }
   }
 
+  &-mainnav {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: grid(12);
+    z-index: 500;
+  }
+
   &-subnav {
     position: relative;
     z-index: 2000;
@@ -500,6 +510,7 @@ export default {
   }
 
   &-topbar,
+  &-mainnav,
   &-jumbotron {
     @include grid-scale(12);
   }
