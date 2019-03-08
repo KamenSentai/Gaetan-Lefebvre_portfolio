@@ -301,6 +301,7 @@ export default {
   }
 
   &-above {
+    margin-top: 1em;
     color: $dark;
   }
 
