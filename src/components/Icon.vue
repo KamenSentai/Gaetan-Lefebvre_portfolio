@@ -1,7 +1,13 @@
 <template lang="pug">
 .Icon
   router-link.Icon-link(:to="{ name: 'projects', params: { color: color, shape: shape } }")
-  svg.Icon-shape(@mousedown="mouseDown" @mouseup="mouseUp" width="40px" height="40px" viewBox="0 0 40 40")
+  svg.Icon-shape(
+    @mousedown="mouseDown"
+    @mouseup="mouseUp"
+    @touchstart="touchStart"
+    @touchend="touchEnd"
+    width="40px" height="40px" viewBox="0 0 40 40"
+  )
     defs
       g#shape
         circle(v-if="shape === 'circle'" cx="20" cy="20" r="18.8")
@@ -32,6 +38,12 @@ export default {
     },
     mouseUp: function() {
       this.isClicking = false
+    },
+    touchStart: function() {
+      this.isClicking = true
+    },
+    touchEnd: function() {
+      this.isClicking = false
     }
   },
   mounted() {
@@ -51,7 +63,8 @@ export default {
       for (t in transitions) if (el.style[t] !== undefined) return transitions[t]
     }
 
-    _iconShape.addEventListener('mousedown', () => {
+    const loadShape = event => {
+      event.preventDefault()
       const transitionEvent = whichTransitionEvent()
         transitionEvent && _iconShape.addEventListener(transitionEvent, () => {
         if (this.isClicking) {
@@ -59,7 +72,10 @@ export default {
           _iconLink.click()
         }
       })
-    })
+    }
+
+    _iconShape.addEventListener('mousedown', loadShape)
+    _iconShape.addEventListener('touchstart', loadShape)
   }
 }
 </script>
