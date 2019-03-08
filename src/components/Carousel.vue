@@ -331,7 +331,7 @@ export default {
       transform: translate(-50%, -50%) scale(.75);
 
       @media (min-height: #{grid-media(8.5)}) {
-        transform: translate(-50%, -50%) scale(.875);
+        transform: translate(-50%, -50%) scale(1);
       }
 
       @media
@@ -583,7 +583,7 @@ export default {
   &-step {
     width: .8rem;
     height: .8rem;
-    margin: 0 $margin-n;
+    margin: 0 $margin-n * .75;
     fill: rgba($white, 0);
     stroke-width: 1;
     stroke: $white;
