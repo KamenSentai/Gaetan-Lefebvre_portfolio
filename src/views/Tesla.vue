@@ -197,10 +197,11 @@ export default {
       const _groupContent = _alternatedContent.querySelector('.Content-group')
 
       const listenScroll = () => {
-        window.addEventListener('scroll', listenScroll)
         if (_groupContent.classList.contains('aos-animate')) {
           _alternatedContent.classList.remove('is-inactive')
           window.removeEventListener('scroll', listenScroll)
+        } else {
+          window.addEventListener('scroll', listenScroll)
         }
       }
       listenScroll()

@@ -159,8 +159,6 @@ export default {
       context.lineWidth = (parseFloat(_loadingStyle.width) - parseFloat(_pushStyle.width)) / 2
       context.strokeStyle = `${_loadingStyle.color}`
 
-      this.start = new Date()
-
       window.addEventListener('resize', () => {
         _SliderLoading.width = _SliderLoading.offsetWidth
         _SliderLoading.height = _SliderLoading.offsetHeight
@@ -187,7 +185,18 @@ export default {
 
         window.requestAnimationFrame(autoplaySlider)
       }
-      autoplaySlider()
+      let index = Math.floor(Math.random() * 100)
+      let i = 0
+      const listenScroll = () => {
+        if (this.$el.classList.contains('aos-animate')) {
+          this.start = new Date()
+          autoplaySlider()
+          window.cancelAnimationFrame(listenScroll)
+        } else {
+          window.requestAnimationFrame(listenScroll)
+        }
+      }
+      listenScroll()
     }
   }
 }
