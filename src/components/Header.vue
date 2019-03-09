@@ -3,10 +3,6 @@ header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
   .Header-topbar(v-bind:class="isNavigating ? 'is-toggled' : ''")
     .Header-navigation(v-bind:class="isNavigating ? 'is-toggled' : ''")
       .Header-subnav
-        .Header-burger(v-bind:class="isNavigating ? 'is-active' : ''" @click="toggleNavigation")
-          .Header-stripe
-          .Header-stripe
-          .Header-stripe
         .Header-tree
           router-link.Header-branch(
             v-bind:class="route === 'home' ? `is-active--${color || data.colors[range]}` : ''"
@@ -33,6 +29,10 @@ header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
           a(href="#" @click="toggleMenu") Projects
         li.Header-item
           router-link(:to="{ name: 'about', params: sendData() }") About
+      .Header-burger(v-bind:class="isNavigating ? 'is-active' : ''" @click="toggleNavigation")
+        .Header-stripe
+        .Header-stripe
+        .Header-stripe
   .Header-jumbotron
     Hero.Header-hero(
       :class="type === 'about' ? 'Header-scrollable' : ''"
@@ -294,26 +294,55 @@ export default {
     transition: margin-bottom $easing;
     transition-delay: 1s;
 
+    &::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      width: 100vw;
+      height: $margin-s + $margin-r;
+      background-color: $black;
+      opacity: 0;
+      transition: opacity $easing;
+      transition-delay: 1s;
+      will-change: opacity;
+      pointer-events: none;
+
+      @media (max-width: #{grid-media(6)}) {
+        height: $margin-s + $margin-s;
+      }
+    }
+
     @media (max-width: #{grid-media(6)}) {
       margin-bottom: $margin-s;
 
       &.is-toggled {
         margin-bottom: $margin-r + $margin-s;
         transition-delay: 0s;
+
+        &::before {
+          opacity: 1;
+          transition-delay: 0s;
+          pointer-events: auto;
+        }
       }
     }
   }
 
   &-logo {
     filter: drop-shadow(#{$shadow-light});
-    transition: transform $easing;
+    opacity: 1;
+    transition: opacity $easing, transform $easing;
     transition-delay: 1s;
-    will-change: transform;
+    will-change: opacity, transform;
 
     @media (max-width: #{grid-media(6)}) {
       &.is-toggled {
+        opacity: 0;
         transform: translateY(-#{$margin-s});
         transition-delay: 0s;
+        pointer-events: none;
       }
     }
   }
@@ -350,24 +379,24 @@ export default {
 
   &-navigation {
     position: fixed;
-    top: 0;
+    bottom: 0;
     left: 0;
     display: none;
     justify-content: center;
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - #{$margin-s + $margin-s});
 
     &::before,
     &::after {
       content: '';
       position: absolute;
-      top: 0;
-      height: 100vh;
     }
 
     &::before {
+      top: 0;
       left: 0;
       width: 100vw;
+      height: 100%;
       background-color: $black;
       opacity: 0;
       transition: opacity $easing;
@@ -376,8 +405,10 @@ export default {
     }
 
     &::after {
+      bottom: 0;
       left: calc(50vw - .1rem);
       width: .1rem;
+      height: 100vh;
       background-color: $dark;
       transform-origin: 50% 0;
       transform: scaleY(0);
@@ -426,6 +457,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     width: grid(12);
+    height: 0;
     z-index: 500;
   }
 
@@ -435,7 +467,6 @@ export default {
     display: flex;
     flex-direction: column;
     @include grid-scale(12);
-    margin-top: $margin-s;
 
     &::before {
       content: '';
@@ -455,9 +486,6 @@ export default {
     justify-content: space-around;
     width: $burger-width;
     height: $burger-height;
-    margin-top: - $burger-height / 2;
-    margin-right: 0;
-    margin-left: auto;
     cursor: pointer;
 
     &:hover {
@@ -490,6 +518,7 @@ export default {
     height: .1rem;
     width: $burger-width;
     background-color: $white;
+    box-shadow: $shadow-regular;
     transform-origin: 100% 0;
     transform: scaleX(1);
     transition: transform $easing;
