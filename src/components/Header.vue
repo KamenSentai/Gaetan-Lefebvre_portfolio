@@ -100,8 +100,10 @@ export default {
         this.isNavigating = !this.isNavigating
 
         if (this.isNavigating) {
+          document.body.style.overflow = 'hidden'
           this.$el.querySelector('.Header-navigation').style.zIndex = '1000'
         } else {
+          document.body.style.overflow = 'auto'
           setTimeout(() => {
             this.$el.querySelector('.Header-navigation').style.zIndex = '0'
           }, 2000)
