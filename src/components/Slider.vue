@@ -185,8 +185,7 @@ export default {
 
         window.requestAnimationFrame(autoplaySlider)
       }
-      let index = Math.floor(Math.random() * 100)
-      let i = 0
+
       const listenScroll = () => {
         if (this.$el.classList.contains('aos-animate')) {
           this.start = new Date()

@@ -16,43 +16,48 @@ export default {
     const _mousePointer = _mouse.querySelector('.Mouse-pointer')
     const _mouseCircle = _mouse.querySelector('.Mouse-circle')
 
-    if (navigator.userAgent.match(/Android/i)
-    || navigator.userAgent.match(/webOS/i)
-    || navigator.userAgent.match(/iPhone/i)
-    || navigator.userAgent.match(/iPad/i)
-    || navigator.userAgent.match(/iPod/i)
-    || navigator.userAgent.match(/BlackBerry/i)
-    || navigator.userAgent.match(/Windows Phone/i)
-    ) {
-      this.className = 'is-hidden'
-    } else {
-      const _body = document.body
-      let screen = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
-      let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
-      let position = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
+    const _body = document.body
+    let screen = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
+    let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
+    let positionPointer = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
+    let positionCircle = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
 
-      window.addEventListener('mousemove', event => {
-        screen.x = event.clientX
-        screen.y = event.clientY
-        mouse.x = event.clientX - _body.getBoundingClientRect().left
-        mouse.y = event.clientY - _body.getBoundingClientRect().top
-      })
+    window.addEventListener('mousemove', event => {
+      screen.x = event.clientX
+      screen.y = event.clientY
+      mouse.x = event.clientX - _body.getBoundingClientRect().left
+      mouse.y = event.clientY - _body.getBoundingClientRect().top
+    })
 
-      window.addEventListener('scroll', () => {
-        mouse.x = screen.x - _body.getBoundingClientRect().left
-        mouse.y = screen.y - _body.getBoundingClientRect().top
-      })
+    window.addEventListener('scroll', () => {
+      mouse.x = screen.x - _body.getBoundingClientRect().left
+      mouse.y = screen.y - _body.getBoundingClientRect().top
+    })
 
-      const animateCircle = () => {
-        position.x += (mouse.x - position.x) * .125
-        position.y += (mouse.y - position.y) * .125
+    const animateCursor = () => {
+      positionPointer.x += (mouse.x - positionPointer.x) * .25
+      positionPointer.y += (mouse.y - positionPointer.y) * .25
+      positionCircle.x += (mouse.x - positionCircle.x) * .1875
+      positionCircle.y += (mouse.y - positionCircle.y) * .1875
 
-        _mousePointer.style.transform = `translate(${position.x}px, ${position.y}px)`
-        _mouseCircle.style.transform = `translate(${position.x}px, ${position.y}px)`
-        window.requestAnimationFrame(animateCircle)
-      }
-      animateCircle()
+      _mousePointer.style.transform = `translate(${positionPointer.x}px, ${positionPointer.y}px)`
+      _mouseCircle.style.transform = `translate(${positionCircle.x}px, ${positionCircle.y}px)`
+      window.requestAnimationFrame(animateCursor)
     }
+    animateCursor()
+
+    window.addEventListener('resize', () => {
+      if (
+        navigator.userAgent.match(/Android/i)
+        || navigator.userAgent.match(/webOS/i)
+        || navigator.userAgent.match(/iPhone/i)
+        || navigator.userAgent.match(/iPad/i)
+        || navigator.userAgent.match(/iPod/i)
+        || navigator.userAgent.match(/BlackBerry/i)
+        || navigator.userAgent.match(/Windows Phone/i)
+      ) this.className = 'is-hidden'
+      else this.className = 'is-active'
+    })
   }
 }
 </script>
