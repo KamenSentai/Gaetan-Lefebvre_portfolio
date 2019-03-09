@@ -22,6 +22,7 @@
           img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/pocketcare_back.png" alt="Pocketcare" draggable="false")
           img(src="../assets/images/Projects/pocketcare.png" alt="Pocketcare" draggable="false")
           img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/pocketcare_front.png" alt="Pocketcare" draggable="false")
+          img.Carousel-extra.Absolute.Absolute--p1(src="../assets/images/Projects/pocketcare_extra.png" alt="Pocketcare" draggable="false")
       p.Carousel-label(v-if="!slide || parseInt(slide) === 0")
         span.Carousel-title Pocketcare
         span.Carousel-subtitle
@@ -35,6 +36,7 @@
           img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/tesla_back.png" alt="Tesla")
           img(src="../assets/images/Projects/tesla.png" alt="Tesla")
           img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/tesla_front.png" alt="Tesla")
+          img.Carousel-extra.Absolute.Absolute--p2(src="../assets/images/Projects/tesla_extra.png" alt="Tesla")
       p.Carousel-label(v-if="!slide || parseInt(slide) === 1")
         span.Carousel-title Tesla
         span.Carousel-subtitle
@@ -48,6 +50,7 @@
           img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/buddy-buddy_back.png" alt="Buddy Buddy")
           img(src="../assets/images/Projects/buddy-buddy.png" alt="Buddy Buddy")
           img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/buddy-buddy_front.png" alt="Buddy Buddy")
+          img.Carousel-extra.Absolute.Absolute--p3(src="../assets/images/Projects/buddy-buddy_extra.png" alt="Buddy Buddy")
       p.Carousel-label(v-if="!slide || parseInt(slide) === 2")
         span.Carousel-title Buddy Buddy
         span.Carousel-subtitle
@@ -360,6 +363,11 @@ export default {
       + #{$rootCarousel}-label {
         opacity: 1;
       }
+
+      #{$rootCarousel}-extra {
+        opacity: 1;
+        transition-delay: .5s;
+      }
     }
 
     &--1 {
@@ -418,6 +426,13 @@ export default {
     &--front {
       z-index: 1;
     }
+  }
+
+  &-extra {
+    opacity: 0;
+    transition: opacity $easing;
+    transition-delay: 0s;
+    will-change: opacity;
   }
 
   &-label {
