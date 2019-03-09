@@ -97,7 +97,7 @@ export default {
     fill: none;
     stroke: $white;
     stroke-width: 1;
-    transform: scale(.875);
+    transform: scale(.75);
     animation: mini-scale 2s ease-in-out infinite;
     will-change: transform;
   }
