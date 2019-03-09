@@ -76,7 +76,7 @@ div
       .Intermediate-container
         .Content.Text--white
           .Content-item
-            .Content-post(data-aos="fade-right")
+            .Content-post.Exception--post(data-aos="fade-right")
               h4.Content-section Branding
               p.Content-text.Content-text--intermediate All the case study on the Buddy Buddy website have the same plan. The first part is the project presentation.
             img.Content-poster(data-aos="fade-right" data-aos-delay="250" src="../assets/images/BuddyBuddy/Branding.png" alt="Branding")
