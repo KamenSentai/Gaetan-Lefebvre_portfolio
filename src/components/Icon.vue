@@ -88,15 +88,22 @@ export default {
   margin: 0 1rem;
   cursor: pointer;
 
+  &-strokes,
+  &-fill {
+    transform-origin: 50% 50%;
+  }
+
   &-strokes {
     fill: none;
     stroke: $white;
     stroke-width: 1;
+    transform: scale(.875);
+    animation: mini-scale 2s ease-in-out infinite;
+    will-change: transform;
   }
 
   &-fill {
     fill: $white;
-    transform-origin: 50% 50%;
     transform: scale(0);
     transition: transform $easing-duration;
     transition-duration: 2s;
