@@ -360,7 +360,7 @@ export default {
   &-image {
     max-width: grid(8);
     max-height: grid(6);
-    transition: all $easing;
+    transition: all $easing-duration;
 
     @media (max-width: #{grid-media(10)}) {
       max-width: grid(6);

@@ -293,7 +293,7 @@ export default {
     width: grid(12);
     margin-top: $margin-s;
     margin-bottom: $margin-r;
-    transition: margin-bottom $easing;
+    transition: margin-bottom $easing-duration;
     transition-delay: 1s;
 
     &::before {
@@ -306,7 +306,7 @@ export default {
       height: $margin-s + $margin-r;
       background-color: $black;
       opacity: 0;
-      transition: opacity $easing;
+      transition: opacity $easing-duration;
       transition-delay: 1s;
       will-change: opacity;
       pointer-events: none;
@@ -335,7 +335,7 @@ export default {
   &-logo {
     filter: drop-shadow(#{$shadow-light});
     opacity: 1;
-    transition: opacity $easing, transform $easing;
+    transition: opacity $easing-duration, transform $easing-duration;
     transition-delay: 1s;
     will-change: opacity, transform;
 
@@ -401,7 +401,7 @@ export default {
       height: 100%;
       background-color: $black;
       opacity: 0;
-      transition: opacity $easing;
+      transition: opacity $easing-duration;
       transition-delay: 1s;
       will-change: opacity;
     }
@@ -414,7 +414,7 @@ export default {
       background-color: $dark;
       transform-origin: 50% 0;
       transform: scaleY(0);
-      transition: transform $easing;
+      transition: transform $easing-duration;
       transition-delay: 0s;
       will-change: transform;
     }
@@ -527,7 +527,7 @@ export default {
     box-shadow: $shadow-regular;
     transform-origin: 100% 0;
     transform: scaleX(1);
-    transition: transform $easing;
+    transition: transform $easing-duration;
     will-change: transform;
 
     &:first-child,
@@ -565,7 +565,7 @@ export default {
     margin: auto;
     opacity: 0;
     transform: translateY(#{$margin-t});
-    transition: opacity $easing, transform $easing;
+    transition: opacity $easing-duration, transform $easing-duration;
     will-change: opacity, transform;
 
     &--more {

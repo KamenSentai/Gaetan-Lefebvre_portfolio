@@ -180,7 +180,7 @@ export default {
     &--slide {
       transform-origin: 50% 50%;
       transform: translateX(-50%) scale(0);
-      transition: transform $easing;
+      transition: transform $easing-duration;
       transition-delay: .5s;
       will-change: transform;
 
@@ -198,7 +198,7 @@ export default {
   &-back {
     &--slide {
       opacity: 0;
-      transition: opacity $easing;
+      transition: opacity $easing-duration;
       will-change: opacity;
 
       &.is-active {
@@ -290,7 +290,7 @@ export default {
     flex-direction: column;
     opacity: 0;
     transform: translateY(-#{$margin-t});
-    transition: opacity $easing, transform $easing;
+    transition: opacity $easing-duration, transform $easing-duration;
     will-change: opacity, transform;
     pointer-events: none;
 
@@ -407,7 +407,7 @@ export default {
     font-weight: 300;
     text-transform: uppercase;
     line-height: 1.75em;
-    transition: all $easing;
+    transition: all $easing-duration;
 
     &:last-child {
       margin-right: 0;

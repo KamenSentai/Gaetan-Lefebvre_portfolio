@@ -316,7 +316,7 @@
         width: calc(#{grid(10)} - 100%);
         height: .1rem;
         background-color: $dark;
-        transition: width $easing;
+        transition: width $easing-duration;
       }
 
       @media (max-width: #{grid-media(10)}) {
@@ -372,7 +372,7 @@
       height: 100%;
       background-color: $dark;
       transform: translateY(-#{$margin-l / 2});
-      transition: height $easing;
+      transition: height $easing-duration;
 
       @media (max-width: #{grid-media(8)}) {
         top: calc(100% - #{$margin-r / 2});

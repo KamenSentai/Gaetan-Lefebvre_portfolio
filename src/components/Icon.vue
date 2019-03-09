@@ -98,7 +98,7 @@ export default {
     fill: $white;
     transform-origin: 50% 50%;
     transform: scale(0);
-    transition: transform $easing;
+    transition: transform $easing-duration;
     transition-duration: 2s;
     will-change: transform;
 

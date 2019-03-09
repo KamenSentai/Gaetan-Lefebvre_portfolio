@@ -194,7 +194,7 @@ export default {
     position: relative;
     width: 100%;
     margin-top: $margin-g;
-    transition: margin-top $easing;
+    transition: margin-top $easing-duration;
 
     &::before {
       content: '';
@@ -206,7 +206,7 @@ export default {
       background-color: $dark;
       transform-origin: 50% 50%;
       transform: translate(-50%, -50%);
-      transition: transform $easing;
+      transition: transform $easing-duration;
       will-change: transform;
 
       @media (max-width: #{grid-media(6)}) {
@@ -337,7 +337,7 @@ export default {
     position: absolute;
     opacity: 0;
     transform: translate(-50%, -50%) scale(0);
-    transition: all $easing;
+    transition: all $easing-duration;
     will-change: opacity, transform;
 
     &--0 {
@@ -406,7 +406,7 @@ export default {
   &-image {
     position: relative;
     user-select: none;
-    transition: transform $easing;
+    transition: transform $easing-duration;
     will-change: transform;
 
     @media (max-height: #{grid-media(4)}) {
@@ -430,7 +430,7 @@ export default {
 
   &-extra {
     opacity: 0;
-    transition: opacity $easing;
+    transition: opacity $easing-duration;
     transition-delay: 0s;
     will-change: opacity;
   }
@@ -445,7 +445,7 @@ export default {
     white-space: nowrap;
     transform: translateX(-50%);
     opacity: 0;
-    transition: opacity $easing;
+    transition: opacity $easing-duration;
     user-select: none;
 
     @media (max-height: #{grid-media(8.5)}) {
@@ -464,7 +464,7 @@ export default {
     letter-spacing: .0625em;
     text-transform: uppercase;
     pointer-events: none;
-    transition: all $easing;
+    transition: all $easing-duration;
     transform: translateX(-50%);
     will-change: transform;
 
@@ -495,7 +495,7 @@ export default {
   &-subtitle {
     position: relative;
     font-size: 2rem;
-    transition: all $easing;
+    transition: all $easing-duration;
     will-change: transform;
 
     @media (max-height: #{grid-media(7.5)}) {
@@ -516,7 +516,7 @@ export default {
     position: absolute;
     left: calc(100% + #{$margin-t});
     opacity: 0;
-    transition: opacity $easing;
+    transition: opacity $easing-duration;
     will-change: opacity;
   }
 
@@ -529,7 +529,7 @@ export default {
     width: 100%;
     transform-origin: 50% 50%;
     transform: translate(-50%, -50%);
-    transition: all $easing;
+    transition: all $easing-duration;
     user-select: none;
     will-change: transform;
 
@@ -629,7 +629,7 @@ export default {
     fill: rgba($white, 0);
     stroke-width: 1;
     stroke: $white;
-    transition: all $easing;
+    transition: all $easing-duration;
     will-change: transform;
 
     &.is-active {

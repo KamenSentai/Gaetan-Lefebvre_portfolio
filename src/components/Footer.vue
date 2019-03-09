@@ -87,7 +87,7 @@ export default {
     position: absolute;
     bottom: 100%;
     height: $line-size;
-    transition: all $easing;
+    transition: all $easing-duration;
   }
 
   &::before {
@@ -108,7 +108,7 @@ export default {
     width: 100%;
     height: $height-size;
     overflow: hidden;
-    transition: all $easing;
+    transition: all $easing-duration;
 
     &:hover {
       height: $height-size + $scale-size;
@@ -153,7 +153,7 @@ export default {
     white-space: nowrap;
     opacity: .4;
     transform: translate(-50%, -50%);
-    transition: opacity $easing;
+    transition: opacity $easing-duration;
     will-change: opacity;
 
     @media (max-width: #{grid-media(10)}) {
@@ -180,7 +180,7 @@ export default {
     max-width: 100%;
     filter: grayscale(100%);
     opacity: .4;
-    transition: all $easing;
+    transition: all $easing-duration;
     will-change: opacity;
   }
 

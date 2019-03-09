@@ -58,7 +58,7 @@ export default {
     flex: 1 0 20%;
     border-top: .1rem solid $dark;
     border-bottom: .1rem solid $dark;
-    transition: flex $easing;
+    transition: flex $easing-duration;
     overflow: hidden;
 
     &:hover {
@@ -79,7 +79,7 @@ export default {
       left: 50%;
       transform: translate(-50%, -50%);
       opacity: .4;
-      transition: opacity $easing;
+      transition: opacity $easing-duration;
       will-change: opacity;
     }
   }
@@ -127,7 +127,7 @@ export default {
     top: 50%;
     left: calc(50% - #{$line-size});
     opacity: .4;
-    transition: opacity $easing;
+    transition: opacity $easing-duration;
     will-change: opacity;
 
     &::before,
@@ -176,7 +176,7 @@ export default {
     width: auto;
     height: $item-percentage * 1vh;
     filter: grayscale(100%);
-    transition: all $easing;
+    transition: all $easing-duration;
   }
 
   &-title {

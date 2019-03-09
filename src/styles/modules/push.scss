@@ -49,7 +49,7 @@
     margin: $link-size / 2 0;
     opacity: .4;
     transform: translateY(- #{$link-size});
-    transition: opacity $easing, transform $easing;
+    transition: opacity $easing-duration, transform $easing-duration;
     will-change: opacity, transform;
 
     &::before,
