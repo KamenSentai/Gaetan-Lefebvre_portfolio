@@ -95,19 +95,19 @@ div
             h4.Content-section Charge and navigation
             p.Content-text When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation to return to the car.
             p.Content-text The navigation will tell you the distance of the car and the localisation. You will also have an AR view of the street.
-          .Content-alternated
+          .Content-alternated.is-inactive
             .Content-group(data-aos="fade-up")
               img.Content-intern(src="../assets/images/Tesla/Phone_1.png" alt="Phone 1")
               img.Absolute.Absolute--p11(src="../assets/images/Tesla/Phone_1-overflow_1.png" alt="")
               img.Absolute.Absolute--p12(src="../assets/images/Tesla/Phone_1-overflow_2.png" alt="")
               img.Absolute.Absolute--p13(src="../assets/images/Tesla/Phone_1-overflow_3.png" alt="")
-          .Content-alternated
+          .Content-alternated.is-inactive
             .Content-group(data-aos="fade-up")
               img.Content-intern(src="../assets/images/Tesla/Phone_2.png" alt="Phone 2")
               img.Absolute.Absolute--p23(src="../assets/images/Tesla/Phone_2-overflow_3.png" alt="")
               img.Absolute.Absolute--p22(src="../assets/images/Tesla/Phone_2-overflow_2.png" alt="")
               img.Absolute.Absolute--p21(src="../assets/images/Tesla/Phone_2-overflow_1.png" alt="")
-          .Content-alternated
+          .Content-alternated.is-inactive
             .Content-group(data-aos="fade-up")
               img.Content-intern(src="../assets/images/Tesla/Phone_3.gif" alt="Phone 3")
         .Content-article
@@ -189,6 +189,22 @@ export default {
     Article,
     Slider,
     Footer
+  },
+  mounted() {
+    const _alternatedsContent = Array.from(this.$el.querySelectorAll('.Content-alternated'))
+
+    for (const _alternatedContent of _alternatedsContent) {
+      const _groupContent = _alternatedContent.querySelector('.Content-group')
+
+      const listenScroll = () => {
+        window.addEventListener('scroll', listenScroll)
+        if (_groupContent.classList.contains('aos-animate')) {
+          _alternatedContent.classList.remove('is-inactive')
+          window.removeEventListener('scroll', listenScroll)
+        }
+      }
+      listenScroll()
+    }
   }
 }
 </script>
