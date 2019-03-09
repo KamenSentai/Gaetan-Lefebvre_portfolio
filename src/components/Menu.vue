@@ -38,7 +38,7 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 5000;
   display: none;
   flex-direction: column;
   justify-content: space-between;
