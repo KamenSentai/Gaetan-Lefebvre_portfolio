@@ -8,14 +8,14 @@
         path#left-3.Carousel-shape.Carousel-shape--left(:class="index === 3 ? 'is-chosen' : ''" d="M20,1.2L38.8,20L20,38.8L1.2,20L20,1.2z")
         path#left-0.Carousel-shape.Carousel-shape--left(:class="index === 0 ? 'is-chosen' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
         path#left.Carousel-shape.is-active
-        polyline.Carousel-shape.is-active(points="25,22.5 20,17.5 15,22.5")
+        polyline.Carousel-shape.Carousel-shape--arrow.is-active(points="25,22.5 20,17.5 15,22.5")
       svg.Carousel-button.Carousel-button--right(width="40px" height="40px" viewBox="0 0 40 40" @click="turnRight")
         path#right-3.Carousel-shape.Carousel-shape--right(:class="index === 3 ? 'is-chosen' : ''" d="M20,38.8C9.6,38.8,1.2,30.4,1.2,20S9.6,1.2,20,1.2S38.8,9.6,38.8,20S30.4,38.8,20,38.8z")
         path#right-0.Carousel-shape.Carousel-shape--right(:class="index === 0 ? 'is-chosen' : ''" d="M38.8,33.6H1.2L20,1.1L38.8,33.6z")
         path#right-1.Carousel-shape.Carousel-shape--right(:class="index === 1 ? 'is-chosen' : ''" d="M20,1.2L38.8,20L20,38.8L1.2,20L20,1.2z")
         path#right-2.Carousel-shape.Carousel-shape--right(:class="index === 2 ? 'is-chosen' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
         path#right.Carousel-shape.is-active
-        polyline.Carousel-shape.is-active(points="25,22.5 20,17.5 15,22.5")
+        polyline.Carousel-shape.Carousel-shape--arrow.is-active(points="25,22.5 20,17.5 15,22.5")
     .Carousel-content
       router-link.Carousel-item(v-if="!slide || parseInt(slide) === 0" v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ name: 'pocketcare' }" draggable="false")
         .Carousel-image
@@ -221,7 +221,6 @@ export default {
 
       #{$rootCarousel}-item {
         &--0 {
-          transform-origin: 50% 25%;
           transform: translate(-50%, -50%);
 
           @media
@@ -567,6 +566,17 @@ export default {
 
     &.is-active {
       visibility: visible;
+    }
+
+    @media (max-width: #{grid-media(6)}) {
+      stroke: none;
+      visibility: visible;
+      opacity: 0;
+
+      &--arrow {
+        stroke: $white;
+        opacity: 1;
+      }
     }
   }
 
