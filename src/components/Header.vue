@@ -508,6 +508,7 @@ export default {
     align-items: center;
     flex: 1;
     margin-top: $margin-s;
+    padding-top: $margin-t;
     font-size: 2.8rem;
     font-weight: 700;
   }
@@ -523,7 +524,7 @@ export default {
       display: flex;
       justify-content: space-between;
       width: 100%;
-      margin-top: $margin-r;
+      margin-top: $margin-m;
       margin-bottom: $margin-s;
       font-size: 1.2rem;
       font-weight: 300;
