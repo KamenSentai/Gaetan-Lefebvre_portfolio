@@ -483,7 +483,7 @@ export default {
 
   &-burger {
     z-index: 1;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: space-around;
     width: $burger-width;
@@ -513,6 +513,10 @@ export default {
           transform: rotateZ(30deg);
         }
       }
+    }
+
+    @media (max-width: #{grid-media(6)}) {
+      display: flex;
     }
   }
 
