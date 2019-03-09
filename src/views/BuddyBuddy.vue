@@ -80,7 +80,7 @@ div
               h4.Content-section Branding
               p.Content-text.Content-text--intermediate All the case study on the Buddy Buddy website have the same plan. The first part is the project presentation.
             img.Content-poster(data-aos="fade-right" data-aos-delay="250" src="../assets/images/BuddyBuddy/Branding.png" alt="Branding")
-    section.Slide
+    section.Slide.Exception--bottommore
       .Content
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Mobile case study
@@ -89,7 +89,7 @@ div
           folder="BuddyBuddy"
           :images="['Mobile_1', 'Mobile_2', 'Mobile_3', 'Mobile_4']"
         )
-    section.Slide.Slide--banner.Slide--exception
+    section.Slide.Slide--banner.Exception--banner
       img.Content-banner(src="../assets/images/BuddyBuddy/Banner_Screenshots.png" alt="Banner Screenshots")
     section.Slide
       Article(

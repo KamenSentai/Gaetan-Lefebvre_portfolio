@@ -60,7 +60,7 @@ div
             label.Field--black(for="black") Dark theme
             input(type="radio" id="white" v-model="slider_theme" value="white")
             label(v-bind:class="`Field--${data.color}`" for="white") Light theme
-    section.Slide.Slide--block.Slide--bottomless
+    section.Slide.Slide--block.Exception--bottomless
       .Content
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Inside the car
