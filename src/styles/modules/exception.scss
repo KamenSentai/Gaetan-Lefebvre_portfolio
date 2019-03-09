@@ -12,4 +12,10 @@
       width: 150%;
     }
   }
+
+  &--post {
+    @media (min-width: #{grid-media(10)}) {
+      margin-top: - $margin-m;
+    }
+  }
 }

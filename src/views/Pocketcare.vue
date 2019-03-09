@@ -60,7 +60,7 @@ div
             p.Content-text To solve the problem of complexity of the application, we realized a simple onboarding with illustrations and easy to understand. We then thought it would be a good idea.
           img.Content-poster(data-aos="fade-left" data-aos-delay="250" src="../assets/images/Pocketcare/Phone_1.gif" alt="Phone animation 1")
         .Content-item
-          .Content-post(data-aos="fade-right")
+          .Content-post.Exception--post(data-aos="fade-right")
             h4.Content-section Step 2
             p.Content-text To solve the problem of complexity of the application, we realized a simple onboarding with illustrations and easy to understand.
           img.Content-poster(data-aos="fade-right" data-aos-delay="250" src="../assets/images/Pocketcare/Phone_2.gif" alt="Phone animation 2")
