@@ -571,11 +571,9 @@ export default {
     @media (max-width: #{grid-media(6)}) {
       stroke: none;
       visibility: visible;
-      opacity: 0;
 
       &--arrow {
         stroke: $white;
-        opacity: 1;
       }
     }
   }
