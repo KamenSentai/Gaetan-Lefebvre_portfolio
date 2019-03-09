@@ -547,11 +547,11 @@ export default {
     font-size: 2.8rem;
     font-weight: 700;
 
-    @media (max-height: #{grid-media(6)}) {
+    @media (max-height: #{grid-media(8)}) {
       padding-top: 0;
     }
 
-    @media (max-height: #{grid-media(5)}) {
+    @media (max-height: #{grid-media(6)}) {
       margin-top: $margin-t;
     }
 
