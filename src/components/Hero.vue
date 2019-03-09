@@ -292,6 +292,7 @@ export default {
     transform: translateY(-#{$margin-t});
     transition: opacity $easing, transform $easing;
     will-change: opacity, transform;
+    pointer-events: none;
 
     &:first-child {
       position: static;
@@ -300,6 +301,7 @@ export default {
     &.is-active {
       opacity: 1;
       transform: translateY(0);
+      pointer-events: auto;
     }
 
     &.is-appearing {
