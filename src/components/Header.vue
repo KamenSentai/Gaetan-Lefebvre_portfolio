@@ -542,6 +542,19 @@ export default {
     padding-top: $margin-t;
     font-size: 2.8rem;
     font-weight: 700;
+
+    @media (max-height: #{grid-media(6)}) {
+      padding-top: 0;
+    }
+
+    @media (max-height: #{grid-media(5)}) {
+      margin-top: $margin-t;
+    }
+
+    @media (max-height: #{grid-media(4)}) {
+      margin-top: 0;
+      font-size: 2.4rem;
+    }
   }
 
   &-branch {
@@ -561,6 +574,18 @@ export default {
       font-weight: 300;
       text-transform: uppercase;
       letter-spacing: .125em;
+
+      @media (max-height: #{grid-media(6)}) {
+        margin-top: $margin-r;
+      }
+
+      @media (max-height: #{grid-media(5)}) {
+        margin-top: $margin-s;
+      }
+
+      @media (max-height: #{grid-media(4)}) {
+        margin-top: $margin-t;
+      }
     }
 
     &.is-active {
