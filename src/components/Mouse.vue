@@ -1,6 +1,7 @@
 <template lang="pug">
 .Mouse(v-bind:class="state")
-  .Mouse-circle
+  .Mouse-frame
+    .Mouse-hud
   svg.Mouse-pointer(width="40px" height="40px" viewBox="0 0 40 40")
     path#Mouse-circle.Mouse-shape(d="M20,38.8C9.6,38.8,1.2,30.4,1.2,20S9.6,1.2,20,1.2S38.8,9.6,38.8,20S30.4,38.8,20,38.8z")
     path#Mouse-triangle.Mouse-shape(d="M38.8,33.6H1.2L20,1.1L38.8,33.6z")
@@ -59,7 +60,10 @@ export default {
     const _body = document.body
     const _mouse = this.$el
     const _mousePointer = _mouse.querySelector('.Mouse-pointer')
-    const _mouseCircle = _mouse.querySelector('.Mouse-circle')
+    const _mouseFrame = _mouse.querySelector('.Mouse-frame')
+    const _mouseHud = _mouse.querySelector('.Mouse-hud')
+
+    let reduceFrame = false
 
     this.setShape()
     this.updateShape()
@@ -74,6 +78,8 @@ export default {
       screen.y = event.clientY
       mouse.x = event.clientX - _body.getBoundingClientRect().left
       mouse.y = event.clientY - _body.getBoundingClientRect().top
+
+      reduceFrame = event.target.classList.contains('Cursor-frame--reduced')
     })
 
     window.addEventListener('scroll', () => {
@@ -88,7 +94,11 @@ export default {
       positionCircle.y += (mouse.y - positionCircle.y) * .1875
 
       _mousePointer.style.transform = `translate(${positionPointer.x}px, ${positionPointer.y}px)`
-      _mouseCircle.style.transform = `translate(${positionCircle.x}px, ${positionCircle.y}px)`
+      _mouseFrame.style.transform = `translate(${positionCircle.x}px, ${positionCircle.y}px)`
+
+      if (reduceFrame) _mouseHud.classList.add('is-reduced')
+      else _mouseHud.classList.remove('is-reduced')
+
       window.requestAnimationFrame(animateCursor)
     }
     animateCursor()
@@ -126,30 +136,44 @@ export default {
   margin-top: - $cursorSize / 2;
   margin-left: - $cursorSize / 2;
   border-radius: 100%;
+  transition: none;
   pointer-events: none;
 
   &.is-hidden {
     display: none;
   }
 
-  &-circle,
+  &-frame,
   &-pointer {
-    border-radius: 100%;
     transform: translate(50vw, 50vh);
     will-change: transform;
   }
 
-  &-circle {
+  &-frame {
     position: absolute;
     width: 100%;
     height: 100%;
+  }
+
+  &-hud {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
     border: .1rem solid $dark;
+    transform-origin: 50% 50%;
+    transition: transform $easing-duration;
+    will-change: transform;
+
+    &.is-reduced {
+      transform: scale(0);
+    }
   }
 
   &-pointer {
     position: absolute;
     width: .8rem;
     height: .8rem;
+    filter: drop-shadow(#{$shadow-regular});
     fill: $white;
     stroke: none;
   }
