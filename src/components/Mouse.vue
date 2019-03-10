@@ -66,6 +66,7 @@ export default {
     let reduceFrame = false
     let inceaseFrame = false
     let menuFrame = false
+    let textFrame = false
     let beatPointer = false
     let ratio = '1'
     const currentSize = _mouseHud.getBoundingClientRect().width
@@ -84,6 +85,7 @@ export default {
       reduceFrame = target.classList.contains('Cursor-frame--reduced')
       inceaseFrame = target.classList.contains('Cursor-frame--increase')
       menuFrame = target.classList.contains('Cursor-frame--menu')
+      textFrame = target.classList.contains('Cursor-frame--text')
       beatPointer = target.classList.contains('Cursor-pointer--beat')
 
       if (inceaseFrame || beatPointer) {
@@ -113,7 +115,7 @@ export default {
     })
 
     const animateCursor = () => {
-      const ratePointer = !beatPointer && !inceaseFrame ? .25 : .125
+      const ratePointer = !beatPointer && !inceaseFrame && !menuFrame ? .25 : .125
       const rateFrame = !inceaseFrame ? .1875 : .0625
       positionPointer.x += (mouse.x - positionPointer.x) * ratePointer
       positionPointer.y += (mouse.y - positionPointer.y) * ratePointer
@@ -129,6 +131,8 @@ export default {
       else _mouseHud.classList.remove('is-reduced')
       if (inceaseFrame || menuFrame) _mouseHud.style.transform = `scale(${ratio})`
       else _mouseHud.style.transform = null
+      if (textFrame) _mouseHud.classList.add('is-lighten')
+      else _mouseHud.classList.remove('is-lighten')
       if (beatPointer) _mousePointer.classList.add('is-beating')
       else _mousePointer.classList.remove('is-beating')
 
@@ -228,6 +232,10 @@ export default {
 
     &.is-reduced {
       transform: scale(0);
+    }
+
+    &.is-lighten {
+      border-color: $white;
     }
   }
 

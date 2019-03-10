@@ -17,12 +17,12 @@
         path#Carousel-right.Carousel-shape.is-active.Cursor-frame--reduced
         polyline.Carousel-shape.Carousel-shape--arrow.is-active(points="25,22.5 20,17.5 15,22.5")
     .Carousel-content
-      router-link.Carousel-item(v-if="!slide || parseInt(slide) === 0" v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ name: 'pocketcare' }" draggable="false")
-        .Carousel-image
-          img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/pocketcare_back.png" alt="Pocketcare" draggable="false")
-          img(src="../assets/images/Projects/pocketcare.png" alt="Pocketcare" draggable="false")
-          img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/pocketcare_front.png" alt="Pocketcare" draggable="false")
-          img.Carousel-extra.Absolute.Absolute--p1(src="../assets/images/Projects/pocketcare_extra.png" alt="Pocketcare" draggable="false")
+      router-link.Carousel-item.Cursor-frame--text(v-if="!slide || parseInt(slide) === 0" v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ name: 'pocketcare' }" draggable="false")
+        .Carousel-image.Cursor-frame--text
+          img.Cursor-frame--text.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/pocketcare_back.png" alt="Pocketcare" draggable="false")
+          img.Cursor-frame--text(src="../assets/images/Projects/pocketcare.png" alt="Pocketcare" draggable="false")
+          img.Cursor-frame--text.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/pocketcare_front.png" alt="Pocketcare" draggable="false")
+          img.Cursor-frame--text.Carousel-extra.Absolute.Absolute--p1(src="../assets/images/Projects/pocketcare_extra.png" alt="Pocketcare" draggable="false")
       p.Carousel-label(v-if="!slide || parseInt(slide) === 0")
         span.Carousel-title Pocketcare
         span.Carousel-subtitle
@@ -31,12 +31,12 @@
           span.Carousel-additional
             span.Text--bold Skills :
             span.Text--light &nbsp;Branding, Illustration, Interactive design
-      router-link.Carousel-item(v-if="!slide || parseInt(slide) === 1" v-bind:class="`Carousel-item--${modulo(range - 1, 4)}`" :to="{ name: 'tesla' }")
-        .Carousel-image
-          img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/tesla_back.png" alt="Tesla")
-          img(src="../assets/images/Projects/tesla.png" alt="Tesla")
-          img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/tesla_front.png" alt="Tesla")
-          img.Carousel-extra.Absolute.Absolute--p2(src="../assets/images/Projects/tesla_extra.png" alt="Tesla")
+      router-link.Carousel-item.Cursor-frame--text(v-if="!slide || parseInt(slide) === 1" v-bind:class="`Carousel-item--${modulo(range - 1, 4)}`" :to="{ name: 'tesla' }")
+        .Carousel-image.Cursor-frame--text
+          img.Cursor-frame--text.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/tesla_back.png" alt="Tesla")
+          img.Cursor-frame--text(src="../assets/images/Projects/tesla.png" alt="Tesla")
+          img.Cursor-frame--text.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/tesla_front.png" alt="Tesla")
+          img.Cursor-frame--text.Carousel-extra.Absolute.Absolute--p2(src="../assets/images/Projects/tesla_extra.png" alt="Tesla")
       p.Carousel-label(v-if="!slide || parseInt(slide) === 1")
         span.Carousel-title Tesla
         span.Carousel-subtitle
@@ -45,12 +45,12 @@
           span.Carousel-additional
             span.Text--bold Skills :
             span.Text--light &nbsp;Branding, Illustration, Interactive design
-      router-link.Carousel-item(v-if="!slide || parseInt(slide) === 2" v-bind:class="`Carousel-item--${modulo(range - 2, 4)}`" :to="{ name: 'buddy-buddy' }")
-        .Carousel-image
-          img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/buddy-buddy_back.png" alt="Buddy Buddy")
-          img(src="../assets/images/Projects/buddy-buddy.png" alt="Buddy Buddy")
-          img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/buddy-buddy_front.png" alt="Buddy Buddy")
-          img.Carousel-extra.Absolute.Absolute--p3(src="../assets/images/Projects/buddy-buddy_extra.png" alt="Buddy Buddy")
+      router-link.Carousel-item.Cursor-frame--text(v-if="!slide || parseInt(slide) === 2" v-bind:class="`Carousel-item--${modulo(range - 2, 4)}`" :to="{ name: 'buddy-buddy' }")
+        .Carousel-image.Cursor-frame--text
+          img.Cursor-frame--text.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/buddy-buddy_back.png" alt="Buddy Buddy")
+          img.Cursor-frame--text(src="../assets/images/Projects/buddy-buddy.png" alt="Buddy Buddy")
+          img.Cursor-frame--text.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/buddy-buddy_front.png" alt="Buddy Buddy")
+          img.Cursor-frame--text.Carousel-extra.Absolute.Absolute--p3(src="../assets/images/Projects/buddy-buddy_extra.png" alt="Buddy Buddy")
       p.Carousel-label(v-if="!slide || parseInt(slide) === 2")
         span.Carousel-title Buddy Buddy
         span.Carousel-subtitle
@@ -59,11 +59,11 @@
           span.Carousel-additional
             span.Text--bold Skills :
             span.Text--light &nbsp;Branding, Illustration, Interactive design
-      router-link.Carousel-item(v-if="!slide || parseInt(slide) === 3" v-bind:class="`Carousel-item--${modulo(range - 3, 4)}`" :to="{ name: 'personal' }")
-        .Carousel-image
-          img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/personal_back.png" alt="Personal")
-          img(src="../assets/images/Projects/personal.png" alt="Personal")
-          img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/personal_front.png" alt="Personal")
+      router-link.Carousel-item.Cursor-frame--text(v-if="!slide || parseInt(slide) === 3" v-bind:class="`Carousel-item--${modulo(range - 3, 4)}`" :to="{ name: 'personal' }")
+        .Carousel-image.Cursor-frame--text
+          img.Cursor-frame--text.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/personal_back.png" alt="Personal")
+          img.Cursor-frame--text(src="../assets/images/Projects/personal.png" alt="Personal")
+          img.Cursor-frame--text.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/personal_front.png" alt="Personal")
       p.Carousel-label(v-if="!slide || parseInt(slide) === 3")
         span.Carousel-title Personal
         span.Carousel-subtitle
