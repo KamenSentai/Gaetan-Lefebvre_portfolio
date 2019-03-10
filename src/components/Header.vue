@@ -121,6 +121,7 @@ export default {
     toggleMenu: function(event) {
       event.preventDefault()
       document.querySelector('.Menu').classList.add('is-active')
+      document.body.style.overflow = 'hidden'
     },
     modulo: (n, m) => {
       return ((n % m) + m) % m;

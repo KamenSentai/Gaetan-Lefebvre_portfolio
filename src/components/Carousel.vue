@@ -465,11 +465,15 @@ export default {
     left: 50%;
     z-index: 5;
     width: auto;
-    height: 50%;
+    height: 20%;
     opacity: .25;
     transform: translate(-50%, -50%);
-    transition: opacity $easing-duration;
+    transition: opacity $easing-duration, height $easing-duration;
     will-change: opacity;
+
+    @media (max-height: #{grid-media(7.5)}) {
+      height: 40%;
+    }
   }
 
   &-extra {

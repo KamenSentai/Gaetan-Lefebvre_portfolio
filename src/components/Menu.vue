@@ -106,7 +106,7 @@ export default {
 
   &-lock {
     width: auto;
-    height: 50%;
+    height: 12.5vh;
     opacity: .25;
   }
 
