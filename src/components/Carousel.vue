@@ -8,14 +8,14 @@
         path#Carousel-left-3.Carousel-shape.Carousel-shape--left(:class="index === 3 ? 'is-chosen' : ''" d="M20,1.2L38.8,20l-9.4,9.4L20,38.8L1.2,20L20,1.2z")
         path#Carousel-left-0.Carousel-shape.Carousel-shape--left(:class="index === 0 ? 'is-chosen' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
         path#Carousel-left.Carousel-shape.is-active.Cursor-frame--reduced
-        polyline.Carousel-shape.Carousel-shape--arrow.is-active.Cursor-frame--reduced(points="25,22.5 20,17.5 15,22.5")
+        polyline.Carousel-shape.Carousel-shape--arrow.is-active(points="25,22.5 20,17.5 15,22.5")
       svg.Carousel-button.Carousel-button--right.Cursor-frame--reduced(width="40px" height="40px" viewBox="0 0 40 40" @click="turnRight")
         path#Carousel-right-3.Carousel-shape.Carousel-shape--right(:class="index === 3 ? 'is-chosen' : ''" d="M38.8,20c0,5.2-2.1,9.9-5.5,13.3s-8.1,5.5-13.3,5.5c-5.2,0-9.9-2.1-13.3-5.5C3.3,29.9,1.2,25.2,1.2,20 c0-5.2,2.1-9.9,5.5-13.3S14.8,1.2,20,1.2c5.2,0,9.9,2.1,13.3,5.5C36.7,10.1,38.8,14.8,38.8,20z")
         path#Carousel-right-0.Carousel-shape.Carousel-shape--right(:class="index === 0 ? 'is-chosen' : ''" d="M20,1.1l18.8,32.5H1.2L20,1.1z")
         path#Carousel-right-1.Carousel-shape.Carousel-shape--right(:class="index === 1 ? 'is-chosen' : ''" d="M20,1.2L38.8,20l-9.4,9.4L20,38.8L1.2,20L20,1.2z")
         path#Carousel-right-2.Carousel-shape.Carousel-shape--right(:class="index === 2 ? 'is-chosen' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
         path#Carousel-right.Carousel-shape.is-active.Cursor-frame--reduced
-        polyline.Carousel-shape.Carousel-shape--arrow.is-active.Cursor-frame--reduced(points="25,22.5 20,17.5 15,22.5")
+        polyline.Carousel-shape.Carousel-shape--arrow.is-active(points="25,22.5 20,17.5 15,22.5")
     .Carousel-content
       router-link.Carousel-item(v-if="!slide || parseInt(slide) === 0" v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ name: 'pocketcare' }" draggable="false")
         .Carousel-image
@@ -180,7 +180,7 @@ export default {
 
 .Carousel {
   $rootCarousel: &;
-  $extraSize: $margin-r;
+  $extraSize: $margin-l;
 
   width: 100%;
   height: 100%;
@@ -237,7 +237,7 @@ export default {
       }
 
       #{$rootCarousel}-title {
-        color: $white;
+        color: rgba($white, .8);
         bottom: 100%;
         margin-bottom: 0;
         transform: translate(-50%, calc(50% + #{- $margin-b - $margin-m}));
@@ -291,7 +291,7 @@ export default {
           width: grid(6);
         }
 
-        @media (max-height: #{grid-media(6.5)}) {
+        @media (max-height: #{grid-media(5.5)}) {
           width: grid(4);
         }
 
@@ -311,19 +311,28 @@ export default {
       margin-top: $margin-b;
     }
 
-    @media
-      (max-height: #{grid-media(8)}) and (min-width: #{grid-media(6)}),
-      (max-height: #{grid-media(6)}) and (max-width: #{grid-media(6)})
-    {
-      margin-top: $margin-l;
+    @media (max-height: #{grid-media(8)}) and (min-width: #{grid-media(6)}) {
+      margin-top: $margin-l + $margin-s;
     }
 
     @media (max-height: #{grid-media(7)}) and (max-width: #{grid-media(6)}) {
       margin-top: $margin-l + $margin-t;
     }
 
+    @media (max-height: #{grid-media(6)}) and (max-width: #{grid-media(6)}) {
+      margin-top: $margin-l;
+    }
+
     @media (max-height: #{grid-media(4.5)}) {
-      margin-top: $margin-m;
+      margin-top: $margin-m + $margin-t;
+    }
+
+    @media (max-height: #{grid-media(4)}) {
+      margin-top: $margin-r + $margin-t;
+    }
+
+    @media (max-height: #{grid-media(3.5)}) {
+      margin-top: $margin-r;
     }
   }
 
@@ -352,11 +361,15 @@ export default {
         (max-width: #{grid-media(6)}) and (max-height: #{grid-media(6.5)}),
         (max-width: #{grid-media(4)})
       {
+        transform: translate(-50%, -50%) scale(.625);
+      }
+
+      @media (max-width: #{grid-media(6)}) and (max-height: #{grid-media(4.5)}) {
         transform: translate(-50%, -50%) scale(.5);
       }
 
       @media (max-width: #{grid-media(4)}) and (max-height: #{grid-media(6.5)}) {
-        transform: translate(-50%, -50%) scale(.375);
+        transform: translate(-50%, -50%) scale(.5);
       }
 
       + #{$rootCarousel}-label {
@@ -537,12 +550,32 @@ export default {
       transform: translate(-50%, -50%) rotateZ(90deg);
     }
 
+    @media (max-width: #{grid-media(6)}) and (max-height: #{grid-media(8.5) - 1px}) {
+      width: calc(100% + #{$extraSize / 2});
+    }
+
     @media (max-width: #{grid-media(6)}) and (max-height: #{grid-media(6.5)}) {
       width: 100%;
     }
 
-    @media (max-width: #{grid-media(6)}) and (max-height: #{grid-media(5.5)}) and (min-width: #{grid-media(4)}) {
-      width: calc(100% - #{$extraSize / 2});
+    @media (max-width: #{grid-media(6)}) and (max-height: #{grid-media(4.5)}) {
+      width: calc(100% - #{$extraSize / 4});
+    }
+
+    @media (max-width: #{grid-media(6)}) and (max-height: #{grid-media(4)}) {
+      width: calc(100% - #{$extraSize * .75});
+    }
+
+    @media (max-width: #{grid-media(4)}) and (max-height: #{grid-media(6.5)}) {
+      width: calc(100% + #{$extraSize / 2});
+    }
+
+    @media (max-width: #{grid-media(4)}) and (max-height: #{grid-media(4.5)}) {
+      width: calc(100% + #{$extraSize / 4});
+    }
+
+    @media (max-width: #{grid-media(4)}) and (max-height: #{grid-media(4)}) {
+      width: calc(100% - #{$extraSize / 4});
     }
   }
 
