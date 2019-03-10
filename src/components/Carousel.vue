@@ -190,11 +190,6 @@ export default {
   width: 100%;
   height: 100%;
 
-  @media (max-width: #{grid-media(6)}) {
-    user-select: none;
-  }
-
-
   &-container {
     position: relative;
     width: 100%;
@@ -317,7 +312,11 @@ export default {
     }
 
     @media (max-height: #{grid-media(8)}) and (min-width: #{grid-media(6)}) {
-      margin-top: $margin-l + $margin-s;
+      margin-top: $margin-l + $margin-t;
+    }
+
+    @media (max-height: #{grid-media(6)}) {
+      margin-top: $margin-m + $margin-t;
     }
 
     @media (max-height: #{grid-media(7)}) and (max-width: #{grid-media(6)}) {
@@ -328,16 +327,16 @@ export default {
       margin-top: $margin-l;
     }
 
-    @media (max-height: #{grid-media(4.5)}) {
-      margin-top: $margin-m + $margin-t;
-    }
-
     @media (max-height: #{grid-media(4)}) {
       margin-top: $margin-r + $margin-t;
     }
 
     @media (max-height: #{grid-media(3.5)}) {
       margin-top: $margin-r;
+    }
+
+    @media (max-height: #{grid-media(3)}) {
+      margin-top: $margin-s;
     }
   }
 
@@ -679,7 +678,7 @@ export default {
       bottom: - $margin-b - $margin-m + $margin-r;
     }
 
-    @media (max-height: #{grid-media(6)}) {
+    @media (max-height: #{grid-media(5.5)}) {
       display: none;
     }
   }
