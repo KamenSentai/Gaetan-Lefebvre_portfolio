@@ -1,7 +1,9 @@
 <template lang="pug">
-svg.Header-logo.Logo(v-bind:class="`Logo--${color}`" width="42px" height="35px" viewBox="0 0 42 35")
-  polygon.Logo-lastname(fill="#FFFFFF" points="25 23 25 6 31.1592308 6 31.1592308 17.2112623 42 17.2112623 42 22.9935752")
-  path.Logo-firstname(fill="#FFFFFF" d="M14.9545765,16.8149666 L14.9545765,22.4987763 L25.1076128,22.4987763 C24.7450044,24.8670303 22.4333756,29.0351575 16.4956623,29.0351575 C11.1018618,29.0351575 6.34564772,25.1038557 6.34564772,17.5286004 C6.34564772,9.57126683 11.6004484,6.11361592 16.4503363,6.11361592 C18.0228777,6.08190022 19.5789712,6.45264999 20.9829418,7.19353976 L20.9829418,0.562428421 C19.5002263,0.179367377 17.9776644,-0.00943787598 16.4503363,0.000362792886 C7.7477337,0.000362792886 0,6.67883922 0,17.5254428 C0,28.3720463 7.38814699,35 16.0424018,35 C20.877181,35 24.0651136,32.7264761 25.5155473,30.4529522 L25.9234818,34.2895238 L31,34.2895238 L31,16.8149666 L14.9545765,16.8149666 Z")
+svg.Logo(v-bind:class="`Logo--${color}`" width="42px" height="35px" viewBox="0 0 42 35")
+  g.Logo-turnable
+    polygon.Logo-hidden(fill="none" points="14,22.5 25,22.5 25,33.5 31,33.5 31,16.5 14,16.5")
+    polygon.Logo-lastname(fill="#FFFFFF" points="25,22.5 25,5.5 31,5.5 31,16.5 42,16.5 42,22.5")
+  path.Logo-firstname(fill="#FFFFFF" d="M14,16.5v6h11.1c-0.4,2.4-2.7,6.5-8.6,6.5c-5.4,0-10.2-3.9-10.2-11.5c0-8,5.3-11.4,10.1-11.4 c1.6,0,3.1,0.3,4.5,1.1V0.6C19.5,0.2,18,0,16.5,0C7.7,0,0,6.7,0,17.5S7.4,35,16,35c4.8,0,8-2.3,9.5-4.5l0.4,3.8H31V16.5H14z")
 </template>
 
 <script>
@@ -17,6 +19,19 @@ export default {
 @import '../styles/tools/functions';
 
 .Logo {
+  $rootLogo: &;
+
+  &-turnable {
+    transform-origin: 67% 56%;
+    transition: transform $easing-duration;
+  }
+
+  &:hover {
+    #{$rootLogo}-turnable {
+      transform: rotateZ(-90deg);
+    }
+  }
+
   @each $key, $value in $colors {
     &--#{$key} &-lastname {
       fill: $value;

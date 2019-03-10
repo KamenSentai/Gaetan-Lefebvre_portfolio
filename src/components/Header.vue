@@ -23,7 +23,7 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
             a(href="#") Instagram
     .Header-mainnav
       router-link.Header-logo(v-bind:class="isNavigating ? 'is-toggled' : ''" :to="{ name: 'home', params: sendData() }")
-        Logo(:color="color || data.colors[range]")
+        Logo.Header-logo(:color="color || data.colors[range]")
       ul.Header-navbar
         li.Header-item(:class="hasProject ? '': 'is-hidden'")
           a(href="#" @click="toggleMenu") Projects
