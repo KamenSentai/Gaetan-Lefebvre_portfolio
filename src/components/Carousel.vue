@@ -3,18 +3,18 @@
   .Carousel-container(v-bind:class="slide ? 'Carousel-container--case' : ''")
     .Carousel-buttons
       svg.Carousel-button.Carousel-button--left(width="40px" height="40px" viewBox="0 0 40 40" @click="turnLeft")
-        path#left-1.Carousel-shape.Carousel-shape--left(:class="index === 1 ? 'is-chosen' : ''" d="M20,38.8C9.6,38.8,1.2,30.4,1.2,20S9.6,1.2,20,1.2S38.8,9.6,38.8,20S30.4,38.8,20,38.8z")
-        path#left-2.Carousel-shape.Carousel-shape--left(:class="index === 2 ? 'is-chosen' : ''" d="M38.8,33.6H1.2L20,1.1L38.8,33.6z")
-        path#left-3.Carousel-shape.Carousel-shape--left(:class="index === 3 ? 'is-chosen' : ''" d="M20,1.2L38.8,20L20,38.8L1.2,20L20,1.2z")
-        path#left-0.Carousel-shape.Carousel-shape--left(:class="index === 0 ? 'is-chosen' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
-        path#left.Carousel-shape.is-active
+        path#Carouse-left-1.Carousel-shape.Carousel-shape--left(:class="index === 1 ? 'is-chosen' : ''" d="M20,38.8C9.6,38.8,1.2,30.4,1.2,20S9.6,1.2,20,1.2S38.8,9.6,38.8,20S30.4,38.8,20,38.8z")
+        path#Carouse-left-2.Carousel-shape.Carousel-shape--left(:class="index === 2 ? 'is-chosen' : ''" d="M38.8,33.6H1.2L20,1.1L38.8,33.6z")
+        path#Carouse-left-3.Carousel-shape.Carousel-shape--left(:class="index === 3 ? 'is-chosen' : ''" d="M20,1.2L38.8,20L20,38.8L1.2,20L20,1.2z")
+        path#Carouse-left-0.Carousel-shape.Carousel-shape--left(:class="index === 0 ? 'is-chosen' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
+        path#Carouse-left.Carousel-shape.is-active
         polyline.Carousel-shape.Carousel-shape--arrow.is-active(points="25,22.5 20,17.5 15,22.5")
       svg.Carousel-button.Carousel-button--right(width="40px" height="40px" viewBox="0 0 40 40" @click="turnRight")
-        path#right-3.Carousel-shape.Carousel-shape--right(:class="index === 3 ? 'is-chosen' : ''" d="M20,38.8C9.6,38.8,1.2,30.4,1.2,20S9.6,1.2,20,1.2S38.8,9.6,38.8,20S30.4,38.8,20,38.8z")
-        path#right-0.Carousel-shape.Carousel-shape--right(:class="index === 0 ? 'is-chosen' : ''" d="M38.8,33.6H1.2L20,1.1L38.8,33.6z")
-        path#right-1.Carousel-shape.Carousel-shape--right(:class="index === 1 ? 'is-chosen' : ''" d="M20,1.2L38.8,20L20,38.8L1.2,20L20,1.2z")
-        path#right-2.Carousel-shape.Carousel-shape--right(:class="index === 2 ? 'is-chosen' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
-        path#right.Carousel-shape.is-active
+        path#Carousel-right-3.Carousel-shape.Carousel-shape--right(:class="index === 3 ? 'is-chosen' : ''" d="M20,38.8C9.6,38.8,1.2,30.4,1.2,20S9.6,1.2,20,1.2S38.8,9.6,38.8,20S30.4,38.8,20,38.8z")
+        path#Carousel-right-0.Carousel-shape.Carousel-shape--right(:class="index === 0 ? 'is-chosen' : ''" d="M38.8,33.6H1.2L20,1.1L38.8,33.6z")
+        path#Carousel-right-1.Carousel-shape.Carousel-shape--right(:class="index === 1 ? 'is-chosen' : ''" d="M20,1.2L38.8,20L20,38.8L1.2,20L20,1.2z")
+        path#Carousel-right-2.Carousel-shape.Carousel-shape--right(:class="index === 2 ? 'is-chosen' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
+        path#Carousel-right.Carousel-shape.is-active
         polyline.Carousel-shape.Carousel-shape--arrow.is-active(points="25,22.5 20,17.5 15,22.5")
     .Carousel-content
       router-link.Carousel-item(v-if="!slide || parseInt(slide) === 0" v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ name: 'pocketcare' }" draggable="false")
@@ -104,16 +104,16 @@ export default {
     },
     turnLeft: function() {
       if (!this.slide) {
-        const tweenLeft = kute.to('#left', { path: `#left-${this.modulo(this.range - 1, 4)}` })
-        const tweenRight = kute.to(`#right`, { path: `#right-${this.modulo(this.range - 1, 4)}` })
+        const tweenLeft = kute.to('#Carouse-left', { path: `#Carouse-left-${this.modulo(this.range - 1, 4)}` })
+        const tweenRight = kute.to(`#Carousel-right`, { path: `#Carousel-right-${this.modulo(this.range - 1, 4)}` })
         tweenLeft.start()
         tweenRight.start()
       }
     },
     turnRight: function() {
       if (!this.slide) {
-        const tweenLeft = kute.to('#left', { path: `#left-${this.modulo(this.range + 1, 4)}` })
-        const tweenRight = kute.to(`#right`, { path: `#right-${this.modulo(this.range + 1, 4)}` })
+        const tweenLeft = kute.to('#Carouse-left', { path: `#Carouse-left-${this.modulo(this.range + 1, 4)}` })
+        const tweenRight = kute.to(`#Carousel-right`, { path: `#Carousel-right-${this.modulo(this.range + 1, 4)}` })
         tweenLeft.start()
         tweenRight.start()
       } else {
@@ -129,13 +129,13 @@ export default {
     this.index = this.range
   },
   mounted() {
-    const _left = this.$el.querySelector('#left')
-    const _right = this.$el.querySelector('#right')
-    if (_left) _left.setAttribute('d', this.$el.querySelector(`#left-${this.index}`).getAttribute('d'))
-    if (_right) _right.setAttribute('d', this.$el.querySelector(`#right-${this.index}`).getAttribute('d'))
+    const _left = this.$el.querySelector('#Carouse-left')
+    const _right = this.$el.querySelector('#Carousel-right')
+    if (_left) _left.setAttribute('d', this.$el.querySelector(`#Carouse-left-${this.index}`).getAttribute('d'))
+    if (_right) _right.setAttribute('d', this.$el.querySelector(`#Carousel-right-${this.index}`).getAttribute('d'))
 
     if (this.slide) {
-      const tween = kute.to(`#right`, { path: `#right-${this.modulo(this.slide - 1, 4)}` })
+      const tween = kute.to(`#Carousel-right`, { path: `#Carousel-right-${this.modulo(this.slide - 1, 4)}` })
       tween.start()
 
       const _subtitleCarousel = this.$el.querySelector('.Carousel-subtitle')
