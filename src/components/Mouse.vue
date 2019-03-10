@@ -63,8 +63,8 @@ export default {
     const _mouseFrame = _mouse.querySelector('.Mouse-frame')
     const _mouseHud = _mouse.querySelector('.Mouse-hud')
 
-    let inceaseFrame = false
     let reduceFrame = false
+    let inceaseFrame = false
     let beatPointer = false
     let ratio = '1'
     const currentSize = _mouseHud.getBoundingClientRect().width
@@ -80,8 +80,8 @@ export default {
 
     window.addEventListener('mousemove', event => {
       const target = event.target
-      inceaseFrame = target.classList.contains('Cursor-frame--increase')
       reduceFrame = target.classList.contains('Cursor-frame--reduced')
+      inceaseFrame = target.classList.contains('Cursor-frame--increase')
       beatPointer = target.classList.contains('Cursor-pointer--beat')
 
       if (inceaseFrame || beatPointer) {
@@ -116,10 +116,15 @@ export default {
       _mousePointer.style.transform = `translate(${positionPointer.x}px, ${positionPointer.y}px)`
       _mouseFrame.style.transform = `translate(${positionFrame.x}px, ${positionFrame.y}px)`
 
+      if (reduceFrame) {
+        _mouseHud.classList.add('is-reduced')
+        _mousePointer.classList.add('is-reduced')
+      } else {
+        _mouseHud.classList.remove('is-reduced')
+        _mousePointer.classList.remove('is-reduced')
+      }
       if (inceaseFrame) _mouseHud.style.transform = `scale(${ratio})`
       else _mouseHud.style.transform = null
-      if (reduceFrame) _mouseHud.classList.add('is-reduced')
-      else _mouseHud.classList.remove('is-reduced')
       if (beatPointer) _mousePointer.classList.add('is-beating')
       else _mousePointer.classList.remove('is-beating')
 
@@ -211,6 +216,14 @@ export default {
         }
       }
     }
+
+    &.is-reduced {
+      #{$rootMouse}-shape {
+        &.is-active {
+          transform: scale(0);
+        }
+      }
+    }
   }
 
   &-shape {
@@ -219,6 +232,7 @@ export default {
     &.is-active {
       transform-origin: 50% 50%;
       transition: transform $easing-duration;
+      transition-delay: .25s;
       visibility: visible;
       will-change: transform;
     }
