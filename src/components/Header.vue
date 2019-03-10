@@ -4,33 +4,33 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
     .Header-navigation(v-bind:class="isNavigating ? 'is-toggled' : ''")
       .Header-subnav
         .Header-tree
-          router-link.Header-branch(
+          router-link.Header-branch.Cursor-frame--increase(
             v-bind:class="route === 'home' ? `is-active--${color || data.colors[range]}` : ''"
             :to="{ name: 'home', params: sendData() }"
           ) Home
-          router-link.Header-branch(
+          router-link.Header-branch.Cursor-frame--increase(
             v-bind:class="route === 'projects' ? `is-active--${color || data.colors[range]}` : ''"
             :to="{ name: 'projects', params: sendData() }"
           ) Projects
-          router-link.Header-branch(
+          router-link.Header-branch.Cursor-frame--increase(
             v-bind:class="route === 'about' ? `is-active--${color || data.colors[range]}` : ''"
             :to="{ name: 'about', params: sendData() }"
           ) About
-          a(href="mailto:gaetan.lefebvre@hetic.net").Header-branch Contact
+          a.Header-branch.Cursor-frame--increase(href="mailto:gaetan.lefebvre@hetic.net") Contact
           .Header-branch.Header-branch--more
-            a(href="#") LinkedIn
-            a(href="#") Dribbble
-            a(href="#") Instagram
+            a.Cursor-frame--increase(href="#") LinkedIn
+            a.Cursor-frame--increase(href="#") Dribbble
+            a.Cursor-frame--increase(href="#") Instagram
     .Header-mainnav
       router-link.Header-logo(v-bind:class="isNavigating ? 'is-toggled' : ''" :to="{ name: 'home', params: sendData() }")
         Logo.Header-logo(:color="color || data.colors[range]")
       ul.Header-navbar
-        li.Header-item(:class="hasProject ? '': 'is-hidden'")
-          a(href="#" @click="toggleMenu") Projects
-        li.Header-item(:class="hasAbout ? '': 'is-hidden'")
-          router-link(:to="{ name: 'about', params: sendData() }") About
-        li.Header-item(:class="hasHome ? '': 'is-hidden'")
-          router-link(:to="{ name: 'home', params: sendData() }") Return home
+        li.Header-item.Cursor-frame--increase(:class="hasProject ? '': 'is-hidden'")
+          a.Cursor-frame--increase(href="#" @click="toggleMenu") Projects
+        li.Header-item.Cursor-frame--increase(:class="hasAbout ? '': 'is-hidden'")
+          router-link.Cursor-frame--increase(:to="{ name: 'about', params: sendData() }") About
+        li.Header-item.Cursor-frame--increase(:class="hasHome ? '': 'is-hidden'")
+          router-link.Cursor-frame--increase(:to="{ name: 'home', params: sendData() }") Return home
       .Header-burger(v-bind:class="isNavigating ? 'is-active' : ''" @click="toggleNavigation")
         .Header-stripe
         .Header-stripe

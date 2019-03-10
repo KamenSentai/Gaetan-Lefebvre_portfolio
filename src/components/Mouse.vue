@@ -63,8 +63,12 @@ export default {
     const _mouseFrame = _mouse.querySelector('.Mouse-frame')
     const _mouseHud = _mouse.querySelector('.Mouse-hud')
 
+    let inceaseFrame = false
     let reduceFrame = false
     let beatPointer = false
+    let ratio = '1'
+    const currentSize = _mouseHud.getBoundingClientRect().width
+    const sizeRate = 1.375
 
     this.setShape()
     this.updateShape()
@@ -76,12 +80,18 @@ export default {
 
     window.addEventListener('mousemove', event => {
       const target = event.target
+      inceaseFrame = target.classList.contains('Cursor-frame--increase')
       reduceFrame = target.classList.contains('Cursor-frame--reduced')
       beatPointer = target.classList.contains('Cursor-pointer--beat')
 
-      if (beatPointer) {
+      if (inceaseFrame || beatPointer) {
         mouse.x = target.getBoundingClientRect().left + target.getBoundingClientRect().width / 2
         mouse.y = target.getBoundingClientRect().top + target.getBoundingClientRect().height / 2
+
+        if (inceaseFrame) {
+          const size = target.getBoundingClientRect().width * sizeRate
+          ratio = size / currentSize
+        }
       } else {
         mouse.x = event.clientX - _body.getBoundingClientRect().left
         mouse.y = event.clientY - _body.getBoundingClientRect().top
@@ -96,8 +106,8 @@ export default {
     })
 
     const animateCursor = () => {
-      const ratePointer = !beatPointer ? .25 : .125
-      const rateFrame = .1875
+      const ratePointer = !beatPointer && !inceaseFrame ? .25 : .125
+      const rateFrame = !inceaseFrame ? .1875 : .0625
       positionPointer.x += (mouse.x - positionPointer.x) * ratePointer
       positionPointer.y += (mouse.y - positionPointer.y) * ratePointer
       positionFrame.x += (mouse.x - positionFrame.x) * rateFrame
@@ -106,6 +116,8 @@ export default {
       _mousePointer.style.transform = `translate(${positionPointer.x}px, ${positionPointer.y}px)`
       _mouseFrame.style.transform = `translate(${positionFrame.x}px, ${positionFrame.y}px)`
 
+      if (inceaseFrame) _mouseHud.style.transform = `scale(${ratio})`
+      else _mouseHud.style.transform = null
       if (reduceFrame) _mouseHud.classList.add('is-reduced')
       else _mouseHud.classList.remove('is-reduced')
       if (beatPointer) _mousePointer.classList.add('is-beating')
@@ -175,7 +187,7 @@ export default {
     border-radius: 100%;
     border: .1rem solid $dark;
     transform-origin: 50% 50%;
-    transition: transform $easing-duration;
+    transition: all $easing-duration;
     will-change: transform;
 
     &.is-reduced {
