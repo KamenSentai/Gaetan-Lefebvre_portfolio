@@ -582,6 +582,14 @@ export default {
   &-button {
     cursor: pointer;
 
+    &:hover {
+      #{$rootCarousel}-shape {
+        &--arrow {
+          animation: arrow-translate 2s linear infinite;
+        }
+      }
+    }
+
     &--left {
       transform: rotateZ(-90deg);
     }
@@ -607,6 +615,8 @@ export default {
 
       &--arrow {
         stroke: $white;
+        transform: translateY(0);
+        will-change: transform;
       }
     }
   }

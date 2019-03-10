@@ -37,3 +37,21 @@
     transform: scale(.75);
   }
 }
+
+@keyframes arrow-translate {
+  0% {
+    transform: translateY(0);
+  }
+
+  25% {
+    transform: translateY(10%);
+  }
+
+  37.5% {
+    transform: translateY(-10%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
