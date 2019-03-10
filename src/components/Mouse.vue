@@ -64,6 +64,7 @@ export default {
     const _mouseHud = _mouse.querySelector('.Mouse-hud')
 
     let reduceFrame = false
+    let beatPointer = false
 
     this.setShape()
     this.updateShape()
@@ -71,15 +72,22 @@ export default {
     let screen = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
     let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
     let positionPointer = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
-    let positionCircle = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
+    let positionFrame = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
 
     window.addEventListener('mousemove', event => {
+      const target = event.target
+      reduceFrame = target.classList.contains('Cursor-frame--reduced')
+      beatPointer = target.classList.contains('Cursor-pointer--beat')
+
+      if (beatPointer) {
+        mouse.x = target.getBoundingClientRect().left + target.getBoundingClientRect().width / 2
+        mouse.y = target.getBoundingClientRect().top + target.getBoundingClientRect().height / 2
+      } else {
+        mouse.x = event.clientX - _body.getBoundingClientRect().left
+        mouse.y = event.clientY - _body.getBoundingClientRect().top
+      }
       screen.x = event.clientX
       screen.y = event.clientY
-      mouse.x = event.clientX - _body.getBoundingClientRect().left
-      mouse.y = event.clientY - _body.getBoundingClientRect().top
-
-      reduceFrame = event.target.classList.contains('Cursor-frame--reduced')
     })
 
     window.addEventListener('scroll', () => {
@@ -88,16 +96,20 @@ export default {
     })
 
     const animateCursor = () => {
-      positionPointer.x += (mouse.x - positionPointer.x) * .25
-      positionPointer.y += (mouse.y - positionPointer.y) * .25
-      positionCircle.x += (mouse.x - positionCircle.x) * .1875
-      positionCircle.y += (mouse.y - positionCircle.y) * .1875
+      const ratePointer = !beatPointer ? .25 : .125
+      const rateFrame = .1875
+      positionPointer.x += (mouse.x - positionPointer.x) * ratePointer
+      positionPointer.y += (mouse.y - positionPointer.y) * ratePointer
+      positionFrame.x += (mouse.x - positionFrame.x) * rateFrame
+      positionFrame.y += (mouse.y - positionFrame.y) * rateFrame
 
       _mousePointer.style.transform = `translate(${positionPointer.x}px, ${positionPointer.y}px)`
-      _mouseFrame.style.transform = `translate(${positionCircle.x}px, ${positionCircle.y}px)`
+      _mouseFrame.style.transform = `translate(${positionFrame.x}px, ${positionFrame.y}px)`
 
       if (reduceFrame) _mouseHud.classList.add('is-reduced')
       else _mouseHud.classList.remove('is-reduced')
+      if (beatPointer) _mousePointer.classList.add('is-beating')
+      else _mousePointer.classList.remove('is-beating')
 
       window.requestAnimationFrame(animateCursor)
     }
@@ -124,6 +136,7 @@ export default {
 @import '../styles/tools/functions';
 
 .Mouse {
+  $rootMouse: &;
   $cursorSize: 4rem;
   $pointerSize: .8rem;
 
@@ -177,13 +190,25 @@ export default {
     filter: drop-shadow(#{$shadow-regular});
     fill: $white;
     stroke: none;
+
+    &.is-beating {
+      #{$rootMouse}-shape {
+        &.is-active {
+          transform: scale(.75);
+          animation: mini-scale 2s ease-in-out infinite;
+        }
+      }
+    }
   }
 
   &-shape {
     visibility: hidden;
 
     &.is-active {
+      transform-origin: 50% 50%;
+      transition: transform $easing-duration;
       visibility: visible;
+      will-change: transform;
     }
   }
 }

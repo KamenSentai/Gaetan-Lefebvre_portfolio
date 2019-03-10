@@ -1,7 +1,7 @@
 <template lang="pug">
-.Icon.Cursor-frame--reduced
+.Icon.Cursor-frame--reduced.Cursor-pointer--beat
   router-link.Icon-link(:to="{ name: 'projects', params: { color: color, shape: shape } }")
-  svg.Icon-shape.Cursor-frame--reduced(
+  svg.Icon-shape.Cursor-frame--reduced.Cursor-pointer--beat(
     @mousedown="mouseDown"
     @mouseup="mouseUp"
     @touchstart="touchStart"
@@ -14,10 +14,10 @@
         polygon(v-if="shape === 'triangle'" points="20,1.1 1.2,33.6 38.8,33.6")
         rect(v-if="shape === 'square'" x="1.2" y="1.2" width="37.5" height="37.5")
         polygon(v-if="shape === 'pentagone'" points="20,1.2 1.2,14.8 8.4,36.9 31.6,36.9 38.8,14.8")
-    g.Cursor-frame--reduced
-      g.Icon-strokes.Cursor-frame--reduced
+    g.Cursor-frame--reduced.Cursor-pointer--beat
+      g.Icon-strokes.Cursor-frame--reduced.Cursor-pointer--beat
         use(href="#shape")
-      g.Icon-fill.Cursor-frame--reduced(v-bind:class="isClicking ? 'is-active' : ''")
+      g.Icon-fill.Cursor-frame--reduced.Cursor-pointer--beat(v-bind:class="isClicking ? 'is-active' : ''")
         use(href="#shape")
 </template>
 
