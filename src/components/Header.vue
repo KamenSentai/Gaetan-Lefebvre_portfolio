@@ -31,10 +31,10 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
           router-link.Cursor-frame--increase(:to="{ name: 'about', params: sendData() }") About
         li.Header-item.Cursor-frame--increase(:class="hasHome ? '': 'is-hidden'")
           router-link.Cursor-frame--increase(:to="{ name: 'home', params: sendData() }") Return home
-      .Header-burger(v-bind:class="isNavigating ? 'is-active' : ''" @click="toggleNavigation")
-        .Header-stripe
-        .Header-stripe
-        .Header-stripe
+      .Header-burger.Cursor-frame--increase(v-bind:class="isNavigating ? 'is-active' : ''" @click="toggleNavigation")
+        .Header-stripe.Cursor-frame--increase
+        .Header-stripe.Cursor-frame--increase
+        .Header-stripe.Cursor-frame--increase
   .Header-jumbotron
     Hero.Header-hero(
       :class="type === 'about' ? 'Header-scrollable' : ''"

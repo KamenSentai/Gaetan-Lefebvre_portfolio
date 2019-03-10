@@ -65,6 +65,7 @@ export default {
 
     let reduceFrame = false
     let inceaseFrame = false
+    let menuFrame = false
     let beatPointer = false
     let ratio = '1'
     const currentSize = _mouseHud.getBoundingClientRect().width
@@ -82,6 +83,7 @@ export default {
       const target = event.target
       reduceFrame = target.classList.contains('Cursor-frame--reduced')
       inceaseFrame = target.classList.contains('Cursor-frame--increase')
+      menuFrame = target.classList.contains('Cursor-frame--menu')
       beatPointer = target.classList.contains('Cursor-pointer--beat')
 
       if (inceaseFrame || beatPointer) {
@@ -92,6 +94,11 @@ export default {
           const size = target.getBoundingClientRect().width * sizeRate
           ratio = size / currentSize
         }
+      } else if (menuFrame) {
+        mouse.x = window.innerWidth
+        mouse.y = window.innerHeight / 2
+        const size = target.getBoundingClientRect().width
+        ratio = size / currentSize
       } else {
         mouse.x = event.clientX - _body.getBoundingClientRect().left
         mouse.y = event.clientY - _body.getBoundingClientRect().top
@@ -116,11 +123,11 @@ export default {
       _mousePointer.style.transform = `translate(${positionPointer.x}px, ${positionPointer.y}px)`
       _mouseFrame.style.transform = `translate(${positionFrame.x}px, ${positionFrame.y}px)`
 
-      if (reduceFrame || inceaseFrame) _mousePointer.classList.add('is-reduced')
+      if (reduceFrame || inceaseFrame || menuFrame) _mousePointer.classList.add('is-reduced')
       else _mousePointer.classList.remove('is-reduced')
       if (reduceFrame) _mouseHud.classList.add('is-reduced')
       else _mouseHud.classList.remove('is-reduced')
-      if (inceaseFrame) _mouseHud.style.transform = `scale(${ratio})`
+      if (inceaseFrame || menuFrame) _mouseHud.style.transform = `scale(${ratio})`
       else _mouseHud.style.transform = null
       if (beatPointer) _mousePointer.classList.add('is-beating')
       else _mousePointer.classList.remove('is-beating')
@@ -155,17 +162,17 @@ export default {
   $pointerSize: .8rem;
 
   position: absolute;
-  z-index: 5000;
+  top: 0;
+  left: 0;
+  z-index: 10000;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: $cursorSize;
-  height: $cursorSize;
-  margin-top: - $cursorSize / 2;
-  margin-left: - $cursorSize / 2;
-  border-radius: 100%;
+  width: 100vw;
+  height: 100vh;
   transition: none;
   pointer-events: none;
+  overflow: hidden;
 
   &.is-hidden {
     display: none;
@@ -199,14 +206,15 @@ export default {
 
   &-frame,
   &-pointer {
-    transform: translate(50vw, 50vh);
+    margin-top: -50vh;
+    margin-left: -50vw;
     will-change: transform;
   }
 
   &-frame {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: $cursorSize;
+    height: $cursorSize;
   }
 
   &-hud {

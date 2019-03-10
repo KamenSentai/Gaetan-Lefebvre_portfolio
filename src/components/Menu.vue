@@ -6,9 +6,9 @@
   router-link.Menu-link(:to="{ name: 'tesla' }")
     img.Menu-image(src="../assets/images/Menu/tesla.png" alt="Tesla")
     span.Menu-title Tesla
-  span.Menu-float
-    a.Menu-back(@click="toggleMenu")
-      .Menu-cross
+  span.Menu-float.Cursor-frame--menu
+    a.Menu-back.Cursor-frame--menu(@click="toggleMenu")
+      .Menu-cross.Cursor-frame--menu
   router-link.Menu-link(:to="{ name: 'buddy-buddy' }")
     img.Menu-image(src="../assets/images/Menu/buddy-buddy.png" alt="Buddy Buddy")
     span.Menu-title Buddy Buddy
