@@ -14,7 +14,7 @@
 
   $i: 5;
   @while $i < 100 {
-    &--#{$i} {
+    &[data-rate="#{$i}"] {
       &::before {
         height: calc(#{$i} * 1% + #{$margin-n});
       }

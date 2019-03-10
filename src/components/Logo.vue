@@ -27,6 +27,18 @@ export default {
     }
   }
 
+  &[data-color="white"] {
+    #{$rootLogo}-firstname {
+      fill: $white;
+    }
+  }
+
+  &[data-color="black"] {
+    #{$rootLogo}-firstname {
+      fill: $black;
+    }
+  }
+
   &-turnable {
     transform-origin: 67% 56%;
     transition: transform $easing-duration;

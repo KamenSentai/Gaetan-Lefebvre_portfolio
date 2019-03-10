@@ -71,7 +71,7 @@ div
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Profil and settings
           p.Content-description.Text--center To solve the problem of complexity of the application, we realized a simple onboarding with illustrations and easy to understand.
-    .Intermediate.Intermediate--20
+    .Intermediate(data-rate="20")
       .Intermediate-container
         img.Exception--screens(src="../assets/images/Pocketcare/Screens.png" alt="Screens")
     section.Slide
@@ -110,6 +110,76 @@ export default {
     Charter,
     Article,
     Footer
+  },
+  mounted() {
+    const _body = document.body
+    const _header = this.$el.querySelector('.Header')
+    const _headerMainnav = _header.querySelector('.Header-mainnav')
+    const _logo = this.$el.querySelector('.Logo')
+    const _footer = this.$el.querySelector('.Footer')
+    const _slides = Array.from(this.$el.querySelectorAll('.Slide, .Intermediate'))
+
+    for (const _slide of _slides) {
+      if (_slide.classList.contains('Intermediate')) {
+        _slides.splice(_slides.indexOf(_slide) + 1, 1)
+      }
+    }
+
+    let breakpointHeader = _headerMainnav.getBoundingClientRect().top
+    let breakpoints = []
+    let _footerOffset = _footer.offsetTop - breakpointHeader
+
+    const updateBreakpoints = () => {
+      _footerOffset = _footer.offsetTop - breakpointHeader
+
+      if (_footerOffset > 0) {
+        breakpointHeader = _headerMainnav.getBoundingClientRect().top
+        breakpoints = []
+
+        for (const _slide of _slides) {
+          if (_slide.classList.contains('Slide')) breakpoints.push(_slide.offsetTop - breakpointHeader)
+          else breakpoints.push(_slide.offsetTop - breakpointHeader + _slide.offsetHeight * (1 - _slide.dataset.rate / 100))
+        }
+        breakpoints.push(_footerOffset)
+      }
+      setTimeout(updateBreakpoints, 500)
+    }
+    updateBreakpoints()
+
+    // setTimeout(() => {
+    //   for (const breakpoint of breakpoints) {
+    //     const div = document.createElement('div')
+    //     div.style.position = 'absolute'
+    //     div.style.left = '0'
+    //     div.style.top = breakpoint + 60 + 'px'
+    //     div.style.zIndex = '1000'
+    //     div.style.width = '10px'
+    //     div.style.height = '10px'
+    //     div.style.backgroundColor = 'red'
+    //     _body.appendChild(div)
+    //   }
+    // }, 10000)
+
+    window.addEventListener('resize', updateBreakpoints)
+
+    window.addEventListener('scroll', () => {
+      const offsetTop = Math.abs(_body.getBoundingClientRect().top)
+      let color
+      let index
+
+      for (let i = 0 ; i < breakpoints.length ; i++) {
+        if (breakpoints[i] > offsetTop) {
+          index = i
+          break
+        }
+      }
+
+      if (index !== undefined) color = index % 2 ? 'black' : 'white'
+      else color = 'white'
+
+      _headerMainnav.dataset.color = color
+      _logo.dataset.color = color
+    })
   }
 }
 </script>

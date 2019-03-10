@@ -74,7 +74,7 @@ div
             h4.Content-section Home
             p.Content-text All the case study on the Buddy Buddy website have the same plan. The first part is the project presentation. Then we present the branding identity and the style guide.
           img.Content-poster(data-aos="fade-left" data-aos-delay="250" src="../assets/images/BuddyBuddy/Home.png" alt="Home")
-    .Intermediate.Intermediate--20
+    .Intermediate(data-rate="20")
       .Intermediate-container
         .Content.Text--white
           .Content-item

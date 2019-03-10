@@ -122,7 +122,7 @@ div
           img.Content-online(data-aos="fade-up" data-aos-delay="500" src="../assets/images/Tesla/Hand_3.png" alt="Hand")
           img.Content-online(data-aos="fade-up" data-aos-delay="750" src="../assets/images/Tesla/Hand_4.png" alt="Hand")
           img.Content-online(data-aos="fade-up" data-aos-delay="1000" src="../assets/images/Tesla/Hand_5.png" alt="Hand")
-    .Intermediate.Intermediate--20
+    .Intermediate(data-rate="20")
       .Intermediate-container(data-aos="fade-up")
         img.Content-breakpoints(src="../assets/images/Tesla/Helmet.png" alt="Helmet")
     section.Slide.Slide--page
@@ -143,7 +143,7 @@ div
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Other screens
           p.Content-description.Text--center Finally, you can find here the charging part. Then the localisation, same as the mobile part to find the car. And the little option to bring the car forward or backward in some specials situations.
-    .Intermediate.Intermediate--20
+    .Intermediate(data-rate="20")
       .Intermediate-container(data-aos="fade-up")
         img.Content-banner(src="../assets/images/Tesla/Watches_1.png" alt="Watches")
       .Intermediate-container(data-aos="fade-up")

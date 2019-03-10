@@ -21,7 +21,7 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
             a.Cursor-frame--increase(href="#") LinkedIn
             a.Cursor-frame--increase(href="#") Dribbble
             a.Cursor-frame--increase(href="#") Instagram
-    .Header-mainnav
+    .Header-mainnav(:data-navigating="isNavigating ? 'true' : 'false'")
       router-link.Header-logo(v-bind:class="isNavigating ? 'is-toggled' : ''" :to="{ name: 'home', params: sendData() }")
         Logo.Header-logo(:color="color || data.colors[range]")
       ul.Header-navbar
@@ -337,7 +337,6 @@ export default {
   }
 
   &-logo {
-    filter: drop-shadow(#{$shadow-light});
     opacity: 1;
     transform-origin: 50% 50%;
     transition: opacity $easing-duration, transform $easing-duration;
@@ -375,8 +374,8 @@ export default {
     font-size: 1.8rem;
     margin-left: $margin-s;
     font-weight: 700;
-    text-shadow: $shadow-regular;
     opacity: 1;
+    transition: color $easing-duration;
 
     &:first-child {
       margin-left: 0;
@@ -476,6 +475,24 @@ export default {
     width: grid(12);
     height: 0;
     z-index: 500;
+
+    &[data-navigating="false"] {
+      &[data-color="white"] {
+          color: $white;
+
+        #{$rootHeader}-stripe {
+          background-color: $white;
+        }
+      }
+
+      &[data-color="black"] {
+        color: $black;
+
+        #{$rootHeader}-stripe {
+          background-color: $black;
+        }
+      }
+    }
   }
 
   &-subnav {
@@ -539,10 +556,9 @@ export default {
     height: .1rem;
     width: $burger-width;
     background-color: $white;
-    box-shadow: $shadow-regular;
     transform-origin: 100% 0;
     transform: scaleX(1);
-    transition: transform $easing-duration;
+    transition: background-color $easing-duration, transform $easing-duration;
     will-change: transform;
 
     &:first-child,
