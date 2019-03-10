@@ -85,8 +85,8 @@ export default {
       beatPointer = target.classList.contains('Cursor-pointer--beat')
 
       if (inceaseFrame || beatPointer) {
-        mouse.x = target.getBoundingClientRect().left + target.getBoundingClientRect().width / 2
-        mouse.y = target.getBoundingClientRect().top + target.getBoundingClientRect().height / 2
+        mouse.x = target.getBoundingClientRect().left + target.getBoundingClientRect().width / 2 - _body.getBoundingClientRect().left
+        mouse.y = target.getBoundingClientRect().top + target.getBoundingClientRect().height / 2 - _body.getBoundingClientRect().top
 
         if (inceaseFrame) {
           const size = target.getBoundingClientRect().width * sizeRate
