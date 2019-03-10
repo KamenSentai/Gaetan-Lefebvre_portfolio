@@ -1,5 +1,5 @@
 <template lang="pug">
-header.Header(v-bind:class="`Header--${color || data.colors[range]}`")
+header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--${shape || data.shapes[range]}`]")
   .Header-topbar(v-bind:class="isNavigating ? 'is-toggled' : ''")
     .Header-navigation(v-bind:class="isNavigating ? 'is-toggled' : ''")
       .Header-subnav

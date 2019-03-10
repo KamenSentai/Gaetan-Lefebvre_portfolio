@@ -1,22 +1,69 @@
 <template lang="pug">
-.Mouse(v-bind:class="className")
-  .Mouse-pointer
+.Mouse(v-bind:class="state")
   .Mouse-circle
+  svg.Mouse-pointer(width="40px" height="40px" viewBox="0 0 40 40")
+    path#Mouse-circle.Mouse-shape(d="M20,38.8C9.6,38.8,1.2,30.4,1.2,20S9.6,1.2,20,1.2S38.8,9.6,38.8,20S30.4,38.8,20,38.8z")
+    path#Mouse-triangle.Mouse-shape(d="M38.8,33.6H1.2L20,1.1L38.8,33.6z")
+    path#Mouse-square.Mouse-shape(d="M20,1.2L38.8,20L20,38.8L1.2,20L20,1.2z")
+    path#Mouse-pentagone.Mouse-shape(d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
+    path#Mouse-shape.Mouse-shape.is-active(:data-shape="shape")
 </template>
 
 <script>
+import kute from 'kute.js'
+import 'kute.js/kute-svg'
+
 export default {
   data() {
     return {
-      className: ''
+      state: '',
+      shape: ''
+    }
+  },
+  methods: {
+    findShape: function() {
+      const _header = document.querySelector('.Header')
+
+      if (_header) {
+        const shapes = [
+          'circle',
+          'triangle',
+          'square',
+          'pentagone'
+        ]
+
+        for (const shape of shapes) if (_header.classList.contains(`Header--${shape}`)) return shape
+      }
+    },
+    setShape: function() {
+      if (!this.shape || this.shape === '') window.requestAnimationFrame(this.setShape)
+      else {
+        window.cancelAnimationFrame(this.setShape)
+        this.$el.querySelector('#Mouse-shape').setAttribute('d', this.$el.querySelector(`#Mouse-${this.shape}`).getAttribute('d'))
+      }
+    },
+    updateShape: function() {
+      this.shape = this.findShape()
+      const _shape = this.$el.querySelector('#Mouse-shape')
+      const _target = this.$el.querySelector(`#Mouse-${this.shape}`)
+
+      if (_target && _shape.dataset.shape && _shape.dataset.shape !== this.shape) {
+        const tween = kute.to('#Mouse-shape', { path: `#Mouse-${this.shape}` })
+        tween.start()
+      }
+
+      window.requestAnimationFrame(this.updateShape)
     }
   },
   mounted() {
+    const _body = document.body
     const _mouse = this.$el
     const _mousePointer = _mouse.querySelector('.Mouse-pointer')
     const _mouseCircle = _mouse.querySelector('.Mouse-circle')
 
-    const _body = document.body
+    this.setShape()
+    this.updateShape()
+
     let screen = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
     let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
     let positionPointer = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
@@ -55,8 +102,8 @@ export default {
         || navigator.userAgent.match(/iPod/i)
         || navigator.userAgent.match(/BlackBerry/i)
         || navigator.userAgent.match(/Windows Phone/i)
-      ) this.className = 'is-hidden'
-      else this.className = 'is-active'
+      ) this.state = 'is-hidden'
+      else this.state = 'is-active'
     })
   }
 }
@@ -85,19 +132,11 @@ export default {
     display: none;
   }
 
-  &-pointer,
-  &-circle {
+  &-circle,
+  &-pointer {
     border-radius: 100%;
     transform: translate(50vw, 50vh);
     will-change: transform;
-  }
-
-  &-pointer {
-    position: absolute;
-    width: .8rem;
-    height: .8rem;
-    background-color: $white;
-    box-shadow: $shadow-regular;
   }
 
   &-circle {
@@ -105,6 +144,22 @@ export default {
     width: 100%;
     height: 100%;
     border: .1rem solid $dark;
+  }
+
+  &-pointer {
+    position: absolute;
+    width: .8rem;
+    height: .8rem;
+    fill: $white;
+    stroke: none;
+  }
+
+  &-shape {
+    visibility: hidden;
+
+    &.is-active {
+      visibility: visible;
+    }
   }
 }
 </style>
