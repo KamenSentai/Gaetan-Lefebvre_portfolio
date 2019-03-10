@@ -226,6 +226,7 @@ export default {
     let breakpointHeader = _headerMainnav.getBoundingClientRect().top
     let breakpoints = []
     let _footerOffset = _footer.offsetTop - breakpointHeader
+    let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
 
     const updateBreakpoints = () => {
       _footerOffset = _footer.offsetTop - breakpointHeader
@@ -265,8 +266,10 @@ export default {
       _logo.dataset.color = color
     })
 
-    window.addEventListener('mousemove', event => {
-      const offsetTop = Math.abs(_body.getBoundingClientRect().top) - breakpointHeader +  event.clientY
+    window.addEventListener('mousemove', event => { mouse.y = event.clientY })
+
+    const toggleCursor = () => {
+      const offsetTop = Math.abs(_body.getBoundingClientRect().top) - breakpointHeader +  mouse.y
       let color
       let index
 
@@ -281,7 +284,9 @@ export default {
       else color = 'white'
 
       _mouse.dataset.color = color
-    })
+      window.requestAnimationFrame(toggleCursor)
+    }
+    toggleCursor()
   }
 }
 </script>
