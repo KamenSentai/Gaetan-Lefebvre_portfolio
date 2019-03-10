@@ -171,6 +171,26 @@ export default {
     display: none;
   }
 
+  &[data-color="white"] {
+    #{$rootMouse}-hud {
+      border-color: $dark;
+    }
+
+    #{$rootMouse}-shape {
+      fill: $white;
+    }
+  }
+
+  &[data-color="black"] {
+    #{$rootMouse}-hud {
+      fill: $grey;
+    }
+
+    #{$rootMouse}-shape {
+      fill: $black;
+    }
+  }
+
   &-frame,
   &-pointer {
     transform: translate(50vw, 50vh);
@@ -201,9 +221,8 @@ export default {
     position: absolute;
     width: $pointerSize;
     height: $pointerSize;
-    filter: drop-shadow(#{$shadow-regular});
-    fill: $white;
     stroke: none;
+    transition: fill $easing-duration;
 
     &.is-beating {
       #{$rootMouse}-shape {
@@ -228,7 +247,7 @@ export default {
 
     &.is-active {
       transform-origin: 50% 50%;
-      transition: transform $easing-duration;
+      transition: fill $easing-duration, transform $easing-duration;
       transition-delay: .25s;
       visibility: visible;
       will-change: transform;

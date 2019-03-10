@@ -113,6 +113,7 @@ export default {
   },
   mounted() {
     const _body = document.body
+    const _mouse = _body.querySelector('.Mouse')
     const _header = this.$el.querySelector('.Header')
     const _headerMainnav = _header.querySelector('.Header-mainnav')
     const _logo = this.$el.querySelector('.Logo')
@@ -146,20 +147,6 @@ export default {
     }
     updateBreakpoints()
 
-    // setTimeout(() => {
-    //   for (const breakpoint of breakpoints) {
-    //     const div = document.createElement('div')
-    //     div.style.position = 'absolute'
-    //     div.style.left = '0'
-    //     div.style.top = breakpoint + 60 + 'px'
-    //     div.style.zIndex = '1000'
-    //     div.style.width = '10px'
-    //     div.style.height = '10px'
-    //     div.style.backgroundColor = 'red'
-    //     _body.appendChild(div)
-    //   }
-    // }, 10000)
-
     window.addEventListener('resize', updateBreakpoints)
 
     window.addEventListener('scroll', () => {
@@ -179,6 +166,24 @@ export default {
 
       _headerMainnav.dataset.color = color
       _logo.dataset.color = color
+    })
+
+    window.addEventListener('mousemove', event => {
+      const offsetTop = Math.abs(_body.getBoundingClientRect().top) - breakpointHeader +  event.clientY
+      let color
+      let index
+
+      for (let i = 0 ; i < breakpoints.length ; i++) {
+        if (breakpoints[i] > offsetTop) {
+          index = i
+          break
+        }
+      }
+
+      if (index !== undefined) color = index % 2 ? 'black' : 'white'
+      else color = 'white'
+
+      _mouse.dataset.color = color
     })
   }
 }
