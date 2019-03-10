@@ -28,6 +28,7 @@ export default {
   methods: {
     toggleMenu: () => {
       document.querySelector('.Menu').classList.remove('is-active')
+      document.body.style.overflow = 'auto'
     }
   }
 }

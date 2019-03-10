@@ -172,11 +172,10 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+  width: $cursorSize;
+  height: $cursorSize;
   transition: none;
   pointer-events: none;
-  overflow: hidden;
 
   &.is-hidden {
     display: none;
@@ -210,15 +209,15 @@ export default {
 
   &-frame,
   &-pointer {
-    margin-top: -50vh;
-    margin-left: -50vw;
+    margin-top: - $cursorSize / 2;
+    margin-left: - $cursorSize / 2;
     will-change: transform;
   }
 
   &-frame {
     position: absolute;
-    width: $cursorSize;
-    height: $cursorSize;
+    width: 100%;
+    height: 100%;
   }
 
   &-hud {
