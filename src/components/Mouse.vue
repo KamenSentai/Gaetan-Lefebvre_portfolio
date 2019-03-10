@@ -116,13 +116,10 @@ export default {
       _mousePointer.style.transform = `translate(${positionPointer.x}px, ${positionPointer.y}px)`
       _mouseFrame.style.transform = `translate(${positionFrame.x}px, ${positionFrame.y}px)`
 
-      if (reduceFrame) {
-        _mouseHud.classList.add('is-reduced')
-        _mousePointer.classList.add('is-reduced')
-      } else {
-        _mouseHud.classList.remove('is-reduced')
-        _mousePointer.classList.remove('is-reduced')
-      }
+      if (reduceFrame || inceaseFrame) _mousePointer.classList.add('is-reduced')
+      else _mousePointer.classList.remove('is-reduced')
+      if (reduceFrame) _mouseHud.classList.add('is-reduced')
+      else _mouseHud.classList.remove('is-reduced')
       if (inceaseFrame) _mouseHud.style.transform = `scale(${ratio})`
       else _mouseHud.style.transform = null
       if (beatPointer) _mousePointer.classList.add('is-beating')
