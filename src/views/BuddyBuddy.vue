@@ -99,8 +99,8 @@ div
         :post="data.posts[3]"
       )
   Footer(
-    to="personal"
-    title="Personal"
+    to="pocketcare"
+    title="Pocketcare"
   )
 </template>
 

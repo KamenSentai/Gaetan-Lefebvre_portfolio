@@ -28,7 +28,7 @@
         span.Carousel-subtitle
           span.Text--bold School project
           span.Text--light &nbsp;- 2017
-          span.Carousel-additional
+          span.Carousel-additional(v-if="slide")
             span.Text--bold Skills :
             span.Text--light &nbsp;Branding, Illustration, Interactive design
       router-link.Carousel-item.Cursor-frame--text(v-if="!slide || parseInt(slide) === 1" v-bind:class="`Carousel-item--${modulo(range - 1, 4)}`" :to="{ name: 'tesla' }")
@@ -42,7 +42,7 @@
         span.Carousel-subtitle
           span.Text--bold School project
           span.Text--light &nbsp;- 2018
-          span.Carousel-additional
+          span.Carousel-additional(v-if="slide")
             span.Text--bold Skills :
             span.Text--light &nbsp;Branding, Illustration, Interactive design
       router-link.Carousel-item.Cursor-frame--text(v-if="!slide || parseInt(slide) === 2" v-bind:class="`Carousel-item--${modulo(range - 2, 4)}`" :to="{ name: 'buddy-buddy' }")
@@ -56,22 +56,23 @@
         span.Carousel-subtitle
           span.Text--bold Internship
           span.Text--light &nbsp;- 2018
-          span.Carousel-additional
+          span.Carousel-additional(v-if="slide")
             span.Text--bold Skills :
             span.Text--light &nbsp;Branding, Illustration, Interactive design
-      router-link.Carousel-item.Cursor-frame--text(v-if="!slide || parseInt(slide) === 3" v-bind:class="`Carousel-item--${modulo(range - 3, 4)}`" :to="{ name: 'personal' }")
+      span.Carousel-item.Cursor-frame--text.Carousel-item--forbidden(v-if="!slide || parseInt(slide) === 3" v-bind:class="`Carousel-item--${modulo(range - 3, 4)}`")
         .Carousel-image.Cursor-frame--text
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/personal_back.png" alt="Personal")
           img.Cursor-frame--text(src="../assets/images/Projects/personal.png" alt="Personal")
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/personal_front.png" alt="Personal")
+          Lock.Carousel-lock
       p.Carousel-label(v-if="!slide || parseInt(slide) === 3")
-        span.Carousel-title Personal
+        span.Carousel-title Coming soom
         span.Carousel-subtitle
-          span.Text--bold Discovery
-          span.Text--light &nbsp;- 2016/2018
-          span.Carousel-additional
+          span.Text--bold New
+          span.Text--light &nbsp;- 2019
+          span.Carousel-additional(v-if="slide")
             span.Text--bold Skills :
-            span.Text--light &nbsp;Animation, Illustration, Interactive design
+            span.Text--light &nbsp;Interactive design
       .Carousel-progress(v-if="!slide")
         p.Carousel-indicator Swipe
         svg.Carousel-step(:class="range === 0 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
@@ -85,6 +86,7 @@
 </template>
 
 <script>
+import Lock from './Lock'
 import kute from 'kute.js'
 import 'kute.js/kute-svg'
 
@@ -98,6 +100,9 @@ export default {
     'range',
     'slide'
   ],
+  components: {
+    Lock
+  },
   methods: {
     modulo: (n, m) => {
       return ((n % m) + m) % m;
@@ -348,6 +353,12 @@ export default {
     transition: all $easing-duration;
     will-change: opacity, transform;
 
+    &:hover {
+      #{$rootCarousel}-lock {
+        opacity: .5;
+      }
+    }
+
     &--0 {
       left: 50%;
       opacity: 1;
@@ -410,6 +421,14 @@ export default {
       }
     }
 
+    &--forbidden {
+      cursor: pointer;
+
+      &:hover {
+        filter: grayscale(100%);
+      }
+    }
+
     @media (max-width: #{grid-media(6)}) {
       left: 50%;
     }
@@ -438,6 +457,19 @@ export default {
     &--front {
       z-index: 1;
     }
+  }
+
+  &-lock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 5;
+    width: auto;
+    height: 50%;
+    opacity: .25;
+    transform: translate(-50%, -50%);
+    transition: opacity $easing-duration;
+    will-change: opacity;
   }
 
   &-extra {

@@ -12,13 +12,19 @@
   router-link.Menu-link(:to="{ name: 'buddy-buddy' }")
     img.Menu-image(src="../assets/images/Menu/buddy-buddy.png" alt="Buddy Buddy")
     span.Menu-title Buddy Buddy
-  router-link.Menu-link(:to="{ name: 'personal' }")
+  span.Menu-link.Menu-link--forbidden
     img.Menu-image(src="../assets/images/Menu/personal.png" alt="Personal")
-    span.Menu-title Personal
+    Lock.Menu-lock
+    span.Menu-title Coming soon
 </template>
 
 <script>
+import Lock from './Lock'
+
 export default {
+  components: {
+    Lock
+  },
   methods: {
     toggleMenu: () => {
       document.querySelector('.Menu').classList.remove('is-active')
@@ -73,15 +79,34 @@ export default {
       }
     }
 
+    &--forbidden {
+      transition: flex $easing-duration, filter $easing-duration;
+      cursor: pointer;
+
+      &:hover {
+        filter: grayscale(100%);
+
+        #{$rootMenu}-lock {
+          opacity: .5;
+        }
+      }
+    }
+
     > * {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      opacity: .4;
+      opacity: .5;
       transition: opacity $easing-duration;
       will-change: opacity;
     }
+  }
+
+  &-lock {
+    width: auto;
+    height: 50%;
+    opacity: .25;
   }
 
   &-float {
