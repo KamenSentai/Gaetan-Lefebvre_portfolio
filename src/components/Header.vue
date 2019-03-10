@@ -339,9 +339,15 @@ export default {
   &-logo {
     filter: drop-shadow(#{$shadow-light});
     opacity: 1;
+    transform-origin: 50% 50%;
     transition: opacity $easing-duration, transform $easing-duration;
     transition-delay: 1s;
     will-change: opacity, transform;
+
+    &:hover {
+      transform: rotateZ(-90deg);
+      transition-delay: 0s;
+    }
 
     @media (max-width: #{grid-media(6)}) {
       &.is-toggled {

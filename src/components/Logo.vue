@@ -21,18 +21,29 @@ export default {
 .Logo {
   $rootLogo: &;
 
-  &-turnable {
-    transform-origin: 67% 56%;
-    transition: transform $easing-duration;
-  }
-
   &:hover {
     #{$rootLogo}-turnable {
       transform: rotateZ(180deg);
     }
   }
 
+  &-turnable {
+    transform-origin: 67% 56%;
+    transition: transform $easing-duration;
+  }
+
+  &-firstname {
+    fill: $white;
+    transition: fill $easing-duration;
+  }
+
   @each $key, $value in $colors {
+    &:hover {
+      &--#{$key} &-firstname {
+        fill: $value;
+      }
+    }
+
     &--#{$key} &-lastname {
       fill: $value;
     }
