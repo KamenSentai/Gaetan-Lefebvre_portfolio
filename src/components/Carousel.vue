@@ -104,16 +104,16 @@ export default {
     },
     turnLeft: function() {
       if (!this.slide) {
-        const tweenLeft = kute.to('#left', { path: `#left-${this.modulo(this.range - 1, 4) }` })
-        const tweenRight = kute.to(`#right`, { path: `#right-${this.modulo(this.range - 1, 4) }` })
+        const tweenLeft = kute.to('#left', { path: `#left-${this.modulo(this.range - 1, 4)}` })
+        const tweenRight = kute.to(`#right`, { path: `#right-${this.modulo(this.range - 1, 4)}` })
         tweenLeft.start()
         tweenRight.start()
       }
     },
     turnRight: function() {
       if (!this.slide) {
-        const tweenLeft = kute.to('#left', { path: `#left-${this.modulo(this.range + 1, 4) }` })
-        const tweenRight = kute.to(`#right`, { path: `#right-${this.modulo(this.range + 1, 4) }` })
+        const tweenLeft = kute.to('#left', { path: `#left-${this.modulo(this.range + 1, 4)}` })
+        const tweenRight = kute.to(`#right`, { path: `#right-${this.modulo(this.range + 1, 4)}` })
         tweenLeft.start()
         tweenRight.start()
       } else {
@@ -135,7 +135,7 @@ export default {
     if (_right) _right.setAttribute('d', this.$el.querySelector(`#right-${this.index}`).getAttribute('d'))
 
     if (this.slide) {
-      const tween = kute.to(`#right`, { path: `#right-${this.modulo(this.slide - 1, 4) }` })
+      const tween = kute.to(`#right`, { path: `#right-${this.modulo(this.slide - 1, 4)}` })
       tween.start()
 
       const _subtitleCarousel = this.$el.querySelector('.Carousel-subtitle')
