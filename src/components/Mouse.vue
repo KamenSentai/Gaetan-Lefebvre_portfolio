@@ -177,7 +177,10 @@ export default {
     }
 
     #{$rootMouse}-shape {
-      fill: $white;
+      &.is-active {
+        fill: $white;
+        transition-delay: 0;
+      }
     }
   }
 
@@ -187,7 +190,10 @@ export default {
     }
 
     #{$rootMouse}-shape {
-      fill: $black;
+      &.is-active {
+        transition-delay: 0;
+        fill: $black;
+      }
     }
   }
 
@@ -246,6 +252,7 @@ export default {
     visibility: hidden;
 
     &.is-active {
+      fill: $white;
       transform-origin: 50% 50%;
       transition: fill $easing-duration, transform $easing-duration;
       transition-delay: .25s;
