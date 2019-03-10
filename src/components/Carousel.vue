@@ -85,8 +85,8 @@
 </template>
 
 <script>
-const kute = require("kute.js")
-require("kute.js/kute-svg")
+import kute from 'kute.js'
+import 'kute.js/kute-svg'
 
 export default {
   data() {
