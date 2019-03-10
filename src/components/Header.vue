@@ -25,10 +25,12 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
       router-link.Header-logo(v-bind:class="isNavigating ? 'is-toggled' : ''" :to="{ name: 'home', params: sendData() }")
         Logo(:color="color || data.colors[range]")
       ul.Header-navbar
-        li.Header-item(:class="project ? 'is-hidden': ''")
+        li.Header-item(:class="hasProject ? '': 'is-hidden'")
           a(href="#" @click="toggleMenu") Projects
-        li.Header-item
+        li.Header-item(:class="hasAbout ? '': 'is-hidden'")
           router-link(:to="{ name: 'about', params: sendData() }") About
+        li.Header-item(:class="hasHome ? '': 'is-hidden'")
+          router-link(:to="{ name: 'home', params: sendData() }") Return home
       .Header-burger(v-bind:class="isNavigating ? 'is-active' : ''" @click="toggleNavigation")
         .Header-stripe
         .Header-stripe
@@ -76,7 +78,9 @@ export default {
     'index',
     'jumbotron',
     'type',
-    'project',
+    'hasProject',
+    'hasAbout',
+    'hasHome',
     'data',
     'slide'
   ],
@@ -116,7 +120,7 @@ export default {
     },
     toggleMenu: function(event) {
       event.preventDefault()
-      if (!this.project) document.querySelector('.Menu').classList.add('is-active')
+      document.querySelector('.Menu').classList.add('is-active')
     },
     modulo: (n, m) => {
       return ((n % m) + m) % m;
@@ -360,18 +364,23 @@ export default {
   }
 
   &-item {
+    display: flex;
+    align-items: center;
     font-size: 1.8rem;
-    margin-right: $margin-s;
+    margin-left: $margin-s;
     font-weight: 700;
     text-shadow: $shadow-regular;
     opacity: 1;
 
-    &:last-child {
-      margin-right: 0;
+    &:first-child {
+      margin-left: 0;
     }
 
     &.is-hidden {
+      width: 0;
+      margin: 0;
       opacity: 0;
+      pointer-events: none;
 
       a {
         cursor: default;

@@ -1,6 +1,9 @@
 <template lang="pug">
 Header(
   :index="data.colors.indexOf(color) || data.colors.indexOf(shape)"
+  :hasProject="false"
+  :hasAbout="true"
+  :hasHome="false"
   jumbotron="hero"
   type="home"
   :data="data"

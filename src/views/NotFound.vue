@@ -2,6 +2,9 @@
 Header(
   :color="themes[theme].color"
   :shape="themes[theme].shape"
+  :hasProject="false"
+  :hasAbout="false"
+  :hasHome="true"
   jumbotron="error"
 )
 </template>
