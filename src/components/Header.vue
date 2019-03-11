@@ -107,9 +107,11 @@ export default {
 
         if (this.isNavigating) {
           document.body.style.overflow = 'hidden'
+          document.querySelector('.Mouse').dataset.forced = 'white'
           this.$el.querySelector('.Header-navigation').style.zIndex = '1000'
         } else {
           document.body.style.overflow = 'auto'
+          document.querySelector('.Mouse').dataset.forced = 'none'
           setTimeout(() => {
             this.$el.querySelector('.Header-navigation').style.zIndex = '0'
           }, 2000)

@@ -205,6 +205,19 @@ export default {
         fill: $black;
       }
     }
+
+    &[data-forced="white"] {
+      #{$rootMouse}-hud {
+        border-color: $dark;
+      }
+
+      #{$rootMouse}-shape {
+        &.is-active {
+          fill: $white;
+          transition-delay: 0;
+        }
+      }
+    }
   }
 
   &-frame,
