@@ -99,8 +99,6 @@ if (process.client) {
   require('kute.js/kute-svg')
 }
 
-console.log(kute)
-
 export default {
   data() {
     return {

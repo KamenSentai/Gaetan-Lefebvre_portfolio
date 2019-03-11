@@ -170,8 +170,8 @@ export default {
   $pointerSize: .8rem;
 
   position: absolute;
-  top: 0;
-  left: 0;
+  top: calc(50vh - #{$cursorSize / 2});
+  left: calc(50vw - #{$cursorSize / 2});
   z-index: 10000;
   display: flex;
   justify-content: center;
@@ -226,8 +226,8 @@ export default {
 
   &-frame,
   &-pointer {
-    margin-top: - $cursorSize / 2;
-    margin-left: - $cursorSize / 2;
+    margin-top: - 50vh;
+    margin-left: - 50vw;
     will-change: transform;
   }
 

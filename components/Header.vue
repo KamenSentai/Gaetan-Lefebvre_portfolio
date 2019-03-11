@@ -49,6 +49,10 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
       :range="parseInt(slide) || range"
       :slide="slide"
     )
+    Error.Header-error(
+      v-else-if="jumbotron === 'error'"
+      :shape="shape"
+    )
   Menu
 </template>
 
@@ -57,6 +61,7 @@ import Logo from './Logo'
 import Menu from './Menu'
 import Hero from './Hero'
 import Carousel from './Carousel'
+import Error from './Error'
 
 export default {
   data() {
@@ -85,7 +90,8 @@ export default {
     Logo,
     Menu,
     Hero,
-    Carousel
+    Carousel,
+    Error
   },
   methods: {
     sendData: function() {
@@ -312,6 +318,10 @@ export default {
       *::selection {
         color: $white;
         background-color: $value;
+      }
+
+      .Logo-lastname {
+        fill: $value !important;
       }
     }
   }
