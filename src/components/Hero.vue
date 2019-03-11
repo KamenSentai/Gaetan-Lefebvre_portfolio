@@ -6,10 +6,11 @@
       alt="Gaëtan Lefebvre"
       draggable="false"
     )
-    img.Hero-shape(
-      :src="getImage(data.shapes[range], type)"
-      draggable="false"
-    )
+    .Hero-glitch
+      img.Hero-shape(
+        :src="getImage(data.shapes[range], type)"
+        draggable="false"
+      )
     img.Hero-front(
       src="../assets/images/Home/Gaetan-cropped.png"
       alt="Gaëtan Lefebvre"
@@ -68,6 +69,8 @@
 
 <script>
 import Icon from './Icon'
+import $ from 'jquery'
+require('../scripts/mgGlitch')
 
 export default {
   props: [
@@ -98,6 +101,20 @@ export default {
         indexPage === (this.range + 1) % Object.keys(this.data[this.type].pages).length ?
           'is-appearing' : ''
     }
+  },
+  mounted() {
+    $('.Hero-shape').mgGlitch({
+      destroy : false, // set 'true' to stop the plugin
+      glitch: true, // set 'false' to stop glitching
+      scale: true, // set 'false' to stop scaling
+      blend : true, // set 'false' to stop glitch blending
+      blendModeType : 'hue', // select blend mode type
+      glitch1TimeMin : 200, // set min time for glitch 1 elem
+      glitch1TimeMax : 400, // set max time for glitch 1 elem
+      glitch2TimeMin : 10, // set min time for glitch 2 elem
+      glitch2TimeMax : 100, // set max time for glitch 2 elem
+      zIndexStart : 5 // because of absolute position, set z-index base value
+    })
   }
 }
 </script>
@@ -174,6 +191,10 @@ export default {
     }
   }
 
+  &-glitch {
+    position: relative;
+  }
+
   &-shape {
     transform: translateX(-50%);
 
@@ -215,6 +236,10 @@ export default {
 
   &-back {
     transform: translateX(-50%);
+  }
+
+  &-front {
+    z-index: 15;
   }
 
   &-front,
