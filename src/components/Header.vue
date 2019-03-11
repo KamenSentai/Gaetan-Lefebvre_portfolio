@@ -1,6 +1,6 @@
 <template lang="pug">
 header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--${shape || data.shapes[range]}`]")
-  .Header-topbar(v-bind:class="isNavigating ? 'is-toggled' : ''")
+  .Header-topbar(v-bind:class="[isNavigating ? 'is-toggled' : '', isMenu ? 'is-hidden': '']")
     .Header-navigation(v-bind:class="isNavigating ? 'is-toggled' : ''")
       .Header-subnav
         .Header-tree
@@ -122,11 +122,10 @@ export default {
     },
     toggleMenu: function(event) {
       event.preventDefault()
-      this.$el.querySelector('.Header-topbar').classList.add('is-hidden')
       this.isMenu = true
 
       setTimeout(() => {
-        const _menu = document.querySelector('.Menu')
+        const _menu = this.$el.querySelector('.Menu')
         _menu.classList.add('is-locked')
         _menu.classList.add('is-active')
         setTimeout(() => {
@@ -134,6 +133,31 @@ export default {
           setTimeout(() => {
             _menu.classList.remove('is-locked')
             _menu.classList.add('is-loaded')
+
+            const _backMenu = _menu.querySelector('.Menu-back')
+            const _carousel = this.$el.querySelector('.Carousel')
+            const _containerCarousel = _carousel.querySelector('.Carousel-container')
+            const _barsCarousel = Array.from(_carousel.querySelectorAll('.Carousel-bar'))
+            let _containerOffset = _containerCarousel.offsetTop
+
+            const turnMenu = () => {
+              setTimeout(() => {
+                for (const _barCarousel of _barsCarousel) {
+                  _barCarousel.classList.remove('is-hidden')
+                  _barCarousel.classList.add('is-visible')
+                  _barCarousel.style.top = `${_containerOffset}px`
+                }
+                setTimeout(() => {
+                  this.isMenu = false
+                  for (const _barCarousel of _barsCarousel) {
+                    _barCarousel.classList.remove('is-visible')
+                  }
+                  _backMenu.removeEventListener('click', turnMenu)
+                }, 1000)
+              }, 1000)
+            }
+
+            _backMenu.addEventListener('click', turnMenu)
           }, 1250)
         }, 250)
         document.body.style.overflow = 'hidden'
@@ -314,8 +338,9 @@ export default {
     width: grid(12);
     margin-top: $margin-s;
     margin-bottom: $margin-r;
-    transition: all$easing-duration;
+    transition: margin-bottom $easing-duration, opacity $easing-duration, transform $easing-duration;
     transition-delay: 1s;
+    will-change: transform;
 
     &::before {
       content: '';

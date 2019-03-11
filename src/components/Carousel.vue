@@ -181,14 +181,14 @@ export default {
       }, 500)
     } else {
       const _containerCarousel = this.$el.querySelector('.Carousel-container')
-      const _bars = Array.from(this.$el.querySelectorAll('.Carousel-bar'))
+      const _barsCarousel = Array.from(this.$el.querySelectorAll('.Carousel-bar'))
       let _containerOffset = _containerCarousel.offsetTop
 
       window.addEventListener('resize', () => { _containerOffset = _containerCarousel.offsetTop })
       const setOffset = () => {
-        for (const _bar of _bars) {
-          if (_bar.classList.contains('is-hidden')) _bar.style.top = null
-          else _bar.style.top = `${_containerOffset}px`
+        for (const _barCarousel of _barsCarousel) {
+          if (_barCarousel.classList.contains('is-hidden')) _barCarousel.style.top = null
+          else _barCarousel.style.top = `${_containerOffset}px`
         }
         window.requestAnimationFrame(setOffset)
       }
@@ -793,6 +793,10 @@ export default {
     opacity: 0;
     transition: top $easing-duration;
     will-change: opacity;
+
+    &.is-visible {
+      opacity: 1;
+    }
 
     &.is-hidden {
       opacity: 1;

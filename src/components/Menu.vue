@@ -26,9 +26,16 @@ export default {
     Lock
   },
   methods: {
-    toggleMenu: () => {
-      document.querySelector('.Menu').classList.remove('is-active')
+    toggleMenu: function() {
       document.body.style.overflow = 'auto'
+      this.$el.classList.add('is-locked')
+      this.$el.classList.remove('is-loaded')
+      this.$el.classList.remove('is-loading')
+
+      setTimeout(() => {
+        this.$el.classList.remove('is-active')
+        this.$el.classList.remove('is-locked')
+      }, 1000)
     }
   }
 }
@@ -52,9 +59,11 @@ export default {
   width: 100vw;
   height: 100vh;
   background-color: $black;
+  transition: opacity $easing-duration;
   overflow: hidden;
   cursor: pointer;
   user-select: none;
+  will-change: opacity;
 
   &.is-locked {
     pointer-events: none;
@@ -65,6 +74,8 @@ export default {
   }
 
   &.is-loading {
+    opacity: 1;
+
     #{$rootMenu}-link {
       &:nth-child(1) {
         #{$rootMenu}-image,
