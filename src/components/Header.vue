@@ -1,6 +1,6 @@
 <template lang="pug">
 header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--${shape || data.shapes[range]}`]")
-  .Header-topbar(v-bind:class="[isNavigating ? 'is-toggled' : '', isMenu ? 'is-hidden': '']")
+  .Header-topbar
     .Header-navigation(v-bind:class="isNavigating ? 'is-toggled' : ''")
       .Header-subnav
         .Header-tree
@@ -21,7 +21,7 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
             a.Cursor-frame--increase(href="#") LinkedIn
             a.Cursor-frame--increase(href="#") Dribbble
             a.Cursor-frame--increase(href="#") Instagram
-    .Header-mainnav(:data-navigating="isNavigating ? 'true' : 'false'")
+    .Header-mainnav(v-bind:class="[isNavigating ? 'is-toggled' : '', isMenu ? 'is-hidden': '']" :data-navigating="isNavigating ? 'true' : 'false'")
       router-link.Header-logo(v-bind:class="isNavigating ? 'is-toggled' : ''" :to="{ name: 'home', params: sendData() }")
         Logo.Header-logo(:color="color || data.colors[range]")
       ul.Header-navbar
@@ -338,9 +338,8 @@ export default {
     width: grid(12);
     margin-top: $margin-s;
     margin-bottom: $margin-r;
-    transition: margin-bottom $easing-duration, opacity $easing-duration, transform $easing-duration;
+    transition: margin-bottom $easing-duration;
     transition-delay: 1s;
-    will-change: transform;
 
     &::before {
       content: '';
@@ -360,13 +359,6 @@ export default {
       @media (max-width: #{grid-media(6)}) {
         height: $margin-s + $margin-s;
       }
-    }
-
-    &.is-hidden {
-      opacity: 0;
-      transform: translateY(- #{$margin-t});
-      transition-delay: 0s;
-      pointer-events: none;
     }
 
     @media (max-width: #{grid-media(6)}) {
@@ -522,8 +514,17 @@ export default {
     justify-content: space-between;
     align-items: center;
     width: grid(12);
+    transition: opacity $easing-duration, transform $easing-duration;
     height: 0;
     z-index: 500;
+    will-change: opacity, transform;
+
+    &.is-hidden {
+      opacity: 0;
+      transform: translateY(- #{$margin-t});
+      transition-delay: 0s;
+      pointer-events: none;
+    }
 
     &[data-navigating="false"] {
       &[data-color="white"] {
