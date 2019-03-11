@@ -56,8 +56,68 @@ export default {
   cursor: pointer;
   user-select: none;
 
+  &.is-locked {
+    pointer-events: none;
+  }
+
   &.is-active {
     display: flex;
+  }
+
+  &.is-loading {
+    #{$rootMenu}-link {
+      &:nth-child(1) {
+        #{$rootMenu}-image,
+        #{$rootMenu}-title {
+          transition-delay: 0s;
+        }
+      }
+
+      &:nth-child(2) {
+        #{$rootMenu}-image,
+        #{$rootMenu}-title {
+          transition-delay: .25s;
+        }
+      }
+
+      &:nth-child(4) {
+        #{$rootMenu}-image,
+        #{$rootMenu}-title {
+          transition-delay: .5s;
+        }
+      }
+
+      &:nth-child(5) {
+        #{$rootMenu}-image,
+        #{$rootMenu}-title,
+        #{$rootMenu}-lock {
+          transition-delay: .75s;
+        }
+      }
+
+      #{$rootMenu}-image,
+      #{$rootMenu}-title {
+        opacity: 1;
+      }
+
+      #{$rootMenu}-lock {
+        opacity: .25;
+      }
+
+    }
+
+    #{$rootMenu}-back {
+      transition-delay: 1s;
+      transform: translateX(0);
+    }
+  }
+
+  &.is-loaded {
+    #{$rootMenu}-image,
+    #{$rootMenu}-title,
+    #{$rootMenu}-lock {
+      transition-delay: 0s !important;
+    }
   }
 
   &-link {
@@ -107,7 +167,7 @@ export default {
   &-lock {
     width: auto;
     height: 12.5vh;
-    opacity: .25;
+    opacity: 0;
   }
 
   &-float {
@@ -124,6 +184,9 @@ export default {
     background-color: $black;
     border: .1rem solid $dark;
     border-radius: 100%;
+    transition: transform $easing-duration;
+    transform: translateX(100%);
+    will-change: transform;
 
     @media (max-height: #{grid-media(6)}) {
       top: - $back-menu-m / 2;
@@ -198,11 +261,17 @@ export default {
     }
   }
 
+  &-image,
+  &-title {
+    opacity: 0;
+    transition: all $easing-duration;
+    will-change: opacity;
+  }
+
   &-image {
     width: auto;
     height: $item-percentage * 1vh;
     filter: grayscale(100%);
-    transition: all $easing-duration;
   }
 
   &-title {

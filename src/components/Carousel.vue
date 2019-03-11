@@ -1,7 +1,7 @@
 <template lang="pug">
 .Carousel
-  .Carousel-container(v-bind:class="slide ? 'Carousel-container--case' : ''")
-    .Carousel-buttons
+  .Carousel-container(v-bind:class="[slide ? 'Carousel-container--case' : '', isMenu ? 'is-hidden': '']")
+    .Carousel-buttons(v-bind:class="isMenu ? 'is-hidden': ''")
       svg.Carousel-button.Carousel-button--left.Cursor-frame--reduced(width="40px" height="40px" viewBox="0 0 40 40" @click="turnLeft")
         path#Carousel-left-1.Carousel-shape.Carousel-shape--left(:class="index === 1 ? 'is-chosen' : ''" d="M38.8,20c0,5.2-2.1,9.9-5.5,13.3s-8.1,5.5-13.3,5.5c-5.2,0-9.9-2.1-13.3-5.5C3.3,29.9,1.2,25.2,1.2,20 c0-5.2,2.1-9.9,5.5-13.3S14.8,1.2,20,1.2c5.2,0,9.9,2.1,13.3,5.5C36.7,10.1,38.8,14.8,38.8,20z")
         path#Carousel-left-2.Carousel-shape.Carousel-shape--left(:class="index === 2 ? 'is-chosen' : ''" d="M20,1.1l18.8,32.5H1.2L20,1.1z")
@@ -16,14 +16,14 @@
         path#Carousel-right-2.Carousel-shape.Carousel-shape--right(:class="index === 2 ? 'is-chosen' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
         path#Carousel-right.Carousel-shape.is-active.Cursor-frame--reduced
         polyline.Carousel-shape.Carousel-shape--arrow.is-active(points="25,22.5 20,17.5 15,22.5")
-    .Carousel-content
+    .Carousel-content(v-bind:class="isMenu ? 'is-hidden': ''")
       router-link.Carousel-item.Cursor-frame--text(v-if="!slide || parseInt(slide) === 0" v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ name: 'pocketcare' }" draggable="false")
         .Carousel-image.Cursor-frame--text
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/pocketcare_back.png" alt="Pocketcare" draggable="false")
           img.Cursor-frame--text(src="../assets/images/Projects/pocketcare.png" alt="Pocketcare" draggable="false")
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/pocketcare_front.png" alt="Pocketcare" draggable="false")
           img.Cursor-frame--text.Carousel-extra.Absolute.Absolute--p1(src="../assets/images/Projects/pocketcare_extra.png" alt="Pocketcare" draggable="false")
-      p.Carousel-label(v-if="!slide || parseInt(slide) === 0")
+      p.Carousel-label(v-if="!slide || parseInt(slide) === 0" v-bind:class="isMenu ? 'is-hidden': ''")
         span.Carousel-title Pocketcare
         span.Carousel-subtitle
           span.Text--bold School project
@@ -37,7 +37,7 @@
           img.Cursor-frame--text(src="../assets/images/Projects/tesla.png" alt="Tesla")
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/tesla_front.png" alt="Tesla")
           img.Cursor-frame--text.Carousel-extra.Absolute.Absolute--p2(src="../assets/images/Projects/tesla_extra.png" alt="Tesla")
-      p.Carousel-label(v-if="!slide || parseInt(slide) === 1")
+      p.Carousel-label(v-if="!slide || parseInt(slide) === 1" v-bind:class="isMenu ? 'is-hidden': ''")
         span.Carousel-title Tesla
         span.Carousel-subtitle
           span.Text--bold School project
@@ -51,7 +51,7 @@
           img.Cursor-frame--text(src="../assets/images/Projects/buddy-buddy.png" alt="Buddy Buddy")
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/buddy-buddy_front.png" alt="Buddy Buddy")
           img.Cursor-frame--text.Carousel-extra.Absolute.Absolute--p3(src="../assets/images/Projects/buddy-buddy_extra.png" alt="Buddy Buddy")
-      p.Carousel-label(v-if="!slide || parseInt(slide) === 2")
+      p.Carousel-label(v-if="!slide || parseInt(slide) === 2" v-bind:class="isMenu ? 'is-hidden': ''")
         span.Carousel-title Buddy Buddy
         span.Carousel-subtitle
           span.Text--bold Internship
@@ -65,7 +65,7 @@
           img.Cursor-frame--text(src="../assets/images/Projects/personal.png" alt="Personal")
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/personal_front.png" alt="Personal")
           Lock.Carousel-lock
-      p.Carousel-label(v-if="!slide || parseInt(slide) === 3")
+      p.Carousel-label(v-if="!slide || parseInt(slide) === 3" v-bind:class="isMenu ? 'is-hidden': ''")
         span.Carousel-title Coming soom
         span.Carousel-subtitle
           span.Text--bold New
@@ -73,7 +73,7 @@
           span.Carousel-additional(v-if="slide")
             span.Text--bold Skills :
             span.Text--light &nbsp;Interactive design
-      .Carousel-progress(v-if="!slide")
+      .Carousel-progress(v-if="!slide" v-bind:class="isMenu ? 'is-hidden': ''")
         p.Carousel-indicator Swipe
         svg.Carousel-step(:class="range === 0 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
           path(d="M20,37.8c-9.8,0-17.8-7.9-17.8-17.8S10.2,2.2,20,2.2S37.8,10.2,37.8,20S29.8,37.8,20,37.8z")
@@ -83,6 +83,10 @@
           path(d="M37.8,37.8H2.2V2.2h35.4L37.8,37.8L37.8,37.8z")
         svg.Carousel-step(:class="range === 3 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
           path(d="M38.8,15.8l-7.2,21.9H8.4L1.2,15.8L20,2.2L38.8,15.8z")
+  .Carousel-bars
+    .Carousel-bar(v-bind:class="isMenu ? 'is-hidden': ''")
+    .Carousel-bar(v-bind:class="isMenu ? 'is-hidden': ''")
+    .Carousel-bar(v-bind:class="isMenu ? 'is-hidden': ''")
 </template>
 
 <script>
@@ -97,6 +101,7 @@ export default {
     }
   },
   props: [
+    'isMenu',
     'range',
     'slide'
   ],
@@ -173,7 +178,21 @@ export default {
             _subtitleCarousel.style.transform = `none`
           }
         })
-      }, 500);
+      }, 500)
+    } else {
+      const _containerCarousel = this.$el.querySelector('.Carousel-container')
+      const _bars = Array.from(this.$el.querySelectorAll('.Carousel-bar'))
+      let _containerOffset = _containerCarousel.offsetTop
+
+      window.addEventListener('resize', () => { _containerOffset = _containerCarousel.offsetTop })
+      const setOffset = () => {
+        for (const _bar of _bars) {
+          if (_bar.classList.contains('is-hidden')) _bar.style.top = null
+          else _bar.style.top = `${_containerOffset}px`
+        }
+        window.requestAnimationFrame(setOffset)
+      }
+      setOffset()
     }
   }
 }
@@ -211,6 +230,12 @@ export default {
 
       @media (max-width: #{grid-media(6)}) {
         transform: translate(-50%, -50%) rotateZ(90deg);
+      }
+    }
+
+    &.is-hidden {
+      &::before {
+        display: none;
       }
     }
 
@@ -343,6 +368,15 @@ export default {
   &-content {
     position: relative;
     width: 100%;
+    opacity: 1;
+    transition: opacity $easing-duration;
+    will-change: opacity;
+
+    &.is-hidden {
+      opacity: 0;
+      user-select: none;
+      pointer-events: none;
+    }
   }
 
   &-item {
@@ -492,8 +526,14 @@ export default {
     white-space: nowrap;
     transform: translateX(-50%);
     opacity: 0;
-    transition: opacity $easing-duration;
+    transition: opacity $easing-duration, transform $easing-duration;
+    will-change: opacity, transform;
     user-select: none;
+
+    &.is-hidden {
+      opacity: 0;
+      transform: translate(-50%, #{$margin-t});
+    }
 
     @media (max-height: #{grid-media(8.5)}) {
       bottom: - $margin-b - $margin-m;
@@ -574,11 +614,17 @@ export default {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    opacity: 1;
     transform-origin: 50% 50%;
     transform: translate(-50%, -50%);
     transition: all $easing-duration;
     user-select: none;
     will-change: transform;
+
+    &.is-hidden {
+      opacity: 0;
+      width: calc(100vw + 100vh);
+    }
 
     @media (max-width: #{grid-media(6)}) {
       width: calc(100% + #{$extraSize});
@@ -660,7 +706,15 @@ export default {
     position: absolute;
     left: 50%;
     bottom: - $margin-b - $margin-l - $margin-s;
+    opacity: 1;
     transform: translate(-50%, 100%);
+    transition: opacity $easing-duration, transform $easing-duration;
+    will-change: opacity, transform;
+
+    &.is-hidden {
+      opacity: 0;
+      transform: translate(-50%, calc(100% + #{$margin-t}));
+    }
 
     @media (max-height: #{grid-media(8.5)}) {
       bottom: - $margin-b - $margin-m - $margin-s;
@@ -725,6 +779,35 @@ export default {
 
     @media (max-width: #{grid-media(6)}) {
       display: none;
+    }
+  }
+
+  &-bar {
+    position: absolute;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: .1rem;
+    background-color: $dark;
+    pointer-events: none;
+    opacity: 0;
+    transition: top $easing-duration;
+    will-change: opacity;
+
+    &.is-hidden {
+      opacity: 1;
+
+      &:nth-of-type(1) {
+        top: 25%;
+      }
+
+      &:nth-of-type(2) {
+        top: 50%;
+      }
+
+      &:nth-of-type(3) {
+        top: 75%;
+      }
     }
   }
 }

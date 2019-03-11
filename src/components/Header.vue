@@ -45,6 +45,7 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
     )
     Carousel.Header-carousel(
       v-if="jumbotron === 'carousel'"
+      :isMenu="isMenu"
       :range="parseInt(slide) || range"
       :slide="slide"
     )
@@ -67,6 +68,7 @@ export default {
     return {
       range: 0,
       isNavigating: false,
+      isMenu: false,
       isToggable: true,
       isTurnable: true,
       route: ''
@@ -120,8 +122,22 @@ export default {
     },
     toggleMenu: function(event) {
       event.preventDefault()
-      document.querySelector('.Menu').classList.add('is-active')
-      document.body.style.overflow = 'hidden'
+      this.$el.querySelector('.Header-topbar').classList.add('is-hidden')
+      this.isMenu = true
+
+      setTimeout(() => {
+        const _menu = document.querySelector('.Menu')
+        _menu.classList.add('is-locked')
+        _menu.classList.add('is-active')
+        setTimeout(() => {
+          _menu.classList.add('is-loading')
+          setTimeout(() => {
+            _menu.classList.remove('is-locked')
+            _menu.classList.add('is-loaded')
+          }, 1250)
+        }, 250)
+        document.body.style.overflow = 'hidden'
+      }, 1000)
     },
     modulo: (n, m) => {
       return ((n % m) + m) % m;
@@ -298,7 +314,7 @@ export default {
     width: grid(12);
     margin-top: $margin-s;
     margin-bottom: $margin-r;
-    transition: margin-bottom $easing-duration;
+    transition: all$easing-duration;
     transition-delay: 1s;
 
     &::before {
@@ -319,6 +335,13 @@ export default {
       @media (max-width: #{grid-media(6)}) {
         height: $margin-s + $margin-s;
       }
+    }
+
+    &.is-hidden {
+      opacity: 0;
+      transform: translateY(- #{$margin-t});
+      transition-delay: 0s;
+      pointer-events: none;
     }
 
     @media (max-width: #{grid-media(6)}) {
