@@ -77,6 +77,13 @@ export default {
     opacity: 1;
 
     #{$rootMenu}-link {
+      &:hover {
+        #{$rootMenu}-image,
+        #{$rootMenu}-title {
+          opacity: 1;
+        }
+      }
+
       &:nth-child(1) {
         #{$rootMenu}-image,
         #{$rootMenu}-title {
@@ -108,7 +115,7 @@ export default {
 
       #{$rootMenu}-image,
       #{$rootMenu}-title {
-        opacity: 1;
+        opacity: .5;
       }
 
       #{$rootMenu}-lock {
@@ -141,10 +148,6 @@ export default {
 
     &:hover {
       flex-basis: $item-percentage * 1%;
-
-      > * {
-        opacity: 1;
-      }
 
       #{$rootMenu}-image {
         filter: none;
