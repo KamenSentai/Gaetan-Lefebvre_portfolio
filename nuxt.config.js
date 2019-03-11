@@ -16,11 +16,21 @@ module.exports = {
   /*
   ** Customize the progress bar color
   */
-  loading: { color: '#3B8070' },
+  loading: { color: '#141414' },
   /*
-  ** Build configuration
+  ** Plugins
   */
+  plugins: [
+    { src: "~/plugins/aos", ssr: false }
+  ],
+  /*
+  ** Global CSS
+  */
+	css: [
+    '~/assets/styles/app.scss'
+  ],
   build: {
+    vendor: ['kute.js'],
     /*
     ** Run ESLint on save
     */

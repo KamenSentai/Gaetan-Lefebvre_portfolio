@@ -1,0 +1,67 @@
+<template lang="pug">
+Header(
+  :index="data.colors.indexOf(color) || data.colors.indexOf(shape)"
+  :hasProject="true"
+  :hasAbout="true"
+  :hasHome="false"
+  jumbotron="carousel"
+  :data="data"
+)
+</template>
+
+<script>
+import Header from '~/components/Header'
+
+export default {
+  data() {
+    return {
+      data: {
+        colors: [
+          "green",
+          "blue",
+          "red",
+          "yellow"
+        ],
+        shapes: [
+          "circle",
+          "triangle",
+          "square",
+          "pentagone"
+        ],
+        projects: [
+          {
+            name: "Pocketcare",
+            slug: "pocketcare",
+            color: "green",
+            shape: "circle"
+          }, {
+            name: "Tesla",
+            slug: "tesla",
+            color: "blue",
+            shape: "triangle"
+          }, {
+            name: "Buddy Buddy",
+            slug: "buddy-buddy",
+            color: "red",
+            shape: "square"
+          }, {
+            name: "Personal",
+            slug: "personal",
+            color: "yellow",
+            shape: "pentagone"
+          }
+        ]
+      },
+      color: null,
+      shape: null
+    }
+  },
+  created() {
+    this.color = this.$route.params.color
+    this.shape = this.$route.params.shape
+  },
+  components: {
+    Header
+  }
+}
+</script>

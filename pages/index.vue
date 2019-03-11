@@ -1,58 +1,57 @@
 <template lang="pug">
-  section.container
-    div
-      app-logo
-      h1.title gaetan-lefebvre_portfolio
-      h2.subtitle Nuxt.js project
-      .links
-        a(
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green") Documentation
-        a(
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey") GitHub
+Header(
+  :index="data.colors.indexOf(color) || data.colors.indexOf(shape)"
+  :hasProject="false"
+  :hasAbout="true"
+  :hasHome="false"
+  jumbotron="hero"
+  type="home"
+  :data="data"
+)
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
+import Header from '~/components/Header'
 
 export default {
+  data() {
+    return {
+      data: {
+        colors: [
+          "green",
+          "blue",
+          "red",
+          "yellow"
+        ],
+        shapes: [
+          "circle",
+          "triangle",
+          "square",
+          "pentagone"
+        ],
+        home: {
+          pages: [
+            {
+              above: "Hi, I'm",
+              first: "Gaëtan",
+              last: "Lefebvre",
+              paragraphs: [
+                "Passionate about design and motion design , I am currently a 4th year student at Hetic. I was recently UX/UI junior designer at BuddyBuddy. Now, I’m looking for an internship in interactive design."
+              ]
+            }
+          ]
+        }
+      },
+      color: null,
+      shape: null
+    }
+  },
+  created() {
+    this.color = this.$route.params.color
+    this.shape = this.$route.params.shape
+  },
   components: {
-    AppLogo
+    Header
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
-

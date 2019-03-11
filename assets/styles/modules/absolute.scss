@@ -1,0 +1,81 @@
+.Absolute {
+  position: absolute;
+  z-index: 5;
+
+  &--p11 {
+    top: 22.75%;
+    left: 82.75%;
+  }
+
+  &--p12 {
+    top: 45.75%;
+    left: 82.75%;
+  }
+
+  &--p13 {
+    top: 68.75%;
+    left: 82.75%;
+  }
+
+  @media (max-width: #{grid-media(6)}) {
+    &--p11,
+    &--p12,
+    &--p13 {
+      transform: scale(0.9) translate(-1rem, -.8rem);
+    }
+  }
+
+  @media (max-width: #{grid-media(4)}) {
+    &--p11,
+    &--p12,
+    &--p13 {
+      transform: scale(0.6) translate(-5.75rem, -3.75rem);
+    }
+  }
+
+  &--p21 {
+    top: 54.75%;
+    left: 4.25%;
+  }
+
+  &--p22 {
+    top: 54.75%;
+    left: 35.5%;
+  }
+
+  &--p23 {
+    top: 54.75%;
+    left: 67%;
+  }
+
+  @media (max-width: #{grid-media(6)}) {
+    &--p21,
+    &--p22,
+    &--p23 {
+      transform: scale(0.9) translate(-.6rem, -.7rem);
+    }
+  }
+
+  @media (max-width: #{grid-media(4)}) {
+    &--p21,
+    &--p22,
+    &--p23 {
+      transform: scale(0.575) translate(-4.375rem, -4rem);
+    }
+  }
+
+  &--p1 {
+    top: 20.5%;
+    left: 46%;
+  }
+
+  &--p2 {
+    top: 37.5%;
+    left: 5%;
+  }
+
+  &--p3 {
+    top: 18.5%;
+    left: 29.5%;
+  }
+}
