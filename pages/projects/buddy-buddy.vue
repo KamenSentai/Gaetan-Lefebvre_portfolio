@@ -92,7 +92,7 @@ div
           :images="['Mobile_1', 'Mobile_2', 'Mobile_3', 'Mobile_4']"
         )
     section.Slide.Slide--banner.Exception--banner
-      img.Content-banner(src="~assets/images/BuddyBuddy/Banner_Screenshots.png" alt="Banner Screenshots")
+      Banner.Banner--exception.Content-banner(src="BuddyBuddy/Banner_Screenshots" alt ="Banner Screenshots")
     section.Slide
       Article(
         :color="data.color"
@@ -111,6 +111,7 @@ import Color from '~/components/Color'
 import Charter from '~/components/Charter'
 import Article from '~/components/Article'
 import Slider from '~/components/Slider'
+import Banner from '~/components/Banner'
 import Footer from '~/components/Footer'
 
 export default {
@@ -162,6 +163,7 @@ export default {
     Charter,
     Article,
     Slider,
+    Banner,
     Footer
   },
   mounted() {

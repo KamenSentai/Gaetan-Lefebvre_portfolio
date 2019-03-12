@@ -51,7 +51,7 @@ div
         :post="data.posts[2]"
       )
     section.Slide.Slide--banner
-      img.Content-banner(src="~assets/images/Pocketcare/Banner_Inscription.png" alt="Inscription")
+      Banner.Content-banner(src="Pocketcare/Banner_Inscription" alt ="Inscription")
     section.Slide.Slide--page
       .Content
         .Content-header
@@ -90,6 +90,7 @@ import Header from '~/components/Header'
 import Post from '~/components/Post'
 import Color from '~/components/Color'
 import Charter from '~/components/Charter'
+import Banner from '~/components/Banner'
 import Article from '~/components/Article'
 import Footer from '~/components/Footer'
 
@@ -141,6 +142,7 @@ export default {
     Post,
     Color,
     Charter,
+    Banner,
     Article,
     Footer
   },

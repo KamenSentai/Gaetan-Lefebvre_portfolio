@@ -21,7 +21,8 @@ module.exports = {
   ** Plugins
   */
   plugins: [
-    { src: "~/plugins/aos", ssr: false }
+    { src: "~/plugins/aos", ssr: false },
+    { src: "~/plugins/rellax", ssr: false }
   ],
   /*
   ** Global CSS
