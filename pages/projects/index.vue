@@ -62,6 +62,26 @@ export default {
   },
   components: {
     Header
+  },
+  transition: {
+    name: 'csdc',
+    mode: 'out-in',
+    enter(el, done) {
+      console.log('enter', this.$route.params)
+      done()
+    },
+    leave(el, done) {
+      if (this.$route.name.includes('projects')) {
+        const _containerCarousel = this.$el.querySelector('.Carousel-container')
+        if (_containerCarousel) _containerCarousel.classList.add('Carousel-container--case')
+
+        setTimeout(() => {
+          done()
+        }, 1000)
+      } else {
+        done()
+      }
+    }
   }
 }
 </script>
