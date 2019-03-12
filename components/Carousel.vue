@@ -253,17 +253,31 @@ export default {
         &--0 {
           transform: translate(-50%, -50%);
 
-          @media
-            (max-width: #{grid-media(6)}),
-            (max-height: #{grid-media(6.5)})
-          {
+          @media (min-height: #{grid-media(8.5) + 1px}) {
+            transform: translate(-50%, -50%) scale(1.125);
+          }
+
+          @media (max-height: #{grid-media(6.5)}) {
+            transform: translate(-50%, -50%) scale(.875);
+          }
+
+          @media (max-height: #{grid-media(6)}) {
             transform: translate(-50%, -50%) scale(.75);
           }
 
           @media (max-width: #{grid-media(4)}) {
-            transform: translate(-50%, -50%) scale(.625);
+            transform: translate(-50%, -50%) scale(.875);
+          }
+
+          @media (max-width: #{grid-media(4)}) and (max-height: #{grid-media(6.5)}) {
+            transform: translate(-50%, -50%) scale(.75);
+          }
+
+          @media (max-width: #{grid-media(4)}) and (max-height: #{grid-media(3)}) {
+            transform: translate(-50%, -50%) scale(.5);
           }
         }
+
       }
 
       #{$rootCarousel}-title {
@@ -329,11 +343,37 @@ export default {
           opacity: 0;
         }
 
+        @media (max-width: #{grid-media(6)}) {
+          transform: translate(-50%, calc(-50% + #{$margin-t})) rotateZ(90deg);
+        }
+
+        @media (max-width: #{grid-media(6)}) and (max-height: #{grid-media(7.5)}) {
+          transform: translate(-50%, 50%) rotateZ(90deg);
+        }
+
+        @media (max-width: #{grid-media(6)}) and (max-height: #{grid-media(5.75)}) {
+          opacity: 0;
+        }
+
+        @media (max-width: #{grid-media(4)}) {
+          width: grid(4);
+          transform: translate(-50%, calc(-50% + #{$margin-s})) rotateZ(90deg);
+        }
+
+        @media (max-width: #{grid-media(4)}) and (max-height: #{grid-media(6.5)}) {
+          opacity: 0;
+        }
+
         > * {
           &:first-child {
             opacity: 0;
           }
         }
+      }
+
+      #{$rootCarousel}-progress {
+        margin-bottom: - $margin-n;
+        opacity: 0;
       }
     }
 
@@ -402,8 +442,8 @@ export default {
       opacity: 1;
       transform: translate(-50%, -50%) scale(.75);
 
-      @media (min-height: #{grid-media(8.5)}) {
-        transform: translate(-50%, -50%) scale(1);
+      @media (min-height: #{grid-media(8.5) + 1px}) {
+        transform: translate(-50%, -50%);
       }
 
       @media
@@ -667,6 +707,7 @@ export default {
 
   &-button {
     cursor: pointer;
+    transition: opacity $easing-duration;
 
     &:hover {
       #{$rootCarousel}-shape {
@@ -713,7 +754,7 @@ export default {
     bottom: - $margin-b - $margin-l - $margin-s;
     opacity: 1;
     transform: translate(-50%, 100%);
-    transition: opacity $easing-duration, transform $easing-duration;
+    transition: all $easing-duration;
     will-change: opacity, transform;
 
     &.is-hidden {
