@@ -442,10 +442,6 @@ export default {
       opacity: 1;
       transform: translate(-50%, -50%) scale(.75);
 
-      @media (min-height: #{grid-media(8.5) + 1px}) {
-        transform: translate(-50%, -50%);
-      }
-
       @media
         (max-width: #{grid-media(6)}) and (max-height: #{grid-media(6.5)}),
         (max-width: #{grid-media(4)})
@@ -517,6 +513,14 @@ export default {
     user-select: none;
     transition: transform $easing-duration;
     will-change: transform;
+
+    @media (min-height: #{grid-media(9.5) + 1px}) {
+      transform: scale(1.25) !important;
+    }
+
+    @media (min-height: #{grid-media(8.5) + 1px}) {
+      transform: scale(1.125);
+    }
 
     @media (max-height: #{grid-media(4)}) {
       transform: scale(.75);
