@@ -11,7 +11,7 @@
       img.Slider-image.Shadow--image(v-for="image in images" :src="require(`../assets/images/${folder}/${image}.png`)")
   .Slider-button.Slider-button--hidden(v-if="mockup")
     .Push
-  .Slider-images(v-else)
+  .Slider-images(v-else @touchstart="touchStart" @touchmove="touchMove")
     img.Slider-image.Shadow(v-for="image in images" :src="require(`../assets/images/${folder}/${image}.png`)")
 </template>
 
