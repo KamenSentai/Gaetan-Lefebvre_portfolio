@@ -125,27 +125,30 @@ export default {
       parseFloat(_imagesStyle.paddingRight)
     this.duration = parseFloat(_imagesStyle.transitionDuration) * 1000
 
+
     if (this.automatic) {
       const _push = this.$el.querySelector('.Push')
-      const _SliderLoading = this.$el.querySelector('.Slider-loading')
+      const _slider = this.$el
+      const _loadingSlider = this.$el.querySelector('.Slider-loading')
 
       const _pushStyle = _push.currentStyle || window.getComputedStyle(_push)
-      const _loadingStyle = _SliderLoading.currentStyle || window.getComputedStyle(_SliderLoading)
+      const _sliderStyle = _slider.currentStyle || window.getComputedStyle(_slider)
+      const _loadingStyle = _loadingSlider.currentStyle || window.getComputedStyle(_loadingSlider)
 
-      _SliderLoading.width = _SliderLoading.offsetWidth
-      _SliderLoading.height = _SliderLoading.offsetHeight
-      let w = _SliderLoading.width
-      let h = _SliderLoading.height
+      _loadingSlider.width = _loadingSlider.offsetWidth
+      _loadingSlider.height = _loadingSlider.offsetHeight
+      let w = _loadingSlider.width
+      let h = _loadingSlider.height
 
-      const context = _SliderLoading.getContext('2d')
+      const context = _loadingSlider.getContext('2d')
       context.lineWidth = (parseFloat(_loadingStyle.width) - parseFloat(_pushStyle.width)) / 2
       context.strokeStyle = `${_loadingStyle.color}`
 
       window.addEventListener('resize', () => {
-        _SliderLoading.width = _SliderLoading.offsetWidth
-        _SliderLoading.height = _SliderLoading.offsetHeight
-        w = _SliderLoading.width
-        h = _SliderLoading.height
+        _loadingSlider.width = _loadingSlider.offsetWidth
+        _loadingSlider.height = _loadingSlider.offsetHeight
+        w = _loadingSlider.width
+        h = _loadingSlider.height
       })
 
       const autoplaySlider = () => {
@@ -169,7 +172,7 @@ export default {
       }
 
       const listenScroll = () => {
-        if (this.$el.classList.contains('aos-animate')) {
+        if (this.$el.classList.contains('aos-animate') || _sliderStyle.justifyContent === 'center') {
           this.start = new Date()
           autoplaySlider()
           window.cancelAnimationFrame(listenScroll)
