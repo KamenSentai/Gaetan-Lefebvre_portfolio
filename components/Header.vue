@@ -97,7 +97,8 @@ export default {
     sendData: function() {
       return {
         color: this.color || this.data.colors[this.range],
-        shape: this.shape || this.data.shapes[this.range]
+        shape: this.shape || this.data.shapes[this.range],
+        from: this.$route.name
       }
     },
     toggleNavigation: function() {

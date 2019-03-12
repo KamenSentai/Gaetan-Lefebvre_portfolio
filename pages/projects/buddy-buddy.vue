@@ -114,6 +114,8 @@ import Slider from '~/components/Slider'
 import Banner from '~/components/Banner'
 import Footer from '~/components/Footer'
 
+import Rellax from 'rellax'
+
 export default {
   data() {
     return {
@@ -167,6 +169,15 @@ export default {
     Footer
   },
   mounted() {
+    new Rellax('.rellax', {
+      speed: 2,
+      center: false,
+      wrapper: null,
+      round: true,
+      vertical: true,
+      horizontal: false
+    })
+
     const _body = document.body
     const _mouse = _body.querySelector('.Mouse')
     const _header = this.$el.querySelector('.Header')

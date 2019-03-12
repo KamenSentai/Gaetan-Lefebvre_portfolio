@@ -1,15 +1,15 @@
 <template lang="pug">
 .Menu
-  nuxt-link.Menu-link(:to="{ path: '/projects/pocketcare' }")
+  nuxt-link.Menu-link(:to="{ path: '/projects/pocketcare', params: { from: $route.name + '/menu' } }")
     img.Menu-image(src="~assets/images/Menu/pocketcare.png" alt="Pocketcare")
     span.Menu-title Pocketcare
-  nuxt-link.Menu-link(:to="{ path: '/projects/tesla' }")
+  nuxt-link.Menu-link(:to="{ path: '/projects/tesla', params: { from: $route.name + '/menu' } }")
     img.Menu-image(src="~assets/images/Menu/tesla.png" alt="Tesla")
     span.Menu-title Tesla
   span.Menu-float.Cursor-frame--menu
     a.Menu-back.Cursor-frame--menu(@click="toggleMenu")
       .Menu-cross.Cursor-frame--menu
-  nuxt-link.Menu-link(:to="{ path: '/projects/buddy-buddy' }")
+  nuxt-link.Menu-link(:to="{ path: '/projects/buddy-buddy', params: { from: $route.name + '/menu' } }")
     img.Menu-image(src="~assets/images/Menu/buddy-buddy.png" alt="Buddy Buddy")
     span.Menu-title Buddy Buddy
   span.Menu-link.Menu-link--forbidden

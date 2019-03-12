@@ -67,11 +67,11 @@ export default {
     name: 'csdc',
     mode: 'out-in',
     enter(el, done) {
-      console.log('enter', this.$route.params)
+      // console.log('enter', this.$route.params)
       done()
     },
     leave(el, done) {
-      if (this.$route.name.includes('projects')) {
+      if (this.$route.name.includes('projects') && !this.$route.params.from) {
         const _containerCarousel = this.$el.querySelector('.Carousel-container')
         if (_containerCarousel) _containerCarousel.classList.add('Carousel-container--case')
 

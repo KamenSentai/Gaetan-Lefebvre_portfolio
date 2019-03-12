@@ -1,6 +1,6 @@
 <template lang="pug">
 .Icon.Cursor-frame--reduced.Cursor-pointer--beat
-  nuxt-link.Icon-link(:to="{ name: 'projects', params: { color: color, shape: shape } }")
+  nuxt-link.Icon-link(:to="{ name: 'projects', params: { color: color, shape: shape, from: $route.name } }")
   svg.Icon-shape.Cursor-frame--reduced.Cursor-pointer--beat(
     @mousedown="mouseDown"
     @mouseup="mouseUp"

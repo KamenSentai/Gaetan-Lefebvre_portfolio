@@ -19,10 +19,10 @@ export default {
 .Banner {
   width: 100%;
   height: 100%;
-  transform: translate(-50%, 50%);
+  transform: translate(-25%, 50%);
 
   &--exception {
-    transform: translate(-50%, 100%);
+    transform: translate(-25%, 100%);
   }
 
   &-image {

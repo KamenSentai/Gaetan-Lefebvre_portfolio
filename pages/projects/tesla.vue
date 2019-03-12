@@ -168,6 +168,8 @@ import Article from '~/components/Article'
 import Slider from '~/components/Slider'
 import Footer from '~/components/Footer'
 
+import Rellax from 'rellax'
+
 export default {
   data() {
     return {
@@ -231,6 +233,15 @@ export default {
     Footer
   },
   mounted() {
+    new Rellax('.rellax', {
+      speed: 2,
+      center: false,
+      wrapper: null,
+      round: true,
+      vertical: true,
+      horizontal: false
+    })
+
     const _alternatedsContent = Array.from(this.$el.querySelectorAll('.Content-alternated'))
 
     for (const _alternatedContent of _alternatedsContent) {
