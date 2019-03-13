@@ -16,24 +16,27 @@
       draggable="false"
     )
   .Hero-portrait.Hero-portrait--pictures(v-if="type === 'about'")
-    img.Hero-front.Hero-front--slide(
-      v-for="page in data[type].pages"
-      :src="require(`../assets/images/About/${page.shape}_back.png`)"
-      v-bind:class="checkIndex(page)"
-      draggable="false"
-    )
-    img.Hero-shape.Hero-shape--slide(
-      v-for="page in data[type].pages"
-      :src="require(`../assets/images/About/${page.shape}.png`)"
-      v-bind:class="checkIndex(page)"
-      draggable="false"
-    )
-    img.Hero-back.Hero-back--slide(
-      v-for="page in data[type].pages"
-      :src="require(`../assets/images/About/${page.shape}_front.png`)"
-      v-bind:class="checkIndex(page)"
-      draggable="false"
-    )
+    .Hero-fronts
+      img.Hero-front.Hero-front--slide(
+        v-for="page in data[type].pages"
+        :src="require(`../assets/images/About/${page.shape}_back.png`)"
+        v-bind:class="checkIndex(page)"
+        draggable="false"
+      )
+    .Hero-shapes
+      img.Hero-shape.Hero-shape--slide(
+        v-for="page in data[type].pages"
+        :src="require(`../assets/images/About/${page.shape}.png`)"
+        v-bind:class="checkIndex(page)"
+        draggable="false"
+      )
+    .Hero-backs
+      img.Hero-back.Hero-back--slide(
+        v-for="page in data[type].pages"
+        :src="require(`../assets/images/About/${page.shape}_front.png`)"
+        v-bind:class="checkIndex(page)"
+        draggable="false"
+      )
     span.Hero-scroll
   aside.Hero-data
     .Hero-description
