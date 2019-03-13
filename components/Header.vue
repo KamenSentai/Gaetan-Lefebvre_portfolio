@@ -4,19 +4,16 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
     .Header-navigation(v-bind:class="isNavigating ? 'is-toggled' : ''")
       .Header-subnav
         .Header-tree
-          nuxt-link.Header-branch.Cursor-frame--increase(
-            v-bind:class="$nuxt.$route.path === '/' ? `is-active--${color || data.colors[range]}` : ''"
-            :to="{ name: 'index', params: sendData() }"
-          ) Home
-          nuxt-link.Header-branch.Cursor-frame--increase(
-            v-bind:class="$nuxt.$route.path === '/projects' ? `is-active--${color || data.colors[range]}` : ''"
-            :to="{ name: 'projects', params: sendData() }"
-          ) Projects
-          nuxt-link.Header-branch.Cursor-frame--increase(
-            v-bind:class="$nuxt.$route.path === '/about' ? `is-active--${color || data.colors[range]}` : ''"
-            :to="{ name: 'about', params: sendData() }"
-          ) About
-          a.Header-branch.Cursor-frame--increase(href="mailto:gaetan.lefebvre@hetic.net") Contact
+          span.Header-branch(v-bind:class="$nuxt.$route.path === '/' ? `is-active--${color || data.colors[range]}` : ''")
+            nuxt-link(:to="{ name: 'index', params: sendData() }")
+            span.Header-leaf.Cursor-frame--increase(v-on:click="navigationClick($event)") Home
+          span.Header-branch(v-bind:class="$nuxt.$route.path === '/projects' ? `is-active--${color || data.colors[range]}` : ''")
+            nuxt-link(:to="{ name: 'projects', params: sendData() }")
+            span.Header-leaf.Cursor-frame--increase(v-on:click="navigationClick($event)") Projects
+          span.Header-branch(v-bind:class="$nuxt.$route.path === '/about' ? `is-active--${color || data.colors[range]}` : ''")
+            nuxt-link(:to="{ name: 'about', params: sendData() }")
+            span.Header-leaf.Cursor-frame--increase(v-on:click="navigationClick($event)") About
+          a.Header-branch.Cursor-frame--increase(href="mailto:gaetan.lefebvre@hetic.net" title="Mail") Contact
           .Header-branch.Header-branch--more
             a.Cursor-frame--increase(href="#") LinkedIn
             a.Cursor-frame--increase(href="#") Dribbble
@@ -102,6 +99,10 @@ export default {
         shape: this.shape || this.data.shapes[this.range],
         from: this.$route.name
       }
+    },
+    navigationClick: function(event) {
+      this.toggleNavigation()
+      event.target.previousSibling.click()
     },
     toggleNavigation: function() {
       if (this.isToggable) {
@@ -690,6 +691,10 @@ export default {
         }
       }
     }
+  }
+
+  &-leaf {
+    cursor: pointer;
   }
 
   &-jumbotron {
