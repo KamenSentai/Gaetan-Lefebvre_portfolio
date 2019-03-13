@@ -70,7 +70,7 @@ export default {
     mode: 'out-in',
     enter(el, done) {
       document.body.style.pointerEvents = 'none'
-      TweenLite.fromTo('.Carousel-container', 1, { scaleX: 0, left: - window.innerWidth / 2 }, { scaleX: 1, left: 0, delay: 0, ease: Power2.easeInOut })
+      TweenLite.fromTo('.Carousel-container', 1, { scale: 0, left: - window.innerWidth / 2 }, { scale: 1, left: 0, delay: 0, ease: Power2.easeInOut })
       TweenLite.fromTo('.Carousel-button', 1, { scale: 0 }, { scale: 1, delay: 1, ease: Power2.easeInOut })
       TweenLite.fromTo('.Carousel-layer--back', 1, { opacity: 0 }, { opacity: 1, delay: 1, ease: Power2.easeInOut })
       TweenLite.fromTo('.Carousel-neon', 1, { scale: 0 }, { scale: 1, delay: 1.5, ease: Power2.easeInOut })
@@ -106,7 +106,7 @@ export default {
           TweenLite.to('.Carousel-neon', 1, { scale: 0, delay: .5, ease: Power2.easeInOut })
           TweenLite.to('.Carousel-layer--back', 1, { opacity: 0, delay: 1, ease: Power2.easeInOut })
           TweenLite.to('.Carousel-button', 1, { scale: 0, delay: 1.5, ease: Power2.easeInOut })
-          TweenLite.to('.Carousel-container', 1, { scaleX: 0, left: - window.innerWidth / 2, delay: 2, ease: Power2.easeInOut, onComplete: () => {
+          TweenLite.to('.Carousel-container', 1, { scale: 0, left: - window.innerWidth / 2, delay: 2, ease: Power2.easeInOut, onComplete: () => {
             document.body.style.pointerEvents = 'auto'
             done()
           }})
