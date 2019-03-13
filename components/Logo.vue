@@ -40,7 +40,7 @@ export default {
   }
 
   &-turnable {
-    transform-origin: 67% 56%;
+    transform-origin: 67% 55.5%;
     transition: transform $easing-duration;
   }
 
