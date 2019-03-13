@@ -103,7 +103,10 @@ export default {
           document.body.style.pointerEvents = 'auto'
           done()
         }})
-      } else done()
+      } else {
+        document.body.style.pointerEvents = 'auto'
+        done()
+      }
     },
     leave(el, done) {
       document.body.style.pointerEvents = 'none'
@@ -120,7 +123,10 @@ export default {
           document.body.style.pointerEvents = 'auto'
           done()
         }})
-      } else done()
+      } else {
+        document.body.style.pointerEvents = 'auto'
+        done()
+      }
     }
   }
 }

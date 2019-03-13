@@ -17,7 +17,7 @@
         path#Carousel-right.Carousel-shape.is-active.Cursor-frame--reduced
         polyline.Carousel-shape.Carousel-shape--arrow.is-active(points="25,22.5 20,17.5 15,22.5")
     .Carousel-content(v-bind:class="isMenu ? 'is-hidden': ''")
-      nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide || parseInt(slide) === 0" v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ path: '/projects/pocketcare', params: { from: $route.name } }" draggable="false")
+      nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide || parseInt(slide) === 0" v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ name: 'projects-pocketcare', params: { from: $route.name } }" draggable="false")
         .Carousel-image.Cursor-frame--text
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/pocketcare_back.png" alt="Pocketcare" draggable="false")
           img.Cursor-frame--text.Carousel-neon(src="../assets/images/Projects/pocketcare.png" alt="Pocketcare" draggable="false")
@@ -32,7 +32,7 @@
           span.Carousel-additional(v-if="slide")
             span.Text--bold Skills :
             span.Text--light &nbsp;Branding, Illustration, Interactive design
-      nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide || parseInt(slide) === 1" v-bind:class="`Carousel-item--${modulo(range - 1, 4)}`" :to="{ path: '/projects/tesla', params: { from: $route.name } }")
+      nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide || parseInt(slide) === 1" v-bind:class="`Carousel-item--${modulo(range - 1, 4)}`" :to="{ name: 'projects-tesla', params: { from: $route.name } }")
         .Carousel-image.Cursor-frame--text
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/tesla_back.png" alt="Tesla")
           img.Cursor-frame--text.Carousel-neon(src="../assets/images/Projects/tesla.png" alt="Tesla")
@@ -47,7 +47,7 @@
           span.Carousel-additional(v-if="slide")
             span.Text--bold Skills :
             span.Text--light &nbsp;Branding, Illustration, Interactive design
-      nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide || parseInt(slide) === 2" v-bind:class="`Carousel-item--${modulo(range - 2, 4)}`" :to="{ path: '/projects/buddy-buddy', params: { from: $route.name } }")
+      nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide || parseInt(slide) === 2" v-bind:class="`Carousel-item--${modulo(range - 2, 4)}`" :to="{ name: 'projects-buddy-buddy', params: { from: $route.name } }")
         .Carousel-image.Cursor-frame--text
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/buddy-buddy_back.png" alt="Buddy Buddy")
           img.Cursor-frame--text.Carousel-neon(src="../assets/images/Projects/buddy-buddy.png" alt="Buddy Buddy")
@@ -149,7 +149,7 @@ export default {
   },
   beforeMount() {
     this.index = this.range
-    if (this.slide === undefined) this.isLabelized = false
+    if (this.slide === undefined || !this.$route.params.from) this.isLabelized = false
   },
   mounted() {
     const _progressCarousel = this.$el.querySelector('.Carousel-progress')
