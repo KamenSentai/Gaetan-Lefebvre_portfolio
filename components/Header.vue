@@ -700,5 +700,11 @@ export default {
   &-jumbotron {
     @include grid-scale(12);
   }
+
+  &-carousel {
+    @media (max-width: #{grid-media(6)}) {
+      user-select: none;
+    }
+  }
 }
 </style>
