@@ -21,12 +21,6 @@ export default {
 .Logo {
   $rootLogo: &;
 
-  &:hover {
-    #{$rootLogo}-turnable {
-      transform: rotateZ(180deg);
-    }
-  }
-
   &[data-color="white"] {
     #{$rootLogo}-firstname {
       fill: $white;
@@ -37,11 +31,6 @@ export default {
     #{$rootLogo}-firstname {
       fill: $black;
     }
-  }
-
-  &-turnable {
-    transform-origin: 67% 56%;
-    transition: transform $easing-duration;
   }
 
   &-firstname {

@@ -391,8 +391,10 @@ export default {
     will-change: opacity, transform;
 
     &:hover {
-      transform: rotateZ(-90deg);
-      transition-delay: 0s;
+      @media (min-width: #{grid-media(6)}) {
+        transform: rotateZ(-90deg);
+        transition-delay: 0s;
+      }
     }
 
     @media (max-width: #{grid-media(6)}) {
