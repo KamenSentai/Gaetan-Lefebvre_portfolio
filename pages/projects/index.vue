@@ -12,8 +12,6 @@ Header(
 <script>
 import Header from '~/components/Header'
 
-import { TweenLite } from 'gsap'
-
 export default {
   data() {
     return {

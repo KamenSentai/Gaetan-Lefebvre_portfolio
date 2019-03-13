@@ -236,6 +236,34 @@ export default {
       window.requestAnimationFrame(toggleCursor)
     }
     toggleCursor()
+  },
+  transition: {
+    name: 'csdc',
+    mode: 'out-in',
+    enter(el, done) {
+      document.body.style.pointerEvents = 'none'
+      document.body.style.pointerEvents = 'auto'
+      done()
+    },
+    leave(el, done) {
+      document.body.style.pointerEvents = 'none'
+      el.querySelector('.Logo').dataset.color = 'white'
+      document.querySelector('.Mouse').dataset.color = 'white'
+
+      if (!this.$route.name.includes('projects-')) {
+        document.body.style.overflow = 'hidden'
+        const _labelCarousel = el.querySelector('.Carousel-label')
+        if (_labelCarousel) _labelCarousel.classList.add('is-hidden')
+        TweenLite.to('.Page', 1, { opacity: 0, y: 30, delay: 0, ease: Power2.easeInOut })
+        TweenLite.to('.Carousel-image', 1, { opacity: 0, delay: .5, ease: Power2.easeInOut })
+        TweenLite.to('.Carousel-button', 1, { scale: 0, delay: .5, ease: Power2.easeInOut })
+        TweenLite.to('.Carousel-container', 1, { scale: 0, y: - window.innerHeight / 2, delay: 1.5, ease: Power2.easeInOut, onComplete: ()  => {
+          document.body.style.pointerEvents = 'auto'
+          document.body.style.overflow = 'auto'
+          done()
+        }})
+      } else done()
+    }
   }
 }
 </script>
