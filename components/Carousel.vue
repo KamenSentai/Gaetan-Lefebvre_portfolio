@@ -23,7 +23,7 @@
           img.Cursor-frame--text.Carousel-neon(src="../assets/images/Projects/pocketcare.png" alt="Pocketcare" draggable="false")
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/pocketcare_front.png" alt="Pocketcare" draggable="false")
           img.Cursor-frame--text.Carousel-extra.is-hidden.Absolute.Absolute--p1(src="../assets/images/Projects/pocketcare_extra.png" alt="Pocketcare" draggable="false")
-      p.Carousel-label(v-if="!slide || parseInt(slide) === 0" v-bind:class="[isMenu ? 'is-hidden': '', isLabelized ? 'is-hidden': '']")
+      p.Carousel-label(v-if="!slide || parseInt(slide) === 0" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
         span.Carousel-title Pocketcare
         span.Carousel-subtitle
           span.Text--bold School project
@@ -37,7 +37,7 @@
           img.Cursor-frame--text.Carousel-neon(src="../assets/images/Projects/tesla.png" alt="Tesla")
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/tesla_front.png" alt="Tesla")
           img.Cursor-frame--text.Carousel-extra.is-hidden.Absolute.Absolute--p2(src="../assets/images/Projects/tesla_extra.png" alt="Tesla")
-      p.Carousel-label(v-if="!slide || parseInt(slide) === 1" v-bind:class="[isMenu ? 'is-hidden': '', isLabelized ? 'is-hidden': '']")
+      p.Carousel-label(v-if="!slide || parseInt(slide) === 1" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
         span.Carousel-title Tesla
         span.Carousel-subtitle
           span.Text--bold School project
@@ -51,7 +51,7 @@
           img.Cursor-frame--text.Carousel-neon(src="../assets/images/Projects/buddy-buddy.png" alt="Buddy Buddy")
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/buddy-buddy_front.png" alt="Buddy Buddy")
           img.Cursor-frame--text.Carousel-extra.is-hidden.Absolute.Absolute--p3(src="../assets/images/Projects/buddy-buddy_extra.png" alt="Buddy Buddy")
-      p.Carousel-label(v-if="!slide || parseInt(slide) === 2" v-bind:class="[isMenu ? 'is-hidden': '', isLabelized ? 'is-hidden': '']")
+      p.Carousel-label(v-if="!slide || parseInt(slide) === 2" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
         span.Carousel-title Buddy Buddy
         span.Carousel-subtitle
           span.Text--bold Internship
@@ -65,7 +65,7 @@
           img.Cursor-frame--text.Carousel-neon(src="../assets/images/Projects/personal.png" alt="Personal")
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/personal_front.png" alt="Personal")
           Lock.Carousel-lock(v-bind:class="!isLocked ? 'is-hidden' : ''")
-      p.Carousel-label(v-if="!slide || parseInt(slide) === 3" v-bind:class="[isMenu ? 'is-hidden': '', isLabelized ? 'is-hidden': '']")
+      p.Carousel-label(v-if="!slide || parseInt(slide) === 3" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
         span.Carousel-title Coming soom
         span.Carousel-subtitle
           span.Text--bold New
@@ -145,7 +145,7 @@ export default {
   },
   beforeMount() {
     this.index = this.range
-    this.isLabelized = !this.slide
+    if (this.slide === undefined) this.isLabelized = false
   },
   mounted() {
     const _progressCarousel = this.$el.querySelector('.Carousel-progress')
@@ -155,11 +155,11 @@ export default {
     const _right = this.$el.querySelector('#Carousel-right')
 
     setTimeout(() => {
-      this.isLabelized = !this.isLabelized
+      this.isLabelized = true
       setTimeout(() => {
         for (const _extraCarousel of _extrasCarousel) _extraCarousel.classList.remove('is-hidden')
-        this.isProgressed = !this.isProgressed
-        this.isLocked = !this.isLocked
+        this.isProgressed = true
+        this.isLocked = false
       }, 500)
     }, 1000)
 
