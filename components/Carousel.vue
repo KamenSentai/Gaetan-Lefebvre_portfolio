@@ -23,8 +23,9 @@
           img.Cursor-frame--text.Carousel-neon(src="../assets/images/Projects/pocketcare.png" alt="Pocketcare" draggable="false")
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/pocketcare_front.png" alt="Pocketcare" draggable="false")
           img.Cursor-frame--text.Carousel-extra.is-hidden.Absolute.Absolute--p1(src="../assets/images/Projects/pocketcare_extra.png" alt="Pocketcare" draggable="false")
-      p.Carousel-label(v-if="!slide || parseInt(slide) === 0" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
-        span.Carousel-title Pocketcare
+      .Carousel-label(v-if="!slide || parseInt(slide) === 0" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
+        h1.Carousel-title(v-if="slide") Pocketcare
+        h2.Carousel-title(v-else) Pocketcare
         span.Carousel-subtitle
           span.Text--bold School project
           span.Text--light &nbsp;- 2017
@@ -37,8 +38,9 @@
           img.Cursor-frame--text.Carousel-neon(src="../assets/images/Projects/tesla.png" alt="Tesla")
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/tesla_front.png" alt="Tesla")
           img.Cursor-frame--text.Carousel-extra.is-hidden.Absolute.Absolute--p2(src="../assets/images/Projects/tesla_extra.png" alt="Tesla")
-      p.Carousel-label(v-if="!slide || parseInt(slide) === 1" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
-        span.Carousel-title Tesla
+      .Carousel-label(v-if="!slide || parseInt(slide) === 1" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
+        h1.Carousel-title(v-if="slide") Tesla
+        h2.Carousel-title(v-else) Tesla
         span.Carousel-subtitle
           span.Text--bold School project
           span.Text--light &nbsp;- 2018
@@ -51,8 +53,9 @@
           img.Cursor-frame--text.Carousel-neon(src="../assets/images/Projects/buddy-buddy.png" alt="Buddy Buddy")
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/buddy-buddy_front.png" alt="Buddy Buddy")
           img.Cursor-frame--text.Carousel-extra.is-hidden.Absolute.Absolute--p3(src="../assets/images/Projects/buddy-buddy_extra.png" alt="Buddy Buddy")
-      p.Carousel-label(v-if="!slide || parseInt(slide) === 2" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
-        span.Carousel-title Buddy Buddy
+      .Carousel-label(v-if="!slide || parseInt(slide) === 2" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
+        h1.Carousel-title(v-if="slide") Buddy Buddy
+        h2.Carousel-title(v-else) Buddy Buddy
         span.Carousel-subtitle
           span.Text--bold Internship
           span.Text--light &nbsp;- 2018
@@ -65,8 +68,9 @@
           img.Cursor-frame--text.Carousel-neon(src="../assets/images/Projects/personal.png" alt="Personal")
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/personal_front.png" alt="Personal")
           Lock.Carousel-lock(v-bind:class="!isLocked ? 'is-hidden' : ''")
-      p.Carousel-label(v-if="!slide || parseInt(slide) === 3" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
-        span.Carousel-title Coming soom
+      .Carousel-label(v-if="!slide || parseInt(slide) === 3" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
+        h1.Carousel-title(v-if="slide") Coming soom
+        h2.Carousel-title(v-else) Coming soom
         span.Carousel-subtitle
           span.Text--bold New
           span.Text--light &nbsp;- 2019
@@ -74,7 +78,7 @@
             span.Text--bold Skills :
             span.Text--light &nbsp;Interactive design
       .Carousel-progress(v-if="!slide" v-bind:class="[isMenu ? 'is-hidden': '', !isProgressed ? 'is-hidden' : '']")
-        p.Carousel-indicator Swipe
+        .Carousel-indicator Swipe
         svg.Carousel-step(:class="range === 0 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
           path(d="M20,37.8c-9.8,0-17.8-7.9-17.8-17.8S10.2,2.2,20,2.2S37.8,10.2,37.8,20S29.8,37.8,20,37.8z")
         svg.Carousel-step(:class="range === 1 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
@@ -618,6 +622,7 @@ export default {
     position: absolute;
     bottom: 100%;
     left: 50%;
+    display: inline-block;
     margin-bottom: $margin-t;
     color: $dark;
     font-size: 12rem;

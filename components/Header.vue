@@ -26,7 +26,9 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
         Logo.Header-logo(:color="color || data.colors[range]")
       ul.Header-navbar
         li.Header-item.Cursor-frame--increase(:class="hasProject ? '': 'is-hidden'")
-          a.Cursor-frame--increase(href="#" @click="toggleMenu") All projects
+          h1(v-if="hasProject")
+            a.Cursor-frame--increase(href="#" @click="toggleMenu") All projects
+          a.Cursor-frame--increase(v-else href="#" @click="toggleMenu") All projects
         li.Header-item.Cursor-frame--increase(:class="hasAbout ? '': 'is-hidden'")
           nuxt-link.Cursor-frame--increase(:to="{ name: 'about', params: sendData() }") About
         li.Header-item.Cursor-frame--increase(:class="hasHome ? '': 'is-hidden'")

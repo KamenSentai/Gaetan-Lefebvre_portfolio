@@ -8,6 +8,7 @@
     )
     img.Hero-shape(
       :src="require(`../assets/images/Home/${data.shapes[range]}.png`)"
+      :alt="data.shapes[range]"
       draggable="false"
     )
     img.Hero-front(
@@ -19,33 +20,42 @@
     .Hero-fronts
       img.Hero-front.Hero-front--slide(
         v-for="page in data[type].pages"
-        :src="require(`../assets/images/About/${page.shape}_back.png`)"
         v-bind:class="checkIndex(page)"
+        :src="require(`../assets/images/About/${page.shape}_back.png`)"
+        alt=""
         draggable="false"
       )
     .Hero-shapes
       img.Hero-shape.Hero-shape--slide(
         v-for="page in data[type].pages"
-        :src="require(`../assets/images/About/${page.shape}.png`)"
         v-bind:class="checkIndex(page)"
+        :src="require(`../assets/images/About/${page.shape}.png`)"
+        alt=""
         draggable="false"
       )
     .Hero-backs
       img.Hero-back.Hero-back--slide(
         v-for="page in data[type].pages"
-        :src="require(`../assets/images/About/${page.shape}_front.png`)"
         v-bind:class="checkIndex(page)"
+        :src="require(`../assets/images/About/${page.shape}_front.png`)"
+        alt=""
         draggable="false"
       )
     span.Hero-scroll
   aside.Hero-data
     .Hero-description
-      h1.Hero-title
-        span.Hero-titles(v-for="page in data[type].pages" v-bind:class="checkIndex(page)")
-          span.Hero-above {{ page.above }}
-          span.Hero-name
-            span.Hero-first {{ page.first }}&nbsp;
-            span.Hero-last(v-bind:class="`Hero-last--${page.color || data.colors[range]}`") {{ page.last }}
+      .Hero-group
+        .Hero-title(v-for="(page, index) in data[type].pages" v-bind:class="checkIndex(page)")
+          h1(v-if="index === 0")
+            span.Hero-above {{ page.above }}
+            span.Hero-name
+              span.Hero-first {{ page.first }}&nbsp;
+              span.Hero-last(v-bind:class="`Hero-last--${page.color || data.colors[range]}`") {{ page.last }}
+          h2(v-else)
+            span.Hero-above {{ page.above }}
+            span.Hero-name
+              span.Hero-first {{ page.first }}&nbsp;
+              span.Hero-last(v-bind:class="`Hero-last--${page.color || data.colors[range]}`") {{ page.last }}
       .Hero-texts
         .Hero-paragraphs(v-for="page in data[type].pages" v-bind:class="checkIndex(page)")
           p.Hero-paragraph(v-for="paragraph in page.paragraphs") {{ paragraph }}
@@ -111,6 +121,12 @@ export default {
         background-color: $value;
       }
     }
+  }
+
+  h1,
+  h2 {
+    display: flex;
+    flex-direction: column;
   }
 
   &-portrait {
@@ -251,7 +267,7 @@ export default {
     margin-bottom: $margin-s;
   }
 
-  &-title {
+  &-group {
     position: relative;
     margin-bottom: $margin-t;
     font-size: 4.5rem;
@@ -276,7 +292,7 @@ export default {
     }
   }
 
-  &-titles,
+  &-title,
   &-paragraphs {
     position: absolute;
     top: 0;
