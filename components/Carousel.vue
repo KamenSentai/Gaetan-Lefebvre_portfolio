@@ -20,10 +20,10 @@
       nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide || parseInt(slide) === 0" v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ path: '/projects/pocketcare', params: { from: $route.name } }" draggable="false")
         .Carousel-image.Cursor-frame--text
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/pocketcare_back.png" alt="Pocketcare" draggable="false")
-          img.Cursor-frame--text(src="../assets/images/Projects/pocketcare.png" alt="Pocketcare" draggable="false")
+          img.Cursor-frame--text.Carousel-neon(src="../assets/images/Projects/pocketcare.png" alt="Pocketcare" draggable="false")
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/pocketcare_front.png" alt="Pocketcare" draggable="false")
-          img.Cursor-frame--text.Carousel-extra.Absolute.Absolute--p1(src="../assets/images/Projects/pocketcare_extra.png" alt="Pocketcare" draggable="false")
-      p.Carousel-label(v-if="!slide || parseInt(slide) === 0" v-bind:class="isMenu ? 'is-hidden': ''")
+          img.Cursor-frame--text.Carousel-extra.is-hidden.Absolute.Absolute--p1(src="../assets/images/Projects/pocketcare_extra.png" alt="Pocketcare" draggable="false")
+      p.Carousel-label(v-if="!slide || parseInt(slide) === 0" v-bind:class="[isMenu ? 'is-hidden': '', isLabelized ? 'is-hidden': '']")
         span.Carousel-title Pocketcare
         span.Carousel-subtitle
           span.Text--bold School project
@@ -34,10 +34,10 @@
       nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide || parseInt(slide) === 1" v-bind:class="`Carousel-item--${modulo(range - 1, 4)}`" :to="{ path: '/projects/tesla', params: { from: $route.name } }")
         .Carousel-image.Cursor-frame--text
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/tesla_back.png" alt="Tesla")
-          img.Cursor-frame--text(src="../assets/images/Projects/tesla.png" alt="Tesla")
+          img.Cursor-frame--text.Carousel-neon(src="../assets/images/Projects/tesla.png" alt="Tesla")
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/tesla_front.png" alt="Tesla")
-          img.Cursor-frame--text.Carousel-extra.Absolute.Absolute--p2(src="../assets/images/Projects/tesla_extra.png" alt="Tesla")
-      p.Carousel-label(v-if="!slide || parseInt(slide) === 1" v-bind:class="isMenu ? 'is-hidden': ''")
+          img.Cursor-frame--text.Carousel-extra.is-hidden.Absolute.Absolute--p2(src="../assets/images/Projects/tesla_extra.png" alt="Tesla")
+      p.Carousel-label(v-if="!slide || parseInt(slide) === 1" v-bind:class="[isMenu ? 'is-hidden': '', isLabelized ? 'is-hidden': '']")
         span.Carousel-title Tesla
         span.Carousel-subtitle
           span.Text--bold School project
@@ -48,10 +48,10 @@
       nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide || parseInt(slide) === 2" v-bind:class="`Carousel-item--${modulo(range - 2, 4)}`" :to="{ path: '/projects/buddy-buddy', params: { from: $route.name } }")
         .Carousel-image.Cursor-frame--text
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/buddy-buddy_back.png" alt="Buddy Buddy")
-          img.Cursor-frame--text(src="../assets/images/Projects/buddy-buddy.png" alt="Buddy Buddy")
+          img.Cursor-frame--text.Carousel-neon(src="../assets/images/Projects/buddy-buddy.png" alt="Buddy Buddy")
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/buddy-buddy_front.png" alt="Buddy Buddy")
-          img.Cursor-frame--text.Carousel-extra.Absolute.Absolute--p3(src="../assets/images/Projects/buddy-buddy_extra.png" alt="Buddy Buddy")
-      p.Carousel-label(v-if="!slide || parseInt(slide) === 2" v-bind:class="isMenu ? 'is-hidden': ''")
+          img.Cursor-frame--text.Carousel-extra.is-hidden.Absolute.Absolute--p3(src="../assets/images/Projects/buddy-buddy_extra.png" alt="Buddy Buddy")
+      p.Carousel-label(v-if="!slide || parseInt(slide) === 2" v-bind:class="[isMenu ? 'is-hidden': '', isLabelized ? 'is-hidden': '']")
         span.Carousel-title Buddy Buddy
         span.Carousel-subtitle
           span.Text--bold Internship
@@ -62,10 +62,10 @@
       span.Carousel-item.Cursor-frame--text.Carousel-item--forbidden(v-if="!slide || parseInt(slide) === 3" v-bind:class="`Carousel-item--${modulo(range - 3, 4)}`")
         .Carousel-image.Cursor-frame--text
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/personal_back.png" alt="Personal")
-          img.Cursor-frame--text(src="../assets/images/Projects/personal.png" alt="Personal")
+          img.Cursor-frame--text.Carousel-neon(src="../assets/images/Projects/personal.png" alt="Personal")
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/personal_front.png" alt="Personal")
-          Lock.Carousel-lock
-      p.Carousel-label(v-if="!slide || parseInt(slide) === 3" v-bind:class="isMenu ? 'is-hidden': ''")
+          Lock.Carousel-lock(v-bind:class="!isLocked ? 'is-hidden' : ''")
+      p.Carousel-label(v-if="!slide || parseInt(slide) === 3" v-bind:class="[isMenu ? 'is-hidden': '', isLabelized ? 'is-hidden': '']")
         span.Carousel-title Coming soom
         span.Carousel-subtitle
           span.Text--bold New
@@ -73,7 +73,7 @@
           span.Carousel-additional(v-if="slide")
             span.Text--bold Skills :
             span.Text--light &nbsp;Interactive design
-      .Carousel-progress(v-if="!slide" v-bind:class="isMenu ? 'is-hidden': ''")
+      .Carousel-progress(v-if="!slide" v-bind:class="[isMenu ? 'is-hidden': '', !isProgressed ? 'is-hidden' : '']")
         p.Carousel-indicator Swipe
         svg.Carousel-step(:class="range === 0 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
           path(d="M20,37.8c-9.8,0-17.8-7.9-17.8-17.8S10.2,2.2,20,2.2S37.8,10.2,37.8,20S29.8,37.8,20,37.8z")
@@ -102,7 +102,10 @@ if (process.client) {
 export default {
   data() {
     return {
-      index: 0
+      index: 0,
+      isLabelized: true,
+      isProgressed: false,
+      isLocked: false
     }
   },
   props: [
@@ -142,10 +145,24 @@ export default {
   },
   beforeMount() {
     this.index = this.range
+    this.isLabelized = !this.slide
   },
   mounted() {
+    const _progressCarousel = this.$el.querySelector('.Carousel-progress')
+    const _labelsCarousel = Array.from(this.$el.querySelectorAll('.Carousel-label'))
+    const _extrasCarousel = Array.from(this.$el.querySelectorAll('.Carousel-extra'))
     const _left = this.$el.querySelector('#Carousel-left')
     const _right = this.$el.querySelector('#Carousel-right')
+
+    setTimeout(() => {
+      this.isLabelized = !this.isLabelized
+      setTimeout(() => {
+        for (const _extraCarousel of _extrasCarousel) _extraCarousel.classList.remove('is-hidden')
+        this.isProgressed = !this.isProgressed
+        this.isLocked = !this.isLocked
+      }, 500)
+    }, 1000)
+
     if (_left) _left.setAttribute('d', this.$el.querySelector(`#Carousel-left-${this.index}`).getAttribute('d'))
     if (_right) _right.setAttribute('d', this.$el.querySelector(`#Carousel-right-${this.index}`).getAttribute('d'))
 
@@ -553,6 +570,10 @@ export default {
     transition: opacity $easing-duration, height $easing-duration;
     will-change: opacity;
 
+    &.is-hidden {
+      opacity: 0;
+    }
+
     @media (max-height: #{grid-media(7.5)}) {
       height: 40%;
     }
@@ -563,6 +584,10 @@ export default {
     transition: opacity $easing-duration;
     transition-delay: 0s;
     will-change: opacity;
+
+    &.is-hidden {
+      opacity: 0 !important;
+    }
   }
 
   &-label {
@@ -580,8 +605,8 @@ export default {
     user-select: none;
 
     &.is-hidden {
-      opacity: 0;
-      transform: translate(-50%, #{$margin-t});
+      opacity: 0 !important;
+      transform: translate(-50%, #{$margin-t}) !important;
     }
 
     @media (max-height: #{grid-media(8.5)}) {

@@ -409,6 +409,7 @@ export default {
     display: flex;
     flex-direction: row;
     user-select: none;
+    transition: opacity $easing-duration;
 
     @media (max-width: #{grid-media(6)}) {
       display: none;
