@@ -305,26 +305,6 @@ export default {
     })
 
     window.addEventListener('mousemove', event => { mouse.y = event.clientY })
-
-    const toggleCursor = () => {
-      const offsetTop = Math.abs(_body.getBoundingClientRect().top) - breakpointHeader +  mouse.y
-      let color
-      let index
-
-      for (let i = 0 ; i < breakpoints.length ; i++) {
-        if (breakpoints[i] > offsetTop) {
-          index = i
-          break
-        }
-      }
-
-      if (index !== undefined) color = index % 2 && mouse.y - _body.getBoundingClientRect().top > window.innerHeight ? 'black' : 'white'
-      else color = 'white'
-
-      _mouse.dataset.color = color
-      window.requestAnimationFrame(toggleCursor)
-    }
-    toggleCursor()
   },
   transition: {
     name: 'csdc',

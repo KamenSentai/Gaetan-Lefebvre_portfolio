@@ -159,9 +159,11 @@ export default {
     setTimeout(() => {
       this.isLabelized = true
       setTimeout(() => {
-        for (const _extraCarousel of _extrasCarousel) _extraCarousel.classList.remove('is-hidden')
         this.isProgressed = true
         this.isLocked = false
+        setTimeout(() => {
+          for (const _extraCarousel of _extrasCarousel) _extraCarousel.classList.remove('is-hidden')
+        }, 1000)
       }, 500)
     }, 1000)
 

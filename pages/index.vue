@@ -69,6 +69,7 @@ export default {
         TweenLite.fromTo('.Hero-texts', 1, { opacity: 0, y: 30 }, { opacity: 1, y: 0, delay: 1.5, ease: Power2.easeInOut })
         TweenLite.fromTo('.Hero-hold', 1, { opacity: 0, x: -30 }, { opacity: 1, x: 0, delay: 2, ease: Power2.easeInOut })
         TweenLite.fromTo('.Header-navbar', 1, { opacity: 0 }, { opacity: 1, delay: 2, ease: Power2.easeInOut, onComplete: () => {
+          document.querySelector('.Hero-shape').style.transform = null
           document.body.style.pointerEvents = 'auto'
           done()
         }})
