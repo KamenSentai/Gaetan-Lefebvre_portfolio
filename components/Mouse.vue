@@ -261,7 +261,6 @@ export default {
     border: .1rem solid $dark;
     transform-origin: 50% 50%;
     transition: all $easing-duration;
-    animation: turn-hud 5s linear infinite;
     will-change: transform;
 
     &.is-reduced {
@@ -270,6 +269,7 @@ export default {
 
     &.is-lighten {
       border-color: $white !important;
+      animation: turn-hud 5s linear infinite;
 
       #{$rootMouse}-text {
         transform: scale(1);
