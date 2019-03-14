@@ -92,7 +92,7 @@ div
           :images="['Mobile_1', 'Mobile_2', 'Mobile_3', 'Mobile_4']"
         )
     section.Slide.Slide--banner.Exception--banner
-      Banner.Banner--exception.Content-banner(src="BuddyBuddy/Banner_Screenshots" alt ="Banner Screenshots")
+      Banner.Banner--exception(src="BuddyBuddy/Banner_Screenshots" alt ="Banner Screenshots")
     section.Slide
       Article(
         :color="data.color"
@@ -113,8 +113,6 @@ import Article from '~/components/Article'
 import Slider from '~/components/Slider'
 import Banner from '~/components/Banner'
 import Footer from '~/components/Footer'
-
-import Rellax from 'rellax'
 
 export default {
   data() {
@@ -169,15 +167,6 @@ export default {
     Footer
   },
   mounted() {
-    new Rellax('.rellax', {
-      speed: 2,
-      center: false,
-      wrapper: null,
-      round: true,
-      vertical: true,
-      horizontal: false
-    })
-
     const _body = document.body
     const _mouse = _body.querySelector('.Mouse')
     const _header = this.$el.querySelector('.Header')

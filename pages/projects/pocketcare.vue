@@ -51,7 +51,7 @@ div
         :post="data.posts[2]"
       )
     section.Slide.Slide--banner
-      Banner.Content-banner(src="Pocketcare/Banner_Inscription" alt ="Inscription")
+      Banner(src="Pocketcare/Banner_Inscription" alt ="Inscription")
     section.Slide.Slide--page
       .Content
         .Content-header
@@ -93,8 +93,6 @@ import Charter from '~/components/Charter'
 import Banner from '~/components/Banner'
 import Article from '~/components/Article'
 import Footer from '~/components/Footer'
-
-import Rellax from 'rellax'
 
 export default {
   data() {
@@ -149,15 +147,6 @@ export default {
     Footer
   },
   mounted() {
-    new Rellax('.rellax', {
-      speed: 2,
-      center: false,
-      wrapper: null,
-      round: true,
-      vertical: true,
-      horizontal: false
-    })
-
     const _body = document.body
     const _mouse = _body.querySelector('.Mouse')
     const _header = this.$el.querySelector('.Header')

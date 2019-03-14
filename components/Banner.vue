@@ -1,6 +1,5 @@
 <template lang="pug">
-.Banner
-  img.Banner-image.Content-banner.rellax(:src="require(`../assets/images/${src}.png`)" :alt="alt")
+img.Banner.Content-banner(:src="require(`../assets/images/${src}.png`)" :alt="alt")
 </template>
 
 <script>
@@ -17,20 +16,18 @@ export default {
 @import '~assets/styles/tools/functions';
 
 .Banner {
-  width: 100%;
+  width: auto;
   height: 100%;
-  transform: translate(-25%, 50%);
 
   &--exception {
-    transform: translate(-25%, 100%);
+    height: 175%;
   }
 
-  &-image {
-    will-change: transform;
+  @media (max-width: #{grid-media(8)}) {
+    height: 125%;
 
-    @media (max-width: #{grid-media(8)}) {
-      width: auto;
-      height: 125%;
+    &--exception {
+      height: 175%;
     }
   }
 }
