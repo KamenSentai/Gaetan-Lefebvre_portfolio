@@ -1,17 +1,17 @@
 <template lang="pug">
 .Slider(data-aos="fade-left" v-bind:class="automatic ? 'Slider--automatic' : ''")
   .Slider-button
-    canvas.Slider-loading
-    a.Push.Push--left(v-bind:class="automatic ? 'Slider-push' : ''" @click="turnSlider" href="#")
+    canvas.Slider-loading(ref="loading")
+    a.Push.Push--left(v-bind:class="automatic ? 'Slider-push' : ''" @click="turnSlider" href="#" ref="push")
       .Push-arrow
       .Push-arrow
   .Slider-content(v-if="mockup" @touchstart="touchStart" @touchmove="touchMove")
     img.Slider-mockup(:src="require(`../assets/images/${folder}/${mockup}.png`)" draggable="false")
-    .Slider-images
+    .Slider-images(ref="images")
       img.Slider-image.Shadow--image(v-for="image in images" :src="require(`../assets/images/${folder}/${image}.png`)")
   .Slider-button.Slider-button--hidden(v-if="mockup")
     .Push
-  .Slider-images(v-else @touchstart="touchStart" @touchmove="touchMove")
+  .Slider-images(v-else @touchstart="touchStart" @touchmove="touchMove" ref="images")
     img.Slider-image.Shadow(v-for="image in images" :src="require(`../assets/images/${folder}/${image}.png`)")
 </template>
 
@@ -112,8 +112,8 @@ export default {
     }
   },
   mounted() {
-    const _SliderImages = this.$el.querySelector('.Slider-images')
-    const _images = Array.from(_SliderImages.querySelectorAll('.Slider-image'))
+    const _imagesSlider = this.$refs.images
+    const _images = Array.from(_imagesSlider.querySelectorAll('.Slider-image'))
     const _imagesStyle = _images[0].currentStyle || window.getComputedStyle(_images[0])
 
     this.elements = _images
@@ -127,9 +127,9 @@ export default {
 
 
     if (this.automatic) {
-      const _push = this.$el.querySelector('.Push')
+      const _push = this.$refs.push
       const _slider = this.$el
-      const _loadingSlider = this.$el.querySelector('.Slider-loading')
+      const _loadingSlider = this.$refs.loading
 
       const _pushStyle = _push.currentStyle || window.getComputedStyle(_push)
       const _sliderStyle = _slider.currentStyle || window.getComputedStyle(_slider)

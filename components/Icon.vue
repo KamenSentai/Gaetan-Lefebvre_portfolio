@@ -1,7 +1,8 @@
 <template lang="pug">
 .Icon.Cursor-frame--reduced.Cursor-pointer--beat
-  nuxt-link.Icon-link(:to="{ name: 'projects', params: { color: color, shape: shape, from: $route.name } }")
+  nuxt-link.Icon-link(ref="link" :to="{ name: 'projects', params: { color: color, shape: shape, from: $route.name } }")
   svg.Icon-shape.Cursor-frame--reduced.Cursor-pointer--beat(
+    ref="shape"
     @mousedown="mouseDown"
     @mouseup="mouseUp"
     @touchstart="touchStart"
@@ -47,8 +48,8 @@ export default {
     }
   },
   mounted() {
-    const _iconShape = this.$el.querySelector('.Icon-shape')
-    const _iconLink = this.$el.querySelector('.Icon-link')
+    const _iconShape = this.$refs.shape
+    const _iconLink = this.$refs.link
 
     const whichTransitionEvent = () => {
       let t

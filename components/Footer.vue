@@ -1,6 +1,6 @@
 <template lang="pug">
 footer.Footer
-  .Footer-container
+  .Footer-container(ref="container")
     nuxt-link.Footer-navigation(:to="{ name: 'projects-' + to, params: { from: $route.name } }" v-bind:title="title")
       img.Footer-image(:src="require(`../assets/images/Menu/${to}.png`)" v-bind:alt="title")
       span.Footer-title {{ title }}
@@ -16,7 +16,7 @@ export default {
     'title'
   ],
   mounted() {
-    const _footerContainer = this.$el.querySelector('.Footer-container')
+    const _footerContainer = this.$refs.container
     let isEntered = false
 
     const whichTransitionEvent = () => {

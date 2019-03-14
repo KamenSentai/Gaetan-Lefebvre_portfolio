@@ -1,20 +1,20 @@
 <template lang="pug">
 .Carousel
-  .Carousel-container(v-bind:class="[slide ? 'Carousel-container--case' : '', isMenu ? 'is-hidden': '']")
+  .Carousel-container(v-bind:class="[slide ? 'Carousel-container--case' : '', isMenu ? 'is-hidden': '']" ref="container")
     .Carousel-buttons(v-bind:class="isMenu ? 'is-hidden': ''")
       svg.Carousel-button.Carousel-button--left.Cursor-frame--reduced(width="40px" height="40px" viewBox="0 0 40 40" @click="turnLeft")
         path#Carousel-left-1.Carousel-shape.Carousel-shape--left(:class="index === 1 ? 'is-chosen' : ''" d="M38.8,20c0,5.2-2.1,9.9-5.5,13.3s-8.1,5.5-13.3,5.5c-5.2,0-9.9-2.1-13.3-5.5C3.3,29.9,1.2,25.2,1.2,20 c0-5.2,2.1-9.9,5.5-13.3S14.8,1.2,20,1.2c5.2,0,9.9,2.1,13.3,5.5C36.7,10.1,38.8,14.8,38.8,20z")
         path#Carousel-left-2.Carousel-shape.Carousel-shape--left(:class="index === 2 ? 'is-chosen' : ''" d="M20,1.1l18.8,32.5H1.2L20,1.1z")
         path#Carousel-left-3.Carousel-shape.Carousel-shape--left(:class="index === 3 ? 'is-chosen' : ''" d="M20,1.2L38.8,20l-9.4,9.4L20,38.8L1.2,20L20,1.2z")
         path#Carousel-left-0.Carousel-shape.Carousel-shape--left(:class="index === 0 ? 'is-chosen' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
-        path#Carousel-left.Carousel-shape.is-active.Cursor-frame--reduced
+        path#Carousel-left.Carousel-shape.is-active.Cursor-frame--reduced(ref="left")
         polyline.Carousel-shape.Carousel-shape--arrow.is-active(points="25,22.5 20,17.5 15,22.5")
       svg.Carousel-button.Carousel-button--right.Cursor-frame--reduced(width="40px" height="40px" viewBox="0 0 40 40" @click="turnRight")
         path#Carousel-right-3.Carousel-shape.Carousel-shape--right(:class="index === 3 ? 'is-chosen' : ''" d="M38.8,20c0,5.2-2.1,9.9-5.5,13.3s-8.1,5.5-13.3,5.5c-5.2,0-9.9-2.1-13.3-5.5C3.3,29.9,1.2,25.2,1.2,20 c0-5.2,2.1-9.9,5.5-13.3S14.8,1.2,20,1.2c5.2,0,9.9,2.1,13.3,5.5C36.7,10.1,38.8,14.8,38.8,20z")
         path#Carousel-right-0.Carousel-shape.Carousel-shape--right(:class="index === 0 ? 'is-chosen' : ''" d="M20,1.1l18.8,32.5H1.2L20,1.1z")
         path#Carousel-right-1.Carousel-shape.Carousel-shape--right(:class="index === 1 ? 'is-chosen' : ''" d="M20,1.2L38.8,20l-9.4,9.4L20,38.8L1.2,20L20,1.2z")
         path#Carousel-right-2.Carousel-shape.Carousel-shape--right(:class="index === 2 ? 'is-chosen' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
-        path#Carousel-right.Carousel-shape.is-active.Cursor-frame--reduced
+        path#Carousel-right.Carousel-shape.is-active.Cursor-frame--reduced(ref="right")
         polyline.Carousel-shape.Carousel-shape--arrow.is-active(points="25,22.5 20,17.5 15,22.5")
     .Carousel-content(v-bind:class="isMenu ? 'is-hidden': ''")
       nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide || parseInt(slide) === 0" v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ name: 'projects-pocketcare', params: { from: $route.name } }" draggable="false")
@@ -26,10 +26,10 @@
       .Carousel-label(v-if="!slide || parseInt(slide) === 0" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
         h1.Carousel-title(v-if="slide") Pocketcare
         h2.Carousel-title(v-else) Pocketcare
-        span.Carousel-subtitle
+        span.Carousel-subtitle(ref="subtitle")
           span.Text--bold School project
           span.Text--light &nbsp;- 2017
-          span.Carousel-additional(v-if="slide")
+          span.Carousel-additional(v-if="slide" ref="additional")
             span.Text--bold Skills :
             span.Text--light &nbsp;Branding, Illustration, Interactive design
       nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide || parseInt(slide) === 1" v-bind:class="`Carousel-item--${modulo(range - 1, 4)}`" :to="{ name: 'projects-tesla', params: { from: $route.name } }")
@@ -41,10 +41,10 @@
       .Carousel-label(v-if="!slide || parseInt(slide) === 1" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
         h1.Carousel-title(v-if="slide") Tesla
         h2.Carousel-title(v-else) Tesla
-        span.Carousel-subtitle
+        span.Carousel-subtitle(ref="subtitle")
           span.Text--bold School project
           span.Text--light &nbsp;- 2018
-          span.Carousel-additional(v-if="slide")
+          span.Carousel-additional(v-if="slide" ref="additional")
             span.Text--bold Skills :
             span.Text--light &nbsp;Branding, Illustration, Interactive design
       nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide || parseInt(slide) === 2" v-bind:class="`Carousel-item--${modulo(range - 2, 4)}`" :to="{ name: 'projects-buddy-buddy', params: { from: $route.name } }")
@@ -56,10 +56,10 @@
       .Carousel-label(v-if="!slide || parseInt(slide) === 2" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
         h1.Carousel-title(v-if="slide") Buddy Buddy
         h2.Carousel-title(v-else) Buddy Buddy
-        span.Carousel-subtitle
+        span.Carousel-subtitle(ref="subtitle")
           span.Text--bold Internship
           span.Text--light &nbsp;- 2018
-          span.Carousel-additional(v-if="slide")
+          span.Carousel-additional(v-if="slide" ref="additional")
             span.Text--bold Skills :
             span.Text--light &nbsp;Branding, Illustration, Interactive design
       span.Carousel-item.Cursor-frame--text.Carousel-item--forbidden(v-if="!slide || parseInt(slide) === 3" v-bind:class="`Carousel-item--${modulo(range - 3, 4)}`")
@@ -71,13 +71,13 @@
       .Carousel-label(v-if="!slide || parseInt(slide) === 3" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
         h1.Carousel-title(v-if="slide") Coming soom
         h2.Carousel-title(v-else) Coming soom
-        span.Carousel-subtitle
+        span.Carousel-subtitle(ref="subtitle")
           span.Text--bold New
           span.Text--light &nbsp;- 2019
-          span.Carousel-additional(v-if="slide")
+          span.Carousel-additional(v-if="slide" ref="additional")
             span.Text--bold Skills :
             span.Text--light &nbsp;Interactive design
-      .Carousel-progress(v-if="!slide" v-bind:class="[isMenu ? 'is-hidden': '', !isProgressed ? 'is-hidden' : '']")
+      .Carousel-progress(v-if="!slide" v-bind:class="[isMenu ? 'is-hidden': '', !isProgressed ? 'is-hidden' : '']" ref="progress")
         .Carousel-indicator Swipe
         svg.Carousel-step(:class="range === 0 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
           path(d="M20,37.8c-9.8,0-17.8-7.9-17.8-17.8S10.2,2.2,20,2.2S37.8,10.2,37.8,20S29.8,37.8,20,37.8z")
@@ -152,11 +152,11 @@ export default {
     if (this.slide === undefined || !this.$route.params.from) this.isLabelized = false
   },
   mounted() {
-    const _progressCarousel = this.$el.querySelector('.Carousel-progress')
+    const _progressCarousel = this.$refs.progress
     const _labelsCarousel = Array.from(this.$el.querySelectorAll('.Carousel-label'))
     const _extrasCarousel = Array.from(this.$el.querySelectorAll('.Carousel-extra'))
-    const _left = this.$el.querySelector('#Carousel-left')
-    const _right = this.$el.querySelector('#Carousel-right')
+    const _left = this.$refs.left
+    const _right = this.$refs.right
 
     setTimeout(() => {
       this.isLabelized = true
@@ -174,8 +174,8 @@ export default {
       const tween = kute.to(`#Carousel-right`, { path: `#Carousel-right-${this.modulo(this.slide - 1, 4)}` })
       tween.start()
 
-      const _subtitleCarousel = this.$el.querySelector('.Carousel-subtitle')
-      const _additionalCarousel = this.$el.querySelector('.Carousel-additional')
+      const _subtitleCarousel = this.$refs.subtitle
+      const _additionalCarousel = this.$refs.additional
 
       setTimeout(() => {
         const _additionalStyle = _additionalCarousel.currentStyle || window.getComputedStyle(_additionalCarousel)
@@ -206,7 +206,7 @@ export default {
         })
       }, 500)
     } else {
-      const _containerCarousel = this.$el.querySelector('.Carousel-container')
+      const _containerCarousel = this.$refs.container
       const _barsCarousel = Array.from(this.$el.querySelectorAll('.Carousel-bar'))
       let _containerOffset = _containerCarousel.offsetTop
 
