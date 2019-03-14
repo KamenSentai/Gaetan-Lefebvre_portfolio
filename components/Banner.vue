@@ -17,18 +17,10 @@ export default {
 
 .Banner {
   width: auto;
-  height: 100%;
+  height: 150%;
 
   &--exception {
     height: 175%;
-  }
-
-  @media (max-width: #{grid-media(8)}) {
-    height: 125%;
-
-    &--exception {
-      height: 175%;
-    }
   }
 }
 </style>
