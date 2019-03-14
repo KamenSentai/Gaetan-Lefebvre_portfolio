@@ -42,22 +42,18 @@ export default {
     },
     clickProject: function (event) {
       let target = event.target
-      while (!target.classList.contains('Menu-link')) {
-        target = target.parentNode
-      }
       if (this.$refs.pocketcare !== target) this.$refs.pocketcare.classList.add('is-hidden')
       if (this.$refs.tesla !== target) this.$refs.tesla.classList.add('is-hidden')
       if (this.$refs.buddybuddy !== target) this.$refs.buddybuddy.classList.add('is-hidden')
       if (this.$refs.personal !== target) this.$refs.personal.classList.add('is-hidden')
       target.classList.add('is-active')
       this.$refs.float.classList.add('is-hidden')
-      document.querySelector('.Carousel-container').classList.add('Carousel-container--case')
       document.body.style.pointerEvents = 'none'
       setTimeout(() => {
         this.$el.classList.add('is-disappearing')
         document.body.style.overflow = 'auto'
         setTimeout(() => {
-          target.querySelector('.Menu-button').click()
+          if (target.querySelector('.Menu-button')) target.querySelector('.Menu-button').click()
         }, 1500)
       }, 1000)
     }
