@@ -3,8 +3,8 @@
   .Mouse-frame(ref="frame")
     .Mouse-hud(ref="hud")
       .Mouse-group
-        img.Mouse-text(v-if="$route.name === 'projects'" src="~assets/images/Mouse/more.png" alt="More")
-        img.Mouse-text(v-else-if="$route.name.includes('projects-')" src="~assets/images/Mouse/next.png" alt="Next")
+        img.Mouse-text(v-if="$route.name && $route.name === 'projects'" src="~assets/images/Mouse/more.png" alt="More")
+        img.Mouse-text(v-else-if="$route.name && $route.name.includes('projects-')" src="~assets/images/Mouse/next.png" alt="Next")
   svg.Mouse-pointer(ref="pointer" width="40px" height="40px" viewBox="0 0 40 40")
     path#Mouse-circle.Mouse-shape(d="M38.8,20c0,5.2-2.1,9.9-5.5,13.3s-8.1,5.5-13.3,5.5c-5.2,0-9.9-2.1-13.3-5.5C3.3,29.9,1.2,25.2,1.2,20 c0-5.2,2.1-9.9,5.5-13.3S14.8,1.2,20,1.2c5.2,0,9.9,2.1,13.3,5.5C36.7,10.1,38.8,14.8,38.8,20z")
     path#Mouse-triangle.Mouse-shape(d="M20,1.1l18.8,32.5H1.2L20,1.1z")
