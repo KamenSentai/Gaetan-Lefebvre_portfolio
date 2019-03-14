@@ -198,49 +198,9 @@ export default {
   height: $cursorSize;
   transition: none;
   pointer-events: none;
-  mix-blend-mode: difference;
 
   &.is-hidden {
     display: none;
-  }
-
-  &[data-color="white"] {
-    #{$rootMouse}-hud {
-      border-color: $dark;
-    }
-
-    #{$rootMouse}-shape {
-      &.is-active {
-        fill: $white;
-        transition-delay: 0;
-      }
-    }
-  }
-
-  &[data-color="black"] {
-    #{$rootMouse}-hud {
-      fill: $grey;
-    }
-
-    #{$rootMouse}-shape {
-      &.is-active {
-        transition-delay: 0;
-        fill: $black;
-      }
-    }
-
-    &[data-forced="white"] {
-      #{$rootMouse}-hud {
-        border-color: $dark;
-      }
-
-      #{$rootMouse}-shape {
-        &.is-active {
-          fill: $white;
-          transition-delay: 0;
-        }
-      }
-    }
   }
 
   &-frame,
