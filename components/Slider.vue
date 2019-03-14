@@ -11,7 +11,7 @@
       img.Slider-image.Shadow--image(v-for="image in images" :src="require(`../assets/images/${folder}/${image}.png`)" ref="images")
   .Slider-button.Slider-button--hidden(v-if="mockup")
     .Push
-  .Slider-images(v-else @touchstart="touchStart" @touchmove="touchMove")
+  .Slider-images.Slider-images--pushed(v-else @touchstart="touchStart" @touchmove="touchMove")
     img.Slider-image.Shadow(v-for="image in images" :src="require(`../assets/images/${folder}/${image}.png`)" ref="images")
 </template>
 
@@ -326,6 +326,10 @@ export default {
       width: 100%;
       height: .1rem;
       background-color: $grey;
+    }
+
+    &--pushed {
+      padding-left: $margin-l;
     }
 
     > * {
