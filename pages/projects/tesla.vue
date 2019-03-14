@@ -318,7 +318,7 @@ export default {
         }
       }
 
-      if (index !== undefined) color = index % 2 ? 'black' : 'white'
+      if (index !== undefined) color = index % 2 && mouse.y - _body.getBoundingClientRect().top > window.innerHeight ? 'black' : 'white'
       else color = 'white'
 
       _mouse.dataset.color = color
