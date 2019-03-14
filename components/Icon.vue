@@ -48,8 +48,8 @@ export default {
     }
   },
   mounted() {
-    const _iconShape = this.$refs.shape
-    const _iconLink = this.$refs.link
+    const _shapeIcon = this.$refs.shape
+    const _linkIcon = this.$refs.link.$el
 
     const whichTransitionEvent = () => {
       let t
@@ -67,16 +67,16 @@ export default {
     const loadShape = event => {
       event.preventDefault()
       const transitionEvent = whichTransitionEvent()
-        transitionEvent && _iconShape.addEventListener(transitionEvent, () => {
+        transitionEvent && _shapeIcon.addEventListener(transitionEvent, () => {
         if (this.isClicking) {
           this.isClicking = false
-          _iconLink.click()
+          _linkIcon.click()
         }
       })
     }
 
-    _iconShape.addEventListener('mousedown', loadShape)
-    _iconShape.addEventListener('touchstart', loadShape)
+    _shapeIcon.addEventListener('mousedown', loadShape)
+    _shapeIcon.addEventListener('touchstart', loadShape)
   }
 }
 </script>
