@@ -4,9 +4,6 @@ footer.Footer
     nuxt-link.Footer-navigation.Cursor-frame--text(:to="{ name: 'projects-' + to, params: { from: $route.name } }" v-bind:title="title")
       img.Footer-image.Cursor-frame--text(:src="require(`../assets/images/Menu/${to}.png`)" v-bind:alt="title")
       span.Footer-title.Cursor-frame--text {{ title }}
-      .Footer-link.Push.Push--light.Push--right.Cursor-frame--text
-        .Footer-arrow.Push-arrow
-        .Footer-arrow.Push-arrow
 </template>
 
 <script>
@@ -176,16 +173,6 @@ export default {
     opacity: .4;
     transition: all $easing-duration;
     will-change: opacity;
-  }
-
-  &-link {
-    position: absolute;
-    top: calc(50% - #{$link-size} / 2);
-    right: 0;
-
-    @media (max-width: #{grid-media(6)}) {
-      display: none;
-    }
   }
 }
 </style>
