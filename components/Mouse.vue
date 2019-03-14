@@ -198,6 +198,7 @@ export default {
   height: $cursorSize;
   transition: none;
   pointer-events: none;
+  mix-blend-mode: difference;
 
   &.is-hidden {
     display: none;

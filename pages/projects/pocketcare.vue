@@ -219,7 +219,8 @@ export default {
         TweenLite.fromTo('.Carousel-container', 1, { scale: 0, y: - window.innerHeight / 2, delay: 0 }, { scale: 1, y: 0, delay: 0, ease: Power2.easeInOut})
         TweenLite.fromTo('.Carousel-button', 1, { scale: 0, delay: 1 }, { scale: 1, delay: 1, ease: Power2.easeInOut })
         TweenLite.fromTo('.Carousel-image', 1, { opacity: 0, delay: 1 }, { opacity: 1, delay: 1, ease: Power2.easeInOut })
-        TweenLite.fromTo('.Page', 1, { opacity: 0, y: 30 }, { opacity: 1, y: 0, delay: 1.5, ease: Power2.easeInOut, onComplete: () => {
+        TweenLite.fromTo('.Page', 1, { opacity: 0, y: 30 }, { opacity: 1, y: 0, delay: 1.5, ease: Power2.easeInOut })
+        TweenLite.fromTo('.Header-navbar', 1, { opacity: 0 }, { opacity: 1, delay: 1.5, ease: Power2.easeInOut, onComplete: () => {
           document.body.style.pointerEvents = 'auto'
           done()
         }})
@@ -240,7 +241,8 @@ export default {
         TweenLite.to('.Footer', 1, { opacity: 0, y: 30, delay: 0, ease: Power2.easeInOut })
         TweenLite.to('.Carousel-image', 1, { opacity: 0, delay: .5, ease: Power2.easeInOut })
         TweenLite.to('.Carousel-button', 1, { scale: 0, delay: .5, ease: Power2.easeInOut })
-        TweenLite.to('.Carousel-container', 1, { scale: 0, y: - window.innerHeight / 2, delay: 1.5, ease: Power2.easeInOut, onComplete: ()  => {
+        TweenLite.to('.Carousel-container', 1, { scale: 0, y: - window.innerHeight / 2, delay: 1.5, ease: Power2.easeInOut })
+        TweenLite.fromTo('.Header-navbar', .5, { opacity: 1 }, { opacity: 0, delay: 2.5, ease: Power2.easeInOut, onComplete: () => {
           document.querySelector('.Mouse').dataset.color = 'white'
           document.body.style.pointerEvents = 'auto'
           document.body.style.overflow = 'auto'
