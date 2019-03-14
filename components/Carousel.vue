@@ -69,8 +69,8 @@
           img.Cursor-frame--text.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/personal_front.png" alt="Personal")
           Lock.Carousel-lock(v-bind:class="!isLocked ? 'is-hidden' : ''")
       .Carousel-label(v-if="!slide || parseInt(slide) === 3" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
-        h1.Carousel-title(v-if="slide") Coming soom
-        h2.Carousel-title(v-else) Coming soom
+        h1.Carousel-title(v-if="slide") Coming soon
+        h2.Carousel-title(v-else) Coming soon
         span.Carousel-subtitle(ref="subtitle")
           span.Text--bold New
           span.Text--light &nbsp;- 2019

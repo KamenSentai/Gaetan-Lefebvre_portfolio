@@ -63,7 +63,7 @@ export default {
     turnSlider(event) {
       event.preventDefault()
 
-      if (!this.isClicked) {
+      if (!this.isClicked && this.elements.length > 0) {
         this.isClicked = true
         this.start = new Date()
         const mod = this.count % this.total
