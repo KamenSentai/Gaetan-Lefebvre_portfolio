@@ -1,18 +1,21 @@
 <template lang="pug">
 .Menu
-  nuxt-link.Menu-link(:to="{ path: '/projects/pocketcare', params: { from: $route.name + '/menu' } }")
+  span.Menu-link(ref="pocketcare" v-on:click="clickProject($event)" data-range="0")
+    nuxt-link.Menu-button(:to="{ name: 'projects-pocketcare', params: { from: $route.name + '/menu' } }" )
     img.Menu-image(src="~assets/images/Menu/pocketcare.png" alt="Pocketcare")
     span.Menu-title Pocketcare
-  nuxt-link.Menu-link(:to="{ path: '/projects/tesla', params: { from: $route.name + '/menu' } }")
+  span.Menu-link(ref="tesla" v-on:click="clickProject($event)" data-range="1")
+    nuxt-link.Menu-button(:to="{ name: 'projects-tesla', params: { from: $route.name + '/menu' } }" )
     img.Menu-image(src="~assets/images/Menu/tesla.png" alt="Tesla")
     span.Menu-title Tesla
-  span.Menu-float.Cursor-frame--menu
+  span.Menu-float.Cursor-frame--menu(ref="float")
     a.Menu-back.Cursor-frame--menu(@click="toggleMenu")
       .Menu-cross.Cursor-frame--menu
-  nuxt-link.Menu-link(:to="{ path: '/projects/buddy-buddy', params: { from: $route.name + '/menu' } }")
+  span.Menu-link(ref="buddybuddy" v-on:click="clickProject($event)" data-range="2")
+    nuxt-link.Menu-button(:to="{ name: 'projects-buddy-buddy', params: { from: $route.name + '/menu' } }" )
     img.Menu-image(src="~assets/images/Menu/buddy-buddy.png" alt="Buddy Buddy")
     span.Menu-title Buddy Buddy
-  span.Menu-link.Menu-link--forbidden
+  span.Menu-link.Menu-link--forbidden(ref="personal" data-range="4")
     img.Menu-image(src="~assets/images/Menu/personal.png" alt="Personal")
     Lock.Menu-lock
     span.Menu-title Coming soon
@@ -35,6 +38,27 @@ export default {
       setTimeout(() => {
         this.$el.classList.remove('is-active')
         this.$el.classList.remove('is-locked')
+      }, 1000)
+    },
+    clickProject: function (event) {
+      let target = event.target
+      while (!target.classList.contains('Menu-link')) {
+        target = target.parentNode
+      }
+      if (this.$refs.pocketcare !== target) this.$refs.pocketcare.classList.add('is-hidden')
+      if (this.$refs.tesla !== target) this.$refs.tesla.classList.add('is-hidden')
+      if (this.$refs.buddybuddy !== target) this.$refs.buddybuddy.classList.add('is-hidden')
+      if (this.$refs.personal !== target) this.$refs.personal.classList.add('is-hidden')
+      target.classList.add('is-active')
+      this.$refs.float.classList.add('is-hidden')
+      document.querySelector('.Carousel-container').classList.add('Carousel-container--case')
+      document.body.style.pointerEvents = 'none'
+      setTimeout(() => {
+        this.$el.classList.add('is-disappearing')
+        document.body.style.overflow = 'auto'
+        setTimeout(() => {
+          target.querySelector('.Menu-button').click()
+        }, 1500)
       }, 1000)
     }
   }
@@ -138,12 +162,16 @@ export default {
     }
   }
 
+  &.is-disappearing {
+    opacity: 0 !important;
+  }
+
   &-link {
     position: relative;
     flex: 1 0 20%;
     border-top: .1rem solid $dark;
     border-bottom: .1rem solid $dark;
-    transition: flex $easing-duration;
+    transition: flex $easing-duration, border-color $easing-duration;
     overflow: hidden;
 
     &:hover {
@@ -152,6 +180,15 @@ export default {
       #{$rootMenu}-image {
         filter: none;
       }
+    }
+
+    &.is-hidden {
+      flex: 0 0 0;
+      border-color: rgba($dark, 0);
+    }
+
+    &.is-active {
+      border-color: rgba($dark, 0);
     }
 
     &--forbidden {
@@ -182,10 +219,17 @@ export default {
     width: auto;
     height: 12.5vh;
     opacity: 0;
+    pointer-events: none;
   }
 
   &-float {
     position: relative;
+    z-index: 1;
+    transition: transform $easing-duration;
+
+    &.is-hidden {
+      transform: translateX(50%);
+    }
   }
 
   &-back {
@@ -280,6 +324,7 @@ export default {
     opacity: 0;
     transition: all $easing-duration;
     will-change: opacity;
+    pointer-events: none;
   }
 
   &-image {

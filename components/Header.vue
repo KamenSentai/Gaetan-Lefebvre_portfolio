@@ -141,12 +141,19 @@ export default {
             _menu.classList.add('is-loaded')
 
             const _backMenu = _menu.querySelector('.Menu-back')
+            const _linksMenu = Array.from(_menu.querySelectorAll('.Menu-link'))
             const _carousel = this.$el.querySelector('.Carousel')
             const _containerCarousel = _carousel.querySelector('.Carousel-container')
             const _barsCarousel = Array.from(_carousel.querySelectorAll('.Carousel-bar'))
             let _containerOffset = _containerCarousel.offsetTop
 
-            const turnMenu = () => {
+            const turnMenu = event => {
+              if (event.target !== _backMenu && event.target.dataset.range) {
+                this.range = event.target.dataset.range
+                setTimeout(() => {
+                  for (const _barCarousel of _barsCarousel) _barCarousel.style.display = 'none'
+                }, 2500)
+              }
               setTimeout(() => {
                 for (const _barCarousel of _barsCarousel) {
                   _barCarousel.classList.remove('is-hidden')
@@ -164,6 +171,7 @@ export default {
             }
 
             _backMenu.addEventListener('click', turnMenu)
+            for (const _linkMenu of _linksMenu) _linkMenu.addEventListener('click', turnMenu)
           }, 1250)
         }, 250)
         document.body.style.overflow = 'hidden'
