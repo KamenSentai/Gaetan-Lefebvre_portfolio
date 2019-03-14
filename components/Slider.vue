@@ -63,47 +63,49 @@ export default {
     turnSlider(event) {
       event.preventDefault()
 
-      if (!this.isClicked && this.elements.length > 0) {
+      if (!this.isClicked) {
         this.isClicked = true
         this.start = new Date()
         const mod = this.count % this.total
 
         for (let i = 0 ; i < this.total ; i++) {
-          if (i === mod) {
-            this.elements[i].style.zIndex = '0'
-            this.elements[i].style.opacity = '0'
+          if (this.elements[i]) {
+            if (i === mod) {
+              this.elements[i].style.zIndex = '0'
+              this.elements[i].style.opacity = '0'
 
-            setTimeout(() => {
+              setTimeout(() => {
+                this.elements[i].style.transform = `
+                  translateX(
+                    calc(
+                      ${i > mod ? - mod - 1 : this.total - mod - 1} * (100% + ${this.margins}px)
+                    )
+                  )
+                  ${this.mockup ? 'scale(.75)' : ''}
+                  `
+                setTimeout(() => {
+                  this.elements[i].style.opacity = '1'
+                  this.isClicked = false
+                }, this.duration / 2)
+              }, this.duration)
+            } else {
+              this.elements[i].style.zIndex = '10'
               this.elements[i].style.transform = `
                 translateX(
                   calc(
                     ${i > mod ? - mod - 1 : this.total - mod - 1} * (100% + ${this.margins}px)
                   )
                 )
-                ${this.mockup ? 'scale(.75)' : ''}
-                `
-              setTimeout(() => {
-                this.elements[i].style.opacity = '1'
-                this.isClicked = false
-              }, this.duration / 2)
-            }, this.duration)
-          } else {
-            this.elements[i].style.zIndex = '10'
-            this.elements[i].style.transform = `
-              translateX(
-                calc(
-                  ${i > mod ? - mod - 1 : this.total - mod - 1} * (100% + ${this.margins}px)
-                )
-              )
-              ${this.mockup && i !== (this.count + 1) % this.total ? 'scale(.75)' : ''}
-            `
+                ${this.mockup && i !== (this.count + 1) % this.total ? 'scale(.75)' : ''}
+              `
+            }
           }
         }
 
         this.count++
 
         for (let i = 0 ; i < this.total ; i++) {
-          if (i === this.count % this.total) {
+          if (i === this.count % this.total && this.elements[i]) {
             this.elements[i].style.zIndex = '0'
             break
           }

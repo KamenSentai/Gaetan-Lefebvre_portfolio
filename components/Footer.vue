@@ -1,10 +1,10 @@
 <template lang="pug">
 footer.Footer
-  .Footer-container(ref="container")
-    nuxt-link.Footer-navigation(:to="{ name: 'projects-' + to, params: { from: $route.name } }" v-bind:title="title")
-      img.Footer-image(:src="require(`../assets/images/Menu/${to}.png`)" v-bind:alt="title")
-      span.Footer-title {{ title }}
-      .Footer-link.Push.Push--light.Push--right
+  .Footer-container.Cursor-frame--text(ref="container")
+    nuxt-link.Footer-navigation.Cursor-frame--text(:to="{ name: 'projects-' + to, params: { from: $route.name } }" v-bind:title="title")
+      img.Footer-image.Cursor-frame--text(:src="require(`../assets/images/Menu/${to}.png`)" v-bind:alt="title")
+      span.Footer-title.Cursor-frame--text {{ title }}
+      .Footer-link.Push.Push--light.Push--right.Cursor-frame--text
         .Footer-arrow.Push-arrow
         .Footer-arrow.Push-arrow
 </template>
