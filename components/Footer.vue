@@ -1,6 +1,6 @@
 <template lang="pug">
 footer.Footer
-  .Footer-container.Cursor-frame--text(ref="container")
+  .Footer-container(ref="container")
     nuxt-link.Footer-navigation.Cursor-frame--text(:to="{ name: 'projects-' + to, params: { from: $route.name } }" v-bind:title="title")
       img.Footer-image.Cursor-frame--text(:src="require(`../assets/images/Menu/${to}.png`)" v-bind:alt="title")
       span.Footer-title.Cursor-frame--text {{ title }}
@@ -11,42 +11,7 @@ export default {
   props: [
     'to',
     'title'
-  ],
-  mounted() {
-    const _footerContainer = this.$refs.container
-    let isEntered = false
-
-    const whichTransitionEvent = () => {
-      let t
-      const el = document.createElement('fakeelement')
-      const transitions = {
-        'transition':'transitionend',
-        'OTransition':'oTransitionEnd',
-        'MozTransition':'transitionend',
-        'WebkitTransition':'webkitTransitionEnd'
-      }
-
-      for (t in transitions) if (el.style[t] !== undefined) return transitions[t]
-    }
-
-    _footerContainer.addEventListener('mouseover', () => {
-      isEntered = true
-      const transitionEvent = whichTransitionEvent()
-        transitionEvent && _footerContainer.addEventListener(transitionEvent, () => {
-        if (isEntered) {
-          window.scroll({
-            top : document.documentElement.scrollHeight,
-            left : 0,
-            behavior : 'smooth'
-          })
-        }
-      })
-    })
-
-    _footerContainer.addEventListener('mouseleave', () => {
-      isEntered = false
-    })
-  }
+  ]
 }
 </script>
 
@@ -58,7 +23,6 @@ export default {
 .Footer {
   $rootFooter: &;
   $height-size: 25rem;
-  $line-size: $margin-b;
   $link-size: 4.4rem;
   $scale-size: 5rem;
 
@@ -67,42 +31,26 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: $line-size;
   background-color: $black;
   border-bottom: .1rem solid $dark;
   user-select: none;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    height: $line-size;
-    transition: all $easing-duration;
-  }
-
-  &::before {
-    left: 0;
-    width: 100%;
-    background-color: $white;
-  }
-
-  &::after {
-    left: 50%;
-    width: .1rem;
-    background-color: $grey;
-  }
 
   &-container {
     display: flex;
     justify-content: center;
     width: 100%;
     height: $height-size;
+    background-color: $black;
     overflow: hidden;
     transition: all $easing-duration;
 
     &:hover {
+      margin-top: - $scale-size;
       height: $height-size + $scale-size;
+    }
+
+    &.is-active {
+      background-color: $black;
     }
   }
 
