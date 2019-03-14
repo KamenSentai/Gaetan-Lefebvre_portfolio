@@ -1,7 +1,7 @@
 <template lang="pug">
 header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--${shape || data.shapes[range]}`]")
   .Header-topbar(v-bind:class="isNavigating ? 'is-toggled' : ''")
-    .Header-navigation(v-bind:class="isNavigating ? 'is-toggled' : ''")
+    .Header-navigation(v-bind:class="isNavigating ? 'is-toggled' : ''" ref="navigation")
       .Header-subnav
         .Header-tree
           span.Header-branch(v-bind:class="$nuxt.$route.path === '/' ? `is-active--${color || data.colors[range]}` : ''")
@@ -112,12 +112,12 @@ export default {
         if (this.isNavigating) {
           document.body.style.overflow = 'hidden'
           document.querySelector('.Mouse').dataset.forced = 'white'
-          this.$el.querySelector('.Header-navigation').style.zIndex = '1000'
+          this.$refs.navigation.style.zIndex = '1000'
         } else {
           document.body.style.overflow = 'auto'
           document.querySelector('.Mouse').dataset.forced = 'none'
           setTimeout(() => {
-            this.$el.querySelector('.Header-navigation').style.zIndex = '0'
+            this.$refs.navigation.style.zIndex = '0'
           }, 2000)
         }
 

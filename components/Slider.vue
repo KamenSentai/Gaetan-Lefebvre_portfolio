@@ -7,12 +7,12 @@
       .Push-arrow
   .Slider-content(v-if="mockup" @touchstart="touchStart" @touchmove="touchMove")
     img.Slider-mockup(:src="require(`../assets/images/${folder}/${mockup}.png`)" draggable="false")
-    .Slider-images(ref="images")
-      img.Slider-image.Shadow--image(v-for="image in images" :src="require(`../assets/images/${folder}/${image}.png`)")
+    .Slider-images
+      img.Slider-image.Shadow--image(v-for="image in images" :src="require(`../assets/images/${folder}/${image}.png`)" ref="images")
   .Slider-button.Slider-button--hidden(v-if="mockup")
     .Push
-  .Slider-images(v-else @touchstart="touchStart" @touchmove="touchMove" ref="images")
-    img.Slider-image.Shadow(v-for="image in images" :src="require(`../assets/images/${folder}/${image}.png`)")
+  .Slider-images(v-else @touchstart="touchStart" @touchmove="touchMove")
+    img.Slider-image.Shadow(v-for="image in images" :src="require(`../assets/images/${folder}/${image}.png`)" ref="images")
 </template>
 
 <script>
@@ -112,8 +112,7 @@ export default {
     }
   },
   mounted() {
-    const _imagesSlider = this.$refs.images
-    const _images = Array.from(_imagesSlider.querySelectorAll('.Slider-image'))
+    const _images = this.$refs.images
     const _imagesStyle = _images[0].currentStyle || window.getComputedStyle(_images[0])
 
     this.elements = _images

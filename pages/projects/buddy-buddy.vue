@@ -263,7 +263,6 @@ export default {
     enter(el, done) {
       document.body.style.pointerEvents = 'none'
 
-      console.log(this.$route)
       if (!this.$route.params.from) {
         const _labelCarousel = el.querySelector('.Carousel-label')
         TweenLite.fromTo('.Carousel-title', 1, { opacity: 0 }, { opacity: 1, delay: 1.5, ease: Power2.easeInOut})

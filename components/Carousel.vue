@@ -88,9 +88,7 @@
         svg.Carousel-step(:class="range === 3 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
           path(d="M38.8,15.8l-7.2,21.9H8.4L1.2,15.8L20,2.2L38.8,15.8z")
   .Carousel-bars
-    .Carousel-bar(v-bind:class="isMenu ? 'is-hidden': ''")
-    .Carousel-bar(v-bind:class="isMenu ? 'is-hidden': ''")
-    .Carousel-bar(v-bind:class="isMenu ? 'is-hidden': ''")
+    .Carousel-bar(v-for="n in 3" v-bind:class="isMenu ? 'is-hidden': ''" ref="bars")
 </template>
 
 <script>
@@ -207,7 +205,7 @@ export default {
       }, 500)
     } else {
       const _containerCarousel = this.$refs.container
-      const _barsCarousel = Array.from(this.$el.querySelectorAll('.Carousel-bar'))
+      const _barsCarousel = this.$refs.bars
       let _containerOffset = _containerCarousel.offsetTop
 
       window.addEventListener('resize', () => { _containerOffset = _containerCarousel.offsetTop })
