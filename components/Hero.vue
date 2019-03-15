@@ -26,13 +26,14 @@
         draggable="false"
       )
     .Hero-shapes
-      img.Hero-shape.Hero-shape--slide(
-        v-for="page in data[type].pages"
-        v-bind:class="checkIndex(page)"
-        :src="require(`../assets/images/About/${page.shape}.png`)"
-        alt=""
-        draggable="false"
-      )
+      div(v-for="page in data[type].pages")
+        Glitch.Hero-shape.Hero-shape--slide(
+          v-bind:class="checkIndex(page)"
+          path="assets/images/About/"
+          :image="page.shape"
+          :alt="page.shape"
+          isAutomatic="true"
+        )
     .Hero-backs
       img.Hero-back.Hero-back--slide(
         v-for="page in data[type].pages"
@@ -81,6 +82,7 @@
 
 <script>
 import Icon from './Icon'
+import Glitch from './Glitch'
 
 export default {
   props: [
@@ -89,7 +91,8 @@ export default {
     'range'
   ],
   components: {
-    Icon
+    Icon,
+    Glitch
   },
   methods: {
     checkIndex(page) {

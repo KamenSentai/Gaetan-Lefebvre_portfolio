@@ -20,7 +20,12 @@
       nuxt-link.Carousel-item(v-if="!slide || parseInt(slide) === 0" v-bind:class="[`Carousel-item--${modulo(range, 4)}`, !slide ? 'Cursor-frame--text' : '']" :to="{ name: 'projects-pocketcare', params: { from: $route.name } }" draggable="false")
         .Carousel-image
           img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/pocketcare_back.png" alt="Pocketcare" draggable="false")
-          img.Carousel-neon(src="../assets/images/Projects/pocketcare.png" alt="Pocketcare" draggable="false")
+          Glitch.Carousel-neon(
+            path="assets/images/Projects/"
+            image="pocketcare"
+            alt="Pocketcare"
+            isAutomatic="true"
+          )
           img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/pocketcare_front.png" alt="Pocketcare" draggable="false")
           img.Carousel-extra.is-hidden.Absolute.Absolute--p1(src="../assets/images/Projects/pocketcare_extra.png" alt="Pocketcare" draggable="false")
       .Carousel-label(v-if="!slide || parseInt(slide) === 0" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
@@ -35,7 +40,12 @@
       nuxt-link.Carousel-item(v-if="!slide || parseInt(slide) === 1" v-bind:class="[`Carousel-item--${modulo(range - 1, 4)}`, !slide ? 'Cursor-frame--text' : '']" :to="{ name: 'projects-tesla', params: { from: $route.name } }")
         .Carousel-image
           img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/tesla_back.png" alt="Tesla")
-          img.Carousel-neon(src="../assets/images/Projects/tesla.png" alt="Tesla")
+          Glitch.Carousel-neon(
+            path="assets/images/Projects/"
+            image="tesla"
+            alt="Tesla"
+            isAutomatic="true"
+          )
           img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/tesla_front.png" alt="Tesla")
           img.Carousel-extra.is-hidden.Absolute.Absolute--p2(src="../assets/images/Projects/tesla_extra.png" alt="Tesla")
       .Carousel-label(v-if="!slide || parseInt(slide) === 1" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
@@ -50,7 +60,12 @@
       nuxt-link.Carousel-item(v-if="!slide || parseInt(slide) === 2" v-bind:class="[`Carousel-item--${modulo(range - 2, 4)}`, !slide ? 'Cursor-frame--text' : '']" :to="{ name: 'projects-buddy-buddy', params: { from: $route.name } }")
         .Carousel-image
           img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/buddy-buddy_back.png" alt="Buddy Buddy")
-          img.Carousel-neon(src="../assets/images/Projects/buddy-buddy.png" alt="Buddy Buddy")
+          Glitch.Carousel-neon(
+            path="assets/images/Projects/"
+            image="buddy-buddy"
+            alt="Buddy Buddy"
+            isAutomatic="true"
+          )
           img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/buddy-buddy_front.png" alt="Buddy Buddy")
           img.Carousel-extra.is-hidden.Absolute.Absolute--p3(src="../assets/images/Projects/buddy-buddy_extra.png" alt="Buddy Buddy")
       .Carousel-label(v-if="!slide || parseInt(slide) === 2" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
@@ -65,7 +80,12 @@
       span.Carousel-item.Carousel-item--forbidden(v-if="!slide || parseInt(slide) === 3" v-bind:class="`Carousel-item--${modulo(range - 3, 4)}`")
         .Carousel-image
           img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/personal_back.png" alt="Personal")
-          img.Carousel-neon(src="../assets/images/Projects/personal.png" alt="Personal")
+          Glitch.Carousel-neon(
+            path="assets/images/Projects/"
+            image="personal"
+            alt="Personal"
+            isAutomatic="true"
+          )
           img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/personal_front.png" alt="Personal")
           Lock.Carousel-lock(v-bind:class="!isLocked ? 'is-hidden' : ''")
       .Carousel-label(v-if="!slide || parseInt(slide) === 3" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
@@ -92,6 +112,7 @@
 </template>
 
 <script>
+import Glitch from './Glitch'
 import Lock from './Lock'
 
 let kute
@@ -116,6 +137,7 @@ export default {
     'slide'
   ],
   components: {
+    Glitch,
     Lock
   },
   methods: {
