@@ -16,7 +16,11 @@ module.exports = {
   /*
   ** Customize the progress bar color
   */
-  loading: { color: '#141414' },
+  loading: {
+    name: 'circle',
+    color: '#141414',
+    background: 'white'
+  },
   /*
   ** Plugins
   */
