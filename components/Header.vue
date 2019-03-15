@@ -19,8 +19,8 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
             a.Cursor-frame--increase(href="#") Dribbble
             a.Cursor-frame--increase(href="#") Instagram
     .Header-mainnav(v-bind:class="[isNavigating ? 'is-toggled' : '', isMenu ? 'is-hidden': '']" :data-navigating="isNavigating ? 'true' : 'false'")
-      nuxt-link.Header-logo(v-bind:class="isNavigating ? 'is-toggled' : ''" :to="{ name: 'index', params: sendData() }")
-        Logo.Header-logo(:color="color || data.colors[range]")
+      nuxt-link.Header-logo(v-bind:class="isNavigating ? 'is-toggled' : 'is-untoggled'" :to="{ name: 'index', params: sendData() }")
+        Logo(:color="color || data.colors[range]")
       ul.Header-navbar
         li.Header-item.Cursor-frame--increase(:class="hasProject ? '': 'is-hidden'")
           h1(v-if="hasProject")
@@ -111,11 +111,11 @@ export default {
 
         if (this.isNavigating) {
           document.body.style.overflow = 'hidden'
-          this.$refs.navigation.style.zIndex = '1000'
+          if (this.$refs.navigation) this.$refs.navigation.style.zIndex = '1000'
         } else {
           document.body.style.overflow = 'auto'
           setTimeout(() => {
-            this.$refs.navigation.style.zIndex = '0'
+            if (this.$refs.navigation) this.$refs.navigation.style.zIndex = '0'
           }, 2000)
         }
 
@@ -397,12 +397,11 @@ export default {
     opacity: 1;
     transform-origin: 50% 50%;
     transition: opacity $easing-duration, transform $easing-duration;
-    transition-delay: 1s;
     will-change: opacity, transform;
 
     &:hover {
       @media (min-width: #{grid-media(6)}) {
-        transform: rotateZ(-90deg);
+        transform: rotateZ(-180deg);
         transition-delay: 0s;
       }
     }
@@ -411,8 +410,11 @@ export default {
       &.is-toggled {
         opacity: 0;
         transform: translateY(-#{$margin-s});
-        transition-delay: 0s;
         pointer-events: none;
+      }
+
+      &.is-untoggled {
+        transition-delay: 1s;
       }
     }
   }

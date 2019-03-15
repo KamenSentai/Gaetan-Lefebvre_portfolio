@@ -326,7 +326,9 @@ export default {
           done()
         }})
       } else if (this.$route.params.from.includes('projects-')) {
+        TweenLite.fromTo('.Carousel-neon', 1, { scale: 0 }, { scale: 1, delay: 1, ease: Power2.easeInOut })
         TweenLite.fromTo('.Carousel-button', 1, { scale: 0 }, { scale: 1, delay: 1.5, ease: Power2.easeInOut })
+        TweenLite.fromTo('.Carousel-layer', 1, { opacity: 0 }, { opacity: 1, delay: 2, ease: Power2.easeInOut })
         document.body.style.pointerEvents = 'auto'
         done()
       } else {
@@ -350,41 +352,29 @@ export default {
         TweenLite.to('.Carousel-button', 1, { scale: 0, delay: .5, ease: Power2.easeInOut })
         TweenLite.to('.Carousel-container', 1, { scale: 0, y: - window.innerHeight / 2, delay: 1.5, ease: Power2.easeInOut, onComplete: ()  => {
           document.body.style.pointerEvents = 'auto'
-          document.body.style.overflow = 'auto'
           done()
         }})
       } else if (this.$route.params.from) {
         document.body.style.overflow = 'hidden'
-        const _bodyTop = document.body.getBoundingClientRect().top
         const _logo = el.querySelector('.Logo')
-        const _itemCarousel = el.querySelector('.Carousel-item')
-        const _itemWidth = _itemCarousel.getBoundingClientRect().width
         const _footer = el.querySelector('.Footer')
         const _footerTop = _footer.getBoundingClientRect().top
-        const _imageFooter = _footer.querySelector('.Footer-image')
-        const _imageWidth = _imageFooter.getBoundingClientRect().width
-
-        const _topbarHeader = el.querySelector('.Header-topbar')
-        const _containerCarousel = el.querySelector('.Carousel-container')
-        const translateY = window.innerHeight / 2 - _containerCarousel.offsetTop
 
         _logo.dataset.color = _footer.dataset.color
         _footer.classList.add('is-active')
 
         TweenLite.to('.Page', 1, { opacity: 0, delay: 0, ease: Power2.easeInOut })
-        TweenLite.to('.Footer-container', 1, { height: window.innerHeight, y: - _footerTop, delay: 0, ease: Power2.easeInOut })
-        setTimeout(() => {
-          _imageFooter.style.transform = `scale(${_itemWidth / _imageWidth}) translateY(-${translateY - 10}px)`
-        }, 1500)
-
-        setTimeout(() => {
-          document.body.style.pointerEvents = 'auto'
-          document.body.style.overflow = 'auto'
-          done()
-        }, 4000)
+        TweenLite.to('.Footer-container', .5, { height: window.innerHeight, y: - _footerTop, delay: 0, ease: Power2.easeInOut })
+        TweenLite.to('.Footer-image', 1, { scale: 2, opacity: 0, delay: 1, ease: Power2.easeInOut, onComplete: () => {
+          setTimeout(() => {
+            document.body.style.pointerEvents = 'auto'
+            document.body.style.overflow = 'auto'
+            done()
+          }, 2000)
+        }})
       } else {
-        document.body.style.overflow = 'auto'
-          done()
+        document.body.style.pointerEvents = 'auto'
+        done()
       }
     }
   }

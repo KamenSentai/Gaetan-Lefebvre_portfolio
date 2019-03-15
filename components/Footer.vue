@@ -76,10 +76,10 @@ export default {
       content: '';
       position: absolute;
       top: 0;
-      left: 50%;
-      width: .1rem;
+      left: calc(50% - .1rem);
+      width: .2rem;
       height: 100vh;
-      background-color: $dark;
+      background-color: $darker;
       transform-origin: 50% 0;
       transform: scale(0);
       transition: transform $easing-duration;
