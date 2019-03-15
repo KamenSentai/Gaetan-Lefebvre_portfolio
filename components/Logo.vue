@@ -1,5 +1,5 @@
 <template lang="pug">
-svg.Logo.Cursor-frame--reduced(v-bind:class="`Logo--${color}`" width="42px" height="35px" viewBox="0 0 42 35")
+svg.Logo.Cursor-frame--reduced(:data-color="color" width="42px" height="35px" viewBox="0 0 42 35")
   g.Logo-turnable.Cursor-frame--reduced
     polygon.Logo-hidden.Cursor-frame--reduced(fill="none" points="14,22.5 25,22.5 25,33.5 31,33.5 31,16.5 14,16.5")
     polygon.Logo-lastname.Cursor-frame--reduced(fill="#FFFFFF" points="25,22.5 25,5.5 31,5.5 31,16.5 42,16.5 42,22.5")
@@ -27,13 +27,13 @@ export default {
     }
   }
 
-  &[data-color="white"] {
+  &[data-theme="white"] {
     #{$rootLogo}-firstname {
       fill: $white;
     }
   }
 
-  &[data-color="black"] {
+  &[data-theme="black"] {
     #{$rootLogo}-firstname {
       fill: $black;
     }
@@ -49,19 +49,13 @@ export default {
     transition: fill $easing-duration;
   }
 
+  &-lastname {
+    transition: fill $easing-duration;
+  }
+
   @each $key, $value in $colors {
-    &:hover {
-      &--#{$key} &-firstname {
-        fill: $value;
-      }
-    }
-
-    &--#{$key} &-lastname {
+    &[data-color="#{$key}"] &-lastname {
       fill: $value;
-    }
-
-    &-lastname {
-      transition: fill $easing-duration;
     }
   }
 }

@@ -1,5 +1,5 @@
 <template lang="pug">
-footer.Footer
+footer.Footer(:data-color="color")
   .Footer-container(ref="container")
     nuxt-link.Footer-navigation.Cursor-frame--text(:to="{ name: 'projects-' + to, params: { from: $route.name } }" v-bind:title="title")
       img.Footer-image.Cursor-frame--text(:src="require(`../assets/images/Menu/${to}.png`)" v-bind:alt="title")
@@ -10,7 +10,8 @@ footer.Footer
 export default {
   props: [
     'to',
-    'title'
+    'title',
+    'color'
   ]
 }
 </script>
@@ -23,7 +24,6 @@ export default {
 .Footer {
   $rootFooter: &;
   $height-size: 25rem;
-  $link-size: 4.4rem;
   $scale-size: 5rem;
 
   position: relative;
@@ -35,7 +35,30 @@ export default {
   border-bottom: .1rem solid $dark;
   user-select: none;
 
+  &.is-active {
+    pointer-events: none;
+
+    #{$rootFooter}-container {
+      &::before {
+        transform: scale(1);
+      }
+    }
+
+    #{$rootFooter}-navigation {
+        #{$rootFooter}-image {
+          opacity: 1;
+          filter: none;
+      }
+    }
+
+    #{$rootFooter}-title {
+      opacity: .0;
+      transform: translate(-50%, calc(-50% + #{$margin-t}));
+    }
+  }
+
   &-container {
+    position: relative;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -49,8 +72,18 @@ export default {
       height: $height-size + $scale-size;
     }
 
-    &.is-active {
-      background-color: $black;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: .1rem;
+      height: 100vh;
+      background-color: $dark;
+      transform-origin: 50% 0;
+      transform: scale(0);
+      transition: transform $easing-duration;
+      transition-delay: 2s;
     }
   }
 
@@ -61,21 +94,14 @@ export default {
     align-items: center;
     width: grid(10);
     height: 100%;
+    transition: font-size $easing-duration;
 
     @include grid-scale(10);
 
     &:hover {
-      > * {
-        opacity: 1;
-      }
-
       #{$rootFooter}-image {
-        filter: none;
-      }
-
-      #{$rootFooter}-arrow {
         opacity: 1;
-        transform: translateX(0);
+        filter: none;
       }
     }
   }
@@ -84,7 +110,7 @@ export default {
     position: absolute;
     top: 50%;
     left: 50%;
-    font-size: 7rem;
+    font-size: 6rem;
     font-weight: 700;
     letter-spacing: .125em;
     text-align: center;
@@ -92,8 +118,7 @@ export default {
     white-space: nowrap;
     opacity: .4;
     transform: translate(-50%, -50%);
-    transition: opacity $easing-duration;
-    will-change: opacity;
+    transition: all $easing-duration;
 
     @media (max-width: #{grid-media(10)}) {
       font-size: 6.2rem;

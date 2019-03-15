@@ -87,7 +87,7 @@
           path(d="M37.8,37.8H2.2V2.2h35.4L37.8,37.8L37.8,37.8z")
         svg.Carousel-step(:class="range === 3 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
           path(d="M38.8,15.8l-7.2,21.9H8.4L1.2,15.8L20,2.2L38.8,15.8z")
-  .Carousel-bars
+  .Carousel-bars(v-if="!slide")
     .Carousel-bar(v-for="n in 3" v-bind:class="isMenu ? 'is-hidden': ''" ref="bars")
 </template>
 
@@ -302,7 +302,7 @@ export default {
       }
 
       #{$rootCarousel}-title {
-        color: rgba($white, .8);
+        color: rgba($white, .75);
         bottom: 100%;
         margin-bottom: 0;
         transform: translate(-50%, calc(50% + #{- $margin-b - $margin-m}));

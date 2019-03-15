@@ -156,6 +156,7 @@ div
   Footer(
     to="buddy-buddy"
     title="Buddy Buddy"
+    color="red"
   )
 </template>
 
@@ -248,7 +249,6 @@ export default {
     }
 
     const _body = document.body
-    const _mouse = _body.querySelector('.Mouse')
     const _header = this.$el.querySelector('.Header')
     const _headerMainnav = _header.querySelector('.Header-mainnav')
     const _logo = this.$el.querySelector('.Logo')
@@ -300,8 +300,8 @@ export default {
       if (index !== undefined) color = index % 2 ? 'black' : 'white'
       else color = 'white'
 
-      _headerMainnav.dataset.color = color
-      _logo.dataset.color = color
+      _headerMainnav.dataset.theme = color
+      _logo.dataset.theme = color
     })
 
     window.addEventListener('mousemove', event => { mouse.y = event.clientY })
@@ -314,15 +314,23 @@ export default {
 
       if (!this.$route.params.from) {
         const _labelCarousel = el.querySelector('.Carousel-label')
-        TweenLite.fromTo('.Carousel-title', 1, { opacity: 0 }, { opacity: 1, delay: 1.5, ease: Power2.easeInOut})
-        TweenLite.fromTo('.Carousel-subtitle', 1, { opacity: 0 }, { opacity: 1, delay: 1.5, ease: Power2.easeInOut})
-        TweenLite.fromTo('.Carousel-container', 1, { scale: 0, y: - window.innerHeight / 2, delay: 0 }, { scale: 1, y: 0, delay: 0, ease: Power2.easeInOut})
+        TweenLite.fromTo('.Carousel-title', 1, { opacity: 0 }, { opacity: 1, delay: 1.5, ease: Power2.easeInOut })
+        TweenLite.fromTo('.Carousel-subtitle', 1, { opacity: 0 }, { opacity: 1, delay: 1.5, ease: Power2.easeInOut })
+        TweenLite.fromTo('.Carousel-container', 1, { scale: 0, y: - window.innerHeight / 2, delay: 0 }, { scale: 1, y: 0, delay: 0, ease: Power2.easeInOut })
         TweenLite.fromTo('.Carousel-button', 1, { scale: 0, delay: 1 }, { scale: 1, delay: 1, ease: Power2.easeInOut })
         TweenLite.fromTo('.Carousel-image', 1, { opacity: 0, delay: 1 }, { opacity: 1, delay: 1, ease: Power2.easeInOut })
-        TweenLite.fromTo('.Page', 1, { opacity: 0, y: 30 }, { opacity: 1, y: 0, delay: 1.5, ease: Power2.easeInOut, onComplete: () => {
+        TweenLite.fromTo('.Page', 1, { opacity: 0, y: 30 }, { opacity: 1, y: 0, delay: 1.5, ease: Power2.easeInOut })
+        TweenLite.fromTo('.Footer', 1, { opacity: 0, y: 30 }, { opacity: 1, y: 0, delay: 1.5, ease: Power2.easeInOut })
+        TweenLite.fromTo('.Header-navbar', 1, { opacity: 0 }, { opacity: 1, delay: 2, ease: Power2.easeInOut, onComplete: () => {
           document.body.style.pointerEvents = 'auto'
           done()
         }})
+      } else if (this.$route.params.from.includes('projects-')) {
+
+        setTimeout(() => {
+          document.body.style.pointerEvents = 'auto'
+          done()
+        }, 50000)
       } else {
         document.body.style.pointerEvents = 'auto'
         done()
@@ -330,7 +338,9 @@ export default {
     },
     leave(el, done) {
       document.body.style.pointerEvents = 'none'
-      el.querySelector('.Logo').dataset.color = 'white'
+      el.querySelector('.Logo').dataset.theme = 'white'
+      el.querySelector('.Header-navigation').dataset.theme = 'white'
+      el.querySelector('.Header-mainnav').dataset.theme = 'white'
 
       if (!this.$route.name.includes('projects-')) {
         document.body.style.overflow = 'hidden'
@@ -341,14 +351,31 @@ export default {
         TweenLite.to('.Carousel-image', 1, { opacity: 0, delay: .5, ease: Power2.easeInOut })
         TweenLite.to('.Carousel-button', 1, { scale: 0, delay: .5, ease: Power2.easeInOut })
         TweenLite.to('.Carousel-container', 1, { scale: 0, y: - window.innerHeight / 2, delay: 1.5, ease: Power2.easeInOut, onComplete: ()  => {
-          document.querySelector('.Mouse').dataset.color = 'white'
           document.body.style.pointerEvents = 'auto'
           document.body.style.overflow = 'auto'
           done()
         }})
       } else {
-        document.body.style.pointerEvents = 'auto'
-        done()
+        document.body.style.overflow = 'hidden'
+        const _bodyTop = document.body.getBoundingClientRect().top
+        const _logo = el.querySelector('.Logo')
+        const _itemCarousel = el.querySelector('.Carousel-item')
+        const _itemWidth = _itemCarousel.getBoundingClientRect().width
+        const _footer = el.querySelector('.Footer')
+        const _footerTop = _footer.getBoundingClientRect().top
+        const _imageFooter = _footer.querySelector('.Footer-image')
+        const _imageWidth = _imageFooter.getBoundingClientRect().width
+
+        _logo.dataset.color = _footer.dataset.color
+        _footer.classList.add('is-active')
+        TweenLite.to('.Footer-container', 1, { height: window.innerHeight, y: - _footerTop, delay: 0, ease: Power2.easeInOut })
+        TweenLite.to('.Footer-image', 1, { scale: _itemWidth / _imageWidth, delay: 2, ease: Power2.easeInOut })
+
+        setTimeout(() => {
+          document.body.style.pointerEvents = 'auto'
+          document.body.style.overflow = 'auto'
+          done()
+        }, 4000)
       }
     }
   }

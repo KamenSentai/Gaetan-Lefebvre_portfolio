@@ -52,7 +52,7 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
       v-else-if="jumbotron === 'error'"
       :shape="shape"
     )
-  Menu
+  Menu(v-if="hasProject")
 </template>
 
 <script>
@@ -336,6 +336,7 @@ export default {
     }
   }
 
+  z-index: 500;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -544,7 +545,7 @@ export default {
     }
 
     &[data-navigating="false"] {
-      &[data-color="white"] {
+      &[data-theme="white"] {
           color: $white;
 
         #{$rootHeader}-stripe {
@@ -552,7 +553,7 @@ export default {
         }
       }
 
-      &[data-color="black"] {
+      &[data-theme="black"] {
         color: $black;
 
         #{$rootHeader}-stripe {
