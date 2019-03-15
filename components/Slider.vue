@@ -75,18 +75,20 @@ export default {
               this.elements[i].style.opacity = '0'
 
               setTimeout(() => {
-                this.elements[i].style.transform = `
-                  translateX(
-                    calc(
-                      ${i > mod ? - mod - 1 : this.total - mod - 1} * (100% + ${this.margins}px)
+                if (this.elements[i]) {
+                  this.elements[i].style.transform = `
+                    translateX(
+                      calc(
+                        ${i > mod ? - mod - 1 : this.total - mod - 1} * (100% + ${this.margins}px)
+                      )
                     )
-                  )
-                  ${this.mockup ? 'scale(.75)' : ''}
-                  `
-                setTimeout(() => {
-                  this.elements[i].style.opacity = '1'
-                  this.isClicked = false
-                }, this.duration / 2)
+                    ${this.mockup ? 'scale(.75)' : ''}
+                    `
+                  setTimeout(() => {
+                    if (this.elements[i]) this.elements[i].style.opacity = '1'
+                    this.isClicked = false
+                  }, this.duration / 2)
+                }
               }, this.duration)
             } else {
               this.elements[i].style.zIndex = '10'
