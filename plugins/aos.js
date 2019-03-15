@@ -23,5 +23,6 @@ export default ({ app }) => {
         for (const _aosElement of _aosElements) _aosElement.dataset.aos = ''
       }, 1500)
     }
+    console.log(to, from)
   })
 }
