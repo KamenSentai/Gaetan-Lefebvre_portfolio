@@ -14,7 +14,8 @@ export default {
     'path',
     'image',
     'alt',
-    'isAutomatic'
+    'isAutomatic',
+    'isPlaying'
   ],
   created() {
     this.src = this.image

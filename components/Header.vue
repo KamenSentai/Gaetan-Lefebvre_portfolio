@@ -41,18 +41,20 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
       :type="type"
       :data="data"
       :range="range"
+      :ref="type === 'about' ? 'scrollable' : ''"
     )
     Carousel.Header-carousel(
       v-if="jumbotron === 'carousel'"
       :isMenu="isMenu"
       :range="parseInt(slide) || range"
       :slide="slide"
+      ref="carousel"
     )
     Error.Header-error(
       v-else-if="jumbotron === 'error'"
       :shape="shape"
     )
-  Menu(v-if="hasProject")
+  Menu(v-if="hasProject" ref="menu")
 </template>
 
 <script>
@@ -129,7 +131,8 @@ export default {
       this.isMenu = true
 
       setTimeout(() => {
-        const _menu = this.$el.querySelector('.Menu')
+        const _menuRef = this.$refs.menu
+        const _menu = _menuRef.$el
         _menu.classList.add('is-locked')
         _menu.classList.add('is-active')
         setTimeout(() => {
@@ -138,10 +141,11 @@ export default {
             _menu.classList.remove('is-locked')
             _menu.classList.add('is-loaded')
 
-            const _backMenu = _menu.querySelector('.Menu-back')
+            const _backMenu = _menuRef.$refs.back
             const _linksMenu = Array.from(_menu.querySelectorAll('.Menu-link'))
-            const _carousel = this.$el.querySelector('.Carousel')
-            const _containerCarousel = _carousel.querySelector('.Carousel-container')
+            const _carouselRef = this.$refs.carousel
+            const _carousel = _carouselRef.$el
+            const _containerCarousel = _carouselRef.$refs.container
             const _barsCarousel = Array.from(_carousel.querySelectorAll('.Carousel-bar'))
             let _containerOffset = _containerCarousel.offsetTop
 
@@ -184,12 +188,13 @@ export default {
     this.route = this.$router.currentRoute.name
   },
   mounted() {
-    const _headerScrollable = this.$el.querySelector('.Header-scrollable')
-    const _headerCarousel = this.$el.querySelector('.Header-carousel')
+    const _headerScrollableRef = this.$refs.scrollable
+    const _headerCarouselRef = this.$refs.carousel
 
-    if (_headerScrollable) {
-      const _heroShape = this.$el.querySelector('.Hero-shape.is-active')
-      const _heroLayers = this.$el.querySelector('.Hero-front.is-active') || this.$el.querySelector('.Hero-back')
+    if (_headerScrollableRef) {
+      const _headerScrollable = _headerScrollableRef.$el
+      const _heroShape = _headerScrollableRef.$refs.shapes[0].$el
+      const _heroLayers = _headerScrollableRef.$refs.fronts[0] || _headerScrollableRef.$refs.backs[0]
       const _shapeStyle = _heroShape.currentStyle || window.getComputedStyle(_heroShape)
       const _layersStyle = _heroLayers.currentStyle || window.getComputedStyle(_heroLayers)
       const _shapeDurationDelay = parseFloat(_shapeStyle.transitionDuration) + parseFloat(_shapeStyle.transitionDelay)
@@ -247,9 +252,10 @@ export default {
       })
     }
 
-    if (_headerCarousel && !this.slide) {
-      const _heroCarouselButtonLeft = _headerCarousel.querySelector('.Carousel-button--left')
-      const _heroCarouselButtonRight = _headerCarousel.querySelector('.Carousel-button--right')
+    if (_headerCarouselRef && !this.slide) {
+      const _headerCarousel = _headerCarouselRef.$el
+      const _heroCarouselButtonLeft = _headerCarouselRef.$refs.leftButton
+      const _heroCarouselButtonRight = _headerCarouselRef.$refs.rightButton
       const _headerCarouselStyle = _headerCarousel.currentStyle || window.getComputedStyle(_headerCarousel)
 
       let initialX = null

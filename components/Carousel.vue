@@ -2,14 +2,14 @@
 .Carousel
   .Carousel-container(v-bind:class="[slide ? 'Carousel-container--case' : '', isMenu ? 'is-hidden': '']" ref="container")
     .Carousel-buttons(v-bind:class="isMenu ? 'is-hidden': ''")
-      svg.Carousel-button.Carousel-button--left.Cursor-frame--reduced(width="40px" height="40px" viewBox="0 0 40 40" @click="turnLeft")
+      svg.Carousel-button.Carousel-button--left.Cursor-frame--reduced(ref="leftButton" width="40px" height="40px" viewBox="0 0 40 40" @click="turnLeft")
         path#Carousel-left-1.Carousel-shape.Carousel-shape--left(:class="index === 1 ? 'is-chosen' : ''" d="M38.8,20c0,5.2-2.1,9.9-5.5,13.3s-8.1,5.5-13.3,5.5c-5.2,0-9.9-2.1-13.3-5.5C3.3,29.9,1.2,25.2,1.2,20 c0-5.2,2.1-9.9,5.5-13.3S14.8,1.2,20,1.2c5.2,0,9.9,2.1,13.3,5.5C36.7,10.1,38.8,14.8,38.8,20z")
         path#Carousel-left-2.Carousel-shape.Carousel-shape--left(:class="index === 2 ? 'is-chosen' : ''" d="M20,1.1l18.8,32.5H1.2L20,1.1z")
         path#Carousel-left-3.Carousel-shape.Carousel-shape--left(:class="index === 3 ? 'is-chosen' : ''" d="M20,1.2L38.8,20l-9.4,9.4L20,38.8L1.2,20L20,1.2z")
         path#Carousel-left-0.Carousel-shape.Carousel-shape--left(:class="index === 0 ? 'is-chosen' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
         path#Carousel-left.Carousel-shape.is-active(ref="left")
         polyline.Carousel-shape.Carousel-shape--arrow.is-active(points="25,22.5 20,17.5 15,22.5")
-      svg.Carousel-button.Carousel-button--right.Cursor-frame--reduced(width="40px" height="40px" viewBox="0 0 40 40" @click="turnRight")
+      svg.Carousel-button.Carousel-button--right.Cursor-frame--reduced(ref="rightButton" width="40px" height="40px" viewBox="0 0 40 40" @click="turnRight")
         path#Carousel-right-3.Carousel-shape.Carousel-shape--right(:class="index === 3 ? 'is-chosen' : ''" d="M38.8,20c0,5.2-2.1,9.9-5.5,13.3s-8.1,5.5-13.3,5.5c-5.2,0-9.9-2.1-13.3-5.5C3.3,29.9,1.2,25.2,1.2,20 c0-5.2,2.1-9.9,5.5-13.3S14.8,1.2,20,1.2c5.2,0,9.9,2.1,13.3,5.5C36.7,10.1,38.8,14.8,38.8,20z")
         path#Carousel-right-0.Carousel-shape.Carousel-shape--right(:class="index === 0 ? 'is-chosen' : ''" d="M20,1.1l18.8,32.5H1.2L20,1.1z")
         path#Carousel-right-1.Carousel-shape.Carousel-shape--right(:class="index === 1 ? 'is-chosen' : ''" d="M20,1.2L38.8,20l-9.4,9.4L20,38.8L1.2,20L20,1.2z")
@@ -24,7 +24,8 @@
             path="assets/images/Projects/"
             image="pocketcare"
             alt="Pocketcare"
-            isAutomatic="true"
+            :isAutomatic="true"
+            :isPlaying="false"
           )
           img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/pocketcare_front.png" alt="Pocketcare" draggable="false")
           img.Carousel-extra.is-hidden.Absolute.Absolute--p1(src="../assets/images/Projects/pocketcare_extra.png" alt="Pocketcare" draggable="false")
@@ -44,7 +45,8 @@
             path="assets/images/Projects/"
             image="tesla"
             alt="Tesla"
-            isAutomatic="true"
+            :isAutomatic="true"
+            :isPlaying="false"
           )
           img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/tesla_front.png" alt="Tesla")
           img.Carousel-extra.is-hidden.Absolute.Absolute--p2(src="../assets/images/Projects/tesla_extra.png" alt="Tesla")
@@ -64,7 +66,8 @@
             path="assets/images/Projects/"
             image="buddy-buddy"
             alt="Buddy Buddy"
-            isAutomatic="true"
+            :isAutomatic="true"
+            :isPlaying="false"
           )
           img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/buddy-buddy_front.png" alt="Buddy Buddy")
           img.Carousel-extra.is-hidden.Absolute.Absolute--p3(src="../assets/images/Projects/buddy-buddy_extra.png" alt="Buddy Buddy")
@@ -84,7 +87,8 @@
             path="assets/images/Projects/"
             image="personal"
             alt="Personal"
-            isAutomatic="true"
+            :isAutomatic="true"
+            :isPlaying="false"
           )
           img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/personal_front.png" alt="Personal")
           Lock.Carousel-lock(v-bind:class="!isLocked ? 'is-hidden' : ''")

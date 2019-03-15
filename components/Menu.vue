@@ -9,7 +9,7 @@
     img.Menu-image(src="~assets/images/Menu/tesla.png" alt="Tesla")
     span.Menu-title Tesla
   span.Menu-float.Cursor-frame--menu(ref="float")
-    a.Menu-back.Cursor-frame--menu(@click="toggleMenu")
+    a.Menu-back.Cursor-frame--menu(ref="back" @click="toggleMenu")
       .Menu-cross.Cursor-frame--menu
   span.Menu-link(ref="buddybuddy" v-on:click="clickProject($event)" data-range="2")
     nuxt-link.Menu-button(:to="{ name: 'projects-buddy-buddy', params: { from: $route.name + '/menu' } }" )
@@ -53,7 +53,8 @@ export default {
         this.$el.classList.add('is-disappearing')
         document.body.style.overflow = 'auto'
         setTimeout(() => {
-          if (target.querySelector('.Menu-button')) target.querySelector('.Menu-button').click()
+          const _buttonMenu = target.querySelector('.Menu-button')
+          if (_buttonMenu) _buttonMenu.click()
         }, 1500)
       }, 1000)
     }

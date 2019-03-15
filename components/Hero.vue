@@ -6,10 +6,12 @@
       alt="Gaëtan Lefebvre"
       draggable="false"
     )
-    img.Hero-shape(
-      :src="require(`../assets/images/Home/${data.shapes[range]}.png`)"
+    Glitch.Hero-shape(
+      path="assets/images/Home/"
+      :image="data.shapes[range]"
       :alt="data.shapes[range]"
-      draggable="false"
+      :isAutomatic="false"
+      :isPlaying="true"
     )
     img.Hero-front(
       src="~assets/images/Home/Gaetan-cropped.png"
@@ -17,13 +19,14 @@
       draggable="false"
     )
   .Hero-portrait.Hero-portrait--pictures(v-if="type === 'about'")
-    .Hero-fronts
-      img.Hero-front.Hero-front--slide(
+    .Hero-backs
+      img.Hero-back.Hero-back--slide(
         v-for="page in data[type].pages"
         v-bind:class="checkIndex(page)"
         :src="require(`../assets/images/About/${page.shape}_back.png`)"
         alt=""
         draggable="false"
+        ref="backs"
       )
     .Hero-shapes
       div(v-for="page in data[type].pages")
@@ -32,15 +35,18 @@
           path="assets/images/About/"
           :image="page.shape"
           :alt="page.shape"
-          isAutomatic="true"
+          :isAutomatic="true"
+          :isPlaying="false"
+          ref="shapes"
         )
-    .Hero-backs
-      img.Hero-back.Hero-back--slide(
+    .Hero-fronts
+      img.Hero-front.Hero-front--slide(
         v-for="page in data[type].pages"
         v-bind:class="checkIndex(page)"
         :src="require(`../assets/images/About/${page.shape}_front.png`)"
         alt=""
         draggable="false"
+        ref="fronts"
       )
     span.Hero-scroll
   aside.Hero-data
