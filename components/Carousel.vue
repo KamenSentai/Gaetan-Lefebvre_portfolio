@@ -24,9 +24,9 @@
           img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/pocketcare_front.png" alt="Pocketcare" draggable="false")
           img.Carousel-extra.is-hidden.Absolute.Absolute--p1(src="../assets/images/Projects/pocketcare_extra.png" alt="Pocketcare" draggable="false")
       .Carousel-label(v-if="!slide || parseInt(slide) === 0" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
-        h1.Carousel-title(v-if="slide") Pocketcare
+        h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title") Pocketcare
         h2.Carousel-title(v-else) Pocketcare
-        span.Carousel-subtitle(ref="subtitle")
+        span.Carousel-subtitle(v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="subtitle")
           span.Text--bold School project
           span.Text--light &nbsp;- 2017
           span.Carousel-additional(v-if="slide" ref="additional")
@@ -39,9 +39,9 @@
           img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/tesla_front.png" alt="Tesla")
           img.Carousel-extra.is-hidden.Absolute.Absolute--p2(src="../assets/images/Projects/tesla_extra.png" alt="Tesla")
       .Carousel-label(v-if="!slide || parseInt(slide) === 1" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
-        h1.Carousel-title(v-if="slide") Tesla
+        h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title") Tesla
         h2.Carousel-title(v-else) Tesla
-        span.Carousel-subtitle(ref="subtitle")
+        span.Carousel-subtitle(v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="subtitle")
           span.Text--bold School project
           span.Text--light &nbsp;- 2018
           span.Carousel-additional(v-if="slide" ref="additional")
@@ -54,9 +54,9 @@
           img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/buddy-buddy_front.png" alt="Buddy Buddy")
           img.Carousel-extra.is-hidden.Absolute.Absolute--p3(src="../assets/images/Projects/buddy-buddy_extra.png" alt="Buddy Buddy")
       .Carousel-label(v-if="!slide || parseInt(slide) === 2" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
-        h1.Carousel-title(v-if="slide") Buddy Buddy
+        h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title") Buddy Buddy
         h2.Carousel-title(v-else) Buddy Buddy
-        span.Carousel-subtitle(ref="subtitle")
+        span.Carousel-subtitle(v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="subtitle")
           span.Text--bold Internship
           span.Text--light &nbsp;- 2018
           span.Carousel-additional(v-if="slide" ref="additional")
@@ -69,9 +69,9 @@
           img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/personal_front.png" alt="Personal")
           Lock.Carousel-lock(v-bind:class="!isLocked ? 'is-hidden' : ''")
       .Carousel-label(v-if="!slide || parseInt(slide) === 3" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
-        h1.Carousel-title(v-if="slide") Coming soon
+        h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title") Coming soon
         h2.Carousel-title(v-else) Coming soon
-        span.Carousel-subtitle(ref="subtitle")
+        span.Carousel-subtitle(v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="subtitle")
           span.Text--bold New
           span.Text--light &nbsp;- 2019
           span.Carousel-additional(v-if="slide" ref="additional")
@@ -174,10 +174,16 @@ export default {
       const tween = kute.to(`#Carousel-right`, { path: `#Carousel-right-${this.modulo(this.slide - 1, 4)}` })
       tween.start()
 
+      const _titleCarousel = this.$refs.title
       const _subtitleCarousel = this.$refs.subtitle
       const _additionalCarousel = this.$refs.additional
 
       setTimeout(() => {
+        _titleCarousel.classList.remove('is-hidden')
+        setTimeout(() => {
+          _subtitleCarousel.classList.remove('is-hidden')
+        }, 500)
+
         const _additionalStyle = _additionalCarousel.currentStyle || window.getComputedStyle(_additionalCarousel)
         const _subtitleWidth = _subtitleCarousel.getBoundingClientRect().width
 
@@ -642,6 +648,11 @@ export default {
     transform: translateX(-50%);
     will-change: transform;
 
+    &.is-hidden {
+      opacity: 0;
+      transform: translate(-50%, calc(50% + #{- $margin-b - $margin-m + $margin-t}));
+    }
+
     @media (max-width: #{grid-media(8)}) {
       font-size: 6rem;
     }
@@ -671,6 +682,10 @@ export default {
     font-size: 2rem;
     transition: all $easing-duration;
     will-change: transform;
+
+    &.is-hidden {
+      opacity: 0;
+    }
 
     @media (max-height: #{grid-media(7.5)}) {
       height: 0;

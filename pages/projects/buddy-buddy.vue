@@ -246,11 +246,9 @@ export default {
           done()
         }})
       } else if (this.$route.params.from.includes('projects-')) {
-
-        setTimeout(() => {
-          document.body.style.pointerEvents = 'auto'
-          done()
-        }, 50000)
+        TweenLite.fromTo('.Carousel-button', 1, { scale: 0 }, { scale: 1, delay: 1.5, ease: Power2.easeInOut })
+        document.body.style.pointerEvents = 'auto'
+        done()
       } else {
         document.body.style.pointerEvents = 'auto'
         done()
@@ -275,7 +273,7 @@ export default {
           document.body.style.overflow = 'auto'
           done()
         }})
-      } else {
+      } else if (this.$route.params.from) {
         document.body.style.overflow = 'hidden'
         const _bodyTop = document.body.getBoundingClientRect().top
         const _logo = el.querySelector('.Logo')
@@ -286,16 +284,30 @@ export default {
         const _imageFooter = _footer.querySelector('.Footer-image')
         const _imageWidth = _imageFooter.getBoundingClientRect().width
 
+        const _topbarHeader = el.querySelector('.Header-topbar')
+        const _containerCarousel = el.querySelector('.Carousel-container')
+        const _topbarStyle = _topbarHeader.currentStyle || window.getComputedStyle(_topbarHeader)
+        const _carouselStyle = _containerCarousel.currentStyle || window.getComputedStyle(_containerCarousel)
+        const _topbarMargin = parseFloat(_topbarStyle.marginTop) + parseFloat(_topbarStyle.marginBottom) + parseFloat(_carouselStyle.marginTop)
+        const translateY = window.innerHeight / 2 - _topbarMargin
+
         _logo.dataset.color = _footer.dataset.color
         _footer.classList.add('is-active')
+
+        TweenLite.to('.Page', 1, { opacity: 0, delay: 0, ease: Power2.easeInOut })
         TweenLite.to('.Footer-container', 1, { height: window.innerHeight, y: - _footerTop, delay: 0, ease: Power2.easeInOut })
-        TweenLite.to('.Footer-image', 1, { scale: _itemWidth / _imageWidth, delay: 2, ease: Power2.easeInOut })
+        setTimeout(() => {
+          _imageFooter.style.transform = `scale(${_itemWidth / _imageWidth}) translateY(-${translateY - 15}px)`
+        }, 1500)
 
         setTimeout(() => {
           document.body.style.pointerEvents = 'auto'
           document.body.style.overflow = 'auto'
           done()
         }, 4000)
+      } else {
+        document.body.style.overflow = 'auto'
+          done()
       }
     }
   }
