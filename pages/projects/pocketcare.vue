@@ -266,10 +266,7 @@ export default {
 
         const _topbarHeader = el.querySelector('.Header-topbar')
         const _containerCarousel = el.querySelector('.Carousel-container')
-        const _topbarStyle = _topbarHeader.currentStyle || window.getComputedStyle(_topbarHeader)
-        const _carouselStyle = _containerCarousel.currentStyle || window.getComputedStyle(_containerCarousel)
-        const _topMargin = parseInt(_topbarStyle.marginTop) + parseInt(_topbarStyle.marginBottom) + parseInt(_carouselStyle.marginTop)
-        const translateY = window.innerHeight / 2 - _topMargin
+        const translateY = window.innerHeight / 2 - _containerCarousel.offsetTop
 
         _logo.dataset.color = _footer.dataset.color
         _footer.classList.add('is-active')
@@ -277,7 +274,7 @@ export default {
         TweenLite.to('.Page', 1, { opacity: 0, delay: 0, ease: Power2.easeInOut })
         TweenLite.to('.Footer-container', 1, { height: window.innerHeight, y: - _footerTop, delay: 0, ease: Power2.easeInOut })
         setTimeout(() => {
-          _imageFooter.style.transform = `scale(${_itemWidth / _imageWidth}) translateY(-${translateY - 15}px)`
+          _imageFooter.style.transform = `scale(${_itemWidth / _imageWidth}) translateY(-${translateY - 10}px)`
         }, 1500)
 
         setTimeout(() => {
