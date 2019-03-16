@@ -326,9 +326,8 @@ export default {
     }
 
     @media
-      (max-width: #{grid-media(4)}),
-      (max-height: #{grid-media(5)})
-    {
+    (max-width: #{grid-media(4)}),
+    (max-height: #{grid-media(5)}) {
       font-size: 2.8rem;
     }
 
@@ -371,9 +370,8 @@ export default {
     color: $dark;
 
     @media
-      (max-height: #{grid-media(6)}),
-      (max-width: #{grid-media(6)})
-    {
+    (max-height: #{grid-media(6)}),
+    (max-width: #{grid-media(6)}) {
       margin-top: 0;
     }
   }
@@ -508,9 +506,8 @@ export default {
       }
 
       @media
-        (max-width: #{grid-media(6)}) and (max-height: #{grid-media(7)}),
-        (max-width: #{grid-media(4)}) and (max-height: #{grid-media(7.5)})
-      {
+      (max-width: #{grid-media(6)}) and (max-height: #{grid-media(7)}),
+      (max-width: #{grid-media(4)}) and (max-height: #{grid-media(7.5)}) {
         display: none;
       }
     }

@@ -492,9 +492,8 @@ export default {
       transform: translate(-50%, -50%) scale(.875);
 
       @media
-        (max-width: #{grid-media(6)}) and (max-height: #{grid-media(6.5)}),
-        (max-width: #{grid-media(4)})
-      {
+      (max-width: #{grid-media(6)}) and (max-height: #{grid-media(6.5)}),
+      (max-width: #{grid-media(4)}) {
         transform: translate(-50%, -50%) scale(.625);
       }
 
