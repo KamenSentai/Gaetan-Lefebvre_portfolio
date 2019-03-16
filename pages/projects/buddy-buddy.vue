@@ -283,14 +283,14 @@ export default {
         _logo.dataset.color = _footer.dataset.color
         _footer.classList.add('is-active')
 
-        TweenLite.to('.Page', 1, { opacity: 0, delay: 0, ease: Power2.easeInOut })
-        TweenLite.to('.Footer-container', .5, { height: window.innerHeight, y: - _footerTop, delay: 0, ease: Power2.easeInOut })
-        TweenLite.to('.Footer-image', 1, { scale: 2, opacity: 0, delay: 1, ease: Power2.easeInOut, onComplete: () => {
+        TweenLite.to('.Footer-image', .5, { scale: 2, opacity: 0, delay: 0, ease: Power2.easeInOut })
+        TweenLite.to('.Page', 1, { opacity: 0, delay: 1, ease: Power2.easeInOut })
+        TweenLite.to('.Footer-container', .5, { height: window.innerHeight, y: - _footerTop, delay: .5, ease: Power2.easeInOut, onComplete: () => {
           setTimeout(() => {
             document.body.style.pointerEvents = 'auto'
             document.body.style.overflow = 'auto'
             done()
-          }, 2000)
+          }, 1500)
         }})
       } else {
         document.body.style.pointerEvents = 'auto'
