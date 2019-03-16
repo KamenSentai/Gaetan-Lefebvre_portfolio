@@ -143,6 +143,10 @@ export default {
     }
   }
 
+  @media (max-height: #{grid-media(7)}) {
+    padding-top: 0;
+  }
+
   h1,
   h2 {
     display: flex;
@@ -193,7 +197,25 @@ export default {
       left: 0;
       width: 100%;
       height: $margin-s;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0), $black);
+      background: linear-gradient(
+        to bottom,
+        hsla(0, 0%, 8%, 0) 0%,
+        hsla(0, 0%, 8%, 0.013) 8.1%,
+        hsla(0, 0%, 8%, 0.049) 15.5%,
+        hsla(0, 0%, 8%, 0.104) 22.5%,
+        hsla(0, 0%, 8%, 0.175) 29%,
+        hsla(0, 0%, 8%, 0.259) 35.3%,
+        hsla(0, 0%, 8%, 0.352) 41.2%,
+        hsla(0, 0%, 8%, 0.45) 47.1%,
+        hsla(0, 0%, 8%, 0.55) 52.9%,
+        hsla(0, 0%, 8%, 0.648) 58.8%,
+        hsla(0, 0%, 8%, 0.741) 64.7%,
+        hsla(0, 0%, 8%, 0.825) 71%,
+        hsla(0, 0%, 8%, 0.896) 77.5%,
+        hsla(0, 0%, 8%, 0.951) 84.5%,
+        hsla(0, 0%, 8%, 0.987) 91.9%,
+        hsl(0, 0%, 8%) 100%
+      );
 
       @media (max-width: #{grid-media(8)}) {
         display: none;
@@ -285,6 +307,10 @@ export default {
 
   &-description {
     margin-bottom: $margin-s;
+
+    @media (max-height: #{grid-media(5)}) {
+      margin-bottom: $margin-t;
+    }
   }
 
   &-group {
@@ -299,16 +325,15 @@ export default {
       font-size: 3.6rem;
     }
 
-    @media (max-width: #{grid-media(4)}) {
+    @media
+      (max-width: #{grid-media(4)}),
+      (max-height: #{grid-media(5)})
+    {
       font-size: 2.8rem;
     }
 
-    @media (max-height: #{grid-media(5)}) {
-      font-size: 2.8rem;
-    }
-
-    @media (max-height: #{grid-media(4.5)}) {
-      margin-top: - $margin-t;
+    @media (max-height: #{grid-media(4)}) {
+      margin-bottom: $margin-n;
     }
   }
 
@@ -345,7 +370,10 @@ export default {
     margin-top: 1em;
     color: $dark;
 
-    @media (max-width: #{grid-media(6)}) {
+    @media
+      (max-height: #{grid-media(6)}),
+      (max-width: #{grid-media(6)})
+    {
       margin-top: 0;
     }
   }
@@ -380,7 +408,7 @@ export default {
       line-height: 1.5em;
     }
 
-    @media (max-height: #{grid-media(6.5)}) {
+    @media (max-height: #{grid-media(7)}) {
       font-size: 1.8rem;
     }
 
@@ -430,6 +458,10 @@ export default {
     @media (max-width: #{grid-media(6)}) {
       display: none;
     }
+
+    @media (max-height: #{grid-media(6)}) {
+      margin-bottom: $margin-t;
+    }
   }
 
   &-link {
@@ -442,6 +474,11 @@ export default {
 
     &:last-child {
       margin-right: 0;
+    }
+
+    @media (max-height: #{grid-media(6.5)}) {
+      margin-right: $margin-n;
+      font-size: 1.4rem;
     }
   }
 
@@ -462,8 +499,15 @@ export default {
     &::before {
       content: 'Scroll';
 
+      @media (max-height: #{grid-media(7)}) {
+        font-size: 1.2rem;
+      }
+
+      @media (max-height: #{grid-media(6.5)}) {
+        display: none;
+      }
+
       @media
-        (max-height: #{grid-media(7)}),
         (max-width: #{grid-media(6)}) and (max-height: #{grid-media(7)}),
         (max-width: #{grid-media(4)}) and (max-height: #{grid-media(7.5)})
       {

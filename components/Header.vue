@@ -397,6 +397,14 @@ export default {
         }
       }
     }
+
+    @media (max-height: #{grid-media(6)}) {
+      margin-bottom: $margin-s;
+    }
+
+    @media (max-height: #{grid-media(3.5)}) {
+      margin-top: $margin-t + $margin-n;
+    }
   }
 
   &-logo {

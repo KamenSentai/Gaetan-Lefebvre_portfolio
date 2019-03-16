@@ -106,7 +106,7 @@ export default {
   &-fill {
     fill: $white;
     transform: scale(0);
-    transition: transform $easing-duration;
+    transition: transform linear 1s;
     transition-duration: 2s;
     will-change: transform;
 
