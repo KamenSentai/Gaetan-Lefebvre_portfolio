@@ -17,86 +17,123 @@
         path#Carousel-right.Carousel-shape.is-active(ref="right")
         polyline.Carousel-shape.Carousel-shape--arrow.is-active(points="25,22.5 20,17.5 15,22.5")
     .Carousel-content(v-bind:class="isMenu ? 'is-hidden': ''")
-      nuxt-link.Carousel-item(v-if="!slide || parseInt(slide) === 0" v-bind:class="[`Carousel-item--${modulo(range, 4)}`, !slide ? 'Cursor-frame--text' : '']" :to="{ name: 'projects-pocketcare', params: { from: $route.name } }" draggable="false")
-        .Carousel-image
-          img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/pocketcare_back.png" alt="Pocketcare" draggable="false")
-          Glitch.Carousel-neon(
-            path="assets/images/Projects/"
-            image="pocketcare"
-            alt="Pocketcare"
-            :isAutomatic="slide ? false : true"
-          )
-          img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/pocketcare_front.png" alt="Pocketcare" draggable="false")
-          img.Carousel-extra.is-hidden.Absolute.Absolute--p1(src="../assets/images/Projects/pocketcare_extra.png" alt="Pocketcare" draggable="false")
-      .Carousel-label(v-if="!slide || parseInt(slide) === 0" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
-        h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title") Pocketcare
-        h2.Carousel-title(v-else) Pocketcare
-        span.Carousel-subtitle(v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="subtitle")
-          span.Text--bold School project
-          span.Text--light &nbsp;- 2017
-          span.Carousel-additional(v-if="slide" ref="additional")
-            span.Text--bold Skills :
-            span.Text--light &nbsp;Branding, Illustration, Interactive design
-      nuxt-link.Carousel-item(v-if="!slide || parseInt(slide) === 1" v-bind:class="[`Carousel-item--${modulo(range - 1, 4)}`, !slide ? 'Cursor-frame--text' : '']" :to="{ name: 'projects-tesla', params: { from: $route.name } }")
-        .Carousel-image
-          img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/tesla_back.png" alt="Tesla")
-          Glitch.Carousel-neon(
-            path="assets/images/Projects/"
-            image="tesla"
-            alt="Tesla"
-            :isAutomatic="slide ? false : true"
-          )
-          img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/tesla_front.png" alt="Tesla")
-          img.Carousel-extra.is-hidden.Absolute.Absolute--p2(src="../assets/images/Projects/tesla_extra.png" alt="Tesla")
-      .Carousel-label(v-if="!slide || parseInt(slide) === 1" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
-        h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title") Tesla
-        h2.Carousel-title(v-else) Tesla
-        span.Carousel-subtitle(v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="subtitle")
-          span.Text--bold School project
-          span.Text--light &nbsp;- 2018
-          span.Carousel-additional(v-if="slide" ref="additional")
-            span.Text--bold Skills :
-            span.Text--light &nbsp;Branding, Illustration, Interactive design
-      nuxt-link.Carousel-item(v-if="!slide || parseInt(slide) === 2" v-bind:class="[`Carousel-item--${modulo(range - 2, 4)}`, !slide ? 'Cursor-frame--text' : '']" :to="{ name: 'projects-buddy-buddy', params: { from: $route.name } }")
-        .Carousel-image
-          img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/buddy-buddy_back.png" alt="Buddy Buddy")
-          Glitch.Carousel-neon(
-            path="assets/images/Projects/"
-            image="buddy-buddy"
-            alt="Buddy Buddy"
-            :isAutomatic="slide ? false : true"
-          )
-          img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/buddy-buddy_front.png" alt="Buddy Buddy")
-          img.Carousel-extra.is-hidden.Absolute.Absolute--p3(src="../assets/images/Projects/buddy-buddy_extra.png" alt="Buddy Buddy")
-      .Carousel-label(v-if="!slide || parseInt(slide) === 2" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
-        h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title") Buddy Buddy
-        h2.Carousel-title(v-else) Buddy Buddy
-        span.Carousel-subtitle(v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="subtitle")
-          span.Text--bold Internship
-          span.Text--light &nbsp;- 2018
-          span.Carousel-additional(v-if="slide" ref="additional")
-            span.Text--bold Skills :
-            span.Text--light &nbsp;Branding, Illustration, Interactive design
-      span.Carousel-item.Carousel-item--forbidden(v-if="!slide || parseInt(slide) === 3" v-bind:class="`Carousel-item--${modulo(range - 3, 4)}`")
-        .Carousel-image
-          img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/personal_back.png" alt="Personal")
-          Glitch.Carousel-neon(
-            path="assets/images/Projects/"
-            image="personal"
-            alt="Personal"
-            :isAutomatic="slide ? false : true"
-          )
-          img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/personal_front.png" alt="Personal")
-          Lock.Carousel-lock(v-bind:class="!isLocked ? 'is-hidden' : ''")
-      .Carousel-label(v-if="!slide || parseInt(slide) === 3" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
-        h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title") Coming soon
-        h2.Carousel-title(v-else) Coming soon
-        span.Carousel-subtitle(v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="subtitle")
-          span.Text--bold New
-          span.Text--light &nbsp;- 2019
-          span.Carousel-additional(v-if="slide" ref="additional")
-            span.Text--bold Skills :
-            span.Text--light &nbsp;Interactive design
+      .Content-group
+        nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" v-bind:class="[`Carousel-item--${modulo(range, 4)}`]" :to="{ name: 'projects-pocketcare', params: { from: $route.name } }")
+          .Carousel-image
+            img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/pocketcare_back.png" alt="Pocketcare" draggable="false")
+            Glitch.Carousel-neon(
+              path="assets/images/Projects/"
+              image="pocketcare"
+              alt="Pocketcare"
+              :isAutomatic="slide ? false : true"
+            )
+            img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/pocketcare_front.png" alt="Pocketcare" draggable="false")
+            img.Carousel-extra.is-hidden.Absolute.Absolute--p1(src="../assets/images/Projects/pocketcare_extra.png" alt="Pocketcare" draggable="false")
+        .Carousel-item.Carousel-item--0(v-else-if="parseInt(slide) === 0")
+          .Carousel-image
+            img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/pocketcare_back.png" alt="Pocketcare" draggable="false")
+            Glitch.Carousel-neon(
+              path="assets/images/Projects/"
+              image="pocketcare"
+              alt="Pocketcare"
+              :isAutomatic="slide ? false : true"
+            )
+            img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/pocketcare_front.png" alt="Pocketcare" draggable="false")
+            img.Carousel-extra.is-hidden.Absolute.Absolute--p1(src="../assets/images/Projects/pocketcare_extra.png" alt="Pocketcare" draggable="false")
+        .Carousel-label(v-if="!slide || parseInt(slide) === 0" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
+          h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title") Pocketcare
+          h2.Carousel-title(v-else) Pocketcare
+          span.Carousel-subtitle(v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="subtitle")
+            span.Text--bold School project
+            span.Text--light &nbsp;- 2017
+            span.Carousel-additional(v-if="slide" ref="additional")
+              span.Text--bold Skills :
+              span.Text--light &nbsp;Branding, Illustration, Interactive design
+      .Content-group
+        nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" v-bind:class="`Carousel-item--${modulo(range - 1, 4)}`" :to="{ name: 'projects-tesla', params: { from: $route.name } }")
+          .Carousel-image
+            img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/tesla_back.png" alt="Tesla")
+            Glitch.Carousel-neon(
+              path="assets/images/Projects/"
+              image="tesla"
+              alt="Tesla"
+              :isAutomatic="slide ? false : true"
+            )
+            img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/tesla_front.png" alt="Tesla")
+            img.Carousel-extra.is-hidden.Absolute.Absolute--p2(src="../assets/images/Projects/tesla_extra.png" alt="Tesla")
+        .Carousel-item.Carousel-item--0(v-else-if="parseInt(slide) === 1")
+          .Carousel-image
+            img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/tesla_back.png" alt="Tesla")
+            Glitch.Carousel-neon(
+              path="assets/images/Projects/"
+              image="tesla"
+              alt="Tesla"
+              :isAutomatic="slide ? false : true"
+            )
+            img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/tesla_front.png" alt="Tesla")
+            img.Carousel-extra.is-hidden.Absolute.Absolute--p2(src="../assets/images/Projects/tesla_extra.png" alt="Tesla")
+        .Carousel-label(v-if="!slide || parseInt(slide) === 1" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
+          h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title") Tesla
+          h2.Carousel-title(v-else) Tesla
+          span.Carousel-subtitle(v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="subtitle")
+            span.Text--bold School project
+            span.Text--light &nbsp;- 2018
+            span.Carousel-additional(v-if="slide" ref="additional")
+              span.Text--bold Skills :
+              span.Text--light &nbsp;Branding, Illustration, Interactive design
+      .Content-group
+        nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" v-bind:class="`Carousel-item--${modulo(range - 2, 4)}`" :to="{ name: 'projects-buddy-buddy', params: { from: $route.name } }")
+          .Carousel-image
+            img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/buddy-buddy_back.png" alt="Buddy Buddy")
+            Glitch.Carousel-neon(
+              path="assets/images/Projects/"
+              image="buddy-buddy"
+              alt="Buddy Buddy"
+              :isAutomatic="slide ? false : true"
+            )
+            img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/buddy-buddy_front.png" alt="Buddy Buddy")
+            img.Carousel-extra.is-hidden.Absolute.Absolute--p3(src="../assets/images/Projects/buddy-buddy_extra.png" alt="Buddy Buddy")
+        .Carousel-item.Carousel-item--0(v-else-if="parseInt(slide) === 2")
+          .Carousel-image
+            img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/buddy-buddy_back.png" alt="Buddy Buddy")
+            Glitch.Carousel-neon(
+              path="assets/images/Projects/"
+              image="buddy-buddy"
+              alt="Buddy Buddy"
+              :isAutomatic="slide ? false : true"
+            )
+            img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/buddy-buddy_front.png" alt="Buddy Buddy")
+            img.Carousel-extra.is-hidden.Absolute.Absolute--p3(src="../assets/images/Projects/buddy-buddy_extra.png" alt="Buddy Buddy")
+        .Carousel-label(v-if="!slide || parseInt(slide) === 2" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
+          h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title") Buddy Buddy
+          h2.Carousel-title(v-else) Buddy Buddy
+          span.Carousel-subtitle(v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="subtitle")
+            span.Text--bold Internship
+            span.Text--light &nbsp;- 2018
+            span.Carousel-additional(v-if="slide" ref="additional")
+              span.Text--bold Skills :
+              span.Text--light &nbsp;Branding, Illustration, Interactive design
+      .Content-group
+        span.Carousel-item.Carousel-item--forbidden(v-if="!slide || parseInt(slide) === 3" v-bind:class="`Carousel-item--${modulo(range - 3, 4)}`")
+          .Carousel-image
+            img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/personal_back.png" alt="Personal")
+            Glitch.Carousel-neon(
+              path="assets/images/Projects/"
+              image="personal"
+              alt="Personal"
+              :isAutomatic="slide ? false : true"
+            )
+            img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/personal_front.png" alt="Personal")
+            Lock.Carousel-lock(v-bind:class="!isLocked ? 'is-hidden' : ''")
+        .Carousel-label(v-if="!slide || parseInt(slide) === 3" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
+          h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title") Coming soon
+          h2.Carousel-title(v-else) Coming soon
+          span.Carousel-subtitle(v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="subtitle")
+            span.Text--bold New
+            span.Text--light &nbsp;- 2019
+            span.Carousel-additional(v-if="slide" ref="additional")
+              span.Text--bold Skills :
+              span.Text--light &nbsp;Interactive design
       .Carousel-progress(v-if="!slide" v-bind:class="[isMenu ? 'is-hidden': '', !isProgressed ? 'is-hidden' : '']" ref="progress")
         .Carousel-indicator Swipe
         svg.Carousel-step(:class="range === 0 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
