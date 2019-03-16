@@ -7,7 +7,8 @@ export default {
   data() {
     return {
       number: 0,
-      src: ''
+      src: '',
+      isPeriodic: false
     }
   },
   props: [
@@ -21,13 +22,36 @@ export default {
     this.src = this.image
   },
   methods: {
-    glitchImage() {
-      if (this.number < 20) {
-        this.src = `${this.image}/${this.image}_${this.number}`
-        ++this.number
-        setTimeout(() => {
-          this.glitchImage()
-        }, 50)
+    glitchPeriodic() {
+      if (!this.isPlaying) {
+        this.isPeriodic = true
+        if (this.number < 20) {
+          this.src = `${this.image}/${this.image}_${this.number}`
+          ++this.number
+          setTimeout(() => {
+            this.glitchPeriodic()
+          }, 50)
+        } else {
+          this.isPeriodic = false
+          this.src = this.image
+          this.number = 0
+        }
+      } else {
+          this.isPeriodic = false
+      }
+    },
+    glitchFocused() {
+      if (this.isPlaying) {
+        if (this.number < 20) {
+          this.src = `${this.image}/${this.image}_${this.number}`
+          ++this.number
+          setTimeout(() => {
+            this.glitchFocused()
+          }, 50)
+        } else {
+          this.number = 0
+          this.glitchFocused()
+        }
       } else {
         this.src = this.image
         this.number = 0
@@ -43,11 +67,17 @@ export default {
       || navigator.userAgent.match(/iPod/i)
       || navigator.userAgent.match(/BlackBerry/i)
       || navigator.userAgent.match(/Windows Phone/i))
-    ) setInterval(() => {
-      if (this.isAutomatic) {
-        this.glitchImage()
-      }
-    }, 5000)
+    ) {
+      setInterval(() => {
+        if (this.isAutomatic) {
+          this.glitchPeriodic()
+        }
+      }, 5000)
+      this.$watch(
+        () => this.isPlaying,
+        value => { if (this.isPlaying) this.glitchFocused() }
+      )
+    }
   }
 }
 </script>
