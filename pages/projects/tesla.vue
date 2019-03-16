@@ -22,9 +22,9 @@ div
         .Content-suite
           .Content-icons.Content-icons--main(data-aos="fade-left")
             img(src="~assets/images/Tesla/Logo_T.png" alt="T")
-            img(src="~assets/images/Tesla/Logo_+.png" alt="+")
+            img(src="~assets/images/Tesla/Logo_plus.png" alt="+")
             img(src="~assets/images/Tesla/Logo_O.png" alt="O")
-            img(src="~assets/images/Tesla/Logo_=.png" alt="=")
+            img(src="~assets/images/Tesla/Logo_equal.png" alt="=")
             img(src="~assets/images/Tesla/Logo_TO.png" alt="TO")
           .Content-icons(data-aos="fade-left")
             Color(color="#228DFC" :shape="data.shape")
@@ -363,7 +363,7 @@ export default {
         _logo.dataset.color = _footer.dataset.color
         _footer.classList.add('is-active')
 
-        TweenLite.to('.Footer-image', .5, { opacity: 0, delay: 0, ease: Power2.easeInOut })
+        TweenLite.to('.Footer-image', .5, { scale: 2, opacity: 0, delay: 0, ease: Power2.easeInOut })
         TweenLite.to('.Page', 1, { opacity: 0, delay: 1, ease: Power2.easeInOut })
         TweenLite.to('.Footer-container', .5, { height: window.innerHeight, y: - _footerTop, delay: .5, ease: Power2.easeInOut, onComplete: () => {
           setTimeout(() => {
