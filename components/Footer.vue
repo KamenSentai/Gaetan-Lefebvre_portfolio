@@ -53,7 +53,6 @@ export default {
 
     #{$rootFooter}-title {
       opacity: .0;
-      transform: translate(-50%, calc(-50% + #{$margin-t}));
     }
   }
 
@@ -119,6 +118,7 @@ export default {
     opacity: .4;
     transform: translate(-50%, -50%);
     transition: all $easing-duration;
+    transition-delay: .5s;
 
     @media (max-width: #{grid-media(10)}) {
       font-size: 6.2rem;
