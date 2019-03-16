@@ -95,7 +95,8 @@ export default {
       document.body.style.pointerEvents = 'none'
       if (this.$route.name.includes('projects-')) {
         this.$el.querySelector('.Carousel-container').classList.add('Carousel-container--case')
-        TweenLite.fromTo('.Header-item:first-child', 1, { opacity: 1 }, { opacity: 0, ease: Power2.easeInOut })
+        TweenLite.to('.Carousel-extra', 0, { opacity: 0, delay: 0, ease: Power2.easeInOut })
+        TweenLite.to('.Header-item:first-child', 1, { opacity: 0, ease: Power2.easeInOut })
 
         setTimeout(() => {
           document.body.style.pointerEvents = 'auto'
