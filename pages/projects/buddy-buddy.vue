@@ -92,7 +92,7 @@ div
           :images="['Mobile_1', 'Mobile_2', 'Mobile_3', 'Mobile_4']"
         )
     section.Slide.Slide--banner.Exception--banner
-      Banner.Banner--exception(src="BuddyBuddy/Banner_Screenshots" alt ="Banner Screenshots")
+      Banner.Banner--buddybuddy(src="BuddyBuddy/Banner_Screenshots" alt ="Banner Screenshots")
     section.Slide
       Article(
         :color="data.color"

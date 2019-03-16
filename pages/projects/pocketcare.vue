@@ -51,7 +51,7 @@ div
         :post="data.posts[2]"
       )
     section.Slide.Slide--banner
-      Banner(src="Pocketcare/Banner_Inscription" alt ="Inscription")
+      Banner.Banner--pocketcare(src="Pocketcare/Banner_Inscription" alt ="Inscription")
     section.Slide.Slide--page
       .Content
         .Content-header

@@ -17,9 +17,12 @@ export default {
 
 .Banner {
   width: auto;
-  height: 150%;
 
-  &--exception {
+  &--pocketcare {
+    height: 200%;
+  }
+
+  &--buddybuddy {
     height: 175%;
   }
 }
