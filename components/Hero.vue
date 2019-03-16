@@ -75,14 +75,14 @@
       )
       span.Hero-thin to continue
     ul.Hero-links(v-else-if="type === 'about'")
-      li.Hero-link
-        a(href="#" title="LinkedIn") LinkedIn
-      li.Hero-link
-        a(href="#" title="Dribbble") Dribbble
-      li.Hero-link
-        a(href="#" title="Instagram") Instagram
-      li.Hero-link(v-bind:class="`Text--${data.colors[range]}`")
-        a(href="#" title="Contact") Contact
+      li.Hero-link.Cursor-frame--increase
+        a.Cursor-frame--increase(href="#" title="LinkedIn") LinkedIn
+      li.Hero-link.Cursor-frame--increase
+        a.Cursor-frame--increase(href="#" title="Dribbble") Dribbble
+      li.Hero-link.Cursor-frame--increase
+        a.Cursor-frame--increase(href="#" title="Instagram") Instagram
+      li.Hero-link.Cursor-frame--increase(v-bind:class="`Text--${data.colors[range]}`")
+        a.Cursor-frame--increase(href="#" title="Contact") Contact
     span.Hero-scroll.Hero-scroll--data(v-if="type === 'about'")
 </template>
 

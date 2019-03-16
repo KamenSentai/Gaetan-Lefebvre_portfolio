@@ -6,7 +6,7 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
         .Header-tree
           span.Header-branch(v-bind:class="$nuxt.$route.path === '/' ? `is-active--${color || data.colors[range]}` : ''")
             nuxt-link(:to="{ name: 'index', params: sendData() }")
-            span.Header-leaf.Cursor-frame--increase(v-on:click="navigationClick($event)") Home
+            span.Header-leaf(v-on:click="navigationClick($event)") Home
           span.Header-branch(v-bind:class="$nuxt.$route.path === '/projects' ? `is-active--${color || data.colors[range]}` : ''")
             nuxt-link(:to="{ name: 'projects', params: sendData() }")
             span.Header-leaf.Cursor-frame--increase(v-on:click="navigationClick($event)") Projects
@@ -25,15 +25,14 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
         li.Header-item.Cursor-frame--increase(:class="hasProject ? '': 'is-hidden'")
           h1(v-if="hasProject")
             a.Cursor-frame--increase(href="#" @click="toggleMenu") All projects
-          a.Cursor-frame--increase(v-else href="#" @click="toggleMenu") All projects
         li.Header-item.Cursor-frame--increase(:class="hasAbout ? '': 'is-hidden'")
           nuxt-link.Cursor-frame--increase(:to="{ name: 'about', params: sendData() }") About
         li.Header-item.Cursor-frame--increase(:class="hasHome ? '': 'is-hidden'")
           nuxt-link.Cursor-frame--increase(:to="{ name: 'index', params: sendData() }") Return home
       .Header-burger.Cursor-frame--increase(v-bind:class="isNavigating ? 'is-active' : ''" @click="toggleNavigation")
-        .Header-stripe.Cursor-frame--increase
-        .Header-stripe.Cursor-frame--increase
-        .Header-stripe.Cursor-frame--increase
+        .Header-stripe
+        .Header-stripe
+        .Header-stripe
   .Header-jumbotron
     Hero.Header-hero(
       :class="type === 'about' ? 'Header-scrollable' : ''"
@@ -644,6 +643,7 @@ export default {
     transform: scaleX(1);
     transition: background-color $easing-duration, transform $easing-duration;
     will-change: transform;
+    pointer-events: none;
 
     &:first-child,
     &:last-child {
