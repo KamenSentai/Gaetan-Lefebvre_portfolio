@@ -1,5 +1,5 @@
 <template lang="pug">
-img.Banner.Content-banner(:src="require(`../assets/images/${src}.png`)" :alt="alt")
+img.Banner.Content-banner(:src="require(`../static/images/${src}.png`)" :alt="alt")
 </template>
 
 <script>
