@@ -2,7 +2,7 @@
 .Loading
   .Loading-background
   .Loading-progressbar
-    .Loading-fillbar(v-bind:class="getColor()" :style="`transform: scale(${percentage / 100})`")
+    .Loading-fillbar(v-bind:class="getColor()" :style="`transform: scaleX(${getPercentage()})`")
 </template>
 
 <script>
@@ -13,13 +13,24 @@ export default {
   methods: {
     getColor() {
       const className = 'Loading-fillbar'
-      return this.percentage < 25 ?
-        `${className}--green` :
-        this.percentage < 50 ?
-          `${className}--blue` :
-          this.percentage < 75 ?
-            `${className}--red` :
-            `${className}--yellow`
+      return this.percentage == 100 ?
+        `${className}--yellow` :
+        this.percentage >= 75 ?
+          `${className}--red` :
+          this.percentage >= 50?
+            `${className}--blue` :
+            `${className}--green`
+    },
+    getPercentage() {
+      return (this.percentage === 100 ?
+        100 :
+        this.percentage >= 75 ?
+          75 :
+          this.percentage >= 50 ?
+            50 :
+            this.percentage >= 25 ?
+              25 :
+              0) / 100
     }
   }
 }
@@ -110,7 +121,7 @@ export default {
     width: 100%;
     height: 100%;
     transform-origin: 0 0;
-    transition: transform .25s linear, background-color $easing-duration;
+    transition: transform .5s linear, background-color $easing .25s;
 
     @each $key, $value in $colors {
       &--#{$key} {
