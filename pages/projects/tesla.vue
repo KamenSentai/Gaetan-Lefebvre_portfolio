@@ -22,9 +22,9 @@ div
         .Content-suite
           .Content-icons.Content-icons--main(data-aos="fade-left")
             img(src="~static/images/Tesla/Logo_T.png" alt="T")
-            img(src="~static/images/Tesla/Logo_plus.png" alt="+")
+            .Symbol.Symbol--plus
             img(src="~static/images/Tesla/Logo_O.png" alt="O")
-            img(src="~static/images/Tesla/Logo_equal.png" alt="=")
+            .Symbol.Symbol--equal
             img(src="~static/images/Tesla/Logo_TO.png" alt="TO")
           .Content-icons(data-aos="fade-left")
             Color(color="#228DFC" :shape="data.shape")
