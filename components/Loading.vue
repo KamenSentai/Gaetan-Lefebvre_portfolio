@@ -155,7 +155,7 @@ export default {
     }
 
     #{$rootLoading}-progressbar {
-      transform: translateY(-50vh);
+      opacity: 0;
     }
 
     #{$rootLoading}-progress {
@@ -185,7 +185,7 @@ export default {
     width: 100%;
     height: .2rem;
     background-color: $dark;
-    transition: transform $easing 1s;
+    transition: opacity $easing 1s;
   }
 
   &-fillbar {
