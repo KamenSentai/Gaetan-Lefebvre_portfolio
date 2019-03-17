@@ -18,14 +18,14 @@
         polyline.Carousel-shape.Carousel-shape--arrow.is-active(points="25,22.5 20,17.5 15,22.5")
     .Carousel-content(v-bind:class="isMenu ? 'is-hidden': ''")
       .Content-group
-        nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" v-bind:class="[`Carousel-item--${modulo(range, 4)}`]" :to="{ name: 'projects-pocketcare', params: { from: $route.name } }")
+        nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ name: 'projects-pocketcare', params: { from: $route.name } }")
           .Carousel-image
             img.Carousel-layer.Carousel-layer--back(src="../static/images/Projects/pocketcare_back.png" alt="Pocketcare" draggable="false")
             Glitch.Carousel-neon(
               path="static/images/Projects/"
               image="pocketcare"
               alt="Pocketcare"
-              :isAutomatic="slide ? false : true"
+              :isAutomatic="!slide && modulo(range, 4) ? true : false"
             )
             img.Carousel-layer.Carousel-layer--front(src="../static/images/Projects/pocketcare_front.png" alt="Pocketcare" draggable="false")
             img.Carousel-extra.is-hidden.Absolute.Absolute--p1(src="../static/images/Projects/pocketcare_extra.png" alt="Pocketcare" draggable="false")
@@ -36,7 +36,7 @@
               path="static/images/Projects/"
               image="pocketcare"
               alt="Pocketcare"
-              :isAutomatic="slide ? false : true"
+              :isAutomatic="false"
             )
             img.Carousel-layer.Carousel-layer--front(src="../static/images/Projects/pocketcare_front.png" alt="Pocketcare" draggable="false")
             img.Carousel-extra.is-hidden.Absolute.Absolute--p1(src="../static/images/Projects/pocketcare_extra.png" alt="Pocketcare" draggable="false")
@@ -57,7 +57,7 @@
               path="static/images/Projects/"
               image="tesla"
               alt="Tesla"
-              :isAutomatic="slide ? false : true"
+              :isAutomatic="!slide && modulo(range - 1, 4) ? true : false"
             )
             img.Carousel-layer.Carousel-layer--front(src="../static/images/Projects/tesla_front.png" alt="Tesla")
             img.Carousel-extra.is-hidden.Absolute.Absolute--p2(src="../static/images/Projects/tesla_extra.png" alt="Tesla")
@@ -68,7 +68,7 @@
               path="static/images/Projects/"
               image="tesla"
               alt="Tesla"
-              :isAutomatic="slide ? false : true"
+              :isAutomatic="false"
             )
             img.Carousel-layer.Carousel-layer--front(src="../static/images/Projects/tesla_front.png" alt="Tesla")
             img.Carousel-extra.is-hidden.Absolute.Absolute--p2(src="../static/images/Projects/tesla_extra.png" alt="Tesla")
@@ -89,7 +89,7 @@
               path="static/images/Projects/"
               image="buddy-buddy"
               alt="Buddy Buddy"
-              :isAutomatic="slide ? false : true"
+              :isAutomatic="!slide && modulo(range - 2, 4) ? true : false"
             )
             img.Carousel-layer.Carousel-layer--front(src="../static/images/Projects/buddy-buddy_front.png" alt="Buddy Buddy")
             img.Carousel-extra.is-hidden.Absolute.Absolute--p3(src="../static/images/Projects/buddy-buddy_extra.png" alt="Buddy Buddy")
@@ -100,7 +100,7 @@
               path="static/images/Projects/"
               image="buddy-buddy"
               alt="Buddy Buddy"
-              :isAutomatic="slide ? false : true"
+              :isAutomatic="false"
             )
             img.Carousel-layer.Carousel-layer--front(src="../static/images/Projects/buddy-buddy_front.png" alt="Buddy Buddy")
             img.Carousel-extra.is-hidden.Absolute.Absolute--p3(src="../static/images/Projects/buddy-buddy_extra.png" alt="Buddy Buddy")
@@ -121,7 +121,7 @@
               path="static/images/Projects/"
               image="personal"
               alt="Personal"
-              :isAutomatic="slide ? false : true"
+              :isAutomatic="!slide && modulo(range - 3, 4) ? true : false"
             )
             img.Carousel-layer.Carousel-layer--front(src="../static/images/Projects/personal_front.png" alt="Personal")
             Lock.Carousel-lock(v-bind:class="!isLocked ? 'is-hidden' : ''")
@@ -565,7 +565,12 @@ export default {
     }
 
     &--2 {
+      display: none;
       left: 50%;
+
+      + #{$rootCarousel}-label {
+        display: none;
+      }
     }
 
     &--3 {
