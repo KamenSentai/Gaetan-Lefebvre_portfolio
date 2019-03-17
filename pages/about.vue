@@ -44,21 +44,21 @@ export default {
               color: "green",
               shape: "circle",
               above: "Who",
-              first: "am I",
-              last: "really ?",
+              first: "I trully",
+              last: "am ?",
               paragraphs: [
-                "Before being a student in design study, I am first and foremost a passionate person. Everything I do is done 100% with a lot of energy and good humor. I am a person of trust, voluntary and above all reliable.",
-                "I am in the quest for learning. It is during these future years that I hope I can become the person I wish to be."
+                "Before I became a design student, I was first and foremost a passionate person. All I have done has been made with a 100% of my energy. I am a trustworthy, voluntary and above all a reliable person.",
+                "I'm looking for learning opportunity. It is in the coming years that I hope to become the person that i wish to be."
               ]
             }, {
               color: "blue",
               shape: "triangle",
               above: "What",
-              first: "I trully",
+              first: "I passionately",
               last: "like ?",
               paragraphs: [
-                "The sport also animates my days and allows me to let off steam. I also love to cook, for me, my friends, my family. I am a big fan of music. A day without is not a real day.",
-                "I always love to draw. Maybe that's what led me to my current path. Finally, cultural outings are activities that I would never refuse you!"
+                "Sport also animates my days and allows me to let off steam. I also like to cook, for myself, my friends and my family. I'm a big music fan.",
+                "I still like to draw. Maybe that's what led me to my current path. Finally, cultural outings are activities I would never refuse you!"
               ]
             }, {
               color: "red",
@@ -67,8 +67,8 @@ export default {
               first: "I actually",
               last: "work ?",
               paragraphs: [
-                "I recently did an internship at @Buddy Buddy as a UX / UI designer. I have also worked for several clients such as SEL, Action contre la Faim, OpSiSe, La Voix de L’Enfant, Immersive Robotics.",
-                "I am currently working on the redesign of the Manucurist site and perform other freelance missions in Paris. I also realize a memoir for my 4th year at HETIC."
+                "I recently did an internship at Buddy Buddy as a UX / UI designer. I also worked for several clients such as SEL, “Action contre la Faim”, OpSiSe,” La Voix de l'Enfant” or Candriam.",
+                "I am currently working on the redesign of the Manucurist website and I am doing other freelance work in Paris. I am also writing a thesis for my 4th year at HETIC about motion design."
               ]
             }, {
               color: "yellow",
@@ -77,7 +77,7 @@ export default {
               first: "to do",
               last: "now ?",
               paragraphs: [
-                "I am looking for an internship of 6 months for my 4th year at HETIC. Do not hesitate to contact me to discuss or to have a drink. If you have a project, I am also present :)"
+                "I am looking for a 6-month internship for my 4th year at HETIC. Feel free to contact me to discuss or to have a drink. If you have a project, I am also here for you."
               ]
             }
           ]

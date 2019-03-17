@@ -3,9 +3,9 @@
   .Error-code
     img.Error-image(:src="require(`../static/images/Error/${shape}.png`)" v-bind:alt="shape")
   .Error-message
-    h1.Error-title Page not found
-    h2.Error-text We are sorry. We can’t find the URL you are looking for.&nbsp;
-    h3.Error-text Please refresh your page and try again.
+    h1.Error-title Oops! Page not found!
+    h2.Error-text We are not sure that you find your happiness on this page …&nbsp;
+    h3.Error-text Although you will be surprised.
 </template>
 
 <script>
