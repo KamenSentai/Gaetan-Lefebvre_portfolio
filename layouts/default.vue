@@ -17,7 +17,7 @@ export default {
       percentage: 0,
       isLoaded: false,
       date: null,
-      step: 0
+      step: 1
     }
   },
   created() {
@@ -29,12 +29,13 @@ export default {
   },
   methods: {
     onProgress(event) {
-      const percentage = Math.round(event.loaded * 100) || 100
       const elapsed = (new Date() - this.date)
+      const percentage = !isNaN(event.loaded) ? Math.round(event.loaded * 100) : 100
 
       if (elapsed > 5000) {
         this.date = new Date()
-        this.percentage = Math.min(25 * ++this.step, percentage)
+        this.percentage = Math.min(25 * this.step, percentage)
+        if (this.percentage === 25 * this.step) this.step++
       }
 
       if (percentage === 100 && this.percentage < 100) window.requestAnimationFrame(this.onProgress)
