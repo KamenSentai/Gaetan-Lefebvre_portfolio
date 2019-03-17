@@ -45,11 +45,13 @@ export default {
     },
     onComplete(event) {
       if (this.percentage === 100) setTimeout(() => {
-        this.$refs.loading.$el.classList.add('is-hidden')
-        setTimeout(() => {
-          if (this.$refs.page.$route.name.includes('projects-')) document.body.classList.add('is-active')
-          this.isLoaded = true
-        }, 2000)
+        if (this.$refs.loading) {
+          this.$refs.loading.$el.classList.add('is-hidden')
+          setTimeout(() => {
+            if (this.$refs.page.$route.name.includes('projects-')) document.body.classList.add('is-active')
+            this.isLoaded = true
+          }, 2000)
+        }
       }, 500)
     }
   },
