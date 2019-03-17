@@ -2,7 +2,7 @@
   div
     Mouse
     nuxt(ref="page")
-    Loading(v-if="!isLoaded" :percentage="percentage" ref="loading")
+    Loading(v-if="!isLoaded" :roundedPercentage="roundedPercentage" :percentage="percentage" ref="loading")
 </template>
 
 <script>
@@ -14,6 +14,7 @@ export default {
     return {
       x: 0,
       y: 0,
+      roundedPercentage: 0,
       percentage: 0,
       isLoaded: false,
       date: null,
@@ -32,20 +33,22 @@ export default {
       const elapsed = (new Date() - this.date)
       const percentage = !isNaN(event.loaded) ? Math.round(event.loaded * 100) : 100
 
-      if (elapsed > 5000) {
+      this.percentage = percentage
+
+      if (elapsed > 2000) {
         this.date = new Date()
-        this.percentage = Math.min(25 * this.step, percentage)
-        if (this.percentage === 25 * this.step) this.step++
+        this.roundedPercentage = Math.min(25 * this.step, percentage)
+        if (this.roundedPercentage === 25 * this.step) this.step++
       }
 
-      if (percentage === 100 && this.percentage < 100) window.requestAnimationFrame(this.onProgress)
+      if (percentage === 100 && this.roundedPercentage < 100) window.requestAnimationFrame(this.onProgress)
       else {
         window.cancelAnimationFrame(this.onProgress)
         this.onComplete(event)
       }
     },
     onComplete(event) {
-      if (this.percentage === 100) setTimeout(() => {
+      if (this.roundedPercentage === 100) setTimeout(() => {
         if (this.$refs.loading) {
           this.$refs.loading.$el.classList.add('is-hidden')
           setTimeout(() => {

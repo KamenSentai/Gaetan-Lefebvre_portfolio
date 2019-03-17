@@ -2,36 +2,52 @@
 .Loading
   .Loading-background
   .Loading-progressbar
-    .Loading-fillbar(v-bind:class="getColor()" :style="`transform: scaleX(${getPercentage()})`")
+    .Loading-fillbar(v-bind:class="getColor()" :style="`transform: scaleX(${getRoundedPercentage() / 100})`")
+  .Loading-indicator
+    span.Loading-progress {{ progress }}
+    span.Loading-total 100
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      progress: 0
+    }
+  },
   props: [
-    'percentage'
+    'roundedPercentage'
   ],
   methods: {
     getColor() {
       const className = 'Loading-fillbar'
-      return this.percentage == 100 ?
+      return this.roundedPercentage == 100 ?
         `${className}--yellow` :
-        this.percentage >= 75 ?
+        this.roundedPercentage >= 75 ?
           `${className}--red` :
-          this.percentage >= 50?
+          this.roundedPercentage >= 50?
             `${className}--blue` :
             `${className}--green`
     },
-    getPercentage() {
-      return (this.percentage === 100 ?
+    getRoundedPercentage() {
+      return this.roundedPercentage === 100 ?
         100 :
-        this.percentage >= 75 ?
+        this.roundedPercentage >= 75 ?
           75 :
-          this.percentage >= 50 ?
+          this.roundedPercentage >= 50 ?
             50 :
-            this.percentage >= 25 ?
+            this.roundedPercentage >= 25 ?
               25 :
-              0) / 100
+              0
+    },
+    updateRoundedPercentage() {
+      if (this.progress < this.getRoundedPercentage()) this.progress++
+      if (this.progress >= 100) window.cancelAnimationFrame(this.updateRoundedPercentage)
+      else window.requestAnimationFrame(this.updateRoundedPercentage)
     }
+  },
+  mounted() {
+    this.updateRoundedPercentage()
   }
 }
 </script>
@@ -46,6 +62,9 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   height: 100vh;
   z-index: 7500;
@@ -128,6 +147,20 @@ export default {
         background-color: $value;
       }
     }
+  }
+
+  &-indicator {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 100%;
+    color: $white;
+    font-size: 1.4rem;
+    font-weight: 300;
+    pointer-events: none;
   }
 }
 </style>
