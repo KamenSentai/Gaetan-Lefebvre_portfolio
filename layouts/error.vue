@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  Mouse(:x="x" :y="y")
+  Mouse
   Header(
     :color="data[index].color"
     :shape="data[index].shape"
@@ -35,12 +35,6 @@ export default {
   components: {
     Mouse,
     Header
-  },
-  mounted() {
-    window.addEventListener('mousemove', event => {
-      this.x = event.clientX
-      this.y = event.clientY
-    })
   }
 }
 </script>

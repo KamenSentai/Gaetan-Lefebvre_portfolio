@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    Mouse(:x="x" :y="y")
+    Mouse
     nuxt
 </template>
 
@@ -18,10 +18,6 @@ export default {
     Mouse
   },
   mounted() {
-    window.addEventListener('mousemove', event => {
-      this.x = event.clientX
-      this.y = event.clientY
-    })
   }
 }
 </script>

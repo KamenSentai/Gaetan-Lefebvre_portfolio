@@ -28,10 +28,6 @@ export default {
       shape: ''
     }
   },
-  props: [
-    'x',
-    'y'
-  ],
   methods: {
     findShape: function() {
       const _header = document.querySelector('.Header')
@@ -112,11 +108,12 @@ export default {
         const size = target.getBoundingClientRect().width
         ratio = size / currentSize
       } else {
-        mouse.x = this.x - _body.getBoundingClientRect().left
-        mouse.y = this.y - _body.getBoundingClientRect().top
+        mouse.x = screen.x - _body.getBoundingClientRect().left
+        mouse.y = screen.y - _body.getBoundingClientRect().top
       }
-      screen.x = this.x
-      screen.y = this.y
+
+      screen.x = event.clientX
+      screen.y = event.clientY
     })
 
     window.addEventListener('scroll', () => {
