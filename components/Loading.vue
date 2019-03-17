@@ -235,7 +235,7 @@ export default {
     height: $pointerSize;
     margin: $margin-n 0;
     stroke: none;
-    transition: transform $easing .75s;
+    transition: transform $easing 1s;
     transform-origin: 50% 50%;
   }
 
