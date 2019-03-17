@@ -57,31 +57,33 @@ export default {
     updateRoundedPercentage() {
       if (this.progress < this.getRoundedPercentage()) this.progress++
 
-      if (this.progress > 75) {
-        if (this.shape !== 'pentagone') {
-          const tween = kute.to('#Loading-shape', { path: '#Loading-pentagone' })
-          tween.start()
-          this.shape = 'pentagone'
+      if (this.$refs.shape) {
+        if (this.progress > 75) {
+          if (this.shape !== 'pentagone') {
+            const tween = kute.to('#Loading-shape', { path: '#Loading-pentagone' })
+            tween.start()
+            this.shape = 'pentagone'
+          }
+        } else if (this.progress > 50) {
+          if (this.shape !== 'square') {
+            const tween = kute.to('#Loading-shape', { path: '#Loading-square' })
+            tween.start()
+            this.shape = 'square'
+          }
+        } else if (this.progress > 25) {
+          if (this.shape !== 'triangle') {
+            const tween = kute.to('#Loading-shape', { path: '#Loading-triangle' })
+            tween.start()
+            this.shape = 'triangle'
+          }
+        } else if (this.progress > 0) {
+          this.$refs.shape.classList.add('is-displayed')
         }
-      } else if (this.progress > 50) {
-        if (this.shape !== 'square') {
-          const tween = kute.to('#Loading-shape', { path: '#Loading-square' })
-          tween.start()
-          this.shape = 'square'
-        }
-      } else if (this.progress > 25) {
-        if (this.shape !== 'triangle') {
-          const tween = kute.to('#Loading-shape', { path: '#Loading-triangle' })
-          tween.start()
-          this.shape = 'triangle'
-        }
-      } else if (this.progress > 0) {
-        this.$refs.shape.classList.add('is-displayed')
       }
 
       if (this.progress < 100) window.requestAnimationFrame(this.updateRoundedPercentage)
       else {
-        this.$refs.shape.classList.remove('is-displayed')
+        if (this.$refs.shape) this.$refs.shape.classList.remove('is-displayed')
         window.cancelAnimationFrame(this.updateRoundedPercentage)
       }
     }
@@ -98,7 +100,7 @@ export default {
 
 .Loading {
   $rootLoading : &;
-  $pointerSize: 2.6rem;
+  $pointerSize: 3.2rem;
 
   position: absolute;
   top: 0;
