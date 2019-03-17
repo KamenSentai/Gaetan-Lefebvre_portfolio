@@ -1,7 +1,7 @@
-class Transitions {
+class PageController {
   constructor(page = undefined) {
     this.page = page
   }
 }
 
-export default Transitions
+export default PageController

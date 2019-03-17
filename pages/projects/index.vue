@@ -11,7 +11,7 @@ Header(
 
 <script>
 import Header from '~/components/Header'
-import ProjectsTransitions from '~/assets/scripts/ProjectsTransitions'
+import ProjectsController from '~/assets/scripts/ProjectsController'
 
 export default {
   data() {
@@ -68,10 +68,10 @@ export default {
     name: 'projects',
     mode: 'out-in',
     enter(el, done) {
-      new ProjectsTransitions().enter(el, done)
+      new ProjectsController().enter(el, done)
     },
     leave(el, done) {
-      new ProjectsTransitions(this).leave(el, done)
+      new ProjectsController(this).leave(el, done)
     }
   }
 }

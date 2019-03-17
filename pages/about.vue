@@ -12,7 +12,7 @@ Header(
 
 <script>
 import Header from '~/components/Header'
-import AboutTransitions from '~/assets/scripts/AboutTransitions'
+import AboutController from '~/assets/scripts/AboutController'
 
 export default {
   data() {
@@ -90,10 +90,10 @@ export default {
     name: 'about',
     mode: 'out-in',
     enter(el, done) {
-      new AboutTransitions().enter(el, done)
+      new AboutController().enter(el, done)
     },
     leave(el, done) {
-      new AboutTransitions().leave(el, done)
+      new AboutController().leave(el, done)
     }
   }
 }

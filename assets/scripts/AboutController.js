@@ -1,8 +1,8 @@
-import Transitions from './Transitions'
+import PageController from './PageController'
 
 import { TweenLite } from 'gsap'
 
-class AboutTransitions extends Transitions {
+class AboutController extends PageController {
   constructor(page = undefined) {
     super(page)
   }
@@ -50,4 +50,4 @@ class AboutTransitions extends Transitions {
   }
 }
 
-export default AboutTransitions
+export default AboutController

@@ -12,7 +12,7 @@ Header(
 
 <script>
 import Header from '~/components/Header'
-import IndexTransitions from '~/assets/scripts/IndexTransitions'
+import IndexController from '~/assets/scripts/IndexController'
 
 export default {
   data() {
@@ -58,10 +58,10 @@ export default {
     name: 'index',
     mode: 'out-in',
     enter(el, done) {
-      new IndexTransitions(this).enter(el, done)
+      new IndexController(this).enter(el, done)
     },
     leave(el, done) {
-      new IndexTransitions().leave(el, done)
+      new IndexController().leave(el, done)
     }
   }
 }

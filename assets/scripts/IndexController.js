@@ -1,8 +1,8 @@
-import Transitions from './Transitions'
+import PageController from './PageController'
 
 import { TweenLite } from 'gsap'
 
-class IndexTransitions extends Transitions {
+class IndexController extends PageController {
   constructor(page = undefined) {
     super(page)
   }
@@ -53,4 +53,4 @@ class IndexTransitions extends Transitions {
   }
 }
 
-export default IndexTransitions
+export default IndexController

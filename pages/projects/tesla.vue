@@ -169,7 +169,7 @@ import Article from '~/components/Article'
 import Slider from '~/components/Slider'
 import Footer from '~/components/Footer'
 
-import ProjectTransitions from '~/assets/scripts/ProjectTransitions'
+import ProjectController from '~/assets/scripts/ProjectController'
 
 export default {
   data() {
@@ -312,10 +312,10 @@ export default {
     name: 'project',
     mode: 'out-in',
     enter(el, done) {
-      new ProjectTransitions(this).enter(el, done)
+      new ProjectController(this).enter(el, done)
     },
     leave(el, done) {
-      new ProjectTransitions(this).leave(el, done)
+      new ProjectController(this).leave(el, done)
     }
   }
 }
