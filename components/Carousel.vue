@@ -275,13 +275,15 @@ export default {
       const _barsCarousel = this.$refs.bars
       let _containerOffset = _containerCarousel.offsetTop
 
-      window.addEventListener('resize', () => { _containerOffset = _containerCarousel.offsetTop })
+      window.addEventListener('resize', () => { _containerOffset = _containerCarousel.getBoundingClientRect().top })
+
       const setOffset = () => {
         for (const _barCarousel of _barsCarousel) {
           if (_barCarousel.classList.contains('is-hidden')) _barCarousel.style.top = null
           else _barCarousel.style.top = `${_containerOffset}px`
         }
-        window.requestAnimationFrame(setOffset)
+        if (_barsCarousel.length > 0) window.requestAnimationFrame(setOffset)
+        else window.cancelAnimationFrame(setOffset)
       }
       setOffset()
     }
