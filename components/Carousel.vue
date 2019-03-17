@@ -778,6 +778,7 @@ export default {
     left: 50%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
     opacity: 1;
     transform-origin: 50% 50%;
@@ -831,9 +832,7 @@ export default {
 
     &:hover {
       #{$rootCarousel}-shape {
-        &--arrow {
-          animation: arrow-translate 2s linear infinite;
-        }
+        transform: scale(1);
       }
     }
 
@@ -850,6 +849,9 @@ export default {
     fill: $black;
     stroke: $white;
     stroke-width: 1;
+    transition: transform $easing-duration;
+    transform-origin: 50% 50%;
+    transform: scale(.875);
     visibility: hidden;
     pointer-events: none;
 
