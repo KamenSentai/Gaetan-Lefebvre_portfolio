@@ -83,7 +83,11 @@ export default {
 
       if (this.progress < 100) window.requestAnimationFrame(this.updateRoundedPercentage)
       else {
-        if (this.$refs.shape) this.$refs.shape.classList.remove('is-displayed')
+        setTimeout(() => {
+        if (this.$refs.shape) {
+            this.$refs.shape.classList.remove('is-displayed')
+          }
+        }, 1000)
         window.cancelAnimationFrame(this.updateRoundedPercentage)
       }
     }
@@ -228,7 +232,6 @@ export default {
 
   &-shape {
     transition: transform $easing .25s;
-    transition-delay: 1s;
     transform-origin: 50% 50%;
     transform: scale(0);
     visibility: hidden;
@@ -242,7 +245,6 @@ export default {
     }
 
     &.is-displayed {
-      transition-delay: 0;
       transform: scale(1);
     }
   }
