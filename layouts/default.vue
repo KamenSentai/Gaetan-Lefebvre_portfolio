@@ -56,7 +56,7 @@ export default {
             this.isLoaded = true
           }, 2000)
         }
-      }, 500)
+      }, 1500)
     }
   },
   mounted() {
