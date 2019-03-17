@@ -15,6 +15,14 @@ import Header from '~/components/Header'
 import AboutController from '~/assets/scripts/AboutController'
 
 export default {
+  head () {
+    return {
+      title: 'Gaëtan LEFEBVRE | About myself',
+      meta: [
+        { hid: 'description', name: 'description', content: 'I’m a passionate person and have many hobbies like music, cooking, friends and my family. I also work on projects to improve my skills in design.' }
+      ]
+    }
+  },
   data() {
     return {
       data: {

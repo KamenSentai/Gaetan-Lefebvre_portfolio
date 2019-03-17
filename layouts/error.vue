@@ -16,6 +16,14 @@ import Mouse from '~/components/Mouse'
 import Header from '~/components/Header'
 
 export default {
+  head () {
+    return {
+      title: 'Oops, page not found',
+      meta: [
+        { hid: 'description', name: 'description', content: 'We are not sure that you find your happiness on this page ... Although you will be surprised.' }
+      ]
+    }
+  },
   data() {
     return {
       data: [

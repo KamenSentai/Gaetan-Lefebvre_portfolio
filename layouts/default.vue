@@ -1,8 +1,8 @@
 <template lang="pug">
-  div
-    Mouse
-    nuxt(ref="page")
-    Loading(v-if="!isLoaded" :roundedPercentage="roundedPercentage" :percentage="percentage" ref="loading")
+div
+  Mouse
+  nuxt(ref="page")
+  Loading(v-if="!isLoaded" :roundedPercentage="roundedPercentage" :percentage="percentage" ref="loading")
 </template>
 
 <script>
@@ -60,6 +60,8 @@ export default {
     }
   },
   mounted() {
+    if (this.$refs.page.$route.name === null) this.isLoaded = true
+
     const path = '/_nuxt/static/images/'
     const queue = new createjs.LoadQueue()
 

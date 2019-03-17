@@ -14,6 +14,14 @@ import Header from '~/components/Header'
 import ProjectsController from '~/assets/scripts/ProjectsController'
 
 export default {
+  head () {
+    return {
+      title: 'Gaëtan LEFEBVRE | Projects',
+      meta: [
+        { hid: 'description', name: 'description', content: 'Find my latest projects Pocketcare, Tesla and Buddy Buddy with there case study pages.' }
+      ]
+    }
+  },
   data() {
     return {
       data: {

@@ -172,6 +172,14 @@ import Footer from '~/components/Footer'
 import ProjectController from '~/assets/scripts/ProjectController'
 
 export default {
+  head () {
+    return {
+      title: 'Gaëtan LEFEBVRE | Tesla',
+      meta: [
+        { hid: 'description', name: 'description', content: 'Tesla X Oculus Rift was to create a VR experience inside the car. The goal was to realize several scenarios through 3 supports: the Tesla tablet, the mobile app and the watch.' }
+      ]
+    }
+  },
   data() {
     return {
       data: {

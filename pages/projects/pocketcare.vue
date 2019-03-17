@@ -98,6 +98,14 @@ import Footer from '~/components/Footer'
 import ProjectController from '~/assets/scripts/ProjectController'
 
 export default {
+  head () {
+    return {
+      title: 'Gaëtan LEFEBVRE | Pocketcare',
+      meta: [
+        { hid: 'description', name: 'description', content: 'The goal was to redesign an innovative solution for the medical field. The team worked on UX and UI phases to realized the final prototype.' }
+      ]
+    }
+  },
   data() {
     return {
       data: {

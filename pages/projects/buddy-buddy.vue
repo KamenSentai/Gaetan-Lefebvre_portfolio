@@ -118,6 +118,14 @@ import Footer from '~/components/Footer'
 import ProjectController from '~/assets/scripts/ProjectController'
 
 export default {
+  head () {
+    return {
+      title: 'Gaëtan LEFEBVRE | Buddy Buddy',
+      meta: [
+        { hid: 'description', name: 'description', content: 'During my last internship, I redesign the agency website to refresh it. I worked on desktop and mobile version.' }
+      ]
+    }
+  },
   data() {
     return {
       data: {

@@ -15,6 +15,14 @@ import Header from '~/components/Header'
 import IndexController from '~/assets/scripts/IndexController'
 
 export default {
+  head () {
+    return {
+      title: 'Gaëtan LEFEBVRE | Interactive Designer & Motion Designer',
+      meta: [
+        { hid: 'description', name: 'description', content: 'Hello all! I’m looking for a 6th month internship as an Interactive Designer. Today, I’m a 4th year student at HETIC and I’m passionnante about interactive design and motion design.' }
+      ]
+    }
+  },
   data() {
     return {
       data: {
