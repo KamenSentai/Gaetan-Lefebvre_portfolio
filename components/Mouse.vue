@@ -208,7 +208,6 @@ export default {
   height: $cursorSize;
   transition: none;
   pointer-events: none;
-  mix-blend-mode: difference;
 
   &.is-hidden {
     display: none;
@@ -255,7 +254,6 @@ export default {
     width: $pointerSize;
     height: $pointerSize;
     stroke: none;
-    transition: fill $easing-duration;
 
     &.is-beating {
       #{$rootMouse}-shape {
@@ -280,9 +278,8 @@ export default {
 
     &.is-active {
       fill: $white;
-      transform-origin: 50% 50%;
-      transition: fill $easing-duration, transform $easing-duration;
-      transition-delay: .25s;
+      stroke: $black;
+      stroke-width: 2;
       visibility: visible;
       will-change: transform;
     }
