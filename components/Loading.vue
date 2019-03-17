@@ -91,7 +91,7 @@ export default {
 
 .Loading {
   $rootLoading : &;
-  $pointerSize: 2rem;
+  $pointerSize: 2.6rem;
 
   position: absolute;
   top: 0;
