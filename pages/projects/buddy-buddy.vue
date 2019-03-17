@@ -42,7 +42,7 @@ div
       .Content
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Case study home
-          p.Content-description.Text--center We can find on the home page of the case study a short vidéo of the project, with the comptences used by the team and 3 navigations tools (previous and next project) and the scroll.
+          p.Content-description.Text--center On the case study, we can find a short video of the project, with competencies used by the team and 3 navigations tools (previous and next project) and the scroll.
         img.Content-main(data-aos="fade-up" src="~static/images/BuddyBuddy/Computer.png" alt="Computer")
     section.Slide.Slide--crossed
       .Content
@@ -60,7 +60,7 @@ div
       .Content
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Case study page
-          p.Content-description.Text--center When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation.
+          p.Content-description.Text--center The first section is split in 3 sections. The branding identity, then the style guide and finally the UI kit.
         img.Content-full.Shadow(data-aos="fade-up" src="~static/images/BuddyBuddy/Screen_1.png" alt="Screen 1")
         .Content-full
           img.Content-sub.Shadow(data-aos="fade-up" src="~static/images/BuddyBuddy/Screen_2.png" alt="Screen 2")
@@ -80,13 +80,13 @@ div
           .Content-item
             .Content-post.Exception--post(data-aos="fade-right")
               h4.Content-section Branding
-              p.Content-text.Content-text--intermediate All the case study on the Buddy Buddy website have the same plan. The first part is the project presentation.
+              p.Content-text.Content-text--intermediate The first section is split in 3 sections. The branding identity, then the style guide and finally the UI kit.
             img.Content-poster(data-aos="fade-right" data-aos-delay="250" src="~static/images/BuddyBuddy/Branding.png" alt="Branding")
     section.Slide.Exception--bottommore
       .Content
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Mobile case study
-          p.Content-description.Text--center When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation.
+          p.Content-description.Text--center The mobile part has several sliders to adapt the card system used for the desktop part.
         Slider(
           folder="BuddyBuddy"
           :images="['Mobile_1', 'Mobile_2', 'Mobile_3', 'Mobile_4']"
@@ -135,21 +135,22 @@ export default {
           {
             top: "What",
             center: "is the",
-            bottom: "project ?",
+            bottom: "subject ?",
             paragraphs: [
-              "The purpose of this project was to redesign the agency's case study page, the most important page, visited mainly by clients.",
-              "It was necessary especially to appropriate all the projects of the agency, to impregnate itself of the different graphic charters, branding, illustrations and models to then provide a clear and enriching case study."
+              "The aim of this project was to redesign the agency’s case study page, the most important and visited by customers.",
+              "It was necessary above all to know all the project of the agency, to learn the various graphic charters, branding, illustrations and models to provide a clear and enriching study box."
             ]
           }, {
             top: "What",
             center: "was the",
             bottom: "problem ?",
             paragraphs: [
-              "Appropriating projects was not necessarily the most complicated task, but it was the longest because Buddy Buddy has many projects to his credit despite his young age. It is especially the fact to realize a project with very square guidelines and in a very rigorous way which I liked and it was really interesting."
+              "Appropriating projects was not necessarily the most complicated task, but it was the longest because Buddy Buddy has many projects to his credit despite his young age.",
+              "It is especially the fact to realize a project with very square guidelines and in a very rigorous way which I liked and it was really interesting."
             ]
           }, {
             top: "How",
-            center: "we",
+            center: "the team",
             bottom: "solved it ?",
             paragraphs: [
               "I just had to informed myself and ask as many questions as possible to all members of the team. I made a lot of design watch and I choose the best trending websites and works of the moment. Then I tried to inspired myself and mix it the project content and the result is here."
@@ -159,8 +160,8 @@ export default {
             center: "the team",
             bottom: "worked ?",
             paragraphs: [
-              "I worked in pairs on this project with an Heticien comrade. We cut ourselves the project as well. First list the strong and weak points of the site to solve the weak points. Achieve a competitive benchmark but also on the agencies of the moment. Implement guidelines strict enough not to be in difficulty on the other boxes studios. And finally structure the project in large parts.",
-              "Special thanks to Camille Pawlak as UX / UI designer and all the Buddy Buddy team witch helped me during this 4 months internship."
+              "I worked in pairs on this project with a fellow comrade. We divided ourselves on project as well. First of all, we listed the strong and weak points of the website to solve the weak points. Realise a competitive benchmark. Implementing guidelines, strict enough not to be in difficulty on the other studio boxes. And finally structure the project into major parts.",
+              "Special thanks to Camille Pawlak as UX / UI designer and all the Buddy Buddy team which helped me during this 4 months internship."
             ]
           }
         ]

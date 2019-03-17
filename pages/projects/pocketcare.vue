@@ -59,18 +59,18 @@ div
         .Content-item
           .Content-post(data-aos="fade-left")
             h4.Content-section Step 1
-            p.Content-text To solve the problem of complexity of the application, we realized a simple onboarding with illustrations and easy to understand. We then thought it would be a good idea.
+            p.Content-text We can choose our profile by the burger menu. Then you need to click on the “Carte vitale” to settle your session at the doctor with the help of a reader and the operation is over.
           img.Content-poster(data-aos="fade-left" data-aos-delay="250" src="~static/images/Pocketcare/Phone_1.gif" alt="Phone animation 1")
         .Content-item
           .Content-post.Exception--post(data-aos="fade-right")
             h4.Content-section Step 2
-            p.Content-text To solve the problem of complexity of the application, we realized a simple onboarding with illustrations and easy to understand.
+            p.Content-text After your session, you can find your order, and have it scanned in pharmacy to receive the treatment and pay directly by using your phone.
           img.Content-poster(data-aos="fade-right" data-aos-delay="250" src="~static/images/Pocketcare/Phone_2.gif" alt="Phone animation 2")
     section.Slide.Slide--block
       .Content
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Profil and settings
-          p.Content-description.Text--center To solve the problem of complexity of the application, we realized a simple onboarding with illustrations and easy to understand.
+          p.Content-description.Text--center Finally, 2 sections dedicated to the profile section and the application settings with the possibility to modify your profile.
     .Intermediate(data-rate="20")
       .Intermediate-container
         img.Exception--screens(src="~static/images/Pocketcare/Screens.png" alt="Screens")
@@ -117,30 +117,32 @@ export default {
             center: "is the",
             bottom: "projet ?",
             paragraphs: [
-              "Pocketcare was born from a student project. The goal was to design an innovative solution for the medical field.",
-              "After several interviews, we noticed a problem with the loss of prescriptions. In addition we found that one could use the vital and mutual card in a more efficient way. Pocketcare is the solution to these problems."
+              "Pocketcare was born from a student project. The aim was to design an innovative solution concerning the medical field.",
+              "After several interviews, we noticed a problem with prescription loss. Moreover, we found that the “Carte Vital” and the mutual card could be used in a more effective way. Pocketcare is therefore the solution to these problems."
             ]
           }, {
             top: "What",
             center: "was the",
             bottom: "problem ?",
             paragraphs: [
-              "The major problem has been to design an easy-to-access application for all members of a family. Knowing that the app uses not necessarily simple documents like the vital card or prescriptions. The whole process for registering a card has also been quite complicated."
+              "The major problem has been to design an easy-to-access application for all members of a family.",
+              "Knowing that it uses documents that are not necessarily simple like the “Carte Vital” or prescriptions. The entire process for registering a card was also rather complicated."
             ]
           }, {
             top: "How",
             center: "the team",
             bottom: "solved it ?",
             paragraphs: [
-              "To solve the problem of complexity of the application, we realized a simple onboarding with illustrations and easy to understand. We then thought it would be a good idea to rework the cards and let the step validation icons speak for the card recording phase."
+              "To solve the problem of complexity of the application, we realized an “on Boarding simple” with dynamic illustrations easy to understand.",
+              "We then found judicious to rework the cards and let the validations icons speak for themselves for the card registration phase."
             ]
           }, {
             top: "How",
             center: "the team",
             bottom: "worked ?",
             paragraphs: [
-              "We worked on 6 on this project. All the team has participated in the UX phase, where we have listed different people. Subsequently, we went through 2 phases of wireframes, low and hight fie.",
-              "Then we worked on 3 on the UI by cutting into 3 large parts the project, namely, the onboarding and registration, the registration of the cards and prescriptions and the profile part.",
+              "We worked in a team of 6 on this project. The whole team  participated in the UX phase, where we listed different personas. Subsequently, we went through 2 phases of wireframes, low and high-fie.",
+              "Then, 3 of us worked on the UI by cutting the project into 3 main parts, namely, on Boarding and registration, card and prescription registration and profile part.",
               "Special thanks to Marina Ferreira Duarte and Clara Foggetti as UX / UI designer and Clarisse Garcia, Thomas Hénault and Marine Le Borgne as UX designer."
             ]
           }

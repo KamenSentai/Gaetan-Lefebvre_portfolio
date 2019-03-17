@@ -66,7 +66,7 @@ div
       .Content
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Inside the car
-          p.Content-description.Content-description--large.Text--center The touchscreen is first of all the way to navigate and obtain all the informations about the Tesla Model 3. But it’s also the way to interact the the Oculus Rift for the passenger beside to the driver and the driver himself when the car is stopped.
+          p.Content-description.Content-description--large.Text--center The touchscreen is first of all the way to navigate and obtain all the informations about the Tesla Model 3. But it’s also the way to interact with the Oculus Rift for the passenger beside the driver and the driver himself when the car is stopped.
       img.Exception--car(src="~static/images/Tesla/Car.png" alt="Car")
     section.Slide.Slide--page
       Post(
@@ -79,7 +79,7 @@ div
         .Content-article
           .Content-post.Content-post--static.Content-post--quarter(data-aos="fade-left")
             h4.Content-section Charge and navigation
-            p.Content-text When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation to return to the car.
+            p.Content-text When the Tesla is 100% charged, you will receive a notification to alert you. After you can start the navigation to return to the car.
             p.Content-text The navigation will tell you the distance of the car and the localisation. You will also have an AR view of the street.
           Slider.Slider--item(
             data-aos-delay="250"
@@ -94,9 +94,9 @@ div
       .Content
         .Content-article.Content-article--alternation
           .Content-post.Content-post--static.Content-post--half(data-aos="fade-up")
-            h4.Content-section Charge and navigation
-            p.Content-text When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation to return to the car.
-            p.Content-text The navigation will tell you the distance of the car and the localisation. You will also have an AR view of the street.
+            h4.Content-section Game mode
+            p.Content-text The particularity of this partnership: the Oculus experience. We are now immersed in it. To begin, we must choose our experience.
+            p.Content-text Subsequently, we choose the number of members. Onboarding will then tell us to equip ourselves properly (helmets, media and gloves).
           .Content-alternated.is-inactive
             .Content-object(data-aos="fade-up")
               img.Content-intern(src="~static/images/Tesla/Phone_1.png" alt="Phone 1")
@@ -114,8 +114,8 @@ div
               img.Content-intern(src="~static/images/Tesla/Phone_3.gif" alt="Phone 3")
         .Content-article
           .Content-post.Content-post--static.Content-post--half(data-aos="fade-up")
-            h4.Content-section Inside the Oculus
-            p.Content-text Finally, you can find here the charging part. Then the localisation, same as the mobile part to find the car. And the little option to bring the car forward or backward in some specials situations.
+            h4.Content-section Oculus in your hand
+            p.Content-text With VR, we decided to use gloves to manipulate the Oculus immersion in the Tesla. After, by using the helmet and different sensors located in the binacle, you can finally start the experience.
         .Content-full.Content-full--online
           img.Content-online(data-aos="fade-up" data-aos-delay="0" src="~static/images/Tesla/Hand_1.png" alt="Hand")
           img.Content-online(data-aos="fade-up" data-aos-delay="250" src="~static/images/Tesla/Hand_2.png" alt="Hand")
@@ -137,12 +137,12 @@ div
           img.Content-flyer(data-aos="fade-left" src="~static/images/Tesla/Watch.gif" alt="Watch")
           .Content-post.Content-post--static.Content-post--half(data-aos="fade-right")
             h4.Content-section Oculus immersion
-            p.Content-text When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation to return to the car. After you can start the navigation to return to the car.
+            p.Content-text Here we are now in the Oculus experience. In this one, we can choose a landscape using the wheel of the watch and plunge us into a dream while we are driving.
     section.Slide.Slide--block
       .Content
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Other screens
-          p.Content-description.Text--center Finally, you can find here the charging part. Then the localisation, same as the mobile part to find the car. And the little option to bring the car forward or backward in some specials situations.
+          p.Content-description.Text--center We can finally find all our mobile features on our watch: loading, moving the car, unlocking the car, the map with the route and the Oculus experience.
     .Intermediate(data-rate="20")
       .Intermediate-container(data-aos="fade-up")
         img.Content-banner(src="~static/images/Tesla/Watches_1.png" alt="Watches")
@@ -191,40 +191,41 @@ export default {
             center: "is the",
             bottom: "project ?",
             paragraphs: [
-              "This project is quite special since it consisted in finding a partnership with the Tesla brand to communicate on its latest model, the Tesla Model 3. The objective was to realize several scenarios through 3 supports: the Tesla tablet, the mobile and the watch. It was both inspired by the Tesla charter while combining with the brand chosen by our team.",
-              "And we ended up choosing Oculus integrating a VR experience inside the vehicle. I'll let you discover more."
+              "This project is quite special because it consisted in finding a partnership with the brand Tesla to communicate on its latest model, the Tesla Model 3. The objective was to achieve several scenarios through 3 supports: the Tesla tablet, the mobile and the watch. It was necessary to both be inspired of the Tesla charter while combining with the brand charter we chose.",
+              "And we ended up choosing Oculus, incorporating a VR experience inside the vehicle. I will let you discover more."
             ]
           }, {
             top: "What",
             center: "was the",
             bottom: "problem ?",
             paragraphs: [
-              "Creating a consistent product on 3 different media was certainly the most complex task. We worked in teams of 2 for each medium, except the Watch which only required one person. Above all, it was necessary to take into account the graphic charters of both brands without letting one of them dominate.",
-              "And the main problem was to create into the vehicle interactions with the oculus product without hurting people in the car."
+              "Creating a consistent product on 3 different media was certainly the most complex task. We worked in teams of 2 for each part, except for the Watch that required only one person. It was mainly necessary to take into account the graphic charters of the 2 marks without letting one of them dominate.",
+              "And the main problem was to create interactions into the vehicle with the Oculus product without hurting people in the car."
             ]
           }, {
             top: "How",
-            center: "I solved",
-            bottom: "it ?",
+            center: "the team",
+            bottom: "solved it ?",
             paragraphs: [
-              "Communication first and foremost. Each step was seen and reviewed by each member of the team. As for the final graphic charter, I realized with my partner on the mobile version. It was later declined on other media.",
-              "It was necessary to think and imagine how VR would settle in a vehicle. So we also decided to use a type of Oculus gloves that passengers will use during their experiences to navigate without problems."
+              "Communication first. Each step was seen and reviewed by each team member. As for the final graphic charter, I realized it with my duo on the mobile version. It was subsequently declined on the other parts.",
+              "It was necessary to think and imagine how VR would settle in a vehicle. So we also decided to use Oculus gloves that passengers will use during their experiences to navigate without problems."
             ]
           }, {
             top: "Why",
             center: "that",
             bottom: "project ?",
             paragraphs: [
-              "It is certainly the project where I learned the most, and which amused me the most. It was necessary to think and imagine how VR would settle in a vehicle. It was a very interesting phase of reflection where each member of the team was able to propose ideas."
+              "It was certainly the project where I learned the most, and that entertained me the most. We had to think and imagine how the VR would fit into a vehicle.",
+              "It was a very thought intensive phase where each team member has been able to propose different ideas."
             ]
           }, {
             top: "How",
             center: "the team",
             bottom: "worked ?",
             paragraphs: [
-              "We were 5 on this project. 2 people on the tablet part, 2 on the mobile part and finally 1 on the watch. For my part I worked continuously with a friend for the mobile part. We were able to iterate on the Watch part.",
-              "What I liked a lot was also the prototype phase and especially the discovery of a way to visualize his Sketch models in VR, a task that required a lot of time and research.",
-              "Special thanks to Gabriel Duret, Marina Ferreira Duarte, Clara Foggetti and Thomas Hénault as UX / UI designer and Marina for helping me  for the prototypes."
+              "We were 5 on this project. 2 people on the tablet part, 2 on the mobile part and finally 1 on watch. For my part I worked continuously with a comrade for the mobile part. We were able to iterate on the Watch part.",
+              "What I really liked was also the prototype phase and especially discovering a way to visualize its Sketch models in VR, a task that asked me a lot of time and research.",
+              "Special thanks to Gabriel Duret, Marina Ferreira Duarte, Clara Foggetti and Thomas Hénault as UX / UI designer and Marina for helping me for the prototypes."
             ]
           }
         ]
