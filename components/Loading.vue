@@ -110,6 +110,14 @@ export default {
     #{$rootLoading}-progressbar {
       transform: translateY(-50vh);
     }
+
+    #{$rootLoading}-progress {
+      transform: translateY(-50vh);
+    }
+
+    #{$rootLoading}-total {
+      transform: translateY(50vh);
+    }
   }
 
   &-background {
@@ -156,11 +164,16 @@ export default {
     justify-content: center;
     align-items: center;
     width: auto;
-    height: 100%;
+    height: auto;
     color: $white;
     font-size: 1.4rem;
     font-weight: 300;
     pointer-events: none;
+  }
+
+  &-progress,
+  &-total {
+    transition: transform $easing 2s;
   }
 }
 </style>
