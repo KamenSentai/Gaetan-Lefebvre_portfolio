@@ -8,7 +8,7 @@
     svg.Loading-pointer(ref="pointer" width="40px" height="40px" viewBox="0 0 40 40")
       path#Loading-circle.Loading-shape(d="M38.8,20c0,5.2-2.1,9.9-5.5,13.3s-8.1,5.5-13.3,5.5c-5.2,0-9.9-2.1-13.3-5.5C3.3,29.9,1.2,25.2,1.2,20 c0-5.2,2.1-9.9,5.5-13.3S14.8,1.2,20,1.2c5.2,0,9.9,2.1,13.3,5.5C36.7,10.1,38.8,14.8,38.8,20z")
       path#Loading-triangle.Loading-shape(d="M20,1.1l18.8,32.5H1.2L20,1.1z")
-      path#Loading-square.Loading-shape(d="M38.9,38.8H20.2H1.4V1.2h37.5V38.8z")
+      path#Loading-square.Loading-shape(d="M20,1.2L38.8,20l-9.4,9.4L20,38.8L1.2,20L20,1.2z")
       path#Loading-pentagone.Loading-shape(d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
       path#Loading-shape.Loading-shape.is-active(ref="shape" d="M38.8,20c0,5.2-2.1,9.9-5.5,13.3s-8.1,5.5-13.3,5.5c-5.2,0-9.9-2.1-13.3-5.5C3.3,29.9,1.2,25.2,1.2,20 c0-5.2,2.1-9.9,5.5-13.3S14.8,1.2,20,1.2c5.2,0,9.9,2.1,13.3,5.5C36.7,10.1,38.8,14.8,38.8,20z")
     span.Loading-total 100
@@ -56,18 +56,25 @@ export default {
     },
     updateRoundedPercentage() {
       if (this.progress < this.getRoundedPercentage()) this.progress++
-      if (this.progress > 75 && this.shape !== 'pentagone') {
-        const tween = kute.to('#Loading-shape', { path: '#Loading-pentagone' })
-        tween.start()
-        this.shape = 'pentagone'
-      } else if (this.progress > 50 && this.shape !== 'square') {
-        const tween = kute.to('#Loading-shape', { path: '#Loading-square' })
-        tween.start()
-        this.shape = 'square'
-      } else if (this.progress > 25 && this.shape !== 'triangle') {
-        const tween = kute.to('#Loading-shape', { path: '#Loading-triangle' })
-        tween.start()
-        this.shape = 'triangle'
+
+      if (this.progress > 75) {
+        if (this.shape !== 'pentagone') {
+          const tween = kute.to('#Loading-shape', { path: '#Loading-pentagone' })
+          tween.start()
+          this.shape = 'pentagone'
+        }
+      } else if (this.progress > 50) {
+        if (this.shape !== 'square') {
+          const tween = kute.to('#Loading-shape', { path: '#Loading-square' })
+          tween.start()
+          this.shape = 'square'
+        }
+      } else if (this.progress > 25) {
+        if (this.shape !== 'triangle') {
+          const tween = kute.to('#Loading-shape', { path: '#Loading-triangle' })
+          tween.start()
+          this.shape = 'triangle'
+        }
       } else if (this.progress > 0) {
         this.$refs.shape.classList.add('is-displayed')
       }
