@@ -142,8 +142,14 @@ export default {
       else _hudMouse.classList.remove('is-reduced')
       if (inceaseFrame || menuFrame) _hudMouse.style.transform = `scale(${ratio})`
       else _hudMouse.style.transform = null
-      if (textFrame) _hudMouse.classList.add('is-lighten')
-      else _hudMouse.classList.remove('is-lighten')
+      if (textFrame) {
+        _hudMouse.classList.add('is-lighten')
+        _pointerMouse.classList.add('is-lighten')
+      }
+      else {
+        _hudMouse.classList.remove('is-lighten')
+        _pointerMouse.classList.remove('is-lighten')
+      }
       if (beatPointer) _pointerMouse.classList.add('is-beating')
       else _pointerMouse.classList.remove('is-beating')
 
@@ -269,6 +275,12 @@ export default {
         &.is-active {
           transform: scale(0);
         }
+      }
+    }
+
+    &.is-lighten {
+      #{$rootMouse}-shape {
+        stroke: $white;
       }
     }
   }
