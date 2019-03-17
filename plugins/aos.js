@@ -23,7 +23,5 @@ export default ({ app }) => {
         for (const _aosElement of _aosElements) _aosElement.dataset.aos = ''
       }, 1500)
     }
-    if (!to.name.includes('projects-')) document.body.style.overflow = 'hidden'
-    else document.body.style.overflow = 'auto'
   })
 }

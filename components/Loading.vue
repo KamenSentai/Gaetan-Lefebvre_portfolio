@@ -1,5 +1,6 @@
 <template lang="pug">
 .Loading
+  .Loading-background
   .Loading-progressbar
     .Loading-fillbar(v-bind:class="getColor()" :style="`transform: scale(${percentage / 100})`")
 </template>
@@ -29,67 +30,66 @@ export default {
 @import '~assets/styles/tools/functions';
 
 .Loading {
+  $rootLoading : &;
+
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   z-index: 7500;
+  transition: opacity $easing 1s;
+  transition-delay: 1s;
 
   &::before,
   &::after {
     content: '';
     position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: $black;
+    transition: transform $easing 2s;
+  }
+
+  &::before {
+    top: 0;
+    border-bottom: solid .1rem $dark;
+  }
+
+  &::after {
+    bottom: 0;
+    border-top: solid .1rem $dark;
+  }
+
+  &.is-hidden {
+    opacity: 0;
+
+    &::before {
+      transform: translateY(-100%);
+    }
+
+    &::after {
+      transform: translateY(100%);
+    }
+
+    #{$rootLoading}-background {
+      opacity: 0;
+    }
+
+    #{$rootLoading}-progressbar {
+      transform: translateY(-50vh);
+    }
+  }
+
+  &-background {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-  }
-
-  &::before {
-    background: linear-gradient(
-      to top,
-      hsla(0, 0%, 8%, 0) 0%,
-      hsla(0, 0%, 8%, 0.013) 4.05%,
-      hsla(0, 0%, 8%, 0.049) 7.75%,
-      hsla(0, 0%, 8%, 0.104) 11.25%,
-      hsla(0, 0%, 8%, 0.175) 14.5%,
-      hsla(0, 0%, 8%, 0.259) 17.65%,
-      hsla(0, 0%, 8%, 0.352) 20.6%,
-      hsla(0, 0%, 8%, 0.45) 23.55%,
-      hsla(0, 0%, 8%, 0.55) 26.45%,
-      hsla(0, 0%, 8%, 0.648) 29.4%,
-      hsla(0, 0%, 8%, 0.741) 32.35%,
-      hsla(0, 0%, 8%, 0.825) 35.5%,
-      hsla(0, 0%, 8%, 0.896) 38.75%,
-      hsla(0, 0%, 8%, 0.951) 42.25%,
-      hsla(0, 0%, 8%, 0.987) 45.95%,
-      hsla(0, 0%, 8%, 1) 50%,
-      hsla(0, 0%, 8%, 1) 100%
-    );
-  }
-
-  &::after {
-    background: linear-gradient(
-      to bottom,
-      hsla(0, 0%, 8%, 0) 0%,
-      hsla(0, 0%, 8%, 0.013) 4.05%,
-      hsla(0, 0%, 8%, 0.049) 7.75%,
-      hsla(0, 0%, 8%, 0.104) 11.25%,
-      hsla(0, 0%, 8%, 0.175) 14.5%,
-      hsla(0, 0%, 8%, 0.259) 17.65%,
-      hsla(0, 0%, 8%, 0.352) 20.6%,
-      hsla(0, 0%, 8%, 0.45) 23.55%,
-      hsla(0, 0%, 8%, 0.55) 26.45%,
-      hsla(0, 0%, 8%, 0.648) 29.4%,
-      hsla(0, 0%, 8%, 0.741) 32.35%,
-      hsla(0, 0%, 8%, 0.825) 35.5%,
-      hsla(0, 0%, 8%, 0.896) 38.75%,
-      hsla(0, 0%, 8%, 0.951) 42.25%,
-      hsla(0, 0%, 8%, 0.987) 45.95%,
-      hsla(0, 0%, 8%, 1) 50%,
-      hsla(0, 0%, 8%, 1) 100%
-    );
+    background-color: $black;
+    transition: opacity $easing 2s;
   }
 
   &-progressbar {
@@ -100,6 +100,7 @@ export default {
     width: 100%;
     height: .2rem;
     background-color: $dark;
+    transition: transform $easing 2s;
   }
 
   &-fillbar {

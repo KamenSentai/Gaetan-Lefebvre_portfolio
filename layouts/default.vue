@@ -2,7 +2,7 @@
   div
     Mouse
     nuxt(ref="page")
-    Loading(:percentage="percentage")
+    Loading(v-if="!isLoaded" :percentage="percentage" ref="loading")
 </template>
 
 <script>
@@ -14,7 +14,8 @@ export default {
     return {
       x: 0,
       y: 0,
-      percentage: 0
+      percentage: 0,
+      isLoaded: false
     }
   },
   components: {
@@ -24,9 +25,16 @@ export default {
   methods: {
     onProgress(event) {
       this.percentage = Math.round(event.loaded * 100)
+      console.log(this.percentage)
     },
     onComplete(event) {
-      console.log('completed')
+      setTimeout(() => {
+        this.$refs.loading.$el.classList.add('is-hidden')
+        setTimeout(() => {
+          if (this.$refs.page.$route.name.includes('projects-')) document.body.classList.add('is-active')
+          this.isLoaded = true
+        }, 2000)
+      }, 500)
     }
   },
   mounted() {

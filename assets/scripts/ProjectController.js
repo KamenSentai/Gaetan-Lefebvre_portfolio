@@ -11,6 +11,7 @@ class ProjectController extends PageController {
     const page = this.page
 
     document.body.style.pointerEvents = 'none'
+    document.body.classList.add('is-active')
 
     if (!page.$route.params.from) {
       TweenLite.fromTo('.Carousel-title', 1, { opacity: 0 }, { opacity: 1, delay: 1.5, ease: Power2.easeInOut })
@@ -40,9 +41,9 @@ class ProjectController extends PageController {
     const page = this.page
 
     document.body.style.pointerEvents = 'none'
+    document.body.classList.remove('is-active')
 
     if (!page.$route.name.includes('projects-')) {
-      document.body.style.overflow = 'hidden'
       el.querySelector('.Logo').dataset.theme = 'white'
       el.querySelector('.Header-navigation').dataset.theme = 'white'
       el.querySelector('.Header-mainnav').dataset.theme = 'white'
@@ -57,7 +58,6 @@ class ProjectController extends PageController {
         done()
       }})
     } else if (page.$route.params.from) {
-      document.body.style.overflow = 'hidden'
       const _logo = el.querySelector('.Logo')
       const _footer = el.querySelector('.Footer')
       const _footerTop = _footer.getBoundingClientRect().top
@@ -76,7 +76,7 @@ class ProjectController extends PageController {
       TweenLite.to('.Footer-container', .5, { height: window.innerHeight, y: - _footerTop, delay: .5, ease: Power2.easeInOut, onComplete: () => {
         setTimeout(() => {
           document.body.style.pointerEvents = 'auto'
-          document.body.style.overflow = 'auto'
+          document.body.classList.add('is-active')
           done()
         }, 1500)
       }})
