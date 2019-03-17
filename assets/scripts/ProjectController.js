@@ -13,7 +13,6 @@ class ProjectController extends PageController {
     document.body.style.pointerEvents = 'none'
 
     if (!page.$route.params.from) {
-      const _labelCarousel = el.querySelector('.Carousel-label')
       TweenLite.fromTo('.Carousel-title', 1, { opacity: 0 }, { opacity: 1, delay: 1.5, ease: Power2.easeInOut })
       TweenLite.fromTo('.Carousel-subtitle', 1, { opacity: 0 }, { opacity: 1, delay: 1.5, ease: Power2.easeInOut })
       TweenLite.fromTo('.Carousel-container', 1, { scale: 0, y: - window.innerHeight / 2, delay: 0 }, { scale: 1, y: 0, delay: 0, ease: Power2.easeInOut })
@@ -78,6 +77,87 @@ class ProjectController extends PageController {
     } else {
       document.body.style.pointerEvents = 'auto'
       done()
+    }
+  }
+
+  init() {
+    const page = this.page
+
+    const _body = document.body
+    const _header = page.$el.querySelector('.Header')
+    const _headerMainnav = _header.querySelector('.Header-mainnav')
+    const _logo = page.$el.querySelector('.Logo')
+    const _footer = page.$el.querySelector('.Footer')
+    const _slides = Array.from(page.$el.querySelectorAll('.Slide, .Intermediate'))
+    const _alternatedsContent = Array.from(page.$el.querySelectorAll('.Content-alternated'))
+
+    let breakpointHeader = _headerMainnav.getBoundingClientRect().top
+    let breakpoints = []
+    let _footerOffset = _footer.offsetTop - breakpointHeader
+    let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
+
+    for (const _slide of _slides) {
+      if (_slide.classList.contains('Intermediate')) {
+        _slides.splice(_slides.indexOf(_slide) + 1, 1)
+      }
+    }
+
+    const updateBreakpoints = () => {
+      _footerOffset = _footer.offsetTop - breakpointHeader
+
+      if (_footerOffset > 0) {
+        breakpointHeader = _headerMainnav.getBoundingClientRect().top
+        breakpoints = []
+
+        for (const _slide of _slides) {
+          if (_slide.classList.contains('Slide')) breakpoints.push(_slide.offsetTop - breakpointHeader)
+          else breakpoints.push(_slide.offsetTop - breakpointHeader + _slide.offsetHeight * (1 - _slide.dataset.rate / 100))
+        }
+        breakpoints.push(_footerOffset)
+      }
+      setTimeout(updateBreakpoints, 500)
+    }
+    updateBreakpoints()
+
+    window.addEventListener('resize', updateBreakpoints)
+
+    window.addEventListener('scroll', () => {
+      const offsetTop = Math.abs(_body.getBoundingClientRect().top)
+      let color
+      let index
+
+      for (let i = 0 ; i < breakpoints.length ; i++) {
+        if (breakpoints[i] > offsetTop) {
+          index = i
+          break
+        }
+      }
+
+      if (index !== undefined) color = index % 2 ? 'black' : 'white'
+      else color = 'white'
+
+      _headerMainnav.dataset.theme = color
+      _logo.dataset.theme = color
+    })
+
+    window.addEventListener('mousemove', event => { mouse.y = event.clientY })
+
+    if (_alternatedsContent.length > 0) this.animateLines(_alternatedsContent)
+  }
+
+  animateLines(_alternatedsContent) {
+    for (const _alternatedContent of _alternatedsContent) {
+      const _objectContent = _alternatedContent.querySelector('.Content-object')
+
+      const listenScroll = () => {
+        if (_objectContent.classList.contains('aos-animate')) {
+          _alternatedContent.classList.remove('is-inactive')
+          window.removeEventListener('scroll', listenScroll)
+        } else {
+          window.addEventListener('scroll', listenScroll)
+        }
+      }
+      listenScroll()
     }
   }
 }

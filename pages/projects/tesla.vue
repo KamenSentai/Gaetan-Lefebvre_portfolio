@@ -98,19 +98,19 @@ div
             p.Content-text When the Tesla is 100% charged, you will receive a notification to alerte you. After you can start the navigation to return to the car.
             p.Content-text The navigation will tell you the distance of the car and the localisation. You will also have an AR view of the street.
           .Content-alternated.is-inactive
-            .Content-group(data-aos="fade-up")
+            .Content-object(data-aos="fade-up")
               img.Content-intern(src="~static/images/Tesla/Phone_1.png" alt="Phone 1")
               img.Absolute.Absolute--p11(src="~static/images/Tesla/Phone_1-overflow_1.png" alt="")
               img.Absolute.Absolute--p12(src="~static/images/Tesla/Phone_1-overflow_2.png" alt="")
               img.Absolute.Absolute--p13(src="~static/images/Tesla/Phone_1-overflow_3.png" alt="")
           .Content-alternated.is-inactive
-            .Content-group(data-aos="fade-up")
+            .Content-object(data-aos="fade-up")
               img.Content-intern(src="~static/images/Tesla/Phone_2.png" alt="Phone 2")
               img.Absolute.Absolute--p23(src="~static/images/Tesla/Phone_2-overflow_3.png" alt="")
               img.Absolute.Absolute--p22(src="~static/images/Tesla/Phone_2-overflow_2.png" alt="")
               img.Absolute.Absolute--p21(src="~static/images/Tesla/Phone_2-overflow_1.png" alt="")
           .Content-alternated.is-inactive
-            .Content-group(data-aos="fade-up")
+            .Content-object(data-aos="fade-up")
               img.Content-intern(src="~static/images/Tesla/Phone_3.gif" alt="Phone 3")
         .Content-article
           .Content-post.Content-post--static.Content-post--half(data-aos="fade-up")
@@ -234,79 +234,7 @@ export default {
     Footer
   },
   mounted() {
-    const _alternatedsContent = Array.from(this.$el.querySelectorAll('.Content-alternated'))
-
-    for (const _alternatedContent of _alternatedsContent) {
-      const _groupContent = _alternatedContent.querySelector('.Content-group')
-
-      const listenScroll = () => {
-        if (_groupContent.classList.contains('aos-animate')) {
-          _alternatedContent.classList.remove('is-inactive')
-          window.removeEventListener('scroll', listenScroll)
-        } else {
-          window.addEventListener('scroll', listenScroll)
-        }
-      }
-      listenScroll()
-    }
-
-    const _body = document.body
-    const _header = this.$el.querySelector('.Header')
-    const _headerMainnav = _header.querySelector('.Header-mainnav')
-    const _logo = this.$el.querySelector('.Logo')
-    const _footer = this.$el.querySelector('.Footer')
-    const _slides = Array.from(this.$el.querySelectorAll('.Slide, .Intermediate'))
-
-    for (const _slide of _slides) {
-      if (_slide.classList.contains('Intermediate')) {
-        _slides.splice(_slides.indexOf(_slide) + 1, 1)
-      }
-    }
-
-    let breakpointHeader = _headerMainnav.getBoundingClientRect().top
-    let breakpoints = []
-    let _footerOffset = _footer.offsetTop - breakpointHeader
-    let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
-
-    const updateBreakpoints = () => {
-      _footerOffset = _footer.offsetTop - breakpointHeader
-
-      if (_footerOffset > 0) {
-        breakpointHeader = _headerMainnav.getBoundingClientRect().top
-        breakpoints = []
-
-        for (const _slide of _slides) {
-          if (_slide.classList.contains('Slide')) breakpoints.push(_slide.offsetTop - breakpointHeader)
-          else breakpoints.push(_slide.offsetTop - breakpointHeader + _slide.offsetHeight * (1 - _slide.dataset.rate / 100))
-        }
-        breakpoints.push(_footerOffset)
-      }
-      setTimeout(updateBreakpoints, 500)
-    }
-    updateBreakpoints()
-
-    window.addEventListener('resize', updateBreakpoints)
-
-    window.addEventListener('scroll', () => {
-      const offsetTop = Math.abs(_body.getBoundingClientRect().top)
-      let color
-      let index
-
-      for (let i = 0 ; i < breakpoints.length ; i++) {
-        if (breakpoints[i] > offsetTop) {
-          index = i
-          break
-        }
-      }
-
-      if (index !== undefined) color = index % 2 ? 'black' : 'white'
-      else color = 'white'
-
-      _headerMainnav.dataset.theme = color
-      _logo.dataset.theme = color
-    })
-
-    window.addEventListener('mousemove', event => { mouse.y = event.clientY })
+    new ProjectController(this).init()
   },
   transition: {
     name: 'project',
