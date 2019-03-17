@@ -15,8 +15,13 @@ export default {
       x: 0,
       y: 0,
       percentage: 0,
-      isLoaded: false
+      isLoaded: false,
+      date: null,
+      step: 0
     }
+  },
+  created() {
+    this.date = new Date()
   },
   components: {
     Mouse,
@@ -24,11 +29,22 @@ export default {
   },
   methods: {
     onProgress(event) {
-      this.percentage = Math.round(event.loaded * 100)
-      console.log(this.percentage)
+      const percentage = Math.round(event.loaded * 100) || 100
+      const elapsed = (new Date() - this.date)
+
+      if (elapsed > 5000) {
+        this.date = new Date()
+        this.percentage = Math.min(25 * ++this.step, percentage)
+      }
+
+      if (percentage === 100 && this.percentage < 100) window.requestAnimationFrame(this.onProgress)
+      else {
+        window.cancelAnimationFrame(this.onProgress)
+        this.onComplete(event)
+      }
     },
     onComplete(event) {
-      setTimeout(() => {
+      if (this.percentage === 100) setTimeout(() => {
         this.$refs.loading.$el.classList.add('is-hidden')
         setTimeout(() => {
           if (this.$refs.page.$route.name.includes('projects-')) document.body.classList.add('is-active')
