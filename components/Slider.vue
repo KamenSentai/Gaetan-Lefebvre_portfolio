@@ -2,7 +2,7 @@
 .Slider(data-aos="fade-left" v-bind:class="automatic ? 'Slider--automatic' : ''")
   .Slider-button
     canvas.Slider-loading(ref="loading")
-    a.Push.Push--left(v-bind:class="automatic ? 'Slider-push' : ''" @click="turnSlider" href="#" ref="push")
+    a.Push.Push--left.Cursor-frame--reduced(v-bind:class="automatic ? 'Slider-push' : ''" @click="turnSlider" href="#" ref="push")
       .Push-arrow
       .Push-arrow
   .Slider-content(v-if="mockup" @touchstart="touchStart" @touchmove="touchMove")
@@ -10,7 +10,7 @@
     .Slider-images
       img.Slider-image.Shadow--image(v-for="image in images" :src="require(`../static/images/${folder}/${image}.png`)" ref="images")
   .Slider-button.Slider-button--hidden(v-if="mockup")
-    .Push
+    .Push.Cursor-frame--reduced
   .Slider-images.Slider-images--pushed(v-else @touchstart="touchStart" @touchmove="touchMove")
     img.Slider-image.Shadow(v-for="image in images" :src="require(`../static/images/${folder}/${image}.png`)" ref="images")
 </template>
@@ -381,6 +381,7 @@ export default {
     height: calc(100% + #{$overflow-size});
     color: $black;
     transform: translate(-50%, -50%);
+    pointer-events: none;
   }
 
   &-push {

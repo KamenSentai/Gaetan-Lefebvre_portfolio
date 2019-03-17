@@ -58,10 +58,10 @@ div
             :color="data.color"
           )
           .Field-inputs(data-aos="fade-up")
-            input(type="radio" id="black" v-model="slider_theme" value="black")
-            label.Field--black(for="black") Dark theme
-            input(type="radio" id="white" v-model="slider_theme" value="white")
-            label(v-bind:class="`Field--${data.color}`" for="white") Light theme
+            input.Cursor-frame--reduced(type="radio" id="black" v-model="slider_theme" value="black")
+            label.Cursor-frame--reduced.Field--black(for="black") Dark theme
+            input.Cursor-frame--reduced(type="radio" id="white" v-model="slider_theme" value="white")
+            label.Cursor-frame--reduced(v-bind:class="`Field--${data.color}`" for="white") Light theme
     section.Slide.Slide--block.Exception--bottomless
       .Content
         .Content-header.Content-header--center(data-aos="fade-up")
