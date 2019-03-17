@@ -35,7 +35,7 @@
           path="static/images/About/"
           :image="page.shape"
           :alt="page.shape"
-          :isAutomatic="true"
+          :isAutomatic="checkIndex(page) === 'is-active'"
           ref="shapes"
         )
     .Hero-fronts
