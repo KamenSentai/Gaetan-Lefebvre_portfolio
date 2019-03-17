@@ -40,12 +40,12 @@ class ProjectController extends PageController {
     const page = this.page
 
     document.body.style.pointerEvents = 'none'
-    el.querySelector('.Logo').dataset.theme = 'white'
-    el.querySelector('.Header-navigation').dataset.theme = 'white'
-    el.querySelector('.Header-mainnav').dataset.theme = 'white'
 
     if (!page.$route.name.includes('projects-')) {
       document.body.style.overflow = 'hidden'
+      el.querySelector('.Logo').dataset.theme = 'white'
+      el.querySelector('.Header-navigation').dataset.theme = 'white'
+      el.querySelector('.Header-mainnav').dataset.theme = 'white'
       const _labelCarousel = el.querySelector('.Carousel-label')
       if (_labelCarousel) _labelCarousel.classList.add('is-hidden')
       TweenLite.to('.Page', 1, { opacity: 0, y: 30, delay: 0, ease: Power2.easeInOut })
@@ -62,8 +62,14 @@ class ProjectController extends PageController {
       const _footer = el.querySelector('.Footer')
       const _footerTop = _footer.getBoundingClientRect().top
 
-      _logo.dataset.color = _footer.dataset.color
       _footer.classList.add('is-active')
+
+      setTimeout(() => {
+        el.querySelector('.Logo').dataset.theme = 'white'
+        el.querySelector('.Header-navigation').dataset.theme = 'white'
+        el.querySelector('.Header-mainnav').dataset.theme = 'white'
+        _logo.dataset.color = _footer.dataset.color
+      }, 1000)
 
       TweenLite.to('.Footer-image', .5, { opacity: 0, delay: 0, ease: Power2.easeInOut })
       TweenLite.to('.Page', 1, { opacity: 0, delay: 1, ease: Power2.easeInOut })
