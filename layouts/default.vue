@@ -35,7 +35,7 @@ export default {
 
       this.percentage = percentage
 
-      if (elapsed > 2000) {
+      if (elapsed > 1000) {
         this.date = new Date()
         this.roundedPercentage = Math.min(25 * this.step, percentage)
         if (this.roundedPercentage === 25 * this.step) this.step++

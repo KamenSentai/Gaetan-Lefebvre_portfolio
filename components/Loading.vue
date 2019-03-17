@@ -102,8 +102,8 @@ export default {
   width: 100vw;
   height: 100vh;
   z-index: 7500;
-  transition: opacity $easing 1s;
-  transition-delay: 1s;
+  transition: opacity $easing .5s;
+  transition-delay: .5s;
 
   &::before,
   &::after {
@@ -113,7 +113,7 @@ export default {
     width: 100%;
     height: 50%;
     background-color: $black;
-    transition: transform $easing 2s;
+    transition: transform $easing 1s;
   }
 
   &::before {
@@ -161,7 +161,7 @@ export default {
     width: 100%;
     height: 100%;
     background-color: $black;
-    transition: opacity $easing 2s;
+    transition: opacity $easing 1s;
   }
 
   &-progressbar {
@@ -172,7 +172,7 @@ export default {
     width: 100%;
     height: .2rem;
     background-color: $dark;
-    transition: transform $easing 2s;
+    transition: transform $easing 1s;
   }
 
   &-fillbar {
@@ -207,7 +207,7 @@ export default {
 
   &-progress,
   &-total {
-    transition: transform $easing 2s;
+    transition: transform $easing 1s;
   }
 
   &-pointer {
