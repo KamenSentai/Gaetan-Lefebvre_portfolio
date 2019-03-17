@@ -28,6 +28,9 @@ export default {
       shape: ''
     }
   },
+  props : [
+    'route'
+  ],
   methods: {
     findShape: function() {
       const _header = document.querySelector('.Header')
@@ -55,7 +58,7 @@ export default {
       const _shape = this.$refs.shape
       const _target = this.$el.querySelector(`#Mouse-${this.shape}`)
 
-      if (_target && _shape.dataset.shape && _shape.dataset.shape !== this.shape) {
+      if (_target && _shape) if (_shape.dataset) if (_shape.dataset.shape) if (_shape.dataset.shape !== this.shape) {
         const tween = kute.to('#Mouse-shape', { path: `#Mouse-${this.shape}` })
         tween.start()
       }
@@ -69,6 +72,7 @@ export default {
     const _frameMouse = this.$refs.frame
     const _hudMouse = this.$refs.hud
 
+    let currentRoute = this.$route.name
     let reduceFrame = false
     let inceaseFrame = false
     let menuFrame = false
@@ -142,6 +146,15 @@ export default {
       else _hudMouse.classList.remove('is-lighten')
       if (beatPointer) _pointerMouse.classList.add('is-beating')
       else _pointerMouse.classList.remove('is-beating')
+
+      if (currentRoute !== this.$route.name) {
+        reduceFrame = false
+        inceaseFrame = false
+        menuFrame = false
+        textFrame = false
+        beatPointer = false
+        currentRoute = this.$route.name
+      }
 
       window.requestAnimationFrame(animateCursor)
     }

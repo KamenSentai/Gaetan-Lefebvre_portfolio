@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     Mouse
-    nuxt
+    nuxt(ref="page")
 </template>
 
 <script>
@@ -20,7 +20,7 @@ export default {
   methods: {
     onProgress(event) {
       const progress = Math.round(event.loaded * 100)
-      console.log(progress + '%')
+      // console.log(progress + '%')
     },
     onComplete(event) {
       console.log('completed')
