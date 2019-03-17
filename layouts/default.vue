@@ -2,31 +2,34 @@
   div
     Mouse
     nuxt(ref="page")
+    Loading(:percentage="percentage")
 </template>
 
 <script>
 import Mouse from '~/components/Mouse'
+import Loading from '~/components/Loading'
 
 export default {
   data() {
     return {
       x: 0,
-      y: 0
+      y: 0,
+      percentage: 0
     }
   },
   components: {
-    Mouse
+    Mouse,
+    Loading
   },
   methods: {
     onProgress(event) {
-      const progress = Math.round(event.loaded * 100)
-      // console.log(progress + '%')
+      this.percentage = Math.round(event.loaded * 100)
     },
     onComplete(event) {
       console.log('completed')
     }
   },
-  beforeMount() {
+  mounted() {
     const path = '/_nuxt/static/images/'
     const queue = new createjs.LoadQueue()
 
@@ -390,8 +393,6 @@ export default {
       `${path}Tesla/Watches_1.png`,
       `${path}Tesla/Watches_2.png`
     ])
-  },
-  mounted() {
   }
 }
 </script>
