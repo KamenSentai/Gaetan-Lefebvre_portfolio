@@ -57,24 +57,27 @@ export default {
     updateRoundedPercentage() {
       if (this.progress < this.getRoundedPercentage()) this.progress++
 
-      if (this.$refs.shape) {
+      if (this.$refs.pointer && this.$refs.shape) {
         if (this.progress > 75) {
           if (this.shape !== 'pentagone') {
             const tween = kute.to('#Loading-shape', { path: '#Loading-pentagone' })
             tween.start()
             this.shape = 'pentagone'
+            this.$refs.pointer.style.transform = `rotateZ(${3 * 360}deg)`
           }
         } else if (this.progress > 50) {
           if (this.shape !== 'square') {
             const tween = kute.to('#Loading-shape', { path: '#Loading-square' })
             tween.start()
             this.shape = 'square'
+            this.$refs.pointer.style.transform = `rotateZ(${2 * 360}deg)`
           }
         } else if (this.progress > 25) {
           if (this.shape !== 'triangle') {
             const tween = kute.to('#Loading-shape', { path: '#Loading-triangle' })
             tween.start()
             this.shape = 'triangle'
+            this.$refs.pointer.style.transform = `rotateZ(${1 * 360}deg)`
           }
         } else if (this.progress > 0) {
           this.$refs.shape.classList.add('is-displayed')
@@ -232,6 +235,8 @@ export default {
     height: $pointerSize;
     margin: $margin-n 0;
     stroke: none;
+    transition: transform $easing .75s;
+    transform-origin: 50% 50%;
   }
 
   &-shape {
