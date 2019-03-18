@@ -6,7 +6,7 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
         .Header-tree
           span.Header-branch(v-bind:class="$nuxt.$route.path === '/' ? `is-active--${color || data.colors[range]}` : ''")
             nuxt-link(:to="{ name: 'index', params: sendData() }")
-            span.Header-leaf(v-on:click="navigationClick($event)") Home
+            span.Header-leaf.Cursor-frame--increase(v-on:click="navigationClick($event)") Home
           span.Header-branch(v-bind:class="$nuxt.$route.path === '/projects' ? `is-active--${color || data.colors[range]}` : ''")
             nuxt-link(:to="{ name: 'projects', params: sendData() }")
             span.Header-leaf.Cursor-frame--increase(v-on:click="navigationClick($event)") Projects
@@ -15,9 +15,9 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
             span.Header-leaf.Cursor-frame--increase(v-on:click="navigationClick($event)") About
           a.Header-branch.Cursor-frame--increase(href="mailto:gaetan.lefebvre@hetic.net" title="Mail") Contact
           .Header-branch.Header-branch--more
-            a.Cursor-frame--increase(href="#") LinkedIn
-            a.Cursor-frame--increase(href="#") Dribbble
-            a.Cursor-frame--increase(href="#") Instagram
+            a.Cursor-frame--increase(href="https://www.linkedin.com/in/gaetan-lefebvre" title="LinkedIn" target="_blank") LinkedIn
+            a.Cursor-frame--increase(href="https://www.dribbble.com/gaetanlefebvre" title="Dribbble" target="_blank") Dribbble
+            a.Cursor-frame--increase(href="https://www.behance.net/gaetanlefebvre" title="Behance" target="_blank") Behance
     .Header-mainnav(v-bind:class="[isNavigating ? 'is-toggled' : '', isMenu ? 'is-hidden': '']" :data-navigating="isNavigating ? 'true' : 'false'")
       nuxt-link.Header-logo(v-bind:class="isNavigating ? 'is-toggled' : 'is-untoggled'" :to="{ name: 'index', params: sendData() }")
         Logo(:color="color || data.colors[range]")

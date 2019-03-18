@@ -77,7 +77,8 @@ export default {
               first: "to do",
               last: "now ?",
               paragraphs: [
-                "I am looking for a 6-month internship for my 4th year at HETIC. Feel free to contact me to discuss or to have a drink. If you have a project, I am also here for you."
+                "I am looking for a 6-month internship for my 4th year at HETIC. Feel free to <a class=\"Text--bold Text-hover Text-hover--yellow Cursor-frame--reduced\" href=\"mailto:gaetan.lefebvre@hetic.net\" title=\"gaetan.lefebvre@hetic.net\">contact</a> me to discuss or to have a drink. If you have a project, I am also here for you.",
+                "<span class=\"Text--grey\">©2019 - Gaëtan Lefebvre<br/>Coded by</span> <a class=\"Text--bold Text-hover Text-hover--yellow Cursor-frame--reduced\" href=\"https://www.alain-caovantruong.fr/\" target=\"_blank\" title=\"Alain Cao Van Truong\">Alain Cao Van Truong</a>"
               ]
             }
           ]

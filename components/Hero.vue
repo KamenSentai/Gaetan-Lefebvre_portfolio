@@ -63,8 +63,8 @@
               span.Hero-first {{ page.first }}&nbsp;
               span.Hero-last(v-bind:class="`Hero-last--${page.color || data.colors[range]}`") {{ page.last }}
       .Hero-texts
-        .Hero-paragraphs(v-for="page in data[type].pages" v-bind:class="checkIndex(page)")
-          p.Hero-paragraph(v-for="paragraph in page.paragraphs") {{ paragraph }}
+        .Hero-paragraphs(v-for="(page, index) in data[type].pages" v-bind:class="checkIndex(page)")
+          p.Hero-paragraph(v-for="paragraph in page.paragraphs" v-html="paragraph")
     .Hero-hold(v-if="type === 'home'")
       span.Hero-heavy Hold&nbsp;
       span.Hero-thin the
@@ -76,13 +76,13 @@
       span.Hero-thin to continue
     ul.Hero-links(v-else-if="type === 'about'")
       li.Hero-link.Cursor-frame--increase
-        a.Cursor-frame--increase(href="#" title="LinkedIn") LinkedIn
+        a.Cursor-frame--increase(href="https://www.linkedin.com/in/gaetan-lefebvre" title="LinkedIn" target="_blank") LinkedIn
       li.Hero-link.Cursor-frame--increase
-        a.Cursor-frame--increase(href="#" title="Dribbble") Dribbble
+        a.Cursor-frame--increase(href="https://www.dribbble.com/gaetanlefebvre" title="Dribbble" target="_blank") Dribbble
       li.Hero-link.Cursor-frame--increase
-        a.Cursor-frame--increase(href="#" title="Instagram") Instagram
+        a.Cursor-frame--increase(href="https://www.behance.net/gaetanlefebvre" title="Behance" target="_blank") Behance
       li.Hero-link.Cursor-frame--increase(v-bind:class="`Text--${data.colors[range]}`")
-        a.Cursor-frame--increase(href="#" title="Contact") Contact
+        a.Cursor-frame--increase(href="mailto:gaetan.lefebvre@hetic.net" title="gaetan.lefebvre@hetic.ne") Contact
     span.Hero-scroll.Hero-scroll--data(v-if="type === 'about'")
 </template>
 

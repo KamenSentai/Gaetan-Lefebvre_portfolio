@@ -55,4 +55,50 @@
   &--yellow {
     color: $yellow;
   }
+
+  &-hover {
+    transition: color $easing-duration;
+
+    &--black {
+      &:hover {
+        color: $black;
+      }
+    }
+
+    &--grey {
+      &:hover {
+        color: $grey;
+      }
+    }
+
+    &--white {
+      &:hover {
+        color: $white;
+      }
+    }
+
+    &--green {
+      &:hover {
+        color: $green;
+      }
+    }
+
+    &--blue {
+      &:hover {
+        color: $blue;
+      }
+    }
+
+    &--red {
+      &:hover {
+        color: $red;
+      }
+    }
+
+    &--yellow {
+      &:hover {
+        color: $yellow;
+      }
+    }
+  }
 }

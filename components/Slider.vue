@@ -2,7 +2,7 @@
 .Slider(data-aos="fade-left" v-bind:class="automatic ? 'Slider--automatic' : ''")
   .Slider-button
     canvas.Slider-loading(ref="loading")
-    a.Push.Push--left.Cursor-frame--reduced(v-bind:class="automatic ? 'Slider-push' : ''" @click="turnSlider" href="#" ref="push")
+    span.Push.Push--left.Cursor-frame--reduced(v-bind:class="automatic ? 'Slider-push' : ''" @click="turnSlider" ref="push")
       .Push-arrow
       .Push-arrow
   .Slider-content(v-if="mockup" @touchstart="touchStart" @touchmove="touchMove")
@@ -61,8 +61,6 @@ export default {
       this.initialY = null
     },
     turnSlider(event) {
-      event.preventDefault()
-
       if (!this.isClicked) {
         this.isClicked = true
         this.start = new Date()
