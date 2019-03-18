@@ -50,7 +50,7 @@ div
         :color="data.color"
         :post="data.posts[2]"
       )
-    section.Slide.Slide--banner
+    section.Slide.Slide--banner.Lazyload
       Banner.Banner--pocketcare(src="Pocketcare/Banner_Inscription" alt ="Inscription")
     section.Slide.Slide--page
       .Content
@@ -72,7 +72,7 @@ div
           h3.Content-title.Text--center Profil and settings
           p.Content-description.Text--center Finally, 2 sections dedicated to the profile section and the application settings with the possibility to modify your profile.
     .Intermediate(data-rate="20")
-      .Intermediate-container
+      .Intermediate-container.Lazyload
         img.Exception--screens(src="~static/images/Pocketcare/Screens.png" alt="Screens")
     section.Slide
       Article(

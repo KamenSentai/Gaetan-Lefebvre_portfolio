@@ -96,6 +96,7 @@ class ProjectController extends PageController {
     const _footer = page.$el.querySelector('.Footer')
     const _slides = Array.from(page.$el.querySelectorAll('.Slide, .Intermediate'))
     const _alternatedsContent = Array.from(page.$el.querySelectorAll('.Content-alternated'))
+    const _lazyloads = Array.from(page.$el.querySelectorAll('.Lazyload'))
 
     let breakpointHeader = _headerMainnav.getBoundingClientRect().top
     let breakpoints = []
@@ -148,7 +149,23 @@ class ProjectController extends PageController {
 
     window.addEventListener('mousemove', event => { mouse.y = event.clientY })
 
+    if (_lazyloads.length > 0) this.lazyload(_lazyloads)
     if (_alternatedsContent.length > 0) this.animateLines(_alternatedsContent)
+  }
+
+  lazyload(_lazyloads) {
+    for(const _lazyload of _lazyloads) {
+      const _imgLazyload = _lazyload.querySelector('img')
+      const src = _imgLazyload.getAttribute('src')
+
+      _imgLazyload.removeAttribute('src')
+
+      _imgLazyload.addEventListener('load', () => {
+        _lazyload.classList.add('Lazyload--loaded')
+      })
+
+      _imgLazyload.setAttribute('src', src)
+    }
   }
 
   animateLines(_alternatedsContent) {

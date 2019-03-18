@@ -62,7 +62,7 @@ div
             label.Cursor-frame--reduced.Field--black(for="black") Dark theme
             input.Cursor-frame--reduced(type="radio" id="white" v-model="slider_theme" value="white")
             label.Cursor-frame--reduced(v-bind:class="`Field--${data.color}`" for="white") Light theme
-    section.Slide.Slide--block.Exception--bottomless
+    section.Slide.Slide--block.Exception--bottomless.Lazyload
       .Content
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Inside the car
@@ -123,7 +123,7 @@ div
           img.Content-online(data-aos="fade-up" data-aos-delay="750" src="~static/images/Tesla/Hand_4.png" alt="Hand")
           img.Content-online(data-aos="fade-up" data-aos-delay="1000" src="~static/images/Tesla/Hand_5.png" alt="Hand")
     .Intermediate(data-rate="20")
-      .Intermediate-container(data-aos="fade-up")
+      .Intermediate-container.Lazyload(data-aos="fade-up")
         img.Content-breakpoints(src="~static/images/Tesla/Helmet.png" alt="Helmet")
     section.Slide.Slide--page
       Post(

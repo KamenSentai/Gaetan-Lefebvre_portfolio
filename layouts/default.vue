@@ -49,13 +49,11 @@ export default {
     },
     onComplete(event) {
       if (this.roundedPercentage === 100) setTimeout(() => {
-        if (this.$refs.loading) {
-          this.$refs.loading.$el.classList.add('is-hidden')
-          setTimeout(() => {
-            if (this.$refs.page.$route.name.includes('projects-')) document.body.classList.add('is-active')
-            this.isLoaded = true
-          }, 1500)
-        }
+        if (this.$refs.loading) this.$refs.loading.$el.classList.add('is-hidden')
+        setTimeout(() => {
+          if (this.$refs.page.$route.name.includes('projects-')) document.body.classList.add('is-active')
+          this.isLoaded = true
+        }, 1500)
       }, 1500)
     }
   },

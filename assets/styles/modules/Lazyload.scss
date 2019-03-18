@@ -1,0 +1,12 @@
+.Lazyload {
+  img {
+    opacity: 0 !important;
+    transition: opacity $easing-duration;
+  }
+
+  &--loaded {
+    img {
+      opacity: 1 !important;
+    }
+  }
+}

@@ -39,7 +39,7 @@ div
         :color="data.color"
         :post="data.posts[1]"
       )
-      .Content
+      .Content.Lazyload
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Case study home
           p.Content-description.Text--center On the case study, we can find a short video of the project, with competencies used by the team and 3 navigations tools and the scroll.
@@ -49,7 +49,7 @@ div
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center The case study
           p.Content-description.Content-description--large.Text--center All the case study on the Buddy Buddy website have the same plan. The first part is the project presentation. Then we present the branding identity and the style guide. The last part is composed of the model won desktop and mobile.
-        .Content-container(data-aos="fade-up")
+        .Content-container.Lazyload(data-aos="fade-up")
           img.Content-main(src="~static/images/BuddyBuddy/Laptop.png" alt="Laptop")
           img.Content-main(src="~static/images/BuddyBuddy/Animation.gif" alt="Animation")
     section.Slide.Slide--page
@@ -91,7 +91,7 @@ div
           folder="BuddyBuddy"
           :images="['Mobile_1', 'Mobile_2', 'Mobile_3', 'Mobile_4']"
         )
-    section.Slide.Slide--banner.Exception--banner
+    section.Slide.Slide--banner.Exception--banner.Lazyload
       Banner.Banner--buddybuddy(src="BuddyBuddy/Banner_Screenshots" alt ="Banner Screenshots")
     section.Slide
       Article(
