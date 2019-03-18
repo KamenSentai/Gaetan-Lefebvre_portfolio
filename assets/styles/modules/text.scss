@@ -32,6 +32,10 @@
     color: $black;
   }
 
+  &--dark {
+    color: $dark;
+  }
+
   &--grey {
     color: $grey;
   }
@@ -62,6 +66,12 @@
     &--black {
       &:hover {
         color: $black;
+      }
+    }
+
+    &--dark {
+      &:hover {
+        color: $dark;
       }
     }
 

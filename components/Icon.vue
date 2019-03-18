@@ -3,10 +3,8 @@
   nuxt-link.Icon-link(ref="link" :to="{ name: 'projects', params: { color: color, shape: shape, from: $route.name } }")
   svg.Icon-shape.Cursor-frame--reduced.Cursor-pointer--beat(
     ref="shape"
-    @mousedown="mouseDown"
-    @mouseup="mouseUp"
+    @click="click"
     @touchstart="touchStart"
-    @touchend="touchEnd"
     width="40px" height="40px" viewBox="0 0 40 40"
   )
     defs
@@ -34,17 +32,11 @@ export default {
     'shape'
   ],
   methods: {
-    mouseDown: function() {
+    click: function() {
       this.isClicking = true
-    },
-    mouseUp: function() {
-      this.isClicking = false
     },
     touchStart: function() {
       this.isClicking = true
-    },
-    touchEnd: function() {
-      this.isClicking = false
     }
   },
   mounted() {
@@ -69,13 +61,12 @@ export default {
       const transitionEvent = whichTransitionEvent()
         transitionEvent && _shapeIcon.addEventListener(transitionEvent, () => {
         if (this.isClicking) {
-          this.isClicking = false
           _linkIcon.click()
         }
       })
     }
 
-    _shapeIcon.addEventListener('mousedown', loadShape)
+    _shapeIcon.addEventListener('click', loadShape)
     _shapeIcon.addEventListener('touchstart', loadShape)
   }
 }
