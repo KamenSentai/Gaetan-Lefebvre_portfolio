@@ -13,6 +13,10 @@ class ProjectController extends PageController {
     document.body.style.pointerEvents = 'none'
     document.body.classList.add('is-active')
 
+    el.querySelector('.Logo').dataset.forced = ''
+    el.querySelector('.Header-navigation').dataset.forced = ''
+    el.querySelector('.Header-mainnav').dataset.forced = ''
+
     if (!page.$route.params.from) {
       TweenLite.fromTo('.Carousel-title', 1, { opacity: 0 }, { opacity: 1, delay: 1.5, ease: Power2.easeInOut })
       TweenLite.fromTo('.Carousel-subtitle', 1, { opacity: 0 }, { opacity: 1, delay: 1.5, ease: Power2.easeInOut })
@@ -43,10 +47,16 @@ class ProjectController extends PageController {
     document.body.style.pointerEvents = 'none'
     document.body.classList.remove('is-active')
 
-    if (!page.$route.name.includes('projects-')) {
+    setTimeout(() => {
       el.querySelector('.Logo').dataset.theme = 'white'
       el.querySelector('.Header-navigation').dataset.theme = 'white'
       el.querySelector('.Header-mainnav').dataset.theme = 'white'
+      el.querySelector('.Logo').dataset.forced = 'white'
+      el.querySelector('.Header-navigation').dataset.forced = 'white'
+      el.querySelector('.Header-mainnav').dataset.forced = 'white'
+    }, 1000)
+
+    if (!page.$route.name.includes('projects-')) {
       const _labelCarousel = el.querySelector('.Carousel-label')
       if (_labelCarousel) _labelCarousel.classList.add('is-hidden')
       TweenLite.to('.Page', 1, { opacity: 0, y: 30, delay: 0, ease: Power2.easeInOut })
@@ -63,13 +73,6 @@ class ProjectController extends PageController {
       const _footerTop = _footer.getBoundingClientRect().top
 
       _footer.classList.add('is-active')
-
-      setTimeout(() => {
-        el.querySelector('.Logo').dataset.theme = 'white'
-        el.querySelector('.Header-navigation').dataset.theme = 'white'
-        el.querySelector('.Header-mainnav').dataset.theme = 'white'
-        _logo.dataset.color = _footer.dataset.color
-      }, 1000)
 
       TweenLite.to('.Footer-image', .5, { opacity: 0, delay: 0, ease: Power2.easeInOut })
       TweenLite.to('.Page', 1, { opacity: 0, delay: 1, ease: Power2.easeInOut })
@@ -151,6 +154,16 @@ class ProjectController extends PageController {
 
     if (_lazyloads.length > 0) this.lazyload(_lazyloads)
     if (_alternatedsContent.length > 0) this.animateLines(_alternatedsContent)
+
+    if (
+      navigator.userAgent.match(/Android/i)
+      || navigator.userAgent.match(/webOS/i)
+      || navigator.userAgent.match(/iPhone/i)
+      || navigator.userAgent.match(/iPad/i)
+      || navigator.userAgent.match(/iPod/i)
+      || navigator.userAgent.match(/BlackBerry/i)
+      || navigator.userAgent.match(/Windows Phone/i)
+    ) this.removeScrollAnimation()
   }
 
   lazyload(_lazyloads) {
@@ -181,6 +194,14 @@ class ProjectController extends PageController {
         }
       }
       listenScroll()
+    }
+  }
+
+  removeScrollAnimation() {
+    const _aosElements = Array.from(document.querySelectorAll('[data-aos]'))
+    for (const _aosElement of _aosElements) {
+      _aosElement.dataset.aos = ''
+
     }
   }
 }

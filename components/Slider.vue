@@ -330,6 +330,14 @@ export default {
 
     &--pushed {
       padding-left: $margin-l;
+
+      @media (max-width: #{grid-media(6)}) {
+        padding-left: $margin-m;
+      }
+
+      @media (max-width: #{grid-media(4)}) {
+        padding-left: $margin-s;
+      }
     }
 
     > * {

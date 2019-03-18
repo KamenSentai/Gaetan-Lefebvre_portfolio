@@ -560,6 +560,14 @@ export default {
     }
 
     &[data-navigating="false"] {
+      &[data-forced="white"] {
+          color: $white !important;
+
+        #{$rootHeader}-stripe {
+          background-color: $white !important;
+        }
+      }
+
       &[data-theme="white"] {
           color: $white;
 

@@ -27,6 +27,12 @@ export default {
     }
   }
 
+  &[data-forced="white"] {
+    #{$rootLogo}-firstname {
+      fill: $white !important;
+    }
+  }
+
   &[data-theme="white"] {
     #{$rootLogo}-firstname {
       fill: $white;
