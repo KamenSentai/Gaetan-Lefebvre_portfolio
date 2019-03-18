@@ -1,6 +1,9 @@
 import PageController from './PageController'
 
 import { TweenLite } from 'gsap'
+import AOS from 'aos'
+
+import 'aos/dist/aos.css'
 
 class ProjectController extends PageController {
   constructor(page = undefined) {
@@ -90,6 +93,16 @@ class ProjectController extends PageController {
   }
 
   init() {
+    AOS.init({
+      disable: 'mobile',
+      once: false,
+      duration: 1000,
+      easing: 'cubic-bezier(0.72, 0, 0.21, 1)'
+    })
+    setTimeout(() => {
+      AOS.refresh()
+    }, 2500)
+
     const page = this.page
 
     const _body = document.body

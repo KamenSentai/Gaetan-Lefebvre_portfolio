@@ -29,12 +29,6 @@ module.exports = {
     background: 'white'
   },
   /*
-  ** Plugins
-  */
-  plugins: [
-    { src: "~/plugins/aos", ssr: false }
-  ],
-  /*
   ** Global CSS
   */
 	css: [
