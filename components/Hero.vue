@@ -72,8 +72,8 @@
       .Hero-texts
         .Hero-paragraphs(v-for="(page, index) in data[type].pages" v-bind:class="checkIndex(page)")
           p.Hero-paragraph(v-for="paragraph in page.paragraphs" v-html="paragraph")
-    .Hero-hold(v-if="type === 'home'")
-      span.Hero-heavy Hold&nbsp;
+    .Hero-push(v-if="type === 'home'")
+      span.Hero-heavy Push&nbsp;
       span.Hero-thin the
       Icon(
         :color="data.colors[range]"
@@ -426,7 +426,7 @@ export default {
     }
   }
 
-  &-hold {
+  &-push {
     display: flex;
     align-items: center;
     flex: 1 0 auto;

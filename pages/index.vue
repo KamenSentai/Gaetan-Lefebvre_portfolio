@@ -45,7 +45,8 @@ export default {
               first: "Gaëtan",
               last: "Lefebvre",
               paragraphs: [
-                "Passionate about interactive design and motion design, I am currently a 4th year student at HETIC.I was recently a junior UX/UI designer at BuddyBuddy. Now I'm looking for an internship as an interactive designer."
+                "Passionate about interactive design and motion design, I am currently a 4th year student at HETIC.",
+                "I was recently a junior UX/UI designer at BuddyBuddy. Now I'm looking for an internship as an interactive designer."
               ]
             }
           ]

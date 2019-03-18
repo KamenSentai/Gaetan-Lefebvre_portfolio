@@ -60,11 +60,11 @@ class ProjectsController extends PageController {
       setTimeout(() => {
         for (const _labelCarousel of _labelsCarousel) _labelCarousel.classList.add('is-hidden')
         if (_buttonsCarousel.getBoundingClientRect().width > _buttonsCarousel.getBoundingClientRect().height)
-          TweenLite.to('.Carousel-container', 1, { scale: 0, left: - window.innerWidth / 2, delay: 2, ease: Power2.easeInOut })
+          TweenLite.to('.Carousel-container', 1, { scale: 0, left: - window.innerWidth / 2, delay: 1.5, ease: Power2.easeInOut })
         else
-          TweenLite.to('.Carousel-container', 1, { scale: 0, top: - window.innerHeight / 2, delay: 2, ease: Power2.easeInOut })
+          TweenLite.to('.Carousel-container', 1, { scale: 0, top: - window.innerHeight / 2, delay: 1.5, ease: Power2.easeInOut })
 
-        TweenLite.fromTo('.Header-navbar', .5, { opacity: 1 }, { opacity: 0, delay: 2.5, ease: Power2.easeInOut, onComplete: () => {
+        TweenLite.fromTo('.Header-navbar', .5, { opacity: 1 }, { opacity: 0, delay: 2, ease: Power2.easeInOut, onComplete: () => {
           document.body.style.pointerEvents = 'auto'
           done()
         }})

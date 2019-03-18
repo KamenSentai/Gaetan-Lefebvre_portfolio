@@ -91,7 +91,7 @@ export default {
         if (this.$refs.shape) {
             this.$refs.shape.classList.remove('is-displayed')
           }
-        }, 1000)
+        }, 1500)
         window.cancelAnimationFrame(this.updateRoundedPercentage)
       }
     }
@@ -150,6 +150,10 @@ export default {
 
     #{$rootLoading}-total {
       transform: translateY(50vh);
+    }
+
+    #{$rootLoading}-shape {
+      fill: rgba($black, 0);
     }
   }
 
@@ -249,7 +253,7 @@ export default {
   }
 
   &-shape {
-    transition: transform $easing .25s;
+    transition: transform $easing .5s, fill $easing .5s .25s;
     transform-origin: 50% 50%;
     transform: scale(0);
     visibility: hidden;

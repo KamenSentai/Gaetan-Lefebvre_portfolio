@@ -42,7 +42,7 @@ div
       .Content
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Case study home
-          p.Content-description.Text--center On the case study, we can find a short video of the project, with competencies used by the team and 3 navigations tools (previous and next project) and the scroll.
+          p.Content-description.Text--center On the case study, we can find a short video of the project, with competencies used by the team and 3 navigations tools and the scroll.
         img.Content-main(data-aos="fade-up" src="~static/images/BuddyBuddy/Computer.png" alt="Computer")
     section.Slide.Slide--crossed
       .Content
@@ -80,7 +80,7 @@ div
           .Content-item
             .Content-post.Exception--post(data-aos="fade-right")
               h4.Content-section Branding
-              p.Content-text.Content-text--intermediate The first section is split in 3 sections. The branding identity, then the style guide and finally the UI kit.
+              p.Content-text.Content-text--intermediate In this section, we are presenting the logo evolution of the project. Then we show the final logo version with its variations.
             img.Content-poster(data-aos="fade-right" data-aos-delay="250" src="~static/images/BuddyBuddy/Branding.png" alt="Branding")
     section.Slide.Exception--bottommore
       .Content
