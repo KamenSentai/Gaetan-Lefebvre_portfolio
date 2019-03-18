@@ -156,6 +156,14 @@ export default {
         textFrame = false
         beatPointer = false
         currentRoute = this.$route.name
+
+        _pointerMouse.classList.add('is-hidden')
+        _hudMouse.classList.add('is-hidden')
+
+        setTimeout(() => {
+          _pointerMouse.classList.remove('is-hidden')
+          _hudMouse.classList.remove('is-hidden')
+        }, 5000)
       }
 
       window.requestAnimationFrame(animateCursor)
@@ -237,6 +245,7 @@ export default {
     transition: all $easing-duration;
     will-change: transform;
 
+    &.is-hidden,
     &.is-reduced {
       transform: scale(0);
     }
@@ -266,6 +275,7 @@ export default {
       }
     }
 
+    &.is-hidden,
     &.is-reduced {
       #{$rootMouse}-shape {
         &.is-active {
