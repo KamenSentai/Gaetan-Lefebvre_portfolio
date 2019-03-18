@@ -67,7 +67,7 @@ export default {
               first: "I actually",
               last: "work ?",
               paragraphs: [
-                "I recently did an internship at Buddy Buddy as a UX / UI designer. I also worked for several clients such as SEL, “Action contre la Faim”, OpSiSe,” La Voix de l'Enfant” or Candriam.",
+                "I recently did an internship at <a class=\"Text--hovered Text--bold Cursor-frame--reduced\" href=\"http://buddybuddy.io/\" target=\"_blank\" title=\"Buddy Buddy\">Buddy Buddy</a> as a UX / UI designer. I also worked for several clients such as SEL, “Action contre la Faim”, OpSiSe,” La Voix de l'Enfant” or Candriam.",
                 "I am currently working on the redesign of the Manucurist website and I am doing other freelance work in Paris. I am also writing a thesis for my 4th year at HETIC about motion design."
               ]
             }, {
@@ -77,8 +77,8 @@ export default {
               first: "to do",
               last: "now ?",
               paragraphs: [
-                "I am looking for a 6-month internship for my 4th year at HETIC. Feel free to <a class=\"Text--bold Text-hover Text-hover--yellow Cursor-frame--reduced\" href=\"mailto:gaetan.lefebvre@hetic.net\" title=\"gaetan.lefebvre@hetic.net\">contact</a> me to discuss or to have a drink. If you have a project, I am also here for you.",
-                "<span class=\"Text--dark\">©2019 - Gaëtan Lefebvre<br/>Coded by</span> <a class=\"Text--bold Text-hover Text-hover--yellow Cursor-frame--reduced\" href=\"https://www.alain-caovantruong.fr/\" target=\"_blank\" title=\"Alain Cao Van Truong\">Alain Cao Van Truong</a>"
+                "I am looking for a 6-month internship for my 4th year at HETIC. Feel free to <a class=\"Text--hovered Text--bold Cursor-frame--reduced\" href=\"mailto:gaetan.lefebvre@hetic.net\" title=\"gaetan.lefebvre@hetic.net\">contact</a> me to discuss or to have a drink. If you have a project, I am also here for you.",
+                "<span class=\"Text--dark\">©2019 - Gaëtan Lefebvre<br/>Coded by</span> <a class=\"Text--hovered Text--bold Cursor-frame--reduced\" href=\"https://www.alain-caovantruong.fr/\" target=\"_blank\" title=\"Alain Cao Van Truong\">Alain Cao Van Truong</a>"
               ]
             }
           ]

@@ -70,7 +70,7 @@
               span.Hero-first {{ page.first }}&nbsp;
               span.Hero-last(v-bind:class="`Hero-last--${page.color || data.colors[range]}`") {{ page.last }}
       .Hero-texts
-        .Hero-paragraphs(v-for="(page, index) in data[type].pages" v-bind:class="checkIndex(page)")
+        .Hero-paragraphs(v-for="(page, index) in data[type].pages" v-bind:class="[checkIndex(page), `Text-group Text-group--${data.colors[range]}`]")
           p.Hero-paragraph(v-for="paragraph in page.paragraphs" v-html="paragraph")
     .Hero-push(v-if="type === 'home'")
       span.Hero-heavy Push&nbsp;
@@ -135,6 +135,8 @@ export default {
 @import '~assets/styles/tools/functions';
 
 .Hero {
+  $rootHero: &;
+
   display: flex;
   justify-content: space-between;
   width: 100%;

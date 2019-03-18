@@ -1,4 +1,6 @@
 .Text {
+  $rootText: &;
+
   &--subtitle {
     font-size: 5rem;
     line-height: 1.25em;
@@ -60,55 +62,41 @@
     color: $yellow;
   }
 
-  &-hover {
-    transition: color $easing-duration;
-
-    &--black {
-      &:hover {
-        color: $black;
-      }
-    }
-
-    &--dark {
-      &:hover {
-        color: $dark;
-      }
-    }
-
-    &--grey {
-      &:hover {
-        color: $grey;
-      }
-    }
-
-    &--white {
-      &:hover {
-        color: $white;
-      }
-    }
-
+  &-group {
     &--green {
-      &:hover {
-        color: $green;
+      #{$rootText}--hovered {
+        &:hover {
+          color: $green;
+        }
       }
     }
 
     &--blue {
-      &:hover {
-        color: $blue;
+      #{$rootText}--hovered {
+        &:hover {
+          color: $blue;
+        }
       }
     }
 
     &--red {
-      &:hover {
-        color: $red;
+      #{$rootText}--hovered {
+        &:hover {
+          color: $red;
+        }
       }
     }
 
     &--yellow {
-      &:hover {
-        color: $yellow;
+      #{$rootText}--hovered {
+        &:hover {
+          color: $yellow;
+        }
       }
     }
+  }
+
+  &--hovered {
+    transition: color $easing-duration;
   }
 }
