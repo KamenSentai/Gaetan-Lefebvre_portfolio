@@ -50,16 +50,23 @@
     span.Hero-scroll
   aside.Hero-data
     .Hero-description
-      .Hero-group
-        .Hero-title(v-for="(page, index) in data[type].pages" v-bind:class="checkIndex(page)")
-          h1(v-if="index === 0")
+      .Hero-group(v-if="type === 'about'")
+        .Hero-header(v-for="(page, index) in data[type].pages" v-bind:class="checkIndex(page)")
+          h1.Hero-title(v-if="index === 0")
             span.Hero-above {{ page.above }}
             span.Hero-name
               span.Hero-first {{ page.first }}&nbsp;
               span.Hero-last(v-bind:class="`Hero-last--${page.color || data.colors[range]}`") {{ page.last }}
-          h2(v-else)
+          h2.Hero-title(v-else)
             span.Hero-above {{ page.above }}
             span.Hero-name
+              span.Hero-first {{ page.first }}&nbsp;
+              span.Hero-last(v-bind:class="`Hero-last--${page.color || data.colors[range]}`") {{ page.last }}
+      .Hero-group(v-else)
+        .Hero-header(v-for="(page, index) in data[type].pages" v-bind:class="checkIndex(page)")
+          .Hero-title(v-if="index === 0")
+            span.Hero-above {{ page.above }}
+            h1.Hero-name
               span.Hero-first {{ page.first }}&nbsp;
               span.Hero-last(v-bind:class="`Hero-last--${page.color || data.colors[range]}`") {{ page.last }}
       .Hero-texts
@@ -145,12 +152,6 @@ export default {
 
   @media (max-height: #{grid-media(7)}) {
     padding-top: 0;
-  }
-
-  h1,
-  h2 {
-    display: flex;
-    flex-direction: column;
   }
 
   &-portrait {
@@ -336,7 +337,7 @@ export default {
     }
   }
 
-  &-title,
+  &-header,
   &-paragraphs {
     position: absolute;
     top: 0;
@@ -363,6 +364,11 @@ export default {
       opacity: 0;
       transform: translateY(#{$margin-t});
     }
+  }
+
+  &-title {
+    display: flex;
+    flex-direction: column;
   }
 
   &-above {
