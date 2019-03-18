@@ -133,8 +133,8 @@ export default {
       positionFrame.x += (mouse.x - positionFrame.x) * rateFrame
       positionFrame.y += (mouse.y - positionFrame.y) * rateFrame
 
-      _pointerMouse.style.transform = `translate(${positionPointer.x}px, ${positionPointer.y}px)`
-      _frameMouse.style.transform = `translate(${positionFrame.x}px, ${positionFrame.y}px)`
+      _pointerMouse.style.transform = `translate(${positionPointer.x - window.innerWidth / 2}px, ${positionPointer.y - window.innerHeight / 2}px)`
+      _frameMouse.style.transform = `translate(${positionFrame.x - window.innerWidth / 2}px, ${positionFrame.y - window.innerHeight / 2}px)`
 
       if (reduceFrame || inceaseFrame || menuFrame) _pointerMouse.classList.add('is-reduced')
       else _pointerMouse.classList.remove('is-reduced')
@@ -225,13 +225,11 @@ export default {
 
   &-frame,
   &-pointer {
-    margin-top: - 50vh;
-    margin-left: - 50vw;
+    position: absolute;
     will-change: transform;
   }
 
   &-frame {
-    position: absolute;
     width: 100%;
     height: 100%;
   }
@@ -261,7 +259,6 @@ export default {
   }
 
   &-pointer {
-    position: absolute;
     width: $pointerSize;
     height: $pointerSize;
     stroke: none;
