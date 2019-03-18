@@ -54,7 +54,7 @@ export default {
           setTimeout(() => {
             if (this.$refs.page.$route.name.includes('projects-')) document.body.classList.add('is-active')
             this.isLoaded = true
-          }, 2000)
+          }, 1500)
         }
       }, 1500)
     }
