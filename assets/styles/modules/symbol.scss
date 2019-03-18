@@ -1,0 +1,62 @@
+.Symbol {
+  $thicknessSymbol: 10%;
+
+  position: relative;
+  width: $margin-t + $margin-n;
+  height: $margin-t + $margin-n;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    background-color: $white;
+  }
+
+  &--plus {
+    &::before {
+      top: calc(50% - #{$thicknessSymbol} / 2);
+      left: 0;
+      width: 100%;
+      height: $thicknessSymbol;
+    }
+
+    &::after {
+      top: 0;
+      left: calc(50% - #{$thicknessSymbol} / 2);
+      height: 100%;
+      width: $thicknessSymbol;
+    }
+  }
+
+  &--equal {
+    &::before,
+    &::after {
+      left: 0;
+      width: 100%;
+      height: $thicknessSymbol;
+    }
+
+    &::before {
+      top: calc(50% - #{$thicknessSymbol} / 2 - #{$thicknessSymbol * 2});
+    }
+
+    &::after {
+      top: calc(50% - #{$thicknessSymbol} / 2 + #{$thicknessSymbol * 2});
+    }
+  }
+
+  @media (max-width: #{grid-media(8)}) {
+    width: $margin-t;
+    height: $margin-t;
+  }
+
+  @media (max-width: #{grid-media(6)}) {
+    width: $margin-n * 1.5;
+    height: $margin-n * 1.5;
+  }
+
+  @media (max-width: #{grid-media(4)}) {
+    width: $margin-n;
+    height: $margin-n;
+  }
+}

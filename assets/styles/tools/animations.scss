@@ -1,0 +1,49 @@
+@keyframes scrollbar-sliding {
+  0% {
+    transform-origin: 100% 0;
+    transform: scaleX(1);
+  }
+
+  20% {
+    transform-origin: 100% 0;
+    transform: scaleX(0);
+  }
+
+  50% {
+    transform-origin: 0 0;
+  }
+
+  80% {
+    transform-origin: 0 0;
+    transform: scaleX(0);
+  }
+
+  100% {
+    transform-origin: 0 0;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes mini-scale {
+  0% {
+    transform: scale(.75);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(.75);
+  }
+}
+
+@keyframes turn-hud {
+  0% {
+    transform: rotateZ(0turn);
+  }
+
+  100% {
+    transform: rotateZ(1turn);
+  }
+}

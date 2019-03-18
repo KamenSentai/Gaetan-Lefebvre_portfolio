@@ -1,0 +1,37 @@
+.Intermediate {
+  position: relative;
+  z-index: 10;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: - $margin-n;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    background-color: $white;
+  }
+
+  $i: 5;
+  @while $i < 100 {
+    &[data-rate="#{$i}"] {
+      &::before {
+        height: calc(#{$i} * 1% + #{$margin-n});
+      }
+    }
+    $i: $i + 5;
+  }
+
+  &-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin-bottom: $margin-s;
+    overflow: hidden;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

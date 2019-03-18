@@ -1,0 +1,104 @@
+.Text {
+  &--subtitle {
+    font-size: 5rem;
+    line-height: 1.25em;
+
+    @media (max-width: #{grid-media(8)}) {
+      font-size: 4.4rem;
+    }
+
+    @media (max-width: #{grid-media(6)}) {
+      font-size: 3.6rem;
+    }
+
+    @media (max-width: #{grid-media(4)}) {
+      font-size: 2.8rem;
+    }
+  }
+
+  &--bold {
+    font-weight: 700;
+  }
+
+  &--light {
+    font-weight: 300;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--black {
+    color: $black;
+  }
+
+  &--grey {
+    color: $grey;
+  }
+
+  &--white {
+    color: $white;
+  }
+
+  &--green {
+    color: $green;
+  }
+
+  &--blue {
+    color: $blue;
+  }
+
+  &--red {
+    color: $red;
+  }
+
+  &--yellow {
+    color: $yellow;
+  }
+
+  &-hover {
+    transition: color $easing-duration;
+
+    &--black {
+      &:hover {
+        color: $black;
+      }
+    }
+
+    &--grey {
+      &:hover {
+        color: $grey;
+      }
+    }
+
+    &--white {
+      &:hover {
+        color: $white;
+      }
+    }
+
+    &--green {
+      &:hover {
+        color: $green;
+      }
+    }
+
+    &--blue {
+      &:hover {
+        color: $blue;
+      }
+    }
+
+    &--red {
+      &:hover {
+        color: $red;
+      }
+    }
+
+    &--yellow {
+      &:hover {
+        color: $yellow;
+      }
+    }
+  }
+}
