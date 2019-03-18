@@ -163,7 +163,7 @@ export default {
     new ProjectController(this).init()
   },
   transition: {
-    name: 'csdc',
+    name: 'project',
     mode: 'out-in',
     enter(el, done) {
       new ProjectController(this).enter(el, done)
