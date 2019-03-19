@@ -7,6 +7,7 @@ export default {
   data() {
     return {
       number: 0,
+      total: 10,
       src: '',
       isPeriodic: false
     }
@@ -25,7 +26,7 @@ export default {
     glitchPeriodic() {
       if (!this.isPlaying) {
         this.isPeriodic = true
-        if (this.number < 20) {
+        if (this.number < this.total) {
           this.src = `${this.image}/${this.image}_${this.number}`
           ++this.number
           setTimeout(() => {
@@ -42,7 +43,7 @@ export default {
     },
     glitchFocused() {
       if (this.isPlaying) {
-        if (this.number < 20) {
+        if (this.number < this.total) {
           this.src = `${this.image}/${this.image}_${this.number}`
           ++this.number
           setTimeout(() => {
@@ -69,10 +70,8 @@ export default {
       || navigator.userAgent.match(/Windows Phone/i))
     ) {
       setInterval(() => {
-        if (this.isAutomatic) {
-          this.glitchPeriodic()
-        }
-      }, 5000)
+        if (this.isAutomatic) this.glitchPeriodic()
+      }, 4000)
       this.$watch(
         () => this.isPlaying,
         value => { if (this.isPlaying) this.glitchFocused() }

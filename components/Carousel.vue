@@ -797,6 +797,7 @@ export default {
     opacity: 0;
     transition: opacity $easing-duration;
     will-change: opacity;
+    pointer-events: none;
   }
 
   &-buttons {

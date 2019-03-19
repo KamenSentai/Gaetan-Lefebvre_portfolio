@@ -1,6 +1,6 @@
 <template lang="pug">
 .Slider(data-aos="fade-left" v-bind:class="automatic ? 'Slider--automatic' : ''")
-  .Slider-button
+  .Slider-button(ref="button")
     canvas.Slider-loading(ref="loading")
     span.Push.Push--left.Cursor-frame--reduced(v-bind:class="automatic ? 'Slider-push' : ''" @click="turnSlider" ref="push")
       .Push-arrow
@@ -147,10 +147,14 @@ export default {
 
       const fixFirefox = () => {
         if (isFirefox && window.innerWidth <= 660) {
+          this.$el.classList.add('is-smaller')
           this.$refs.content.style.marginRight = '0'
+          this.$refs.button.style.display = 'block'
           this.$refs.hidden.style.display = 'none'
         } else {
+          this.$el.classList.remove('is-smaller')
           this.$refs.content.style.marginRight = ''
+          this.$refs.button.style.display = ''
           this.$refs.hidden.style.display = ''
         }
       }
@@ -264,6 +268,15 @@ export default {
         max-width: grid(3);
       }
     }
+
+    &.is-smaller {
+      #{$rootSlider}-image,
+      #{$rootSlider}-mockup {
+        @media (max-width: #{grid-media(4)}) {
+          max-width: grid(2.25);
+        }
+      }
+    }
   }
 
   &--automatic {
@@ -273,7 +286,7 @@ export default {
 
     #{$rootSlider}-button {
       @media (max-width: #{grid-media(6)}) {
-        // display: none;
+        display: none;
       }
     }
 
