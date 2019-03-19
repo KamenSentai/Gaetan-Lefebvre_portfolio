@@ -63,6 +63,8 @@ export default {
         transitionEvent && _shapeIcon.addEventListener(transitionEvent, () => {
         if (this.isClicking) {
           _linkIcon.click()
+          _shapeIcon.removeEventListener('click', loadShape)
+          _shapeIcon.removeEventListener('touchstart', loadShape)
         }
       })
     }

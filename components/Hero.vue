@@ -83,11 +83,11 @@
       span.Hero-thin to continue
     ul.Hero-links(v-else-if="type === 'about'")
       li.Hero-link.Cursor-frame--increase
-        a.Cursor-frame--increase(href="https://www.linkedin.com/in/gaetan-lefebvre" title="LinkedIn" target="_blank") LinkedIn
+        a.Cursor-frame--increase(href="https://www.linkedin.com/in/gaetan-lefebvre" title="LinkedIn" target="_blank" rel="noopener") LinkedIn
       li.Hero-link.Cursor-frame--increase
-        a.Cursor-frame--increase(href="https://www.dribbble.com/gaetanlefebvre" title="Dribbble" target="_blank") Dribbble
+        a.Cursor-frame--increase(href="https://www.dribbble.com/gaetanlefebvre" title="Dribbble" target="_blank" rel="noopener") Dribbble
       li.Hero-link.Cursor-frame--increase
-        a.Cursor-frame--increase(href="https://www.behance.net/gaetanlefebvre" title="Behance" target="_blank") Behance
+        a.Cursor-frame--increase(href="https://www.behance.net/gaetanlefebvre" title="Behance" target="_blank" rel="noopener") Behance
       li.Hero-link.Cursor-frame--increase(v-bind:class="`Text--${data.colors[range]}`")
         a.Cursor-frame--increase(href="mailto:gaetan.lefebvre@hetic.net" title="gaetan.lefebvre@hetic.ne") Contact
     span.Hero-scroll.Hero-scroll--data(v-if="type === 'about'")

@@ -15,9 +15,9 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
             span.Header-leaf.Cursor-frame--increase(v-on:click="navigationClick($event)") About
           a.Header-branch.Cursor-frame--increase(href="mailto:gaetan.lefebvre@hetic.net" title="Mail") Contact
           .Header-branch.Header-branch--more
-            a.Cursor-frame--increase(href="https://www.linkedin.com/in/gaetan-lefebvre" title="LinkedIn" target="_blank") LinkedIn
-            a.Cursor-frame--increase(href="https://www.dribbble.com/gaetanlefebvre" title="Dribbble" target="_blank") Dribbble
-            a.Cursor-frame--increase(href="https://www.behance.net/gaetanlefebvre" title="Behance" target="_blank") Behance
+            a.Cursor-frame--increase(href="https://www.linkedin.com/in/gaetan-lefebvre" title="LinkedIn" target="_blank" rel="noopener") LinkedIn
+            a.Cursor-frame--increase(href="https://www.dribbble.com/gaetanlefebvre" title="Dribbble" target="_blank" rel="noopener") Dribbble
+            a.Cursor-frame--increase(href="https://www.behance.net/gaetanlefebvre" title="Behance" target="_blank" rel="noopener") Behance
     .Header-mainnav(v-bind:class="[isNavigating ? 'is-toggled' : '', isMenu ? 'is-hidden': '']" :data-navigating="isNavigating ? 'true' : 'false'")
       nuxt-link.Header-logo(v-bind:class="isNavigating ? 'is-toggled' : 'is-untoggled'" :to="{ name: 'index', params: sendData() }")
         Logo(:color="color || data.colors[range]")
@@ -167,6 +167,7 @@ export default {
                     _barCarousel.classList.remove('is-visible')
                   }
                   _backMenu.removeEventListener('click', turnMenu)
+                  for (const _linkMenu of _linksMenu) _linkMenu.removeEventListener('click', turnMenu)
                 }, 1000)
               }, 1000)
             }
