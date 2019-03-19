@@ -16,14 +16,16 @@ export default {
 @import '~assets/styles/tools/functions';
 
 .Banner {
+  height: 100%;
   width: auto;
 
   &--pocketcare {
-    height: 200%;
+    transform: scale(2);
   }
 
   &--buddybuddy {
-    height: 175%;
+    transform-origin: 50% 0;
+    transform: scale(1.75);
   }
 }
 </style>

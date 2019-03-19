@@ -41,8 +41,10 @@
             img.Carousel-layer.Carousel-layer--front(src="../static/images/Projects/pocketcare_front.png" alt="Pocketcare" draggable="false")
             img.Carousel-extra.is-hidden.Absolute.Absolute--p1(src="../static/images/Projects/pocketcare_extra.png" alt="Pocketcare" draggable="false")
         .Carousel-label(v-if="!slide || parseInt(slide) === 0" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
-          h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title") Pocketcare
-          h2.Carousel-title(v-else) Pocketcare
+          h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title")
+            span.Carousel-main Pocketcare
+          h2.Carousel-title(v-else)
+            span.Carousel-main Pocketcare
           span.Carousel-subtitle(v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="subtitle")
             span.Text--bold School project
             span.Text--light &nbsp;- 2017
@@ -73,8 +75,10 @@
             img.Carousel-layer.Carousel-layer--front(src="../static/images/Projects/tesla_front.png" alt="Tesla")
             img.Carousel-extra.is-hidden.Absolute.Absolute--p2(src="../static/images/Projects/tesla_extra.png" alt="Tesla")
         .Carousel-label(v-if="!slide || parseInt(slide) === 1" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
-          h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title") Tesla
-          h2.Carousel-title(v-else) Tesla
+          h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title")
+            span.Carousel-main Tesla
+          h2.Carousel-title(v-else)
+            span.Carousel-main Tesla
           span.Carousel-subtitle(v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="subtitle")
             span.Text--bold School project
             span.Text--light &nbsp;- 2018
@@ -105,8 +109,10 @@
             img.Carousel-layer.Carousel-layer--front(src="../static/images/Projects/buddy-buddy_front.png" alt="Buddy Buddy")
             img.Carousel-extra.is-hidden.Absolute.Absolute--p3(src="../static/images/Projects/buddy-buddy_extra.png" alt="Buddy Buddy")
         .Carousel-label(v-if="!slide || parseInt(slide) === 2" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
-          h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title") Buddy Buddy
-          h2.Carousel-title(v-else) Buddy Buddy
+          h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title")
+            span.Carousel-main Buddy Buddy
+          h2.Carousel-title(v-else)
+            span.Carousel-main Buddy Buddy
           span.Carousel-subtitle(v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="subtitle")
             span.Text--bold Internship
             span.Text--light &nbsp;- 2018
@@ -126,8 +132,10 @@
             img.Carousel-layer.Carousel-layer--front(src="../static/images/Projects/personal_front.png" alt="Personal")
             Lock.Carousel-lock(v-bind:class="!isLocked ? 'is-hidden' : ''")
         .Carousel-label(v-if="!slide || parseInt(slide) === 3" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
-          h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title") Coming soon
-          h2.Carousel-title(v-else) Coming soon
+          h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title")
+            span.Carousel-main Coming soon
+          h2.Carousel-title(v-else)
+            span.Carousel-main Coming soon
           span.Carousel-subtitle(v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="subtitle")
             span.Text--bold New
             span.Text--light &nbsp;- 2019
@@ -257,6 +265,10 @@ export default {
           _additionalCarousel.style.opacity = '0'
           _subtitleCarousel.style.transform = `none`
         }
+        if (window.innerWidth <= 860) {
+          _additionalCarousel.style.opacity = '0'
+          _subtitleCarousel.style.transform = `none`
+        }
         window.addEventListener('resize', () => {
           if (_additionalStyle.userSelect !== 'none') {
             _additionalWidth = _additionalCarousel.getBoundingClientRect().width
@@ -265,6 +277,10 @@ export default {
             _additionalCarousel.style.opacity = '1'
             _subtitleCarousel.style.transform = `translateX(${translateWidth}px)`
           } else {
+            _additionalCarousel.style.opacity = '0'
+            _subtitleCarousel.style.transform = `none`
+          }
+          if (window.innerWidth <= 860) {
             _additionalCarousel.style.opacity = '0'
             _subtitleCarousel.style.transform = `none`
           }
@@ -365,14 +381,12 @@ export default {
             transform: translate(-50%, -50%) scale(.5);
           }
         }
-
       }
 
       #{$rootCarousel}-title {
         color: rgba($white, .75);
         bottom: 100%;
         margin-bottom: 0;
-        transform: translate(-50%, calc(50% + #{- $margin-b - $margin-m}));
 
         @media (min-width: #{grid-media(10)}) {
           font-size: 12rem;
@@ -392,6 +406,12 @@ export default {
 
         @media (max-width: #{grid-media(4)}) {
           font-size: 4rem;
+        }
+      }
+
+      #{$rootCarousel}-main {
+        @media (min-height: #{grid-media(7.5) + 1px}), (min-width: #{grid-media(6) + 1px}) {
+          transform: translateY(calc(50% + #{- $margin-b - $margin-m}));
         }
       }
 
@@ -740,6 +760,11 @@ export default {
     @media (max-width: #{grid-media(4)}) {
       font-size: 4rem;
     }
+  }
+
+  &-main {
+    display: inline-block;
+    transition: transform $easing-duration;
   }
 
   &-subtitle {

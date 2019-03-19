@@ -54,7 +54,7 @@ export default {
               color: "blue",
               shape: "triangle",
               above: "What",
-              first: "I passionately",
+              first: "I really",
               last: "like ?",
               paragraphs: [
                 "Sport also animates my days and allows me to let off steam. I also like to cook, for myself, my friends and my family. I'm a big music fan.",

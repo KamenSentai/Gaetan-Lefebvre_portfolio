@@ -51,7 +51,7 @@ export default {
       document.body.style.pointerEvents = 'none'
       setTimeout(() => {
         this.$el.classList.add('is-disappearing')
-        document.body.style.overflow = 'auto'
+        document.body.style.overflow = ''
         setTimeout(() => {
           const _buttonMenu = target.querySelector('.Menu-button')
           if (_buttonMenu) _buttonMenu.click()

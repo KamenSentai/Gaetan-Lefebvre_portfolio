@@ -114,7 +114,7 @@ export default {
           document.body.style.overflow = 'hidden'
           if (this.$refs.navigation) this.$refs.navigation.style.zIndex = '1000'
         } else {
-          document.body.style.overflow = 'auto'
+          document.body.style.overflow = ''
           setTimeout(() => {
             if (this.$refs.navigation) this.$refs.navigation.style.zIndex = '0'
           }, 2000)

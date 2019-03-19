@@ -336,6 +336,7 @@ export default {
 
     @media (max-height: #{grid-media(4)}) {
       margin-bottom: $margin-n;
+      font-size: 2.4rem;
     }
   }
 
@@ -378,7 +379,7 @@ export default {
     color: $dark;
 
     @media
-    (max-height: #{grid-media(6)}),
+    (max-height: #{grid-media(6.5)}),
     (max-width: #{grid-media(6)}) {
       margin-top: 0;
     }
@@ -426,6 +427,10 @@ export default {
       font-size: 1.4rem;
       margin-bottom: $margin-n;
     }
+
+    @media (max-height: #{grid-media(4)}) {
+      line-height: 1.25em;
+    }
   }
 
   &-push {
@@ -465,8 +470,12 @@ export default {
       display: none;
     }
 
-    @media (max-height: #{grid-media(6)}) {
+    @media (max-height: #{grid-media(7)}) {
       margin-bottom: $margin-t;
+    }
+
+    @media (max-height: #{grid-media(4)}) {
+      margin-bottom: $margin-n;
     }
   }
 
@@ -486,6 +495,10 @@ export default {
       margin-right: $margin-n;
       font-size: 1.4rem;
     }
+
+    @media (max-height: #{grid-media(5)}) {
+      font-size: 1.2rem;
+    }
   }
 
   &-scroll {
@@ -502,20 +515,27 @@ export default {
     transform-origin: 0 100%;
     transform: rotateZ(90deg) translate(-100%, 50%);
 
+    @media (max-height: #{grid-media(7)}) {
+      font-size: 1.2rem;
+    }
+
     &::before {
       content: 'Scroll';
 
-      @media (max-height: #{grid-media(7)}) {
-        font-size: 1.2rem;
-      }
-
-      @media (max-height: #{grid-media(6.5)}) {
-        display: none;
+      @media
+      (max-height: #{grid-media(6.5)}),
+      (max-width: #{grid-media(6)}) and (max-height: #{grid-media(7)}),
+      (max-width: #{grid-media(4)}) and (max-height: #{grid-media(8.5)}) {
+        position: absolute;
+        right: 100%;
+        bottom: 100%;
+        transform-origin: 100% 100%;
+        transform: rotateZ(-90deg) translateX(50%);
       }
 
       @media
-      (max-width: #{grid-media(6)}) and (max-height: #{grid-media(7)}),
-      (max-width: #{grid-media(4)}) and (max-height: #{grid-media(7.5)}) {
+      (max-width: #{grid-media(6)}) and (max-height: #{grid-media(3.5)}),
+      (max-width: #{grid-media(4)}) and (max-height: #{grid-media(4.5)}) {
         display: none;
       }
     }

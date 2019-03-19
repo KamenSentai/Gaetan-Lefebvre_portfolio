@@ -5,11 +5,11 @@
     span.Push.Push--left.Cursor-frame--reduced(v-bind:class="automatic ? 'Slider-push' : ''" @click="turnSlider" ref="push")
       .Push-arrow
       .Push-arrow
-  .Slider-content(v-if="mockup" @touchstart="touchStart" @touchmove="touchMove")
+  .Slider-content(v-if="mockup" @touchstart="touchStart" @touchmove="touchMove" ref="content")
     img.Slider-mockup(:src="require(`../static/images/${folder}/${mockup}.png`)" draggable="false")
     .Slider-images
       img.Slider-image.Shadow--image(v-for="image in images" :src="require(`../static/images/${folder}/${image}.png`)" ref="images")
-  .Slider-button.Slider-button--hidden(v-if="mockup")
+  .Slider-button.Slider-button--hidden(v-if="mockup" ref="hidden")
     .Push.Cursor-frame--reduced
   .Slider-images.Slider-images--pushed(v-else @touchstart="touchStart" @touchmove="touchMove")
     img.Slider-image.Shadow(v-for="image in images" :src="require(`../static/images/${folder}/${image}.png`)" ref="images")
@@ -45,8 +45,6 @@ export default {
       this.initialY = event.touches[0].clientY
     },
     touchMove(event) {
-      event.preventDefault()
-
       if (this.initialX === null || this.initialY === null) return
 
       let currentX = event.touches[0].clientX
@@ -128,6 +126,8 @@ export default {
 
 
     if (this.automatic) {
+      const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1
+
       const _push = this.$refs.push
       const _slider = this.$el
       const _loadingSlider = this.$refs.loading
@@ -145,11 +145,23 @@ export default {
       context.lineWidth = (parseFloat(_loadingStyle.width) - parseFloat(_pushStyle.width)) / 2
       context.strokeStyle = `${_loadingStyle.color}`
 
+      const fixFirefox = () => {
+        if (isFirefox && window.innerWidth <= 660) {
+          this.$refs.content.style.marginRight = '0'
+          this.$refs.hidden.style.display = 'none'
+        } else {
+          this.$refs.content.style.marginRight = ''
+          this.$refs.hidden.style.display = ''
+        }
+      }
+      fixFirefox()
+
       window.addEventListener('resize', () => {
         _loadingSlider.width = _loadingSlider.offsetWidth
         _loadingSlider.height = _loadingSlider.offsetHeight
         w = _loadingSlider.width
         h = _loadingSlider.height
+        fixFirefox()
       })
 
       const autoplaySlider = () => {
@@ -261,7 +273,7 @@ export default {
 
     #{$rootSlider}-button {
       @media (max-width: #{grid-media(6)}) {
-        display: none;
+        // display: none;
       }
     }
 
@@ -352,6 +364,7 @@ export default {
 
   &-mockup {
     transform: scale(.995);
+    pointer-events: none;
   }
 
   &-mockup,

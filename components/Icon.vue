@@ -7,17 +7,18 @@
     @touchstart="touchStart"
     width="40px" height="40px" viewBox="0 0 40 40"
   )
-    defs
-      g#shape
-        circle(v-if="shape === 'circle'" cx="20" cy="20" r="18.8")
-        polygon(v-if="shape === 'triangle'" points="20,1.1 1.2,33.6 38.8,33.6")
-        rect(v-if="shape === 'square'" x="1.2" y="1.2" width="37.5" height="37.5")
-        polygon(v-if="shape === 'pentagone'" points="20,1.2 1.2,14.8 8.4,36.9 31.6,36.9 38.8,14.8")
     g.Cursor-frame--reduced.Cursor-pointer--beat
       g.Icon-strokes.Cursor-frame--reduced.Cursor-pointer--beat
-        use(href="#shape")
+        circle.Icon-path(v-if="shape === 'circle'" cx="20" cy="20" r="18.8")
+        polygon.Icon-path(v-if="shape === 'triangle'" points="20,1.1 1.2,33.6 38.8,33.6")
+        rect.Icon-path(v-if="shape === 'square'" x="1.2" y="1.2" width="37.5" height="37.5")
+        polygon.Icon-path(v-if="shape === 'pentagone'" points="20,1.2 1.2,14.8 8.4,36.9 31.6,36.9 38.8,14.8")
       g.Icon-fill.Cursor-frame--reduced.Cursor-pointer--beat(v-bind:class="isClicking ? 'is-active' : ''")
-        use(href="#shape")
+        circle.Icon-path(v-if="shape === 'circle'" cx="20" cy="20" r="18.8")
+        polygon.Icon-path(v-if="shape === 'triangle'" points="20,1.1 1.2,33.6 38.8,33.6")
+        rect.Icon-path(v-if="shape === 'square'" x="1.2" y="1.2" width="37.5" height="37.5")
+        polygon.Icon-path(v-if="shape === 'pentagone'" points="20,1.2 1.2,14.8 8.4,36.9 31.6,36.9 38.8,14.8")
+
 </template>
 
 <script>
@@ -77,8 +78,15 @@ export default {
 @import '~assets/styles/tools/functions';
 
 .Icon {
+  $sizeIcon: 4.6rem;
+
   margin: 0 1rem;
   cursor: pointer;
+
+  &-shape {
+    width: $sizeIcon;
+    height: $sizeIcon;
+  }
 
   &-strokes,
   &-fill {
@@ -103,6 +111,10 @@ export default {
     &.is-active {
       transform: none;
     }
+  }
+
+  &-path {
+    pointer-events: none;
   }
 }
 </style>

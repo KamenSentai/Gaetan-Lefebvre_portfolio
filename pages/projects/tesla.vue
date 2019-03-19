@@ -77,7 +77,7 @@ div
         .Content-header
           h3.Content-title(data-aos="fade-left") Mobile app
         .Content-article
-          .Content-post.Content-post--static.Content-post--quarter(data-aos="fade-left")
+          .Content-post.Content-post--static.Content-post--quarter.Exception--autoheight(data-aos="fade-left")
             h4.Content-section Charge and navigation
             p.Content-text When the Tesla is 100% charged, you will receive a notification to alert you. After you can start the navigation to return to the car.
             p.Content-text The navigation will tell you the distance of the car and the localisation. You will also have an AR view of the street.
@@ -93,7 +93,7 @@ div
     section.Slide
       .Content
         .Content-article.Content-article--alternation
-          .Content-post.Content-post--static.Content-post--half(data-aos="fade-up")
+          .Content-post.Content-post--static.Content-post--half.Exception--autoheight(data-aos="fade-up")
             h4.Content-section Game mode
             p.Content-text The particularity of this partnership: the Oculus experience. We are now immersed in it. To begin, we must choose our experience.
             p.Content-text Subsequently, we choose the number of members. Onboarding will then tell us to equip ourselves properly (helmets, media and gloves).

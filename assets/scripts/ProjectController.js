@@ -77,6 +77,7 @@ class ProjectController extends PageController {
 
       _footer.classList.add('is-active')
 
+      TweenLite.to('.Carousel-extra', .5, { opacity: 0, delay: 0, ease: Power2.easeInOut })
       TweenLite.to('.Footer-image', .5, { opacity: 0, delay: 0, ease: Power2.easeInOut })
       TweenLite.to('.Page', 1, { opacity: 0, delay: 1, ease: Power2.easeInOut })
       TweenLite.to('.Footer-container', .5, { height: window.innerHeight, y: - _footerTop, delay: .5, ease: Power2.easeInOut, onComplete: () => {
