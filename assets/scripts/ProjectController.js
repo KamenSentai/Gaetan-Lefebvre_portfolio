@@ -76,6 +76,9 @@ class ProjectController extends PageController {
       const _footerTop = _footer.getBoundingClientRect().top
 
       _footer.classList.add('is-active')
+      setTimeout(() => {
+        _logo.dataset.color = _footer.dataset.color
+      }, 1000)
 
       TweenLite.to('.Carousel-extra', .5, { opacity: 0, delay: 0, ease: Power2.easeInOut })
       TweenLite.to('.Footer-image', .5, { opacity: 0, delay: 0, ease: Power2.easeInOut })
