@@ -16,6 +16,7 @@ class ProjectController extends PageController {
     document.body.style.pointerEvents = 'none'
     document.body.classList.add('is-active')
 
+    el.querySelector('.Header').classList.add('is-inactive')
     el.querySelector('.Logo').dataset.forced = ''
     el.querySelector('.Header-navigation').dataset.forced = ''
     el.querySelector('.Header-mainnav').dataset.forced = ''
@@ -34,6 +35,7 @@ class ProjectController extends PageController {
       }})
     } else if (page.$route.params.from.includes('projects-')) {
       TweenLite.fromTo('.Carousel-neon', 1, { scale: 0 }, { scale: 1, delay: 1, ease: Power2.easeInOut })
+      TweenLite.fromTo('.Carousel-title', 1, { opacity: 0 }, { opacity: 1, delay: 1.5, ease: Power2.easeInOut })
       TweenLite.fromTo('.Carousel-button', 1, { scale: 0 }, { scale: 1, delay: 1.5, ease: Power2.easeInOut })
       TweenLite.fromTo('.Carousel-layer', 1, { opacity: 0 }, { opacity: 1, delay: 2, ease: Power2.easeInOut })
       document.body.style.pointerEvents = 'auto'
@@ -61,6 +63,8 @@ class ProjectController extends PageController {
 
     if (!page.$route.name.includes('projects-')) {
       const _labelCarousel = el.querySelector('.Carousel-label')
+      el.querySelector('.Header').classList.add('is-inactive')
+
       if (_labelCarousel) _labelCarousel.classList.add('is-hidden')
       TweenLite.to('.Page', 1, { opacity: 0, y: 30, delay: 0, ease: Power2.easeInOut })
       TweenLite.to('.Footer', 1, { opacity: 0, y: 30, delay: 0, ease: Power2.easeInOut })
@@ -123,11 +127,7 @@ class ProjectController extends PageController {
     let _footerOffset = _footer.offsetTop - breakpointHeader
     let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
 
-    for (const _slide of _slides) {
-      if (_slide.classList.contains('Intermediate')) {
-        _slides.splice(_slides.indexOf(_slide) + 1, 1)
-      }
-    }
+    for (const _slide of _slides) if (_slide.classList.contains('Intermediate')) _slides.splice(_slides.indexOf(_slide) + 1, 1)
 
     const updateBreakpoints = () => {
       _footerOffset = _footer.offsetTop - breakpointHeader
@@ -146,11 +146,9 @@ class ProjectController extends PageController {
     }
     updateBreakpoints()
 
-    window.addEventListener('resize', updateBreakpoints)
-
-    window.addEventListener('scroll', () => {
+    const colorizeHeader = () => {
       const offsetTop = Math.abs(_body.getBoundingClientRect().top)
-      let color
+      let color = 'white'
       let index
 
       for (let i = 0 ; i < breakpoints.length ; i++) {
@@ -160,13 +158,16 @@ class ProjectController extends PageController {
         }
       }
 
-      if (index !== undefined) color = index % 2 ? 'black' : 'white'
+      if (index !== undefined && Math.abs(page.$el.getBoundingClientRect().top) > 0) color = index % 2 ? 'black' : 'white'
       else color = 'white'
 
       _headerMainnav.dataset.theme = color
       _logo.dataset.theme = color
-    })
+    }
+    colorizeHeader()
 
+    window.addEventListener('resize', updateBreakpoints)
+    window.addEventListener('scroll', colorizeHeader)
     window.addEventListener('mousemove', event => { mouse.y = event.clientY })
 
     if (_lazyloads.length > 0) this.lazyload(_lazyloads)

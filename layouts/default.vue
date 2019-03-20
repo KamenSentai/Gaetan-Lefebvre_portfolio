@@ -51,7 +51,6 @@ export default {
       if (this.roundedPercentage === 100) setTimeout(() => {
         if (this.$refs.loading) this.$refs.loading.$el.classList.add('is-hidden')
         setTimeout(() => {
-          if (this.$refs.page.$route.name && this.$refs.page.$route.name.includes('projects-')) document.body.classList.add('is-active')
           this.isLoaded = true
         }, 1500)
       }, 1500)
@@ -59,6 +58,10 @@ export default {
   },
   mounted() {
     if (this.$refs.page.$route.name === null) this.isLoaded = true
+    else if (this.$refs.page.$route.name.includes('projects-')) {
+      document.body.classList.add('is-active')
+      this.$refs.page.$el.querySelector('.Header').classList.add('is-inactive')
+    }
 
     // const path = '/_nuxt/assets/images/'
     const queue = new createjs.LoadQueue()

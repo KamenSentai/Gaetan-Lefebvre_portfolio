@@ -343,6 +343,9 @@ export default {
   }
 
   @include full-size();
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 500;
   display: flex;
   flex-direction: column;
@@ -351,6 +354,12 @@ export default {
   color: $white;
   background-color: $black;
   overflow: hidden;
+
+  &.is-inactive {
+    position: static;
+    width: 100vw;
+    height: 100vh;
+  }
 
   &-topbar {
     display: flex;
