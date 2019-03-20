@@ -189,7 +189,7 @@ export default {
     modulo: (n, m) => {
       return ((n % m) + m) % m;
     },
-    turnLeft: function() {
+    turnLeft() {
       if (!this.slide) {
         const tweenLeft = kute.to('#Carousel-left', { path: `#Carousel-left-${this.modulo(this.range - 1, 4)}` })
         const tweenRight = kute.to(`#Carousel-right`, { path: `#Carousel-right-${this.modulo(this.range - 1, 4)}` })
@@ -197,7 +197,7 @@ export default {
         tweenRight.start()
       }
     },
-    turnRight: function() {
+    turnRight() {
       if (!this.slide) {
         const tweenLeft = kute.to('#Carousel-left', { path: `#Carousel-left-${this.modulo(this.range + 1, 4)}` })
         const tweenRight = kute.to(`#Carousel-right`, { path: `#Carousel-right-${this.modulo(this.range + 1, 4)}` })

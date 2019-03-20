@@ -32,7 +32,7 @@ export default {
     'route'
   ],
   methods: {
-    findShape: function() {
+    findShape() {
       const _header = document.querySelector('.Header')
 
       if (_header) {
@@ -46,14 +46,14 @@ export default {
         for (const shape of shapes) if (_header.classList.contains(`Header--${shape}`)) return shape
       }
     },
-    setShape: function() {
+    setShape() {
       if (!this.shape || this.shape === '') window.requestAnimationFrame(this.setShape)
       else {
         window.cancelAnimationFrame(this.setShape)
         this.$refs.shape.setAttribute('d', this.$el.querySelector(`#Mouse-${this.shape}`).getAttribute('d'))
       }
     },
-    updateShape: function() {
+    updateShape() {
       this.shape = this.findShape()
       const _shape = this.$refs.shape
       const _target = this.$el.querySelector(`#Mouse-${this.shape}`)

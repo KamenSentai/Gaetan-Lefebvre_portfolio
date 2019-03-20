@@ -94,18 +94,18 @@ export default {
     Error
   },
   methods: {
-    sendData: function() {
+    sendData() {
       return {
         color: this.color || this.data.colors[this.range],
         shape: this.shape || this.data.shapes[this.range],
         from: this.$route.name
       }
     },
-    navigationClick: function(event) {
+    navigationClick(event) {
       this.toggleNavigation()
       event.target.previousSibling.click()
     },
-    toggleNavigation: function() {
+    toggleNavigation() {
       if (this.isToggable) {
         this.isToggable = false
         this.isNavigating = !this.isNavigating
@@ -125,7 +125,7 @@ export default {
         }, 2000)
       }
     },
-    toggleMenu: function(event) {
+    toggleMenu(event) {
       event.preventDefault()
       this.isMenu = true
 

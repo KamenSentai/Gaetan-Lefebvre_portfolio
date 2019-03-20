@@ -33,10 +33,10 @@ export default {
     'shape'
   ],
   methods: {
-    click: function() {
+    click() {
       this.isClicking = true
     },
-    touchStart: function() {
+    touchStart() {
       this.isClicking = true
     }
   },

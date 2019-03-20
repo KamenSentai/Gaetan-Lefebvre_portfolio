@@ -29,7 +29,7 @@ export default {
     Lock
   },
   methods: {
-    toggleMenu: function() {
+    toggleMenu() {
       document.body.style.overflow = 'auto'
       this.$el.classList.add('is-locked')
       this.$el.classList.remove('is-loaded')
@@ -40,7 +40,7 @@ export default {
         this.$el.classList.remove('is-locked')
       }, 1000)
     },
-    clickProject: function (event) {
+    clickProject(event) {
       let target = event.target
       if (this.$refs.pocketcare !== target) this.$refs.pocketcare.classList.add('is-hidden')
       if (this.$refs.tesla !== target) this.$refs.tesla.classList.add('is-hidden')
