@@ -6,20 +6,20 @@
       .Push-arrow
       .Push-arrow
   .Slider-content(v-if="mockup" @touchstart="touchStart" @touchmove="touchMove" ref="content")
-    img.Slider-mockup(:src="require(`../static/images/${folder}/${mockup}.png`)" draggable="false")
+    img.Slider-mockup(:src="require(`../assets/images/${folder}/${mockup}.png`)" draggable="false")
     .Slider-images
-      img.Slider-image.Shadow--image(v-for="image in images" :src="require(`../static/images/${folder}/${image}.png`)" ref="images")
+      img.Slider-image.Shadow--image(v-for="image in images" :src="require(`../assets/images/${folder}/${image}.png`)" ref="images")
   .Slider-button.Slider-button--hidden(v-if="mockup" ref="hidden")
     .Push.Cursor-frame--reduced
   .Slider-images.Slider-images--pushed(v-else @touchstart="touchStart" @touchmove="touchMove")
-    img.Slider-image.Shadow(v-for="image in images" :src="require(`../static/images/${folder}/${image}.png`)" ref="images")
+    img.Slider-image.Shadow(v-for="image in images" :src="require(`../assets/images/${folder}/${image}.png`)" ref="images")
 </template>
 
 <script>
 export default {
   data() {
     return {
-      path: '../static/images/',
+      path: '../assets/images/',
       isClicked: false,
       elements: [],
       total: 0,

@@ -60,7 +60,7 @@ export default {
   mounted() {
     if (this.$refs.page.$route.name === null) this.isLoaded = true
 
-    // const path = '/_nuxt/static/images/'
+    // const path = '/_nuxt/assets/images/'
     const queue = new createjs.LoadQueue()
 
     queue.on('progress', this.onProgress)

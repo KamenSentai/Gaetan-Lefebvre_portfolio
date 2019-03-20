@@ -2,19 +2,19 @@
 .Hero(v-bind:class="`Hero--${data.colors[range]}`")
   .Hero-portrait(v-if="type === 'home'")
     img.Hero-back(
-      src="~static/images/Home/Gaetan.png"
+      src="~assets/images/Home/Gaetan.png"
       alt="Gaëtan Lefebvre"
       draggable="false"
     )
     Glitch.Hero-shape(
-      path="static/images/Home/"
+      path="assets/images/Home/"
       :image="data.shapes[range]"
       :alt="data.shapes[range]"
       :isAutomatic="false"
       :isPlaying="isPlaying"
     )
     img.Hero-front(
-      src="~static/images/Home/Gaetan-cropped.png"
+      src="~assets/images/Home/Gaetan-cropped.png"
       alt="Gaëtan Lefebvre"
       draggable="false"
     )
@@ -23,7 +23,7 @@
       img.Hero-back.Hero-back--slide(
         v-for="page in data[type].pages"
         v-bind:class="checkIndex(page)"
-        :src="require(`../static/images/About/${page.shape}_back.png`)"
+        :src="require(`../assets/images/About/${page.shape}_back.png`)"
         alt=""
         draggable="false"
         ref="backs"
@@ -32,7 +32,7 @@
       div(v-for="page in data[type].pages")
         Glitch.Hero-shape.Hero-shape--slide(
           v-bind:class="checkIndex(page)"
-          path="static/images/About/"
+          path="assets/images/About/"
           :image="page.shape"
           :alt="page.shape"
           :isAutomatic="checkIndex(page) === 'is-active'"
@@ -42,7 +42,7 @@
       img.Hero-front.Hero-front--slide(
         v-for="page in data[type].pages"
         v-bind:class="checkIndex(page)"
-        :src="require(`../static/images/About/${page.shape}_front.png`)"
+        :src="require(`../assets/images/About/${page.shape}_front.png`)"
         alt=""
         draggable="false"
         ref="fronts"

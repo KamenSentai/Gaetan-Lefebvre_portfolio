@@ -2,7 +2,7 @@
 footer.Footer(:data-color="color")
   .Footer-container(ref="container")
     nuxt-link.Footer-navigation.Cursor-frame--text(:to="{ name: 'projects-' + to, params: { from: $route.name } }" v-bind:title="title")
-      img.Footer-image.Cursor-frame--text(:src="require(`../static/images/Menu/${to}.png`)" v-bind:alt="title")
+      img.Footer-image.Cursor-frame--text(:src="require(`../assets/images/Menu/${to}.png`)" v-bind:alt="title")
       span.Footer-title.Cursor-frame--text {{ title }}
 </template>
 

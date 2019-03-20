@@ -21,11 +21,11 @@ div
           h3.Content-title.Content-title--trailed(data-aos="fade-left") Branding - Graphic charter
         .Content-suite
           .Content-icons.Content-icons--main(data-aos="fade-left")
-            img(src="~static/images/Tesla/Logo_T.png" alt="T")
+            img(src="~assets/images/Tesla/Logo_T.png" alt="T")
             .Symbol.Symbol--plus
-            img(src="~static/images/Tesla/Logo_O.png" alt="O")
+            img(src="~assets/images/Tesla/Logo_O.png" alt="O")
             .Symbol.Symbol--equal
-            img(src="~static/images/Tesla/Logo_TO.png" alt="TO")
+            img(src="~assets/images/Tesla/Logo_TO.png" alt="TO")
           .Content-icons(data-aos="fade-left")
             Color(color="#228DFC" :shape="data.shape")
             Color(color="#1F1F1F" :shape="data.shape")
@@ -67,7 +67,7 @@ div
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Inside the car
           p.Content-description.Content-description--large.Text--center The touchscreen is first of all the way to navigate and obtain all the informations about the Tesla Model 3. But it’s also the way to interact with the Oculus Rift for the passenger beside the driver and the driver himself when the car is stopped.
-      img.Exception--car(src="~static/images/Tesla/Car.png" alt="Car")
+      img.Exception--car(src="~assets/images/Tesla/Car.png" alt="Car")
     section.Slide.Slide--page
       Post(
         :color="data.color"
@@ -99,32 +99,32 @@ div
             p.Content-text Subsequently, we choose the number of members. Onboarding will then tell us to equip ourselves properly (helmets, media and gloves).
           .Content-alternated.is-inactive
             .Content-object(data-aos="fade-up")
-              img.Content-intern(src="~static/images/Tesla/Phone_1.png" alt="Phone 1")
-              img.Absolute.Absolute--p11(src="~static/images/Tesla/Phone_1-overflow_1.png" alt="")
-              img.Absolute.Absolute--p12(src="~static/images/Tesla/Phone_1-overflow_2.png" alt="")
-              img.Absolute.Absolute--p13(src="~static/images/Tesla/Phone_1-overflow_3.png" alt="")
+              img.Content-intern(src="~assets/images/Tesla/Phone_1.png" alt="Phone 1")
+              img.Absolute.Absolute--p11(src="~assets/images/Tesla/Phone_1-overflow_1.png" alt="")
+              img.Absolute.Absolute--p12(src="~assets/images/Tesla/Phone_1-overflow_2.png" alt="")
+              img.Absolute.Absolute--p13(src="~assets/images/Tesla/Phone_1-overflow_3.png" alt="")
           .Content-alternated.is-inactive
             .Content-object(data-aos="fade-up")
-              img.Content-intern(src="~static/images/Tesla/Phone_2.png" alt="Phone 2")
-              img.Absolute.Absolute--p23(src="~static/images/Tesla/Phone_2-overflow_3.png" alt="")
-              img.Absolute.Absolute--p22(src="~static/images/Tesla/Phone_2-overflow_2.png" alt="")
-              img.Absolute.Absolute--p21(src="~static/images/Tesla/Phone_2-overflow_1.png" alt="")
+              img.Content-intern(src="~assets/images/Tesla/Phone_2.png" alt="Phone 2")
+              img.Absolute.Absolute--p23(src="~assets/images/Tesla/Phone_2-overflow_3.png" alt="")
+              img.Absolute.Absolute--p22(src="~assets/images/Tesla/Phone_2-overflow_2.png" alt="")
+              img.Absolute.Absolute--p21(src="~assets/images/Tesla/Phone_2-overflow_1.png" alt="")
           .Content-alternated.is-inactive
             .Content-object(data-aos="fade-up")
-              img.Content-intern(src="~static/images/Tesla/Phone_3.gif" alt="Phone 3")
+              img.Content-intern(src="~assets/images/Tesla/Phone_3.gif" alt="Phone 3")
         .Content-article
           .Content-post.Content-post--static.Content-post--half(data-aos="fade-up")
             h4.Content-section Oculus in your hand
             p.Content-text With VR, we decided to use gloves to manipulate the Oculus immersion in the Tesla. After, by using the helmet and different sensors located in the binacle, you can finally start the experience.
         .Content-full.Content-full--online
-          img.Content-online(data-aos="fade-up" data-aos-delay="0" src="~static/images/Tesla/Hand_1.png" alt="Hand")
-          img.Content-online(data-aos="fade-up" data-aos-delay="250" src="~static/images/Tesla/Hand_2.png" alt="Hand")
-          img.Content-online(data-aos="fade-up" data-aos-delay="500" src="~static/images/Tesla/Hand_3.png" alt="Hand")
-          img.Content-online(data-aos="fade-up" data-aos-delay="750" src="~static/images/Tesla/Hand_4.png" alt="Hand")
-          img.Content-online(data-aos="fade-up" data-aos-delay="1000" src="~static/images/Tesla/Hand_5.png" alt="Hand")
+          img.Content-online(data-aos="fade-up" data-aos-delay="0" src="~assets/images/Tesla/Hand_1.png" alt="Hand")
+          img.Content-online(data-aos="fade-up" data-aos-delay="250" src="~assets/images/Tesla/Hand_2.png" alt="Hand")
+          img.Content-online(data-aos="fade-up" data-aos-delay="500" src="~assets/images/Tesla/Hand_3.png" alt="Hand")
+          img.Content-online(data-aos="fade-up" data-aos-delay="750" src="~assets/images/Tesla/Hand_4.png" alt="Hand")
+          img.Content-online(data-aos="fade-up" data-aos-delay="1000" src="~assets/images/Tesla/Hand_5.png" alt="Hand")
     .Intermediate(data-rate="20")
       .Intermediate-container.Lazyload(data-aos="fade-up")
-        img.Content-breakpoints(src="~static/images/Tesla/Helmet.png" alt="Helmet")
+        img.Content-breakpoints(src="~assets/images/Tesla/Helmet.png" alt="Helmet")
     section.Slide.Slide--page
       Post(
         :color="data.color"
@@ -134,7 +134,7 @@ div
         .Content-header
           h3.Content-title(data-aos="fade-left") Watch and features
         .Content-article
-          img.Content-flyer(data-aos="fade-left" src="~static/images/Tesla/Watch.gif" alt="Watch")
+          img.Content-flyer(data-aos="fade-left" src="~assets/images/Tesla/Watch.gif" alt="Watch")
           .Content-post.Content-post--static.Content-post--half(data-aos="fade-right")
             h4.Content-section Oculus immersion
             p.Content-text Here we are now in the Oculus experience. In this one, we can choose a landscape using the wheel of the watch and plunge us into a dream while we are driving.
@@ -145,9 +145,9 @@ div
           p.Content-description.Text--center We can finally find all our mobile features on our watch: loading, moving the car, unlocking the car, the map with the route and the Oculus experience.
     .Intermediate(data-rate="20")
       .Intermediate-container(data-aos="fade-up")
-        img.Content-banner(src="~static/images/Tesla/Watches_1.png" alt="Watches")
+        img.Content-banner(src="~assets/images/Tesla/Watches_1.png" alt="Watches")
       .Intermediate-container(data-aos="fade-up")
-        img.Content-banner(src="~static/images/Tesla/Watches_2.png" alt="Watches")
+        img.Content-banner(src="~assets/images/Tesla/Watches_2.png" alt="Watches")
     section.Slide
       Article(
         :color="data.color"

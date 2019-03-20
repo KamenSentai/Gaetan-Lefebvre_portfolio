@@ -43,9 +43,9 @@ div
         .Content-header
           h3.Content-title.Text--center(data-aos="fade-up") Onboarding
         .Content-listing
-          img.Shadow(data-aos="fade-left" data-aos-delay="0" src="~static/images/Pocketcare/Onboarding_1.png" alt="Onboarding")
-          img.Shadow(data-aos="fade-left" data-aos-delay="250" src="~static/images/Pocketcare/Onboarding_2.png" alt="Onboarding")
-          img.Shadow(data-aos="fade-left" data-aos-delay="500" src="~static/images/Pocketcare/Onboarding_3.png" alt="Onboarding")
+          img.Shadow(data-aos="fade-left" data-aos-delay="0" src="~assets/images/Pocketcare/Onboarding_1.png" alt="Onboarding")
+          img.Shadow(data-aos="fade-left" data-aos-delay="250" src="~assets/images/Pocketcare/Onboarding_2.png" alt="Onboarding")
+          img.Shadow(data-aos="fade-left" data-aos-delay="500" src="~assets/images/Pocketcare/Onboarding_3.png" alt="Onboarding")
       Post(
         :color="data.color"
         :post="data.posts[2]"
@@ -60,12 +60,12 @@ div
           .Content-post(data-aos="fade-left")
             h4.Content-section Step 1
             p.Content-text We can choose our profile by the burger menu. Then you need to click on the “Carte vitale” to settle your session at the doctor with the help of a reader and the operation is over.
-          img.Content-poster(data-aos="fade-left" data-aos-delay="250" src="~static/images/Pocketcare/Phone_1.gif" alt="Phone animation 1")
+          img.Content-poster(data-aos="fade-left" data-aos-delay="250" src="~assets/images/Pocketcare/Phone_1.gif" alt="Phone animation 1")
         .Content-item
           .Content-post.Exception--post(data-aos="fade-right")
             h4.Content-section Step 2
             p.Content-text After your session, you can find your order, and have it scanned in pharmacy to receive the treatment and pay directly by using your phone.
-          img.Content-poster(data-aos="fade-right" data-aos-delay="250" src="~static/images/Pocketcare/Phone_2.gif" alt="Phone animation 2")
+          img.Content-poster(data-aos="fade-right" data-aos-delay="250" src="~assets/images/Pocketcare/Phone_2.gif" alt="Phone animation 2")
     section.Slide.Slide--block
       .Content
         .Content-header.Content-header--center(data-aos="fade-up")
@@ -73,7 +73,7 @@ div
           p.Content-description.Text--center Finally, 2 sections dedicated to the profile section and the application settings with the possibility to modify your profile.
     .Intermediate(data-rate="20")
       .Intermediate-container.Lazyload
-        img.Exception--screens(src="~static/images/Pocketcare/Screens.png" alt="Screens")
+        img.Exception--screens(src="~assets/images/Pocketcare/Screens.png" alt="Screens")
     section.Slide
       Article(
         :color="data.color"
