@@ -9,12 +9,14 @@ div
     jumbotron="carousel"
     slide="1"
   )
+
   .Page(v-bind:class="`Page--${data.color}`")
     section.Slide
       Post(
         :color="data.color"
         :post="data.posts[0]"
       )
+
     section.Slide
       .Content
         .Content-header
@@ -40,6 +42,7 @@ div
               name="Oculus Sans Regular"
               font="OculusSans-Regular"
             )
+
     section.Slide.Slide--page
       Post(
         :color="data.color"
@@ -62,12 +65,14 @@ div
             label.Cursor-frame--reduced.Field--black(for="black") Dark theme
             input.Cursor-frame--reduced(type="radio" id="white" v-model="slider_theme" value="white")
             label.Cursor-frame--reduced(v-bind:class="`Field--${data.color}`" for="white") Light theme
+
     section.Slide.Slide--block.Exception--bottomless.Lazyload
       .Content
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Inside the car
           p.Content-description.Content-description--large.Text--center The touchscreen is first of all the way to navigate and obtain all the informations about the Tesla Model 3. But it’s also the way to interact with the Oculus Rift for the passenger beside the driver and the driver himself when the car is stopped.
       img.Exception--car(src="~assets/images/Tesla/Car.png" alt="Car")
+
     section.Slide.Slide--page
       Post(
         :color="data.color"
@@ -90,6 +95,7 @@ div
             interval="5000"
             :color="data.color"
           )
+
     section.Slide
       .Content
         .Content-article.Content-article--alternation
@@ -122,9 +128,11 @@ div
           img.Content-online(data-aos="fade-up" data-aos-delay="500" src="~assets/images/Tesla/Hand_3.png" alt="Hand")
           img.Content-online(data-aos="fade-up" data-aos-delay="750" src="~assets/images/Tesla/Hand_4.png" alt="Hand")
           img.Content-online(data-aos="fade-up" data-aos-delay="1000" src="~assets/images/Tesla/Hand_5.png" alt="Hand")
+
     .Intermediate(data-rate="20")
       .Intermediate-container.Lazyload(data-aos="fade-up")
         img.Content-breakpoints(src="~assets/images/Tesla/Helmet.png" alt="Helmet")
+
     section.Slide.Slide--page
       Post(
         :color="data.color"
@@ -138,21 +146,25 @@ div
           .Content-post.Content-post--static.Content-post--half(data-aos="fade-right")
             h4.Content-section Oculus immersion
             p.Content-text Here we are now in the Oculus experience. In this one, we can choose a landscape using the wheel of the watch and plunge us into a dream while we are driving.
+
     section.Slide.Slide--block
       .Content
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Other screens
           p.Content-description.Text--center We can finally find all our mobile features on our watch: loading, moving the car, unlocking the car, the map with the route and the Oculus experience.
+
     .Intermediate(data-rate="20")
       .Intermediate-container(data-aos="fade-up")
         img.Content-banner(src="~assets/images/Tesla/Watches_1.png" alt="Watches")
       .Intermediate-container(data-aos="fade-up")
         img.Content-banner(src="~assets/images/Tesla/Watches_2.png" alt="Watches")
+
     section.Slide
       Article(
         :color="data.color"
         :post="data.posts[4]"
       )
+
   Footer(
     to="buddy-buddy"
     title="Buddy Buddy"
@@ -180,6 +192,7 @@ export default {
       ]
     }
   },
+
   data() {
     return {
       data: {
@@ -233,6 +246,7 @@ export default {
       slider_theme: 'black'
     }
   },
+
   components: {
     Header,
     Post,
@@ -242,9 +256,11 @@ export default {
     Slider,
     Footer
   },
+
   mounted() {
     new ProjectController(this).init()
   },
+
   transition: {
     name: 'project',
     mode: 'out-in',

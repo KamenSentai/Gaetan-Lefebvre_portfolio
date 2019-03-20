@@ -23,6 +23,7 @@ export default {
       ]
     }
   },
+
   data() {
     return {
       data: {
@@ -56,13 +57,16 @@ export default {
       shape: null
     }
   },
+
   created() {
     this.color = this.$route.params.color
     this.shape = this.$route.params.shape
   },
+
   components: {
     Header
   },
+
   transition: {
     name: 'index',
     mode: 'out-in',

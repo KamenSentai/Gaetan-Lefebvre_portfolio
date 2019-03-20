@@ -9,12 +9,14 @@ div
     jumbotron="carousel"
     slide="2"
   )
+
   .Page(v-bind:class="`Page--${data.color}`")
     section.Slide
       Post(
         :color="data.color"
         :post="data.posts[0]"
       )
+
     section.Slide
       .Content
         .Content-header
@@ -34,6 +36,7 @@ div
               name="Bariol Regular"
               font="Bariol-Regular"
             )
+
     section.Slide.Slide--page
       Post(
         :color="data.color"
@@ -44,6 +47,7 @@ div
           h3.Content-title.Text--center Case study home
           p.Content-description.Text--center On the case study, we can find a short video of the project, with competencies used by the team and 3 navigations tools and the scroll.
         img.Content-main(data-aos="fade-up" src="~assets/images/BuddyBuddy/Computer.png" alt="Computer")
+
     section.Slide.Slide--crossed
       .Content
         .Content-header.Content-header--center(data-aos="fade-up")
@@ -52,6 +56,7 @@ div
         .Content-container.Lazyload(data-aos="fade-up")
           img.Content-main(src="~assets/images/BuddyBuddy/Laptop.png" alt="Laptop")
           img.Content-main(src="~assets/images/BuddyBuddy/Animation.gif" alt="Animation")
+
     section.Slide.Slide--page
       Post(
         :color="data.color"
@@ -65,6 +70,7 @@ div
         .Content-full
           img.Content-sub.Shadow(data-aos="fade-up" src="~assets/images/BuddyBuddy/Screen_2.png" alt="Screen 2")
           img.Content-sub.Shadow(data-aos="fade-up" src="~assets/images/BuddyBuddy/Screen_3.png" alt="Screen 3")
+
     section.Slide.Slide--block
       .Content
         .Content-header
@@ -74,6 +80,7 @@ div
             h4.Content-section Home
             p.Content-text All the case study on the Buddy Buddy website have the same plan. The first part is the project presentation. Then we present the branding identity and the style guide.
           img.Content-poster(data-aos="fade-left" data-aos-delay="250" src="~assets/images/BuddyBuddy/Home.png" alt="Home")
+
     .Intermediate(data-rate="20")
       .Intermediate-container
         .Content.Text--white
@@ -82,6 +89,7 @@ div
               h4.Content-section Branding
               p.Content-text.Content-text--intermediate In this section, we are presenting the logo evolution of the project. Then we show the final logo version with its variations.
             img.Content-poster(data-aos="fade-right" data-aos-delay="250" src="~assets/images/BuddyBuddy/Branding.png" alt="Branding")
+
     section.Slide.Exception--bottommore
       .Content
         .Content-header.Content-header--center(data-aos="fade-up")
@@ -91,13 +99,16 @@ div
           folder="BuddyBuddy"
           :images="['Mobile_1', 'Mobile_2', 'Mobile_3', 'Mobile_4']"
         )
+
     section.Slide.Slide--banner.Exception--banner.Lazyload
       Banner.Banner--buddybuddy(src="BuddyBuddy/Banner_Screenshots" alt ="Banner Screenshots")
+
     section.Slide
       Article(
         :color="data.color"
         :post="data.posts[3]"
       )
+
   Footer(
     to="pocketcare"
     title="Pocketcare"
@@ -126,6 +137,7 @@ export default {
       ]
     }
   },
+
   data() {
     return {
       data: {
@@ -168,6 +180,7 @@ export default {
       }
     }
   },
+
   components: {
     Header,
     Post,
@@ -178,9 +191,11 @@ export default {
     Banner,
     Footer
   },
+
   mounted() {
     new ProjectController(this).init()
   },
+
   transition: {
     name: 'project',
     mode: 'out-in',

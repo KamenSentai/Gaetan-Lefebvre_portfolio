@@ -9,12 +9,14 @@ div
     jumbotron="carousel"
     slide="0"
   )
+
   .Page(v-bind:class="`Page--${data.color}`")
     section.Slide
       Post(
         :color="data.color"
         :post="data.posts[0]"
       )
+
     section.Slide
       .Content
         .Content-header
@@ -34,6 +36,7 @@ div
               name="Circular Std Book"
               font="CircularStd-Book"
             )
+
     section.Slide.Slide--page
       Post(
         :color="data.color"
@@ -50,8 +53,10 @@ div
         :color="data.color"
         :post="data.posts[2]"
       )
+
     section.Slide.Slide--banner.Lazyload
       Banner.Banner--pocketcare(src="Pocketcare/Banner_Inscription" alt ="Inscription")
+
     section.Slide.Slide--page
       .Content
         .Content-header
@@ -66,19 +71,23 @@ div
             h4.Content-section Step 2
             p.Content-text After your session, you can find your order, and have it scanned in pharmacy to receive the treatment and pay directly by using your phone.
           img.Content-poster(data-aos="fade-right" data-aos-delay="250" src="~assets/images/Pocketcare/Phone_2.gif" alt="Phone animation 2")
+
     section.Slide.Slide--block
       .Content
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Profil and settings
           p.Content-description.Text--center Finally, 2 sections dedicated to the profile section and the application settings with the possibility to modify your profile.
+
     .Intermediate(data-rate="20")
       .Intermediate-container.Lazyload
         img.Exception--screens(src="~assets/images/Pocketcare/Screens.png" alt="Screens")
+
     section.Slide
       Article(
         :color="data.color"
         :post="data.posts[3]"
       )
+
   Footer(
     to="tesla"
     title="Tesla"
