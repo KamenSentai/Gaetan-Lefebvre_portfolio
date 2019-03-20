@@ -342,6 +342,7 @@ export default {
     align-items: center;
     width: auto;
     padding-left: $margin-s;
+    user-select: none;
 
     &::before {
       content: '';
