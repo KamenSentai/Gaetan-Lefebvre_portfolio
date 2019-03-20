@@ -16,7 +16,7 @@ import Mouse from '~/components/Mouse'
 import Header from '~/components/Header'
 
 export default {
-  head () {
+  head() {
     return {
       title: 'Oops, page not found',
       meta: [

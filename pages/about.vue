@@ -15,7 +15,7 @@ import Header from '~/components/Header'
 import AboutController from '~/assets/scripts/AboutController'
 
 export default {
-  head () {
+  head() {
     return {
       title: 'Gaëtan LEFEBVRE | About myself',
       meta: [

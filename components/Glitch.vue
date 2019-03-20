@@ -12,15 +12,15 @@ export default {
       src: ''
     }
   },
+  created() {
+    this.src = this.image
+  },
   props: [
     'path',
     'image',
     'alt',
     'isPlaying'
   ],
-  created() {
-    this.src = this.image
-  },
   methods: {
     glitchPeriodic() {
       if (this.number < this.total) {

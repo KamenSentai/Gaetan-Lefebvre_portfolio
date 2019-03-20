@@ -98,7 +98,7 @@ import Footer from '~/components/Footer'
 import ProjectController from '~/assets/scripts/ProjectController'
 
 export default {
-  head () {
+  head() {
     return {
       title: 'Gaëtan LEFEBVRE | Pocketcare',
       meta: [

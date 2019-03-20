@@ -14,7 +14,7 @@ import Header from '~/components/Header'
 import ProjectsController from '~/assets/scripts/ProjectsController'
 
 export default {
-  head () {
+  head() {
     return {
       title: 'Gaëtan LEFEBVRE | Projects',
       meta: [

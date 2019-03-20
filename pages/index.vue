@@ -15,7 +15,7 @@ import Header from '~/components/Header'
 import IndexController from '~/assets/scripts/IndexController'
 
 export default {
-  head () {
+  head() {
     return {
       title: 'Gaëtan LEFEBVRE | Interactive Designer & Motion Designer',
       meta: [

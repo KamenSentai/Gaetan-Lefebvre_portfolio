@@ -176,6 +176,10 @@ export default {
       isLocked: false
     }
   },
+  created() {
+    this.index = this.range
+    if (this.slide === undefined || !this.$route.params.from) this.isLabelized = false
+  },
   props: [
     'isMenu',
     'range',
@@ -211,10 +215,6 @@ export default {
         })
       }
     }
-  },
-  beforeMount() {
-    this.index = this.range
-    if (this.slide === undefined || !this.$route.params.from) this.isLabelized = false
   },
   mounted() {
     const _progressCarousel = this.$refs.progress

@@ -74,6 +74,10 @@ export default {
       route: ''
     }
   },
+  created() {
+    if (this.index && this.index >= 0) this.range = this.index
+    this.route = this.$router.currentRoute.name
+  },
   props: [
     'color',
     'shape',
@@ -182,10 +186,6 @@ export default {
     modulo: (n, m) => {
       return ((n % m) + m) % m;
     }
-  },
-  beforeMount() {
-    if (this.index && this.index >= 0) this.range = this.index
-    this.route = this.$router.currentRoute.name
   },
   mounted() {
     const _headerScrollableRef = this.$refs.scrollable
