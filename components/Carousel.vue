@@ -410,8 +410,10 @@ export default {
       }
 
       #{$rootCarousel}-main {
-        @media (min-height: #{grid-media(7.5) + 1px}), (min-width: #{grid-media(6) + 1px}) {
-          transform: translateY(calc(50% + #{- $margin-b - $margin-m}));
+        transform: translateY(calc(50% + #{- $margin-b - $margin-m}));
+
+        @media (max-height: #{grid-media(7.5)}), (max-width: #{grid-media(6)}) {
+          transform: none !important;
         }
       }
 
