@@ -10,8 +10,7 @@
       path="assets/images/Home/"
       :image="data.shapes[range]"
       :alt="data.shapes[range]"
-      :isAutomatic="false"
-      :isPlaying="isPlaying"
+      :isAutomatic="true"
     )
     img.Hero-front(
       src="~assets/images/Home/Gaetan-cropped.png"
@@ -98,11 +97,6 @@ import Icon from './Icon'
 import Glitch from './Glitch'
 
 export default {
-  data() {
-    return {
-      isPlaying: false
-    }
-  },
   props: [
     'type',
     'data',
@@ -120,12 +114,6 @@ export default {
         indexPage === (this.range + 1) % Object.keys(this.data[this.type].pages).length ?
           'is-appearing' : ''
     }
-  },
-  mounted() {
-    if (this.$refs.icon) this.$watch(
-      () => this.$refs.icon.isClicking,
-      value => this.isPlaying = value
-    )
   }
 }
 </script>

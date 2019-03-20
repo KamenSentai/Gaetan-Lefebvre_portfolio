@@ -9,51 +9,26 @@ export default {
       number: 0,
       total: 10,
       frequency: 75,
-      src: '',
-      isPeriodic: false
+      src: ''
     }
   },
   props: [
     'path',
     'image',
     'alt',
-    'isAutomatic',
-    'isPlaying'
+    'isAutomatic'
   ],
   created() {
     this.src = this.image
   },
   methods: {
     glitchPeriodic() {
-      if (!this.isPlaying) {
-        this.isPeriodic = true
-        if (this.number < this.total) {
-          this.src = `${this.image}/${this.image}_${this.number}`
-          ++this.number
-          setTimeout(() => {
-            this.glitchPeriodic()
-          }, this.frequency)
-        } else {
-          this.isPeriodic = false
-          this.src = this.image
-          this.number = 0
-        }
-      } else {
-          this.isPeriodic = false
-      }
-    },
-    glitchFocused() {
-      if (this.isPlaying) {
-        if (this.number < this.total) {
-          this.src = `${this.image}/${this.image}_${this.number}`
-          ++this.number
-          setTimeout(() => {
-            this.glitchFocused()
-          }, this.frequency)
-        } else {
-          this.number = 0
-          this.glitchFocused()
-        }
+      if (this.number < this.total) {
+        this.src = `${this.image}/${this.image}_${this.number}`
+        ++this.number
+        setTimeout(() => {
+          this.glitchPeriodic()
+        }, this.frequency)
       } else {
         this.src = this.image
         this.number = 0
@@ -73,10 +48,6 @@ export default {
       setInterval(() => {
         if (this.isAutomatic) this.glitchPeriodic()
       }, 4000)
-      this.$watch(
-        () => this.isPlaying,
-        value => { if (this.isPlaying) this.glitchFocused() }
-      )
     }
   }
 }
