@@ -31,7 +31,7 @@ export default {
           ++this.number
           setTimeout(() => {
             this.glitchPeriodic()
-          }, 50)
+          }, 75)
         } else {
           this.isPeriodic = false
           this.src = this.image
