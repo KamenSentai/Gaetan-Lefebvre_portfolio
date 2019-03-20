@@ -8,6 +8,7 @@ export default {
     return {
       number: 0,
       total: 10,
+      frequency: 75,
       src: '',
       isPeriodic: false
     }
@@ -31,7 +32,7 @@ export default {
           ++this.number
           setTimeout(() => {
             this.glitchPeriodic()
-          }, 75)
+          }, this.frequency)
         } else {
           this.isPeriodic = false
           this.src = this.image
@@ -48,7 +49,7 @@ export default {
           ++this.number
           setTimeout(() => {
             this.glitchFocused()
-          }, 50)
+          }, this.frequency)
         } else {
           this.number = 0
           this.glitchFocused()
