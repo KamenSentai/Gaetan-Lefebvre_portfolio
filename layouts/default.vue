@@ -52,7 +52,7 @@ export default {
         if (this.$refs.loading) this.$refs.loading.$el.classList.add('is-hidden')
         setTimeout(() => {
           this.isLoaded = true
-          if (this.$refs.page.$route.name !== null) && this.$refs.page.$route.name.includes('projects-')) {
+          if (this.$refs.page.$route.name !== null && this.$refs.page.$route.name.includes('projects-')) {
             this.$refs.page.$el.querySelector('.Header').style.opacity = '1'
             this.$refs.page.$el.querySelector('.Page').style.opacity = '1'
             this.$refs.page.$el.querySelector('.Footer').style.opacity = '1'
