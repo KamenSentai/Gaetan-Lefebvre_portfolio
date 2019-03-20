@@ -205,7 +205,7 @@ export default {
       let initialY = null
 
       const keydownScrollable = event => {
-        if (_headerScrollableRef && (event.keyCode === 38 || event.keyCode === 40)) {
+        if (this.$refs.scrollable && (event.keyCode === 38 || event.keyCode === 40)) {
           window.removeEventListener('keydown', keydownScrollable)
           if (event.keyCode === 38) this.range = this.modulo(this.range + 1, this.data.colors.length)
           else this.range = this.modulo(this.range - 1, this.data.colors.length)
@@ -271,7 +271,7 @@ export default {
       let initialY = null
 
       const keydownCarousel = event => {
-        if (_headerCarouselRef && this.isTurnable && (event.keyCode === 37 || event.keyCode === 39)) {
+        if (this.$refs.carousel && this.isTurnable && (event.keyCode === 37 || event.keyCode === 39)) {
           window.removeEventListener('keydown', keydownCarousel)
           if (event.keyCode === 39) {
             _headerCarouselRef.turnRight()
