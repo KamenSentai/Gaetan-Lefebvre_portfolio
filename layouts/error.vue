@@ -1,6 +1,5 @@
 <template lang="pug">
 .Error
-  Mouse
   Header(
     :color="data[index].color"
     :shape="data[index].shape"
@@ -12,7 +11,6 @@
 </template>
 
 <script>
-import Mouse from '~/components/Mouse'
 import Header from '~/components/Header'
 
 export default {
@@ -24,6 +22,7 @@ export default {
       ]
     }
   },
+
   data() {
     return {
       data: [
@@ -37,11 +36,12 @@ export default {
       y: 0
     }
   },
+
   props: [
     'error'
   ],
+
   components: {
-    Mouse,
     Header
   }
 }
