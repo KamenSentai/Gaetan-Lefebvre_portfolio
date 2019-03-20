@@ -16,7 +16,7 @@ export default {
     'path',
     'image',
     'alt',
-    'isAutomatic'
+    'isPlaying'
   ],
   created() {
     this.src = this.image
@@ -46,7 +46,7 @@ export default {
       || navigator.userAgent.match(/Windows Phone/i))
     ) {
       setInterval(() => {
-        if (this.isAutomatic) this.glitchPeriodic()
+        if (this.isPlaying) this.glitchPeriodic()
       }, 4000)
     }
   }

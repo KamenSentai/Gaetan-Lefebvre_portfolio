@@ -10,7 +10,7 @@
       path="assets/images/Home/"
       :image="data.shapes[range]"
       :alt="data.shapes[range]"
-      :isAutomatic="true"
+      :isPlaying="true"
     )
     img.Hero-front(
       src="~assets/images/Home/Gaetan-cropped.png"
@@ -34,7 +34,7 @@
           path="assets/images/About/"
           :image="page.shape"
           :alt="page.shape"
-          :isAutomatic="checkIndex(page) === 'is-active'"
+          :isPlaying="checkIndex(page) === 'is-active'"
           ref="shapes"
         )
     .Hero-fronts
