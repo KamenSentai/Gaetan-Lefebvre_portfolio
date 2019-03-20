@@ -10,6 +10,7 @@ class ProjectsController extends PageController {
   enter(el, done) {
     document.body.style.pointerEvents = 'none'
     const _buttonsCarousel = el.querySelector('.Carousel-buttons')
+
     if (_buttonsCarousel) {
       if (_buttonsCarousel.getBoundingClientRect().width > _buttonsCarousel.getBoundingClientRect().height) {
         TweenLite.fromTo('.Carousel-container', 1, { scale: 0, left: - window.innerWidth / 2 }, { scale: 1, left: 0, delay: 0, ease: Power2.easeInOut })
@@ -35,6 +36,7 @@ class ProjectsController extends PageController {
     const page = this.page
 
     document.body.style.pointerEvents = 'none'
+
     if (page.$route.name.includes('projects-')) {
       page.$el.querySelector('.Carousel-container').classList.add('Carousel-container--case')
       TweenLite.to('.Carousel-extra', 0, { opacity: 0, delay: 0, ease: Power2.easeInOut })

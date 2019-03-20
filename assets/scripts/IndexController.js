@@ -12,6 +12,7 @@ class IndexController extends PageController {
 
     document.body.style.pointerEvents = 'none'
     const _hero = el.querySelector('.Hero')
+
     if (_hero) {
       TweenLite.fromTo('.Hero-shape', 1, { scale: 0 }, { scale: 1, delay: 0, ease: Power2.easeInOut })
       TweenLite.fromTo('.Hero-back', 1, { opacity: 0 }, { opacity: 1, delay: .5, ease: Power2.easeInOut })
@@ -35,6 +36,7 @@ class IndexController extends PageController {
   leave(el, done) {
     document.body.style.pointerEvents = 'none'
     const _hero = el.querySelector('.Hero')
+
     if (_hero) {
       TweenLite.fromTo('.Hero-shape', .5, { scale: 1 }, { scale: 0, delay: 0, ease: Power2.easeInOut })
       TweenLite.fromTo('.Hero-back', .5, { opacity: 1 }, { opacity: 0, delay: .25, ease: Power2.easeInOut })

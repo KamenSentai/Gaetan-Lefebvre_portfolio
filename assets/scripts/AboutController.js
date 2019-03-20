@@ -10,6 +10,7 @@ class AboutController extends PageController {
   enter(el, done) {
     document.body.style.pointerEvents = 'none'
     const _shapeHero = el.querySelector('.Hero-shape.is-active')
+
     if (_shapeHero) {
       TweenLite.fromTo('.Hero-shape.is-active', 1, { width: 0, top: _shapeHero.getBoundingClientRect().width / 2 }, { width: '100%', top: 0, delay: 0, ease: Power2.easeInOut })
       TweenLite.fromTo('.Hero-backs', 1, { opacity: 0 }, { opacity: 1, delay: .5, ease: Power2.easeInOut })
@@ -31,6 +32,7 @@ class AboutController extends PageController {
   leave(el, done) {
     document.body.style.pointerEvents = 'none'
     const _shapeHero = el.querySelector('.Hero-shape.is-active')
+
     if (_shapeHero) {
       TweenLite.fromTo('.Hero-shape.is-active', 1, { width: '100%', top: 0 }, { width: 0, top: _shapeHero.getBoundingClientRect().width / 2, delay: 0, ease: Power2.easeInOut })
       TweenLite.fromTo('.Hero-backs', .5, { opacity: 1 }, { opacity: 0, delay: .25, ease: Power2.easeInOut })
