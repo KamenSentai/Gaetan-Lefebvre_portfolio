@@ -52,6 +52,11 @@ export default {
         if (this.$refs.loading) this.$refs.loading.$el.classList.add('is-hidden')
         setTimeout(() => {
           this.isLoaded = true
+          if (this.$refs.page.$route.name !== null) && this.$refs.page.$route.name.includes('projects-')) {
+            this.$refs.page.$el.querySelector('.Header').style.opacity = '1'
+            this.$refs.page.$el.querySelector('.Page').style.opacity = '1'
+            this.$refs.page.$el.querySelector('.Footer').style.opacity = '1'
+          }
         }, 1500)
       }, 1500)
     }
@@ -61,6 +66,9 @@ export default {
     else if (this.$refs.page.$route.name.includes('projects-')) {
       document.body.classList.add('is-active')
       this.$refs.page.$el.querySelector('.Header').classList.add('is-inactive')
+      this.$refs.page.$el.querySelector('.Header').style.opacity = '0'
+      this.$refs.page.$el.querySelector('.Page').style.opacity = '0'
+      this.$refs.page.$el.querySelector('.Footer').style.opacity = '0'
     }
 
     // const path = '/_nuxt/assets/images/'
