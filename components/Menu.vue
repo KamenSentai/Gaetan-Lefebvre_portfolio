@@ -65,11 +65,13 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/styles/tools/variables';
 @import '~assets/styles/tools/functions';
+@import '~assets/styles/tools/mixins';
 
 .Menu {
   $rootMenu: &;
   $item-percentage: 40;
 
+  @include full-size();
   position: absolute;
   top: 0;
   left: 0;
@@ -77,8 +79,6 @@ export default {
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  width: 100vw;
-  height: 100vh;
   background-color: $black;
   transition: opacity $easing-duration;
   overflow: hidden;

@@ -1,9 +1,11 @@
 html {
+  @include full-size();
   background-color: $black;
   font-size: 62.5%;
 }
 
 body {
+  @include full-size();
   position: relative;
   font-family: $font;
   color: $white;
@@ -11,5 +13,13 @@ body {
 
   &.is-active {
     overflow: auto;
+  }
+
+  > * {
+    @include full-size();
+
+    > * {
+      @include full-size();
+    }
   }
 }

@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+.Default
   Mouse
   nuxt(ref="page")
   Loading(v-if="!isLoaded" :roundedPercentage="roundedPercentage" :percentage="percentage" ref="loading")
@@ -51,7 +51,7 @@ export default {
       if (this.roundedPercentage === 100) setTimeout(() => {
         if (this.$refs.loading) this.$refs.loading.$el.classList.add('is-hidden')
         setTimeout(() => {
-          if (this.$refs.page.$route.name.includes('projects-')) document.body.classList.add('is-active')
+          if (this.$refs.page.$route.name && this.$refs.page.$route.name.includes('projects-')) document.body.classList.add('is-active')
           this.isLoaded = true
         }, 1500)
       }, 1500)
@@ -427,3 +427,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '~assets/styles/tools/mixins';
+
+.Default {
+  @include full-size();
+}
+</style>

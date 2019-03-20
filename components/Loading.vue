@@ -105,16 +105,16 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/styles/tools/variables';
 @import '~assets/styles/tools/functions';
+@import '~assets/styles/tools/mixins';
 
 .Loading {
   $rootLoading : &;
   $pointerSize: 3.2rem;
 
+  @include full-size();
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
   z-index: 7500;
   transition: opacity $easing .5s;
   transition-delay: .5s;

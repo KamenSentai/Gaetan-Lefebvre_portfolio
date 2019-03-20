@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+.Error
   Mouse
   Header(
     :color="data[index].color"
@@ -46,3 +46,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '~assets/styles/tools/mixins';
+
+.Error {
+  @include full-size();
+}
+</style>

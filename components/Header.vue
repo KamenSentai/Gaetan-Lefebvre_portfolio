@@ -342,13 +342,12 @@ export default {
     }
   }
 
+  @include full-size();
   z-index: 500;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
   color: $white;
   background-color: $black;
   overflow: hidden;
