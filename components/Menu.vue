@@ -4,17 +4,21 @@
     nuxt-link.Menu-button(:to="{ name: 'projects-pocketcare', params: { from: $route.name + '/menu' } }" )
     img.Menu-image(src="~assets/images/Menu/pocketcare.png" alt="Pocketcare")
     span.Menu-title Pocketcare
+
   span.Menu-link(ref="tesla" v-on:click="clickProject($event)" data-range="1")
     nuxt-link.Menu-button(:to="{ name: 'projects-tesla', params: { from: $route.name + '/menu' } }" )
     img.Menu-image(src="~assets/images/Menu/tesla.png" alt="Tesla")
     span.Menu-title Tesla
+
   span.Menu-float.Cursor-frame--menu(ref="float")
     a.Menu-back.Cursor-frame--menu(ref="back" @click="toggleMenu")
       .Menu-cross.Cursor-frame--menu
+
   span.Menu-link(ref="buddybuddy" v-on:click="clickProject($event)" data-range="2")
     nuxt-link.Menu-button(:to="{ name: 'projects-buddy-buddy', params: { from: $route.name + '/menu' } }" )
     img.Menu-image(src="~assets/images/Menu/buddy-buddy.png" alt="Buddy Buddy")
     span.Menu-title Buddy Buddy
+
   span.Menu-link.Menu-link--forbidden(ref="personal" data-range="4")
     img.Menu-image(src="~assets/images/Menu/personal.png" alt="Personal")
     Lock.Menu-lock
@@ -28,6 +32,7 @@ export default {
   components: {
     Lock
   },
+
   methods: {
     toggleMenu() {
       document.body.style.overflow = 'auto'

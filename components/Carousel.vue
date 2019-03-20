@@ -16,6 +16,7 @@
         path#Carousel-right-2.Carousel-shape.Carousel-shape--right(:class="index === 2 ? 'is-chosen' : ''" d="M38.8,14.8l-7.2,22H8.4l-7.2-22L20,1.2L38.8,14.8z")
         path#Carousel-right.Carousel-shape.is-active(ref="right")
         polyline.Carousel-shape.Carousel-shape--arrow.is-active(points="25,22.5 20,17.5 15,22.5")
+
     .Carousel-content(v-bind:class="isMenu ? 'is-hidden': ''")
       .Content-group
         nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ name: 'projects-pocketcare', params: { from: $route.name } }")
@@ -51,6 +52,7 @@
             span.Carousel-additional(v-if="slide" ref="additional")
               span.Text--bold Skills :
               span.Text--light &nbsp;Branding, Illustration, Interactive design
+
       .Content-group
         nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" v-bind:class="`Carousel-item--${modulo(range - 1, 4)}`" :to="{ name: 'projects-tesla', params: { from: $route.name } }")
           .Carousel-image
@@ -85,6 +87,7 @@
             span.Carousel-additional(v-if="slide" ref="additional")
               span.Text--bold Skills :
               span.Text--light &nbsp;Branding, Illustration, Interactive design
+
       .Content-group
         nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" v-bind:class="`Carousel-item--${modulo(range - 2, 4)}`" :to="{ name: 'projects-buddy-buddy', params: { from: $route.name } }")
           .Carousel-image
@@ -119,6 +122,7 @@
             span.Carousel-additional(v-if="slide" ref="additional")
               span.Text--bold Skills :
               span.Text--light &nbsp;Branding, Illustration, Interactive design
+
       .Content-group
         span.Carousel-item.Carousel-item--forbidden(v-if="!slide || parseInt(slide) === 3" v-bind:class="`Carousel-item--${modulo(range - 3, 4)}`")
           .Carousel-image
@@ -142,6 +146,7 @@
             span.Carousel-additional(v-if="slide" ref="additional")
               span.Text--bold Skills :
               span.Text--light &nbsp;Interactive design
+
       .Carousel-progress(v-if="!slide" v-bind:class="[isMenu ? 'is-hidden': '', !isProgressed ? 'is-hidden' : '']" ref="progress")
         .Carousel-indicator Swipe
         svg.Carousel-step(:class="range === 0 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
@@ -152,6 +157,7 @@
           path(d="M37.8,37.8H2.2V2.2h35.4L37.8,37.8L37.8,37.8z")
         svg.Carousel-step(:class="range === 3 ? 'is-active' : ''" width="40px" height="40px" viewBox="0 0 40 40")
           path(d="M38.8,15.8l-7.2,21.9H8.4L1.2,15.8L20,2.2L38.8,15.8z")
+
   .Carousel-bars(v-if="!slide")
     .Carousel-bar(v-for="n in 3" v-bind:class="isMenu ? 'is-hidden': ''" ref="bars")
 </template>
@@ -176,6 +182,7 @@ export default {
       isLocked: false
     }
   },
+
   created() {
     this.index = this.range
     if (this.slide === undefined || !this.$route.params.from) this.isLabelized = false
@@ -185,10 +192,12 @@ export default {
     'range',
     'slide'
   ],
+
   components: {
     Glitch,
     Lock
   },
+
   methods: {
     modulo: (n, m) => {
       return ((n % m) + m) % m;
@@ -216,6 +225,7 @@ export default {
       }
     }
   },
+
   mounted() {
     const _progressCarousel = this.$refs.progress
     const _labelsCarousel = Array.from(this.$el.querySelectorAll('.Carousel-label'))

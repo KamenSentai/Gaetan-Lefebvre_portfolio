@@ -5,12 +5,15 @@
     span.Push.Push--left.Cursor-frame--reduced(v-bind:class="automatic ? 'Slider-push' : ''" @click="turnSlider" ref="push")
       .Push-arrow
       .Push-arrow
+
   .Slider-content(v-if="mockup" @touchstart="touchStart" @touchmove="touchMove" ref="content")
     img.Slider-mockup(:src="require(`../assets/images/${folder}/${mockup}.png`)" draggable="false")
     .Slider-images
       img.Slider-image.Shadow--image(v-for="image in images" :src="require(`../assets/images/${folder}/${image}.png`)" ref="images")
+
   .Slider-button.Slider-button--hidden(v-if="mockup" ref="hidden")
     .Push.Cursor-frame--reduced
+
   .Slider-images.Slider-images--pushed(v-else @touchstart="touchStart" @touchmove="touchMove")
     img.Slider-image.Shadow(v-for="image in images" :src="require(`../assets/images/${folder}/${image}.png`)" ref="images")
 </template>
@@ -31,6 +34,7 @@ export default {
       initialY: null
     }
   },
+
   props: [
     'folder',
     'images',
@@ -39,6 +43,7 @@ export default {
     'interval',
     'color'
   ],
+
   methods: {
     touchStart(event) {
       this.initialX = event.touches[0].clientX
@@ -111,6 +116,7 @@ export default {
       }
     }
   },
+
   mounted() {
     const _images = this.$refs.images
     const _imagesStyle = _images[0].currentStyle || window.getComputedStyle(_images[0])

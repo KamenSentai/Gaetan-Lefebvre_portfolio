@@ -17,6 +17,7 @@
       alt="Gaëtan Lefebvre"
       draggable="false"
     )
+
   .Hero-portrait.Hero-portrait--pictures(v-if="type === 'about'")
     .Hero-backs
       img.Hero-back.Hero-back--slide(
@@ -47,6 +48,7 @@
         ref="fronts"
       )
     span.Hero-scroll
+
   aside.Hero-data
     .Hero-description
       .Hero-group(v-if="type === 'about'")
@@ -71,6 +73,7 @@
       .Hero-texts
         .Hero-paragraphs(v-for="(page, index) in data[type].pages" v-bind:class="[checkIndex(page), `Text-group Text-group--${data.colors[range]}`]")
           p.Hero-paragraph(v-for="paragraph in page.paragraphs" v-html="paragraph")
+
     .Hero-push(v-if="type === 'home'")
       span.Hero-heavy Push&nbsp;
       span.Hero-thin the
@@ -80,6 +83,7 @@
         ref="icon"
       )
       span.Hero-thin to continue
+
     ul.Hero-links(v-else-if="type === 'about'")
       li.Hero-link.Cursor-frame--increase
         a.Cursor-frame--increase(href="https://www.linkedin.com/in/gaetan-lefebvre" title="LinkedIn" target="_blank" rel="noopener") LinkedIn
@@ -102,10 +106,12 @@ export default {
     'data',
     'range'
   ],
+
   components: {
     Icon,
     Glitch
   },
+
   methods: {
     checkIndex(page) {
       const indexPage = this.data[this.type].pages.indexOf(page)

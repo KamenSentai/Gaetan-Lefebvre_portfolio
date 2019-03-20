@@ -28,9 +28,11 @@ export default {
       shape: ''
     }
   },
+
   props : [
     'route'
   ],
+
   methods: {
     findShape() {
       const _header = document.querySelector('.Header')
@@ -66,6 +68,7 @@ export default {
       window.requestAnimationFrame(this.updateShape)
     }
   },
+
   mounted() {
     const _body = document.body
     const _pointerMouse = this.$refs.pointer

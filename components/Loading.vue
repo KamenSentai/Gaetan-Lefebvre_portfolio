@@ -30,9 +30,11 @@ export default {
       shape: 'circle'
     }
   },
+
   props: [
     'roundedPercentage'
   ],
+
   methods: {
     getColor() {
       const className = 'Loading-fillbar'
@@ -96,6 +98,7 @@ export default {
       }
     }
   },
+
   mounted() {
     this.updateRoundedPercentage()
   }

@@ -28,10 +28,12 @@ export default {
       isClicking: false
     }
   },
+
   props: [
     'color',
     'shape'
   ],
+
   methods: {
     click() {
       this.isClicking = true
@@ -40,6 +42,7 @@ export default {
       this.isClicking = true
     }
   },
+
   mounted() {
     const _shapeIcon = this.$refs.shape
     const _linkIcon = this.$refs.link.$el

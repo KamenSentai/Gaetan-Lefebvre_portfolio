@@ -18,6 +18,7 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
             a.Cursor-frame--increase(href="https://www.linkedin.com/in/gaetan-lefebvre" title="LinkedIn" target="_blank" rel="noopener") LinkedIn
             a.Cursor-frame--increase(href="https://www.dribbble.com/gaetanlefebvre" title="Dribbble" target="_blank" rel="noopener") Dribbble
             a.Cursor-frame--increase(href="https://www.behance.net/gaetanlefebvre" title="Behance" target="_blank" rel="noopener") Behance
+
     .Header-mainnav(v-bind:class="[isNavigating ? 'is-toggled' : '', isMenu ? 'is-hidden': '']" :data-navigating="isNavigating ? 'true' : 'false'")
       nuxt-link.Header-logo(v-bind:class="isNavigating ? 'is-toggled' : 'is-untoggled'" :to="{ name: 'index', params: sendData() }")
         Logo(:color="color || data.colors[range]")
@@ -33,6 +34,7 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
         .Header-stripe
         .Header-stripe
         .Header-stripe
+
   .Header-jumbotron
     Hero.Header-hero(
       :class="type === 'about' ? 'Header-scrollable' : ''"
@@ -74,10 +76,12 @@ export default {
       route: ''
     }
   },
+
   created() {
     if (this.index && this.index >= 0) this.range = this.index
     this.route = this.$router.currentRoute.name
   },
+
   props: [
     'color',
     'shape',
@@ -90,6 +94,7 @@ export default {
     'data',
     'slide'
   ],
+
   components: {
     Logo,
     Menu,
@@ -97,6 +102,7 @@ export default {
     Carousel,
     Error
   },
+
   methods: {
     sendData() {
       return {
@@ -187,6 +193,7 @@ export default {
       return ((n % m) + m) % m;
     }
   },
+
   mounted() {
     const _headerScrollableRef = this.$refs.scrollable
     const _headerCarouselRef = this.$refs.carousel
