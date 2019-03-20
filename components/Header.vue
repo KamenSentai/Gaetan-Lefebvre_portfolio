@@ -247,9 +247,6 @@ export default {
       _headerScrollable.addEventListener('touchstart', startTouch)
       _headerScrollable.addEventListener('touchmove', moveTouch)
       _headerScrollable.addEventListener('wheel', scrollJumbotron)
-      _headerScrollable.addEventListener('wheel', event => {
-        event.preventDefault()
-      })
     }
 
     if (_headerCarouselRef && !this.slide) {
@@ -278,6 +275,23 @@ export default {
           setTimeout(() => {
             this.isTurnable = true
           }, 1000)
+        }
+      }
+
+      const scrollCarousel = event => {
+        if (this.isTurnable && Math.abs(event.deltaY) > 5) {
+          _headerCarousel.removeEventListener('wheel', scrollCarousel)
+          if (event.deltaY > 5) {
+            this.$refs.carousel.turnRight()
+            increaseRange()
+          }
+          else {
+            this.$refs.carousel.turnLeft()
+            decreaseRange()
+          }
+          setTimeout(() => {
+            _headerCarousel.addEventListener('wheel', scrollCarousel)
+          }, 1500)
         }
       }
 
@@ -310,6 +324,7 @@ export default {
         }
       }
 
+      _headerCarousel.addEventListener('wheel', scrollCarousel)
       _heroCarouselButtonLeft.addEventListener('click', decreaseRange)
       _heroCarouselButtonRight.addEventListener('click', increaseRange)
       _headerCarousel.addEventListener('touchstart', startTouch)
