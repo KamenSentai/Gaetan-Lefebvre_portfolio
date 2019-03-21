@@ -237,6 +237,45 @@ class ProjectController extends PageController {
       }, 2500)
     } else {
       AOS.refresh()
+
+      if (
+        !(navigator.userAgent.match(/Android/i)
+        || navigator.userAgent.match(/webOS/i)
+        || navigator.userAgent.match(/iPhone/i)
+        || navigator.userAgent.match(/iPad/i)
+        || navigator.userAgent.match(/iPod/i)
+        || navigator.userAgent.match(/BlackBerry/i)
+        || navigator.userAgent.match(/Windows Phone/i))
+      ) {
+        this.runParallax()
+      }
+    }
+  }
+
+  runParallax() {
+    const page = this.page
+
+    const _parallaxes = Array.from(page.$el.querySelectorAll('.Parallax'))
+
+    if (_parallaxes.length > 0) {
+      const currentRoute = page.$route.name
+      const _parallaxesData = []
+
+      for (const _parallax of _parallaxes) {
+        const _parallaxStyle = _parallax.currentStyle || window.getComputedStyle(_parallax)
+        _parallaxesData.push({ element: _parallax, transform: _parallaxStyle.transform, target: _parallax.classList.contains('Banner') ? _parallax.parentNode : _parallax })
+      }
+
+      const updateParallax = () => {
+        if (page.$route.name === currentRoute) {
+          for (const _parallaxData of _parallaxesData) {
+            const translateValue = (_parallaxData.target.getBoundingClientRect().top + _parallaxData.target.getBoundingClientRect().height / 2) / 25
+            _parallaxData.element.style.transform = `${_parallaxData.transform} translateY(${translateValue}px)`
+          }
+          window.requestAnimationFrame(updateParallax)
+        } else window.cancelAnimationFrame(updateParallax)
+      }
+      updateParallax()
     }
   }
 }
