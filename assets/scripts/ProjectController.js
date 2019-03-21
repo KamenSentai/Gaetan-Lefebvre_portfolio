@@ -219,7 +219,6 @@ class ProjectController extends PageController {
     const _aosElements = Array.from(document.querySelectorAll('[data-aos]'))
     for (const _aosElement of _aosElements) {
       _aosElement.dataset.aos = ''
-
     }
   }
 }

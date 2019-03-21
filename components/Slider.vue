@@ -152,7 +152,7 @@ export default {
       context.strokeStyle = `${_loadingStyle.color}`
 
       const fixFirefox = () => {
-        if (isFirefox && window.innerWidth <= 660) {
+        if (window.innerWidth <= 660) {
           this.$el.classList.add('is-smaller')
           this.$refs.content.style.marginRight = '0'
           this.$refs.button.style.display = 'block'
@@ -164,14 +164,14 @@ export default {
           this.$refs.hidden.style.display = ''
         }
       }
-      fixFirefox()
+      if (isFirefox) fixFirefox()
 
       window.addEventListener('resize', () => {
         _loadingSlider.width = _loadingSlider.offsetWidth
         _loadingSlider.height = _loadingSlider.offsetHeight
         w = _loadingSlider.width
         h = _loadingSlider.height
-        fixFirefox()
+        if (isFirefox) fixFirefox()
       })
 
       const autoplaySlider = () => {
@@ -380,6 +380,7 @@ export default {
   &-image {
     margin-right: $images-margin;
     transform-origin: 50% 50%;
+    user-select: none;
   }
 
   &-mockup {
