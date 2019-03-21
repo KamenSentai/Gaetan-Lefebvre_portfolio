@@ -53,6 +53,7 @@ export default {
         setTimeout(() => {
           this.isLoaded = true
           if (this.$refs.page.$route.name !== null && this.$refs.page.$route.name.includes('projects-')) {
+            document.body.classList.add('is-active')
             this.$refs.page.$el.querySelector('.Header').style.opacity = '1'
             this.$refs.page.$el.querySelector('.Page').style.opacity = '1'
             this.$refs.page.$el.querySelector('.Footer').style.opacity = '1'
@@ -64,7 +65,6 @@ export default {
   mounted() {
     if (this.$refs.page.$route.name === null) this.isLoaded = true
     else if (this.$refs.page.$route.name.includes('projects-')) {
-      document.body.classList.add('is-active')
       this.$refs.page.$el.querySelector('.Header').classList.add('is-inactive')
       this.$refs.page.$el.querySelector('.Header').style.opacity = '0'
       this.$refs.page.$el.querySelector('.Page').style.opacity = '0'

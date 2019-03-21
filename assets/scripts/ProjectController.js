@@ -107,9 +107,6 @@ class ProjectController extends PageController {
       duration: 1000,
       easing: 'cubic-bezier(0.72, 0, 0.21, 1)'
     })
-    setTimeout(() => {
-      AOS.refresh()
-    }, 2500)
 
     const page = this.page
 
@@ -121,6 +118,7 @@ class ProjectController extends PageController {
     const _slides = Array.from(page.$el.querySelectorAll('.Slide, .Intermediate'))
     const _alternatedsContent = Array.from(page.$el.querySelectorAll('.Content-alternated'))
     const _lazyloads = Array.from(page.$el.querySelectorAll('.Lazyload'))
+    const _images = Array.from(page.$el.querySelectorAll('img'))
 
     let breakpointHeader = _headerMainnav.getBoundingClientRect().top
     let breakpoints = []
@@ -172,6 +170,7 @@ class ProjectController extends PageController {
 
     if (_lazyloads.length > 0) this.lazyload(_lazyloads)
     if (_alternatedsContent.length > 0) this.animateLines(_alternatedsContent)
+    if (_images.length > 0) this.checkImages(_images)
 
     if (
       navigator.userAgent.match(/Android/i)
@@ -219,6 +218,25 @@ class ProjectController extends PageController {
     const _aosElements = Array.from(document.querySelectorAll('[data-aos]'))
     for (const _aosElement of _aosElements) {
       _aosElement.dataset.aos = ''
+    }
+  }
+
+  checkImages(_images) {
+    let isLoaded = true
+
+    for (const _image of _images) {
+      if (!_image.complete ||  _image.naturalWidth === 0 || _image.naturalHeight === 0) {
+        isLoaded = false
+        break
+      }
+    }
+
+    if (!isLoaded) {
+      setTimeout(() => {
+        this.checkImages(_images)
+      }, 2500)
+    } else {
+      AOS.refresh()
     }
   }
 }
