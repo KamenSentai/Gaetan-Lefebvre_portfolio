@@ -121,10 +121,10 @@ export default {
         this.isNavigating = !this.isNavigating
 
         if (this.isNavigating) {
-          document.body.style.overflow = 'hidden'
+          document.body.classList.remove('is-active')
           if (this.$refs.navigation) this.$refs.navigation.style.zIndex = '1000'
         } else {
-          document.body.style.overflow = ''
+          if (this.$route.name.includes('projects-')) document.body.classList.add('is-active')
           setTimeout(() => {
             if (this.$refs.navigation) this.$refs.navigation.style.zIndex = '0'
           }, 2000)
@@ -186,7 +186,6 @@ export default {
             for (const _linkMenu of _linksMenu) _linkMenu.addEventListener('click', turnMenu)
           }, 1250)
         }, 250)
-        document.body.style.overflow = 'hidden'
       }, 1000)
     },
     modulo: (n, m) => {

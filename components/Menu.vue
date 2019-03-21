@@ -35,7 +35,6 @@ export default {
 
   methods: {
     toggleMenu() {
-      document.body.style.overflow = 'auto'
       this.$el.classList.add('is-locked')
       this.$el.classList.remove('is-loaded')
       this.$el.classList.remove('is-loading')
@@ -56,7 +55,6 @@ export default {
       document.body.style.pointerEvents = 'none'
       setTimeout(() => {
         this.$el.classList.add('is-disappearing')
-        document.body.style.overflow = ''
         setTimeout(() => {
           const _buttonMenu = target.querySelector('.Menu-button')
           if (_buttonMenu) _buttonMenu.click()
