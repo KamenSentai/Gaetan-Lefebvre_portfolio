@@ -8,6 +8,7 @@ import 'aos/dist/aos.css'
 class ProjectController extends PageController {
   constructor(page = undefined) {
     super(page)
+    this.route = page.$route.name
   }
 
   enter(el, done) {
@@ -164,9 +165,25 @@ class ProjectController extends PageController {
     }
     colorizeHeader()
 
+    const updateMouse = event => {
+      mouse.y = event.clientY
+    }
+    updateMouse()
+
     window.addEventListener('resize', updateBreakpoints)
     window.addEventListener('scroll', colorizeHeader)
-    window.addEventListener('mousemove', event => { mouse.y = event.clientY })
+    window.addEventListener('mousemove', updateMouse)
+
+    const checkRoute = () => {
+      if (page.$route.name === this.route) window.requestAnimationFrame(checkRoute)
+      else {
+        window.removeEventListener('resize', updateBreakpoints)
+        window.removeEventListener('scroll', colorizeHeader)
+        window.removeEventListener('mousemove', updateMouse)
+        window.cancelAnimationFrame(checkRoute)
+      }
+    }
+    checkRoute()
 
     if (_lazyloads.length > 0) this.lazyload(_lazyloads)
     if (_alternatedsContent.length > 0) this.animateLines(_alternatedsContent)

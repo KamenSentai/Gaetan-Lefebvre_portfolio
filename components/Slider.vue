@@ -166,13 +166,15 @@ export default {
       }
       if (isFirefox) fixFirefox()
 
-      window.addEventListener('resize', () => {
+      const resizeSlider = () => {
         _loadingSlider.width = _loadingSlider.offsetWidth
         _loadingSlider.height = _loadingSlider.offsetHeight
         w = _loadingSlider.width
         h = _loadingSlider.height
         if (isFirefox) fixFirefox()
-      })
+      }
+      resizeSlider()
+      window.addEventListener('resize', resizeSlider)
 
       const autoplaySlider = () => {
         const elapsed = (new Date() - this.start)

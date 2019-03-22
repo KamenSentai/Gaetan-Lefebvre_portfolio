@@ -63,13 +63,17 @@ export default {
     const loadShape = event => {
       event.preventDefault()
       const transitionEvent = whichTransitionEvent()
-        transitionEvent && _shapeIcon.addEventListener(transitionEvent, () => {
+
+      const loadPage = () => {
         if (this.isClicking) {
           _linkIcon.click()
           _shapeIcon.removeEventListener('click', loadShape)
           _shapeIcon.removeEventListener('touchstart', loadShape)
+          _shapeIcon.removeEventListener(transitionEvent, loadPage)
         }
-      })
+      }
+
+      transitionEvent && _shapeIcon.addEventListener(transitionEvent, loadPage)
     }
 
     _shapeIcon.addEventListener('click', loadShape)

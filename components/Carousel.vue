@@ -272,7 +272,8 @@ export default {
           _additionalCarousel.style.opacity = '0'
           _subtitleCarousel.style.transform = `none`
         }
-        window.addEventListener('resize', () => {
+
+        const checkResize = () => {
           if (_additionalStyle.userSelect !== 'none') {
             _additionalWidth = _additionalCarousel.getBoundingClientRect().width
             gapWidth = _additionalCarousel.getBoundingClientRect().left - _subtitleCarousel.getBoundingClientRect().left - _subtitleWidth
@@ -287,7 +288,9 @@ export default {
             _additionalCarousel.style.opacity = '0'
             _subtitleCarousel.style.transform = `none`
           }
-        })
+        }
+
+        window.addEventListener('resize', checkResize)
       }, 500)
     } else {
       const _containerCarousel = this.$refs.container
