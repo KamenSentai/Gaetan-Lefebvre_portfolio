@@ -19,7 +19,7 @@
 
     .Carousel-content(v-bind:class="isMenu ? 'is-hidden': ''")
       .Content-group
-        nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ name: 'projects-pocketcare', params: { from: $route.name } }")
+        nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ name: 'projects-pocketcare', params: { from: $route.name } }" title="Pocketcare")
           .Carousel-image
             img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/pocketcare_back.png" alt="Pocketcare back visual" draggable="false")
             Glitch.Carousel-neon(
@@ -52,7 +52,7 @@
               span.Text--light &nbsp;Branding, Illustration, Interactive design
 
       .Content-group
-        nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" v-bind:class="`Carousel-item--${modulo(range - 1, 4)}`" :to="{ name: 'projects-tesla', params: { from: $route.name } }")
+        nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" v-bind:class="`Carousel-item--${modulo(range - 1, 4)}`" :to="{ name: 'projects-tesla', params: { from: $route.name } }" title="Tesla")
           .Carousel-image
             img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/tesla_back.png" alt="Tesla back visual" draggable="false")
             Glitch.Carousel-neon(
@@ -85,7 +85,7 @@
               span.Text--light &nbsp;Branding, Illustration, Interactive design
 
       .Content-group
-        nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" v-bind:class="`Carousel-item--${modulo(range - 2, 4)}`" :to="{ name: 'projects-buddy-buddy', params: { from: $route.name } }")
+        nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" v-bind:class="`Carousel-item--${modulo(range - 2, 4)}`" :to="{ name: 'projects-buddy-buddy', params: { from: $route.name } }" title="Buddy Buddy")
           .Carousel-image
             img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/buddy-buddy_back.png" alt="Buddy Buddy back visual" draggable="false")
             Glitch.Carousel-neon(

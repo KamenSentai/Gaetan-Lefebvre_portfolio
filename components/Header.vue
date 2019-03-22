@@ -17,16 +17,16 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
             a.Cursor-frame--increase(href="https://www.behance.net/gaetanlefebvre" title="Behance" target="_blank" rel="noopener") Behance
 
     .Header-mainnav(v-bind:class="[isNavigating ? 'is-toggled' : '', isMenu ? 'is-hidden': '']" :data-navigating="isNavigating ? 'true' : 'false'")
-      nuxt-link.Header-logo(v-bind:class="isNavigating ? 'is-toggled' : 'is-untoggled'" :to="{ name: 'index', params: sendData() }")
+      nuxt-link.Header-logo(v-bind:class="isNavigating ? 'is-toggled' : 'is-untoggled'" :to="{ name: 'index', params: sendData() }" title="Home")
         Logo(:color="color || data.colors[range]")
       ul.Header-navbar
         li.Header-item.Cursor-frame--increase(:class="hasProject ? '': 'is-hidden'")
           h1(v-if="hasProject")
             a.Cursor-frame--increase(href="#" @click="toggleMenu") All projects
         li.Header-item.Cursor-frame--increase(:class="hasAbout ? '': 'is-hidden'")
-          nuxt-link.Cursor-frame--increase(:to="{ name: 'about', params: sendData() }") About
+          nuxt-link.Cursor-frame--increase(:to="{ name: 'about', params: sendData() }" title="About") About
         li.Header-item.Cursor-frame--increase(:class="hasHome ? '': 'is-hidden'")
-          nuxt-link.Cursor-frame--increase(:to="{ name: 'index', params: sendData() }") Return home
+          nuxt-link.Cursor-frame--increase(:to="{ name: 'index', params: sendData() }" title="Home") Return home
       .Header-burger.Cursor-frame--increase(v-bind:class="isNavigating ? 'is-active' : ''" @click="toggleNavigation")
         .Header-stripe
         .Header-stripe
