@@ -1,12 +1,10 @@
 <template lang="pug">
 .Menu
-  span.Menu-link(ref="pocketcare" v-on:click="clickProject($event)" data-range="0")
-    nuxt-link.Menu-button(:to="{ name: 'projects-pocketcare', params: { from: $route.name + '/menu' } }" )
+  a.Menu-link(href="/projects/pocketcare" title="Pocketcare" ref="pocketcare" v-on:click="clickProject($event, 'projects-pocketcare', { from: $route.name + '/menu' })" data-range="0")
     img.Menu-image(src="~assets/images/Menu/pocketcare.png" alt="Pocketcare visual")
     span.Menu-title Pocketcare
 
-  span.Menu-link(ref="tesla" v-on:click="clickProject($event)" data-range="1")
-    nuxt-link.Menu-button(:to="{ name: 'projects-tesla', params: { from: $route.name + '/menu' } }" )
+  a.Menu-link(href="/projects/tesla" title="Tesla" ref="tesla" v-on:click="clickProject($event, 'projects-tesla', { from: $route.name + '/menu' })" data-range="1")
     img.Menu-image(src="~assets/images/Menu/tesla.png" alt="Tesla visual")
     span.Menu-title Tesla
 
@@ -14,8 +12,7 @@
     a.Menu-back.Cursor-frame--menu(ref="back" @click="toggleMenu")
       .Menu-cross.Cursor-frame--menu
 
-  span.Menu-link(ref="buddybuddy" v-on:click="clickProject($event)" data-range="2")
-    nuxt-link.Menu-button(:to="{ name: 'projects-buddy-buddy', params: { from: $route.name + '/menu' } }" )
+  a.Menu-link(href="/projects/buddy-buddy" title="Buddy Buddy" ref="buddybuddy" v-on:click="clickProject($event, 'projects-buddy-buddy', { from: $route.name + '/menu' })" data-range="2")
     img.Menu-image(src="~assets/images/Menu/buddy-buddy.png" alt="Buddy Buddy visual")
     span.Menu-title Buddy Buddy
 
@@ -44,20 +41,27 @@ export default {
         this.$el.classList.remove('is-locked')
       }, 1000)
     },
-    clickProject(event) {
+    clickProject(event, name, params) {
+      event.preventDefault()
+
       let target = event.target
+
       if (this.$refs.pocketcare !== target) this.$refs.pocketcare.classList.add('is-hidden')
       if (this.$refs.tesla !== target) this.$refs.tesla.classList.add('is-hidden')
       if (this.$refs.buddybuddy !== target) this.$refs.buddybuddy.classList.add('is-hidden')
       if (this.$refs.personal !== target) this.$refs.personal.classList.add('is-hidden')
+
       target.classList.add('is-active')
       this.$refs.float.classList.add('is-hidden')
       document.body.style.pointerEvents = 'none'
+
       setTimeout(() => {
         this.$el.classList.add('is-disappearing')
         setTimeout(() => {
-          const _buttonMenu = target.querySelector('.Menu-button')
-          if (_buttonMenu) _buttonMenu.click()
+          this.$router.push({
+            name,
+            params
+          })
         }, 1500)
       }, 1000)
     }

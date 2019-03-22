@@ -5,14 +5,11 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
       .Header-subnav
         .Header-tree
           span.Header-branch(v-bind:class="$nuxt.$route.path === '/' ? `is-active--${color || data.colors[range]}` : ''")
-            nuxt-link(:to="{ name: 'index', params: sendData() }")
-            span.Header-leaf.Cursor-frame--increase(v-on:click="navigationClick($event)") Home
+            a.Header-leaf.Cursor-frame--increase(href="/" title="Home" v-on:click="navigationClick($event, 'index')") Home
           span.Header-branch(v-bind:class="$nuxt.$route.path === '/projects' ? `is-active--${color || data.colors[range]}` : ''")
-            nuxt-link(:to="{ name: 'projects', params: sendData() }")
-            span.Header-leaf.Cursor-frame--increase(v-on:click="navigationClick($event)") Projects
+            a.Header-leaf.Cursor-frame--increase(href="/projects" title="Projects" v-on:click="navigationClick($event, 'projects')") Projects
           span.Header-branch(v-bind:class="$nuxt.$route.path === '/about' ? `is-active--${color || data.colors[range]}` : ''")
-            nuxt-link(:to="{ name: 'about', params: sendData() }")
-            span.Header-leaf.Cursor-frame--increase(v-on:click="navigationClick($event)") About
+            a.Header-leaf.Cursor-frame--increase(href="/about" title="About" v-on:click="navigationClick($event, 'about')") About
           a.Header-branch.Cursor-frame--increase(href="mailto:gaetan.lefebvre@hetic.net" title="Mail") Contact
           .Header-branch.Header-branch--more
             a.Cursor-frame--increase(href="https://www.linkedin.com/in/gaetan-lefebvre" title="LinkedIn" target="_blank" rel="noopener") LinkedIn
@@ -111,9 +108,13 @@ export default {
         from: this.$route.name
       }
     },
-    navigationClick(event) {
+    navigationClick(event, name) {
+      event.preventDefault()
       this.toggleNavigation()
-      event.target.previousSibling.click()
+      this.$router.push({
+        name,
+        params: this.sendData()
+      })
     },
     toggleNavigation() {
       if (this.isToggable) {
