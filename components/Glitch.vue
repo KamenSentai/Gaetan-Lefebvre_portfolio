@@ -55,9 +55,16 @@ export default {
       || navigator.userAgent.match(/BlackBerry/i)
       || navigator.userAgent.match(/Windows Phone/i))
     ) {
-      setInterval(() => {
-        if (this.isPlaying) this.glitchPeriodic()
-      }, 4000)
+      const currentRoute = this.$route.name
+
+      const allowGlitch = () => {
+        if (this.$route.name === currentRoute) {
+          if (this.isPlaying) this.glitchPeriodic()
+          setTimeout(allowGlitch, 4000)
+        }
+      }
+
+      if (!this.$route.name.includes('projects-')) setTimeout(allowGlitch, 4000)
     }
   }
 }
