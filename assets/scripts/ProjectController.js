@@ -124,7 +124,6 @@ class ProjectController extends PageController {
     let breakpointHeader = _headerMainnav.getBoundingClientRect().top
     let breakpoints = []
     let _footerOffset = _footer.offsetTop - breakpointHeader
-    let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
 
     for (const _slide of _slides) if (_slide.classList.contains('Intermediate')) _slides.splice(_slides.indexOf(_slide) + 1, 1)
 
@@ -165,21 +164,14 @@ class ProjectController extends PageController {
     }
     colorizeHeader()
 
-    const updateMouse = event => {
-      mouse.y = event.clientY
-    }
-    updateMouse()
-
     window.addEventListener('resize', updateBreakpoints)
     window.addEventListener('scroll', colorizeHeader)
-    window.addEventListener('mousemove', updateMouse)
 
     const checkRoute = () => {
       if (page.$route.name === this.route) window.requestAnimationFrame(checkRoute)
       else {
         window.removeEventListener('resize', updateBreakpoints)
         window.removeEventListener('scroll', colorizeHeader)
-        window.removeEventListener('mousemove', updateMouse)
         window.cancelAnimationFrame(checkRoute)
       }
     }
