@@ -604,13 +604,13 @@ export default {
 
   &-mainnav {
     position: fixed;
+    z-index: 1250;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: grid(12);
     transition: opacity $easing-duration, transform $easing-duration;
     height: 0;
-    z-index: 500;
     will-change: opacity, transform;
 
     &.is-hidden {
