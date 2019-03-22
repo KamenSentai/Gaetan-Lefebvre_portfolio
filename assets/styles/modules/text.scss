@@ -69,6 +69,10 @@
           color: $green;
         }
       }
+
+      *::selection {
+        background-color: $green;
+      }
     }
 
     &--blue {
@@ -76,6 +80,10 @@
         &:hover {
           color: $blue;
         }
+      }
+
+      *::selection {
+        background-color: $blue;
       }
     }
 
@@ -85,6 +93,10 @@
           color: $red;
         }
       }
+
+      *::selection {
+        background-color: $red;
+      }
     }
 
     &--yellow {
@@ -92,6 +104,10 @@
         &:hover {
           color: $yellow;
         }
+      }
+
+      *::selection {
+        background-color: $yellow;
       }
     }
   }
