@@ -2,12 +2,12 @@
 .Menu
   span.Menu-link(ref="pocketcare" v-on:click="clickProject($event)" data-range="0")
     nuxt-link.Menu-button(:to="{ name: 'projects-pocketcare', params: { from: $route.name + '/menu' } }" )
-    img.Menu-image(src="~assets/images/Menu/pocketcare.png" alt="Pocketcare")
+    img.Menu-image(src="~assets/images/Menu/pocketcare.png" alt="Pocketcare visual")
     span.Menu-title Pocketcare
 
   span.Menu-link(ref="tesla" v-on:click="clickProject($event)" data-range="1")
     nuxt-link.Menu-button(:to="{ name: 'projects-tesla', params: { from: $route.name + '/menu' } }" )
-    img.Menu-image(src="~assets/images/Menu/tesla.png" alt="Tesla")
+    img.Menu-image(src="~assets/images/Menu/tesla.png" alt="Tesla visual")
     span.Menu-title Tesla
 
   span.Menu-float.Cursor-frame--menu(ref="float")
@@ -16,11 +16,11 @@
 
   span.Menu-link(ref="buddybuddy" v-on:click="clickProject($event)" data-range="2")
     nuxt-link.Menu-button(:to="{ name: 'projects-buddy-buddy', params: { from: $route.name + '/menu' } }" )
-    img.Menu-image(src="~assets/images/Menu/buddy-buddy.png" alt="Buddy Buddy")
+    img.Menu-image(src="~assets/images/Menu/buddy-buddy.png" alt="Buddy Buddy visual")
     span.Menu-title Buddy Buddy
 
   span.Menu-link.Menu-link--forbidden(ref="personal" data-range="4")
-    img.Menu-image(src="~assets/images/Menu/personal.png" alt="Personal")
+    img.Menu-image(src="~assets/images/Menu/personal.png" alt="Personal visual")
     Lock.Menu-lock
     span.Menu-title Coming soon
 </template>

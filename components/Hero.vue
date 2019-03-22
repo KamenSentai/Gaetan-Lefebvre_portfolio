@@ -3,18 +3,17 @@
   .Hero-portrait(v-if="type === 'home'")
     img.Hero-back(
       src="~assets/images/Home/Gaetan.png"
-      alt="Gaëtan Lefebvre"
+      alt="Gaëtan back"
       draggable="false"
     )
     Glitch.Hero-shape(
       path="assets/images/Home/"
-      :image="data.shapes[range]"
-      :alt="data.shapes[range]"
+      :image="{ src: data.shapes[range], alt: `${data.colors[range]} ${data.shapes[range]}` }"
       :isPlaying="true"
     )
     img.Hero-front(
       src="~assets/images/Home/Gaetan-cropped.png"
-      alt="Gaëtan Lefebvre"
+      alt="Gaëtan front"
       draggable="false"
     )
 
@@ -24,7 +23,7 @@
         v-for="page in data[type].pages"
         v-bind:class="checkIndex(page)"
         :src="require(`../assets/images/About/${page.shape}_back.png`)"
-        alt=""
+        :alt="`${checkImage(page.shape)} back`"
         draggable="false"
         ref="backs"
       )
@@ -33,8 +32,7 @@
         Glitch.Hero-shape.Hero-shape--slide(
           v-bind:class="checkIndex(page)"
           path="assets/images/About/"
-          :image="page.shape"
-          :alt="page.shape"
+          :image="{ src: page.shape, alt: `${checkImage(page.shape)} ${page.shape}` }"
           :isPlaying="checkIndex(page) === 'is-active'"
           ref="shapes"
         )
@@ -43,7 +41,7 @@
         v-for="page in data[type].pages"
         v-bind:class="checkIndex(page)"
         :src="require(`../assets/images/About/${page.shape}_front.png`)"
-        alt=""
+        :alt="`${checkImage(page.shape)} front`"
         draggable="false"
         ref="fronts"
       )
@@ -119,6 +117,24 @@ export default {
         'is-active' :
         indexPage === (this.range + 1) % Object.keys(this.data[this.type].pages).length ?
           'is-appearing' : ''
+    },
+    checkImage(shape) {
+      switch (shape) {
+        case 'circle':
+          return 'Skeleton'
+          break;
+        case 'triangle':
+          return 'Headphone'
+          break;
+        case 'square':
+          return 'Book'
+          break;
+        case 'pentagone':
+          return 'Drink'
+          break;
+        default:
+          break;
+      }
     }
   }
 }

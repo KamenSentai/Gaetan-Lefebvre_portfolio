@@ -21,26 +21,24 @@
       .Content-group
         nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ name: 'projects-pocketcare', params: { from: $route.name } }")
           .Carousel-image
-            img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/pocketcare_back.png" alt="Pocketcare" draggable="false")
+            img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/pocketcare_back.png" alt="Pocketcare back visual" draggable="false")
             Glitch.Carousel-neon(
               path="assets/images/Projects/"
-              image="pocketcare"
-              alt="Pocketcare"
+              :image="{ src: 'pocketcare', alt: 'Pocketcare circle' }"
               :isPlaying="modulo(range, 4) === 0 ? true : false"
             )
-            img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/pocketcare_front.png" alt="Pocketcare" draggable="false")
-            img.Carousel-extra.is-hidden.Absolute.Absolute--p1(src="../assets/images/Projects/pocketcare_extra.png" alt="Pocketcare" draggable="false")
+            img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/pocketcare_front.png" alt="Pocketcare front visual" draggable="false")
+            img.Carousel-extra.is-hidden.Absolute.Absolute--p1(src="../assets/images/Projects/pocketcare_extra.png" alt="Pocketcare lights" draggable="false")
         .Carousel-item.Carousel-item--0(v-else-if="parseInt(slide) === 0")
           .Carousel-image
-            img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/pocketcare_back.png" alt="Pocketcare" draggable="false")
+            img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/pocketcare_back.png" alt="Pocketcare back visual" draggable="false")
             Glitch.Carousel-neon(
               path="assets/images/Projects/"
-              image="pocketcare"
-              alt="Pocketcare"
+              :image="{ src: 'pocketcare', alt: 'Pocketcare circle' }"
               :isPlaying="false"
             )
-            img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/pocketcare_front.png" alt="Pocketcare" draggable="false")
-            img.Carousel-extra.is-hidden.Absolute.Absolute--p1(src="../assets/images/Projects/pocketcare_extra.png" alt="Pocketcare" draggable="false")
+            img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/pocketcare_front.png" alt="Pocketcare front visual" draggable="false")
+            img.Carousel-extra.is-hidden.Absolute.Absolute--p1(src="../assets/images/Projects/pocketcare_extra.png" alt="Pocketcare lights" draggable="false")
         .Carousel-label(v-if="!slide || parseInt(slide) === 0" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
           h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title")
             span.Carousel-main Pocketcare
@@ -56,26 +54,24 @@
       .Content-group
         nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" v-bind:class="`Carousel-item--${modulo(range - 1, 4)}`" :to="{ name: 'projects-tesla', params: { from: $route.name } }")
           .Carousel-image
-            img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/tesla_back.png" alt="Tesla")
+            img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/tesla_back.png" alt="Tesla back visual" draggable="false")
             Glitch.Carousel-neon(
               path="assets/images/Projects/"
-              image="tesla"
-              alt="Tesla"
+              :image="{ src: 'tesla', alt: 'Tesla triangle' }"
               :isPlaying="modulo(range - 1, 4) === 0 ? true : false"
             )
-            img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/tesla_front.png" alt="Tesla")
-            img.Carousel-extra.is-hidden.Absolute.Absolute--p2(src="../assets/images/Projects/tesla_extra.png" alt="Tesla")
+            img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/tesla_front.png" alt="Tesla front visual" draggable="false")
+            img.Carousel-extra.is-hidden.Absolute.Absolute--p2(src="../assets/images/Projects/tesla_extra.png" alt="Tesla lights" draggable="false")
         .Carousel-item.Carousel-item--0(v-else-if="parseInt(slide) === 1")
           .Carousel-image
-            img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/tesla_back.png" alt="Tesla")
+            img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/tesla_back.png" alt="Tesla back visual" draggable="false")
             Glitch.Carousel-neon(
               path="assets/images/Projects/"
-              image="tesla"
-              alt="Tesla"
+              :image="{ src: 'tesla', alt: 'Tesla triangle' }"
               :isPlaying="false"
             )
-            img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/tesla_front.png" alt="Tesla")
-            img.Carousel-extra.is-hidden.Absolute.Absolute--p2(src="../assets/images/Projects/tesla_extra.png" alt="Tesla")
+            img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/tesla_front.png" alt="Tesla front visual" draggable="false")
+            img.Carousel-extra.is-hidden.Absolute.Absolute--p2(src="../assets/images/Projects/tesla_extra.png" alt="Tesla lights" draggable="false")
         .Carousel-label(v-if="!slide || parseInt(slide) === 1" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
           h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title")
             span.Carousel-main Tesla
@@ -91,26 +87,24 @@
       .Content-group
         nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" v-bind:class="`Carousel-item--${modulo(range - 2, 4)}`" :to="{ name: 'projects-buddy-buddy', params: { from: $route.name } }")
           .Carousel-image
-            img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/buddy-buddy_back.png" alt="Buddy Buddy")
+            img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/buddy-buddy_back.png" alt="Buddy Buddy back visual" draggable="false")
             Glitch.Carousel-neon(
               path="assets/images/Projects/"
-              image="buddy-buddy"
-              alt="Buddy Buddy"
+              :image="{ src: 'buddy-buddy', alt: 'Buddy Buddy square' }"
               :isPlaying="modulo(range - 2, 4) === 0 ? true : false"
             )
-            img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/buddy-buddy_front.png" alt="Buddy Buddy")
-            img.Carousel-extra.is-hidden.Absolute.Absolute--p3(src="../assets/images/Projects/buddy-buddy_extra.png" alt="Buddy Buddy")
+            img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/buddy-buddy_front.png" alt="Buddy Buddy front visual" draggable="false")
+            img.Carousel-extra.is-hidden.Absolute.Absolute--p3(src="../assets/images/Projects/buddy-buddy_extra.png" alt="Buddy Buddy lights" draggable="false")
         .Carousel-item.Carousel-item--0(v-else-if="parseInt(slide) === 2")
           .Carousel-image
-            img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/buddy-buddy_back.png" alt="Buddy Buddy")
+            img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/buddy-buddy_back.png" alt="Buddy Buddy back visual" draggable="false")
             Glitch.Carousel-neon(
               path="assets/images/Projects/"
-              image="buddy-buddy"
-              alt="Buddy Buddy"
+              :image="{ src: 'buddy-buddy', alt: 'Buddy Buddy square' }"
               :isPlaying="false"
             )
-            img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/buddy-buddy_front.png" alt="Buddy Buddy")
-            img.Carousel-extra.is-hidden.Absolute.Absolute--p3(src="../assets/images/Projects/buddy-buddy_extra.png" alt="Buddy Buddy")
+            img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/buddy-buddy_front.png" alt="Buddy Buddy front visual" draggable="false")
+            img.Carousel-extra.is-hidden.Absolute.Absolute--p3(src="../assets/images/Projects/buddy-buddy_extra.png" alt="Buddy Buddy lights" draggable="false")
         .Carousel-label(v-if="!slide || parseInt(slide) === 2" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
           h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title")
             span.Carousel-main Buddy Buddy
@@ -126,14 +120,13 @@
       .Content-group
         span.Carousel-item.Carousel-item--forbidden(v-if="!slide || parseInt(slide) === 3" v-bind:class="`Carousel-item--${modulo(range - 3, 4)}`")
           .Carousel-image
-            img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/personal_back.png" alt="Personal")
+            img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/personal_back.png" alt="Personal back visual" draggable="false")
             Glitch.Carousel-neon(
               path="assets/images/Projects/"
-              image="personal"
-              alt="Personal"
+              :image="{ src: 'personal', alt: 'Personal pentagone' }"
               :isPlaying="modulo(range - 3, 4) === 0 ? true : false"
             )
-            img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/personal_front.png" alt="Personal")
+            img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/personal_front.png" alt="Personal front visual" draggable="false")
             Lock.Carousel-lock(v-bind:class="!isLocked ? 'is-hidden' : ''")
         .Carousel-label(v-if="!slide || parseInt(slide) === 3" v-bind:class="[isMenu ? 'is-hidden': '', !isLabelized ? 'is-hidden': '']")
           h1.Carousel-title(v-if="slide" v-bind:class="$route.params.from && $route.params.from.includes('projects-') ? 'is-hidden' : ''" ref="title")

@@ -1,5 +1,5 @@
 <template lang="pug">
-img.Glitch(:src="require(`../${path}${src}.png`)"  :alt="alt" draggable="false")
+img.Glitch(:src="require(`../${path}${src}.png`)"  :alt="capitalizeFirstLetter(alt)" draggable="false")
 </template>
 
 <script>
@@ -9,32 +9,42 @@ export default {
       number: 0,
       total: 10,
       frequency: 75,
-      src: ''
+      src: '',
+      alt: ''
     }
   },
+
   created() {
-    this.src = this.image
+    this.src = this.image.src
+    this.alt = this.image.alt
   },
+
   props: [
     'path',
     'image',
-    'alt',
     'isPlaying'
   ],
+
   methods: {
     glitchPeriodic() {
       if (this.number < this.total) {
-        this.src = `${this.image}/${this.image}_${this.number}`
+        this.src = `${this.image.src}/${this.image.src}_${this.number}`
+        this.alt = `${this.image.src} glitch`
         ++this.number
         setTimeout(() => {
           this.glitchPeriodic()
         }, this.frequency)
       } else {
-        this.src = this.image
+        this.src = this.image.src
+        this.alt = this.image.alt
         this.number = 0
       }
+    },
+    capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1)
     }
   },
+
   mounted() {
     if (
       !(navigator.userAgent.match(/Android/i)

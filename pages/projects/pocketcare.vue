@@ -46,16 +46,16 @@ div
         .Content-header
           h3.Content-title.Text--center(data-aos="fade-up") Onboarding
         .Content-listing
-          img.Shadow(data-aos="fade-left" data-aos-delay="0" src="~assets/images/Pocketcare/Onboarding_1.png" alt="Onboarding")
-          img.Shadow(data-aos="fade-left" data-aos-delay="250" src="~assets/images/Pocketcare/Onboarding_2.png" alt="Onboarding")
-          img.Shadow(data-aos="fade-left" data-aos-delay="500" src="~assets/images/Pocketcare/Onboarding_3.png" alt="Onboarding")
+          img.Shadow(data-aos="fade-left" data-aos-delay="0" src="~assets/images/Pocketcare/Onboarding_1.png" alt="Onboarding card")
+          img.Shadow(data-aos="fade-left" data-aos-delay="250" src="~assets/images/Pocketcare/Onboarding_2.png" alt="Onboarding loss")
+          img.Shadow(data-aos="fade-left" data-aos-delay="500" src="~assets/images/Pocketcare/Onboarding_3.png" alt="Onboarding family")
       Post(
         :color="data.color"
         :post="data.posts[2]"
       )
 
     section.Slide.Slide--banner.Lazyload
-      Banner.Banner--pocketcare(src="Pocketcare/Banner_Inscription" alt ="Inscription")
+      Banner.Banner--pocketcare(src="Pocketcare/Banner_Inscription" alt ="Inscription banner")
 
     section.Slide.Slide--page
       .Content
@@ -65,12 +65,12 @@ div
           .Content-post(data-aos="fade-left")
             h4.Content-section Step 1
             p.Content-text We can choose our profile by the burger menu. Then you need to click on the “Carte vitale” to settle your session at the doctor with the help of a reader and the operation is over.
-          img.Content-poster(data-aos="fade-left" data-aos-delay="250" src="~assets/images/Pocketcare/Phone_1.gif" alt="Phone animation 1")
+          img.Content-poster(data-aos="fade-left" data-aos-delay="250" src="~assets/images/Pocketcare/Phone_1.gif" alt="Card and profil animation")
         .Content-item
           .Content-post.Exception--post(data-aos="fade-right")
             h4.Content-section Step 2
             p.Content-text After your session, you can find your order, and have it scanned in pharmacy to receive the treatment and pay directly by using your phone.
-          img.Content-poster(data-aos="fade-right" data-aos-delay="250" src="~assets/images/Pocketcare/Phone_2.gif" alt="Phone animation 2")
+          img.Content-poster(data-aos="fade-right" data-aos-delay="250" src="~assets/images/Pocketcare/Phone_2.gif" alt="Card validation animation")
 
     section.Slide.Slide--block
       .Content
@@ -80,7 +80,7 @@ div
 
     .Intermediate(data-rate="20")
       .Intermediate-container.Lazyload
-        img.Exception--screens(src="~assets/images/Pocketcare/Screens.png" alt="Screens")
+        img.Exception--screens(src="~assets/images/Pocketcare/Screens.png" alt="Profil and settings banner")
 
     section.Slide
       Article(
