@@ -5,8 +5,8 @@
     span.Text
       span.Text--black {{ post.center }}&nbsp;
       span(v-bind:class="`Text--${color}`") {{ post.bottom }}
-  .Article-text
-    p.Article-paragraph(v-for="paragraph in post.paragraphs") {{ paragraph }}
+  .Article-text.Text-group(v-bind:class="`Text-group--${color}`")
+    p.Article-paragraph(v-for="paragraph in post.paragraphs" v-html="paragraph")
 </template>
 
 <script>

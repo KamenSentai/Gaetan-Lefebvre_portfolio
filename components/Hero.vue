@@ -69,7 +69,7 @@
               span.Hero-first {{ page.first }}&nbsp;
               span.Hero-last(v-bind:class="`Hero-last--${page.color || data.colors[range]}`") {{ page.last }}
       .Hero-texts
-        .Hero-paragraphs(v-for="(page, index) in data[type].pages" v-bind:class="[checkIndex(page), `Text-group Text-group--${data.colors[range]}`]")
+        .Hero-paragraphs.Text-group(v-for="(page, index) in data[type].pages" v-bind:class="[checkIndex(page), `Text-group--${data.colors[range]}`]")
           p.Hero-paragraph(v-for="paragraph in page.paragraphs" v-html="paragraph")
 
     .Hero-push(v-if="type === 'home'")
