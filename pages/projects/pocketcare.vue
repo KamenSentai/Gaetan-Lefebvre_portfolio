@@ -45,10 +45,13 @@ div
       .Content
         .Content-header
           h3.Content-title.Text--center(data-aos="fade-up") Onboarding
-        .Content-listing
-          img.Shadow(data-aos="fade-left" data-aos-delay="0" src="~assets/images/Pocketcare/Onboarding_1.png" alt="Onboarding card")
-          img.Shadow(data-aos="fade-left" data-aos-delay="250" src="~assets/images/Pocketcare/Onboarding_2.png" alt="Onboarding loss")
-          img.Shadow(data-aos="fade-left" data-aos-delay="500" src="~assets/images/Pocketcare/Onboarding_3.png" alt="Onboarding family")
+        .Content-list.Lazyload
+          .Content-listed.Shadow(data-aos="fade-left" data-aos-delay="0")
+            img(src="~assets/images/Pocketcare/Onboarding_1.png" alt="Onboarding card")
+          .Content-listed.Shadow(data-aos="fade-left" data-aos-delay="250")
+            img(src="~assets/images/Pocketcare/Onboarding_2.png" alt="Onboarding loss")
+          .Content-listed.Shadow(data-aos="fade-left" data-aos-delay="500")
+            img(src="~assets/images/Pocketcare/Onboarding_3.png" alt="Onboarding family")
       Post(
         :color="data.color"
         :post="data.posts[2]"

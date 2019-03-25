@@ -46,7 +46,8 @@ div
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Case study home
           p.Content-description.Text--center On the case study, we can find a short video of the project, with competencies used by the team and 3 navigations tools and the scroll.
-        img.Content-main(data-aos="fade-up" src="~assets/images/BuddyBuddy/Computer.png" alt="Desktop home")
+        .Content-main(data-aos="fade-up")
+          img(src="~assets/images/BuddyBuddy/Computer.png" alt="Desktop home")
 
     section.Slide.Slide--crossed
       .Content
@@ -54,22 +55,27 @@ div
           h3.Content-title.Text--center The case study
           p.Content-description.Content-description--large.Text--center All the case study on the Buddy Buddy website have the same plan. The first part is the project presentation. Then we present the branding identity and the style guide. The last part is composed of the model won desktop and mobile.
         .Content-container.Lazyload(data-aos="fade-up")
-          img.Content-main(src="~assets/images/BuddyBuddy/Laptop.png" alt="Dark desktop")
-          img.Content-main(src="~assets/images/BuddyBuddy/Animation.gif" alt="Animation case study")
+          .Content-main
+            img(src="~assets/images/BuddyBuddy/Laptop.png" alt="Dark desktop")
+          .Content-main
+            img(src="~assets/images/BuddyBuddy/Animation.gif" alt="Animation case study")
 
     section.Slide.Slide--page
       Post(
         :color="data.color"
         :post="data.posts[2]"
       )
-      .Content
+      .Content.Lazyload
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Case study page
           p.Content-description.Text--center The first section is split in 3 sections. The branding identity, then the style guide and finally the UI kit.
-        img.Content-full.Shadow(data-aos="fade-up" src="~assets/images/BuddyBuddy/Screen_1.png" alt="Branding identity")
+        .Content-full.Shadow(data-aos="fade-up")
+          img(src="~assets/images/BuddyBuddy/Screen_1.png" alt="Branding identity")
         .Content-full
-          img.Content-sub.Shadow(data-aos="fade-up" src="~assets/images/BuddyBuddy/Screen_2.png" alt="Style guide")
-          img.Content-sub.Shadow(data-aos="fade-up" src="~assets/images/BuddyBuddy/Screen_3.png" alt="UI elements")
+          .Content-sub.Shadow(data-aos="fade-up")
+            img(src="~assets/images/BuddyBuddy/Screen_2.png" alt="Style guide")
+          .Content-sub.Shadow(data-aos="fade-up")
+            img(src="~assets/images/BuddyBuddy/Screen_3.png" alt="UI elements")
 
     section.Slide.Slide--block
       .Content
@@ -79,7 +85,8 @@ div
           .Content-post(data-aos="fade-left")
             h4.Content-section Home
             p.Content-text All the case study on the Buddy Buddy website have the same plan. The first part is the project presentation. Then we present the branding identity and the style guide.
-          img.Content-poster(data-aos="fade-left" data-aos-delay="250" src="~assets/images/BuddyBuddy/Home.png" alt="Mobile home")
+          .Content-poster.Lazyload(data-aos="fade-left" data-aos-delay="250")
+            img(src="~assets/images/BuddyBuddy/Home.png" alt="Mobile home")
 
     .Intermediate(data-rate="20")
       .Intermediate-container
@@ -88,7 +95,8 @@ div
             .Content-post.Exception--post(data-aos="fade-right")
               h4.Content-section Branding
               p.Content-text.Content-text--intermediate In this section, we are presenting the logo evolution of the project. Then we show the final logo version with its variations.
-            img.Content-poster(data-aos="fade-right" data-aos-delay="250" src="~assets/images/BuddyBuddy/Branding.png" alt="Mobile branding")
+            .Content-poster.Lazyload(data-aos="fade-right" data-aos-delay="250")
+              img(src="~assets/images/BuddyBuddy/Branding.png" alt="Mobile branding")
 
     section.Slide.Exception--bottommore
       .Content

@@ -193,17 +193,20 @@ class ProjectController extends PageController {
   }
 
   lazyload(_lazyloads) {
-    for(const _lazyload of _lazyloads) {
-      const _imgLazyload = _lazyload.querySelector('img')
-      const src = _imgLazyload.getAttribute('src')
+    for (const _lazyload of _lazyloads) {
+      const _imgsLazyload = Array.from(_lazyload.querySelectorAll('img'))
 
-      _imgLazyload.removeAttribute('src')
+      for (const _imgLazyload of _imgsLazyload) {
+        const src = _imgLazyload.getAttribute('src')
 
-      _imgLazyload.addEventListener('load', () => {
-        _lazyload.classList.add('Lazyload--loaded')
-      })
+        _imgLazyload.removeAttribute('src')
 
-      _imgLazyload.setAttribute('src', src)
+        _imgLazyload.addEventListener('load', () => {
+          _lazyload.classList.add('Lazyload--loaded')
+        })
+
+        _imgLazyload.setAttribute('src', src)
+      }
     }
   }
 

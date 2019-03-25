@@ -22,7 +22,7 @@ div
         .Content-header
           h3.Content-title.Content-title--trailed(data-aos="fade-left") Branding - Graphic charter
         .Content-suite
-          .Content-icons.Content-icons--main(data-aos="fade-left")
+          .Content-icons.Content-icons--main.Lazyload(data-aos="fade-left")
             img(src="~assets/images/Tesla/Logo_T.png" alt="Tesla logo")
             .Symbol.Symbol--plus
             img(src="~assets/images/Tesla/Logo_O.png" alt="Oculus logo")
@@ -104,13 +104,13 @@ div
             p.Content-text The particularity of this partnership: the Oculus experience. We are now immersed in it. To begin, we must choose our experience.
             p.Content-text Subsequently, we choose the number of members. Onboarding will then tell us to equip ourselves properly (helmets, media and gloves).
           .Content-alternated.is-inactive
-            .Content-object(data-aos="fade-up")
+            .Content-object.Lazyload(data-aos="fade-up")
               img.Content-intern(src="~assets/images/Tesla/Phone_1.png" alt="Phone immersion page")
               img.Absolute.Absolute--p11(src="~assets/images/Tesla/Phone_1-overflow_1.png" alt="Immersion card game")
               img.Absolute.Absolute--p12(src="~assets/images/Tesla/Phone_1-overflow_2.png" alt="Immersion card landscape")
               img.Absolute.Absolute--p13(src="~assets/images/Tesla/Phone_1-overflow_3.png" alt="Immersion card draw")
           .Content-alternated.is-inactive
-            .Content-object(data-aos="fade-up")
+            .Content-object.Lazyload(data-aos="fade-up")
               img.Content-intern(src="~assets/images/Tesla/Phone_2.png" alt="Phone description game")
               img.Absolute.Absolute--p21(src="~assets/images/Tesla/Phone_2-overflow_1.png" alt="Game card 1")
               img.Absolute.Absolute--p22(src="~assets/images/Tesla/Phone_2-overflow_2.png" alt="Game card 2")
@@ -122,12 +122,17 @@ div
           .Content-post.Content-post--static.Content-post--half(data-aos="fade-up")
             h4.Content-section Oculus in your hand
             p.Content-text With VR, we decided to use gloves to manipulate the Oculus immersion in the Tesla. After, by using the helmet and different sensors located in the binacle, you can finally start the experience.
-        .Content-full.Content-full--online
-          img.Content-online(data-aos="fade-up" data-aos-delay="0" src="~assets/images/Tesla/Hand_1.png" alt="Hand view 1")
-          img.Content-online(data-aos="fade-up" data-aos-delay="250" src="~assets/images/Tesla/Hand_2.png" alt="Hand view 2")
-          img.Content-online(data-aos="fade-up" data-aos-delay="500" src="~assets/images/Tesla/Hand_3.png" alt="Hand view 3")
-          img.Content-online(data-aos="fade-up" data-aos-delay="750" src="~assets/images/Tesla/Hand_4.png" alt="Hand view 4")
-          img.Content-online(data-aos="fade-up" data-aos-delay="1000" src="~assets/images/Tesla/Hand_5.png" alt="Hand view 5")
+        .Content-fullline.Lazyload
+          .Content-online(data-aos="fade-up" data-aos-delay="0")
+            img(src="~assets/images/Tesla/Hand_1.png" alt="Hand view 1")
+          .Content-online(data-aos="fade-up" data-aos-delay="250")
+            img(src="~assets/images/Tesla/Hand_2.png" alt="Hand view 2")
+          .Content-online(data-aos="fade-up" data-aos-delay="500")
+            img(src="~assets/images/Tesla/Hand_3.png" alt="Hand view 3")
+          .Content-online(data-aos="fade-up" data-aos-delay="750")
+            img(src="~assets/images/Tesla/Hand_4.png" alt="Hand view 4")
+          .Content-online(data-aos="fade-up" data-aos-delay="1000")
+            img(src="~assets/images/Tesla/Hand_5.png" alt="Hand view 5")
 
     .Intermediate(data-rate="20")
       .Intermediate-container.Lazyload(data-aos="fade-up")
@@ -153,7 +158,7 @@ div
           h3.Content-title.Text--center Other screens
           p.Content-description.Text--center We can finally find all our mobile features on our watch: loading, moving the car, unlocking the car, the map with the route and the Oculus experience.
 
-    .Intermediate(data-rate="20")
+    .Intermediate.Lazyload(data-rate="20")
       .Intermediate-container(data-aos="fade-up")
         img.Content-banner(src="~assets/images/Tesla/Watches_1.png" alt="Watch line other screen first")
       .Intermediate-container(data-aos="fade-up")
