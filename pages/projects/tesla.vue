@@ -117,7 +117,7 @@ div
               img.Absolute.Absolute--p23(src="~assets/images/Tesla/Phone_2-overflow_3.png" alt="Game card 3")
           .Content-alternated.is-inactive
             .Content-object(data-aos="fade-up")
-              img.Content-intern(src="~assets/images/Tesla/Phone_3.gif" alt="Phone game animation")
+              video.Content-intern(autoplay muted loop src="~assets/images/Tesla/Phone_3.mp4")
         .Content-article
           .Content-post.Content-post--static.Content-post--half(data-aos="fade-up")
             h4.Content-section Oculus in your hand
@@ -142,7 +142,7 @@ div
         .Content-header
           h3.Content-title(data-aos="fade-left") Watch and features
         .Content-article
-          img.Content-flyer(data-aos="fade-left" src="~assets/images/Tesla/Watch.gif" alt="Watch immersion animation")
+          video.Content-flyer(autoplay muted loop data-aos="fade-left" src="~assets/images/Tesla/Watch.mp4")
           .Content-post.Content-post--static.Content-post--half(data-aos="fade-right")
             h4.Content-section Oculus immersion
             p.Content-text Here we are now in the Oculus experience. In this one, we can choose a landscape using the wheel of the watch and plunge us into a dream while we are driving.

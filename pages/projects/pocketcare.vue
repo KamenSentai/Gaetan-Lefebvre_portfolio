@@ -65,12 +65,12 @@ div
           .Content-post(data-aos="fade-left")
             h4.Content-section Step 1
             p.Content-text We can choose our profile by the burger menu. Then you need to click on the “Carte vitale” to settle your session at the doctor with the help of a reader and the operation is over.
-          img.Content-poster(data-aos="fade-left" data-aos-delay="250" src="~assets/images/Pocketcare/Phone_1.gif" alt="Card and profil animation")
+          video.Content-poster(autoplay muted loop data-aos="fade-left" data-aos-delay="250" src="~assets/images/Pocketcare/Phone_1.mp4")
         .Content-item
           .Content-post.Exception--post(data-aos="fade-right")
             h4.Content-section Step 2
             p.Content-text After your session, you can find your order, and have it scanned in pharmacy to receive the treatment and pay directly by using your phone.
-          img.Content-poster(data-aos="fade-right" data-aos-delay="250" src="~assets/images/Pocketcare/Phone_2.gif" alt="Card validation animation")
+          video.Content-poster(autoplay muted loop data-aos="fade-right" data-aos-delay="250" src="~assets/images/Pocketcare/Phone_2.mp4")
 
     section.Slide.Slide--block
       .Content
