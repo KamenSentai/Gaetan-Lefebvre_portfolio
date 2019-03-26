@@ -147,21 +147,21 @@ class ProjectController extends PageController {
     for (const _slide of _slides) if (_slide.classList.contains('Intermediate')) _slides.splice(_slides.indexOf(_slide) + 1, 1)
 
     const updateBreakpoints = () => {
+      breakpointHeader = _headerMainnav.getBoundingClientRect().top
       _footerOffset = _footer.offsetTop - breakpointHeader
 
       if (_footerOffset > 0) {
-        breakpointHeader = _headerMainnav.getBoundingClientRect().top
         breakpoints = []
+        let fix = _slides[0].offsetTop === 0 ? window.innerHeight : 0
 
         for (const _slide of _slides) {
-          if (_slide.classList.contains('Slide')) breakpoints.push(_slide.offsetTop - breakpointHeader)
-          else breakpoints.push(_slide.offsetTop - breakpointHeader + _slide.offsetHeight * (1 - _slide.dataset.rate / 100))
+          if (_slide.classList.contains('Slide')) breakpoints.push(_slide.offsetTop - breakpointHeader + fix)
+          else breakpoints.push(_slide.offsetTop - breakpointHeader + _slide.offsetHeight * (1 - _slide.dataset.rate / 100) + fix)
         }
         breakpoints.push(_footerOffset)
       }
     }
-    updateBreakpoints()
-    setTimeout(updateBreakpoints, 500)
+    const updateInterval = setInterval(updateBreakpoints, 500)
 
     const colorizeHeader = () => {
       const offsetTop = Math.abs(_body.getBoundingClientRect().top)
@@ -183,13 +183,12 @@ class ProjectController extends PageController {
     }
     colorizeHeader()
 
-    window.addEventListener('resize', updateBreakpoints)
     window.addEventListener('scroll', colorizeHeader)
 
     const checkRoute = () => {
       if (page.$route.name === this.route) window.requestAnimationFrame(checkRoute)
       else {
-        window.removeEventListener('resize', updateBreakpoints)
+        clearInterval(updateInterval)
         window.removeEventListener('scroll', colorizeHeader)
         window.cancelAnimationFrame(checkRoute)
       }
