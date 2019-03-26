@@ -112,10 +112,8 @@ class ProjectController extends PageController {
     const page = this.page
 
     const _alternatedsContent = Array.from(page.$el.querySelectorAll('.Content-alternated'))
-    const _lazyloads = Array.from(page.$el.querySelectorAll('.Lazyload'))
     const _images = Array.from(page.$el.querySelectorAll('img'))
 
-    if (_lazyloads.length > 0) this.lazyload(_lazyloads)
     if (_alternatedsContent.length > 0) this.animateLines(_alternatedsContent)
     if (_images.length > 0) this.checkImages(_images)
 
@@ -163,6 +161,10 @@ class ProjectController extends PageController {
     }
     const updateInterval = setInterval(updateBreakpoints, 500)
 
+    const refreshAOS = setInterval(() => {
+      AOS.refresh()
+    }, 1000)
+
     const colorizeHeader = () => {
       const offsetTop = Math.abs(_body.getBoundingClientRect().top)
       let color = 'white'
@@ -189,29 +191,12 @@ class ProjectController extends PageController {
       if (page.$route.name === this.route) window.requestAnimationFrame(checkRoute)
       else {
         clearInterval(updateInterval)
+        clearInterval(refreshAOS)
         window.removeEventListener('scroll', colorizeHeader)
         window.cancelAnimationFrame(checkRoute)
       }
     }
     checkRoute()
-  }
-
-  lazyload(_lazyloads) {
-    for (const _lazyload of _lazyloads) {
-      const _imgsLazyload = Array.from(_lazyload.querySelectorAll('img'))
-
-      for (const _imgLazyload of _imgsLazyload) {
-        const src = _imgLazyload.getAttribute('src')
-
-        _imgLazyload.removeAttribute('src')
-
-        _imgLazyload.addEventListener('load', () => {
-          _lazyload.classList.add('Lazyload--loaded')
-        })
-
-        _imgLazyload.setAttribute('src', src)
-      }
-    }
   }
 
   animateLines(_alternatedsContent) {
@@ -253,7 +238,6 @@ class ProjectController extends PageController {
       }, 2500)
     } else {
       this.toggleScroll()
-      AOS.refresh()
 
       if (
         !(navigator.userAgent.match(/Android/i)

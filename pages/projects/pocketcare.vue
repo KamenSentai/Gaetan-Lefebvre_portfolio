@@ -45,19 +45,19 @@ div
       .Content
         .Content-header
           h3.Content-title.Text--center(data-aos="fade-up") Onboarding
-        .Content-list.Lazyload
+        .Content-list
           .Content-listed.Shadow(data-aos="fade-left" data-aos-delay="0")
-            img(src="~assets/images/Pocketcare/Onboarding_1.png" alt="Onboarding card")
+            img(v-lazy="require('~/assets/images/Pocketcare/Onboarding_1.png')" alt="Onboarding card")
           .Content-listed.Shadow(data-aos="fade-left" data-aos-delay="250")
-            img(src="~assets/images/Pocketcare/Onboarding_2.png" alt="Onboarding loss")
+            img(v-lazy="require('~/assets/images/Pocketcare/Onboarding_2.png')" alt="Onboarding loss")
           .Content-listed.Shadow(data-aos="fade-left" data-aos-delay="500")
-            img(src="~assets/images/Pocketcare/Onboarding_3.png" alt="Onboarding family")
+            img(v-lazy="require('~/assets/images/Pocketcare/Onboarding_3.png')" alt="Onboarding family")
       Post(
         :color="data.color"
         :post="data.posts[2]"
       )
 
-    section.Slide.Slide--banner.Lazyload
+    section.Slide.Slide--banner
       Banner.Banner--pocketcare(src="Pocketcare/Banner_Inscription" alt ="Inscription banner")
 
     section.Slide.Slide--page
@@ -82,8 +82,8 @@ div
           p.Content-description.Text--center Finally, 2 sections dedicated to the profile section and the application settings with the possibility to modify your profile.
 
     .Intermediate(data-rate="20")
-      .Intermediate-container.Lazyload
-        img.Exception--screens(src="~assets/images/Pocketcare/Screens.png" alt="Profil and settings banner")
+      .Intermediate-container
+        img.Exception--screens(v-lazy="require('~/assets/images/Pocketcare/Screens.png')" alt="Profil and settings banner")
 
     section.Slide
       Article(

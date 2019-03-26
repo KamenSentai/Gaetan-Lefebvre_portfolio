@@ -46,6 +46,12 @@ module.exports = {
     '~/assets/styles/app.scss'
   ],
   /*
+   **  Plugins
+   */
+  plugins: [
+    '~/plugins/lazyload.js'
+  ],
+  /*
   ** Build
   */
   build: {

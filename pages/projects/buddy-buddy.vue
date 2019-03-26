@@ -42,12 +42,12 @@ div
         :color="data.color"
         :post="data.posts[1]"
       )
-      .Content.Lazyload
+      .Content
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Case study home
           p.Content-description.Text--center On the case study, we can find a short video of the project, with competencies used by the team and 3 navigations tools and the scroll.
         .Content-main(data-aos="fade-up")
-          img(src="~assets/images/BuddyBuddy/Computer.png" alt="Desktop home")
+          img(v-lazy="require('~/assets/images/BuddyBuddy/Computer.png')" alt="Desktop home")
 
     section.Slide.Slide--crossed
       .Content
@@ -63,17 +63,17 @@ div
         :color="data.color"
         :post="data.posts[2]"
       )
-      .Content.Lazyload
+      .Content
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center Case study page
           p.Content-description.Text--center The first section is split in 3 sections. The branding identity, then the style guide and finally the UI kit.
         .Content-full.Shadow(data-aos="fade-up")
-          img(src="~assets/images/BuddyBuddy/Screen_1.png" alt="Branding identity")
+          img(v-lazy="require('~/assets/images/BuddyBuddy/Screen_1.png')" alt="Branding identity")
         .Content-full
           .Content-sub.Shadow(data-aos="fade-up")
-            img(src="~assets/images/BuddyBuddy/Screen_2.png" alt="Style guide")
+            img(v-lazy="require('~/assets/images/BuddyBuddy/Screen_2.png')" alt="Style guide")
           .Content-sub.Shadow(data-aos="fade-up")
-            img(src="~assets/images/BuddyBuddy/Screen_3.png" alt="UI elements")
+            img(v-lazy="require('~/assets/images/BuddyBuddy/Screen_3.png')" alt="UI elements")
 
     section.Slide.Slide--block
       .Content
@@ -83,8 +83,8 @@ div
           .Content-post(data-aos="fade-left")
             h4.Content-section Home
             p.Content-text All the case study on the Buddy Buddy website have the same plan. The first part is the project presentation. Then we present the branding identity and the style guide.
-          .Content-poster.Lazyload(data-aos="fade-left" data-aos-delay="250")
-            img(src="~assets/images/BuddyBuddy/Home.png" alt="Mobile home")
+          .Content-poster(data-aos="fade-left" data-aos-delay="250")
+            img(v-lazy="require('~/assets/images/BuddyBuddy/Home.png')" alt="Mobile home")
 
     .Intermediate(data-rate="20")
       .Intermediate-container
@@ -93,8 +93,8 @@ div
             .Content-post.Exception--post(data-aos="fade-right")
               h4.Content-section Branding
               p.Content-text.Content-text--intermediate In this section, we are presenting the logo evolution of the project. Then we show the final logo version with its variations.
-            .Content-poster.Lazyload(data-aos="fade-right" data-aos-delay="250")
-              img(src="~assets/images/BuddyBuddy/Branding.png" alt="Mobile branding")
+            .Content-poster(data-aos="fade-right" data-aos-delay="250")
+              img(v-lazy="require('~/assets/images/BuddyBuddy/Branding.png')" alt="Mobile branding")
 
     section.Slide.Exception--bottommore
       .Content
@@ -106,7 +106,7 @@ div
           :images="[{ src: 'Mobile_1', alt: 'Style guide' }, { src: 'Mobile_2', alt: 'Mobile UI elements' }, { src: 'Mobile_3', alt: 'Mobile landing page' }, { src: 'Mobile_4', alt: 'Mobile motion design' }]"
         )
 
-    section.Slide.Slide--banner.Exception--banner.Lazyload
+    section.Slide.Slide--banner.Exception--banner
       Banner.Banner--buddybuddy(src="BuddyBuddy/Banner_Screenshots" alt ="Case study banner")
 
     section.Slide

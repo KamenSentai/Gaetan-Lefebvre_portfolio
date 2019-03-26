@@ -2,7 +2,7 @@
 .Hero(:data-color="data.colors[range]")
   .Hero-portrait(v-if="type === 'home'")
     img.Hero-back(
-      src="~assets/images/Home/Gaetan.png"
+      v-lazy="require('~/assets/images/Home/Gaetan.png')"
       alt="Gaëtan back"
       draggable="false"
     )
@@ -12,7 +12,7 @@
       :isPlaying="true"
     )
     img.Hero-front(
-      src="~assets/images/Home/Gaetan-cropped.png"
+      v-lazy="require('~/assets/images/Home/Gaetan-cropped.png')"
       alt="Gaëtan front"
       draggable="false"
     )
@@ -22,7 +22,7 @@
       img.Hero-back.Hero-back--slide(
         v-for="page in data[type].pages"
         v-bind:class="checkIndex(page)"
-        :src="require(`../assets/images/About/${page.shape}_back.png`)"
+        v-lazy="require(`~/assets/images/About/${page.shape}_back.png`)"
         :alt="`${checkImage(page.shape)} back`"
         draggable="false"
         ref="backs"
@@ -40,7 +40,7 @@
       img.Hero-front.Hero-front--slide(
         v-for="page in data[type].pages"
         v-bind:class="checkIndex(page)"
-        :src="require(`../assets/images/About/${page.shape}_front.png`)"
+        v-lazy="require(`~/assets/images/About/${page.shape}_front.png`)"
         :alt="`${checkImage(page.shape)} front`"
         draggable="false"
         ref="fronts"

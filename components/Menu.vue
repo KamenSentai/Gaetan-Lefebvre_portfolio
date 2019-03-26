@@ -1,11 +1,11 @@
 <template lang="pug">
 .Menu
   a.Menu-link(href="/projects/pocketcare" title="Pocketcare" ref="pocketcare" v-on:click="clickProject($event, 'projects-pocketcare', { from: $route.name + '/menu' })" data-range="0")
-    img.Menu-image(src="~assets/images/Menu/pocketcare.png" alt="Pocketcare visual")
+    img.Menu-image(v-lazy="require('~/assets/images/Menu/pocketcare.png')" alt="Pocketcare visual")
     span.Menu-title Pocketcare
 
   a.Menu-link(href="/projects/tesla" title="Tesla" ref="tesla" v-on:click="clickProject($event, 'projects-tesla', { from: $route.name + '/menu' })" data-range="1")
-    img.Menu-image(src="~assets/images/Menu/tesla.png" alt="Tesla visual")
+    img.Menu-image(v-lazy="require('~/assets/images/Menu/tesla.png')" alt="Tesla visual")
     span.Menu-title Tesla
 
   span.Menu-float.Cursor-frame--menu(ref="float")
@@ -13,11 +13,11 @@
       .Menu-cross.Cursor-frame--menu
 
   a.Menu-link(href="/projects/buddy-buddy" title="Buddy Buddy" ref="buddybuddy" v-on:click="clickProject($event, 'projects-buddy-buddy', { from: $route.name + '/menu' })" data-range="2")
-    img.Menu-image(src="~assets/images/Menu/buddy-buddy.png" alt="Buddy Buddy visual")
+    img.Menu-image(v-lazy="require('~/assets/images/Menu/buddy-buddy.png')" alt="Buddy Buddy visual")
     span.Menu-title Buddy Buddy
 
   span.Menu-link.Menu-link--forbidden(ref="personal" data-range="4")
-    img.Menu-image(src="~assets/images/Menu/personal.png" alt="Personal visual")
+    img.Menu-image(v-lazy="require('~/assets/images/Menu/personal.png')" alt="Personal visual")
     Lock.Menu-lock
     span.Menu-title Coming soon
 </template>

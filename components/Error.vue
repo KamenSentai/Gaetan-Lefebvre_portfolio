@@ -1,7 +1,7 @@
 <template lang="pug">
 .Error
   .Error-code
-    img.Error-image(:src="require(`../assets/images/Error/${shape}.png`)" v-bind:alt="`Error ${shape}`")
+    img.Error-image(v-lazy="require(`../assets/images/Error/${shape}.png`)" v-bind:alt="`Error ${shape}`")
   .Error-message
     h1.Error-title Oops! Page not found!
     h2.Error-text We are not sure that you find your happiness on this page …&nbsp;
