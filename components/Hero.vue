@@ -1,5 +1,5 @@
 <template lang="pug">
-.Hero(v-bind:class="`Hero--${data.colors[range]}`")
+.Hero(:data-color="data.colors[range]")
   .Hero-portrait(v-if="type === 'home'")
     img.Hero-back(
       src="~assets/images/Home/Gaetan.png"
@@ -55,19 +55,19 @@
             span.Hero-above {{ page.above }}
             span.Hero-name
               span.Hero-first {{ page.first }}&nbsp;
-              span.Hero-last(v-bind:class="`Hero-last--${page.color || data.colors[range]}`") {{ page.last }}
+              span.Hero-last(:data-color="page.color || data.colors[range]") {{ page.last }}
           h2.Hero-title(v-else)
             span.Hero-above {{ page.above }}
             span.Hero-name
               span.Hero-first {{ page.first }}&nbsp;
-              span.Hero-last(v-bind:class="`Hero-last--${page.color || data.colors[range]}`") {{ page.last }}
+              span.Hero-last(:data-color="page.color || data.colors[range]") {{ page.last }}
       .Hero-group(v-else)
         .Hero-header(v-for="(page, index) in data[type].pages" v-bind:class="checkIndex(page)")
           .Hero-title(v-if="index === 0")
             span.Hero-above {{ page.above }}
             h1.Hero-name
               span.Hero-first {{ page.first }}&nbsp;
-              span.Hero-last(v-bind:class="`Hero-last--${page.color || data.colors[range]}`") {{ page.last }}
+              span.Hero-last(:data-color="page.color || data.colors[range]") {{ page.last }}
       .Hero-texts
         .Hero-paragraphs.Text-group(v-for="(page, index) in data[type].pages" v-bind:class="[checkIndex(page), `Text-group--${data.colors[range]}`]")
           p.Hero-paragraph(v-for="paragraph in page.paragraphs" v-html="paragraph")
@@ -154,7 +154,7 @@ export default {
   padding-top: $margin-t;
 
   @each $key, $value in $colors {
-    &--#{$key} {
+    &[data-color="#{$key}"] {
       *::selection {
         color: $white;
         background-color: $value;
@@ -401,7 +401,7 @@ export default {
 
   &-last {
     @each $key, $value in $colors {
-      &--#{$key} {
+      &[data-color="#{$key}"] {
         color: $value;
       }
     }

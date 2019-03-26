@@ -1,5 +1,5 @@
 <template lang="pug">
-header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--${shape || data.shapes[range]}`]")
+header.Header(:data-color="color || data.colors[range]" :data-shape="shape || data.shapes[range]")
   .Header-topbar(v-bind:class="isNavigating ? 'is-toggled' : ''")
     .Header-navigation(v-bind:class="isNavigating ? 'is-toggled' : ''" ref="navigation")
       .Header-subnav
@@ -383,14 +383,10 @@ export default {
   $burger-height: 3rem;
 
   @each $key, $value in $colors {
-    &--#{$key} {
+    &[data-color="#{$key}"] {
       *::selection {
         color: $white;
         background-color: $value;
-      }
-
-      .Logo-lastname {
-        fill: $value !important;
       }
     }
   }

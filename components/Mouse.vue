@@ -37,16 +37,7 @@ export default {
     findShape() {
       const _header = document.querySelector('.Header')
 
-      if (_header) {
-        const shapes = [
-          'circle',
-          'triangle',
-          'square',
-          'pentagone'
-        ]
-
-        for (const shape of shapes) if (_header.classList.contains(`Header--${shape}`)) return shape
-      }
+      if (_header) return _header.dataset.shape
     },
     setShape() {
       if (!this.shape || this.shape === '') window.requestAnimationFrame(this.setShape)

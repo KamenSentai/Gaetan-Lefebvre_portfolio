@@ -1,6 +1,6 @@
 .Page {
   @each $key, $value in $colors {
-    &--#{$key} {
+    &[data-color="#{$key}"] {
       *::selection {
         color: $white;
         background-color: $value;

@@ -10,7 +10,7 @@ div
     slide="1"
   )
 
-  .Page(v-bind:class="`Page--${data.color}`")
+  .Page(:data-color="data.color")
     section.Slide
       Post(
         :color="data.color"

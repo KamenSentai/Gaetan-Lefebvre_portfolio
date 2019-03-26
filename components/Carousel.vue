@@ -19,7 +19,7 @@
 
     .Carousel-content(v-bind:class="isMenu ? 'is-hidden': ''")
       .Content-group
-        nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" v-bind:class="`Carousel-item--${modulo(range, 4)}`" :to="{ name: 'projects-pocketcare', params: { from: $route.name } }" title="Pocketcare")
+        nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" :data-index="modulo(range, 4)" :to="{ name: 'projects-pocketcare', params: { from: $route.name } }" title="Pocketcare")
           .Carousel-image
             img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/pocketcare_back.png" alt="Pocketcare back visual" draggable="false")
             Glitch.Carousel-neon(
@@ -29,7 +29,7 @@
             )
             img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/pocketcare_front.png" alt="Pocketcare front visual" draggable="false")
             img.Carousel-extra.is-hidden.Absolute.Absolute--p1(src="../assets/images/Projects/pocketcare_extra.png" alt="Pocketcare lights" draggable="false")
-        .Carousel-item.Carousel-item--0(v-else-if="parseInt(slide) === 0")
+        .Carousel-item(v-else-if="parseInt(slide) === 0" data-index="0")
           .Carousel-image
             img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/pocketcare_back.png" alt="Pocketcare back visual" draggable="false")
             Glitch.Carousel-neon(
@@ -52,7 +52,7 @@
               span.Text--light &nbsp;Branding, Illustration, Interactive design
 
       .Content-group
-        nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" v-bind:class="`Carousel-item--${modulo(range - 1, 4)}`" :to="{ name: 'projects-tesla', params: { from: $route.name } }" title="Tesla")
+        nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" :data-index="modulo(range - 1, 4)" :to="{ name: 'projects-tesla', params: { from: $route.name } }" title="Tesla")
           .Carousel-image
             img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/tesla_back.png" alt="Tesla back visual" draggable="false")
             Glitch.Carousel-neon(
@@ -62,7 +62,7 @@
             )
             img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/tesla_front.png" alt="Tesla front visual" draggable="false")
             img.Carousel-extra.is-hidden.Absolute.Absolute--p2(src="../assets/images/Projects/tesla_extra.png" alt="Tesla lights" draggable="false")
-        .Carousel-item.Carousel-item--0(v-else-if="parseInt(slide) === 1")
+        .Carousel-item(v-else-if="parseInt(slide) === 1" data-index="0")
           .Carousel-image
             img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/tesla_back.png" alt="Tesla back visual" draggable="false")
             Glitch.Carousel-neon(
@@ -85,7 +85,7 @@
               span.Text--light &nbsp;Branding, Illustration, Interactive design
 
       .Content-group
-        nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" v-bind:class="`Carousel-item--${modulo(range - 2, 4)}`" :to="{ name: 'projects-buddy-buddy', params: { from: $route.name } }" title="Buddy Buddy")
+        nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" :data-index="modulo(range - 2, 4)" :to="{ name: 'projects-buddy-buddy', params: { from: $route.name } }" title="Buddy Buddy")
           .Carousel-image
             img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/buddy-buddy_back.png" alt="Buddy Buddy back visual" draggable="false")
             Glitch.Carousel-neon(
@@ -95,7 +95,7 @@
             )
             img.Carousel-layer.Carousel-layer--front(src="../assets/images/Projects/buddy-buddy_front.png" alt="Buddy Buddy front visual" draggable="false")
             img.Carousel-extra.is-hidden.Absolute.Absolute--p3(src="../assets/images/Projects/buddy-buddy_extra.png" alt="Buddy Buddy lights" draggable="false")
-        .Carousel-item.Carousel-item--0(v-else-if="parseInt(slide) === 2")
+        .Carousel-item(v-else-if="parseInt(slide) === 2" data-index="0")
           .Carousel-image
             img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/buddy-buddy_back.png" alt="Buddy Buddy back visual" draggable="false")
             Glitch.Carousel-neon(
@@ -118,7 +118,7 @@
               span.Text--light &nbsp;Branding, Illustration, Interactive design
 
       .Content-group
-        span.Carousel-item.Carousel-item--forbidden(v-if="!slide || parseInt(slide) === 3" v-bind:class="`Carousel-item--${modulo(range - 3, 4)}`")
+        span.Carousel-item.Carousel-item--forbidden(v-if="!slide || parseInt(slide) === 3" :data-index="modulo(range - 3, 4)")
           .Carousel-image
             img.Carousel-layer.Carousel-layer--back(src="../assets/images/Projects/personal_back.png" alt="Personal back visual" draggable="false")
             Glitch.Carousel-neon(
@@ -370,7 +370,7 @@ export default {
       }
 
       #{$rootCarousel}-item {
-        &--0 {
+        &[data-index="0"] {
           transform: translate(-50%, -50%);
 
           @media (min-height: #{grid-media(8.5) + 1px}) {
@@ -587,7 +587,7 @@ export default {
       }
     }
 
-    &--0 {
+    &[data-index="0"] {
       left: 50%;
       opacity: 1;
       transform: translate(-50%, -50%) scale(.875);
@@ -617,7 +617,7 @@ export default {
       }
     }
 
-    &--1 {
+    &[data-index="1"] {
       left: 0;
 
       @media (max-width: #{grid-media(6)}) {
@@ -629,7 +629,7 @@ export default {
       }
     }
 
-    &--2 {
+    &[data-index="2"] {
       display: none;
       left: 50%;
 
@@ -638,7 +638,7 @@ export default {
       }
     }
 
-    &--3 {
+    &[data-index="3"] {
       left: 100%;
 
       @media (max-width: #{grid-media(6)}) {

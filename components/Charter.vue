@@ -1,5 +1,5 @@
 <template lang="pug">
-.Charter(v-bind:class="`Charter--${font}`")
+.Charter(:data-font="font")
   p.Charter-name {{ name }}
   p.Charter-uppercase ABCDEFGHIJKLMNOPQRSTUVWXYZ
   p.Charter-lowercase abcdefghijklmnopqrstuvwxyz
@@ -29,7 +29,7 @@ export default {
   }
 
   @each $charter in $charters {
-    &--#{$charter} {
+    &[data-font="#{$charter}"] {
       font-family: $charter;
     }
   }
