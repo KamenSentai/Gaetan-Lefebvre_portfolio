@@ -695,7 +695,8 @@
   &-sub,
   &-poster,
   &-listed {
-    > img {
+    > img,
+    > video {
       align-self: center;
       width: 100%;
       height: auto;

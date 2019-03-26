@@ -56,9 +56,7 @@ div
           p.Content-description.Content-description--large.Text--center All the case study on the Buddy Buddy website have the same plan. The first part is the project presentation. Then we present the branding identity and the style guide. The last part is composed of the model won desktop and mobile.
         .Content-container.Lazyload(data-aos="fade-up")
           .Content-main
-            img(src="~assets/images/BuddyBuddy/Laptop.png" alt="Dark desktop")
-          .Content-main
-            img(src="~assets/images/BuddyBuddy/Animation.gif" alt="Animation case study")
+            video(autoplay muted loop src="~assets/images/BuddyBuddy/Animation.mp4")
 
     section.Slide.Slide--page
       Post(
