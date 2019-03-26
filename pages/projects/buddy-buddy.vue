@@ -54,7 +54,7 @@ div
         .Content-header.Content-header--center(data-aos="fade-up")
           h3.Content-title.Text--center The case study
           p.Content-description.Content-description--large.Text--center All the case study on the Buddy Buddy website have the same plan. The first part is the project presentation. Then we present the branding identity and the style guide. The last part is composed of the model won desktop and mobile.
-        .Content-container.Lazyload(data-aos="fade-up")
+        .Content-container(data-aos="fade-up")
           .Content-main
             video(autoplay muted loop src="~assets/images/BuddyBuddy/Animation.mp4")
 

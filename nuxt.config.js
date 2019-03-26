@@ -45,6 +45,9 @@ module.exports = {
 	css: [
     '~/assets/styles/app.scss'
   ],
+  /*
+  ** Build
+  */
   build: {
     vendor: ['kute.js'],
     /*
