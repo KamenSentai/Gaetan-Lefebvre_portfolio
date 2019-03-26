@@ -62,7 +62,7 @@ class ProjectController extends PageController {
       el.querySelector('.Header-mainnav').dataset.forced = 'white'
     }, 1000)
 
-    if (!page.$route.name.includes('projects-')) {
+    if (!page.$route.name.includes('projects-') || !page.$route.params.from) {
       const _labelCarousel = el.querySelector('.Carousel-label')
       el.querySelector('.Header').classList.add('is-inactive')
 
@@ -111,15 +111,34 @@ class ProjectController extends PageController {
 
     const page = this.page
 
+    const _alternatedsContent = Array.from(page.$el.querySelectorAll('.Content-alternated'))
+    const _lazyloads = Array.from(page.$el.querySelectorAll('.Lazyload'))
+    const _images = Array.from(page.$el.querySelectorAll('img'))
+
+    if (_lazyloads.length > 0) this.lazyload(_lazyloads)
+    if (_alternatedsContent.length > 0) this.animateLines(_alternatedsContent)
+    if (_images.length > 0) this.checkImages(_images)
+
+    if (
+      navigator.userAgent.match(/Android/i)
+      || navigator.userAgent.match(/webOS/i)
+      || navigator.userAgent.match(/iPhone/i)
+      || navigator.userAgent.match(/iPad/i)
+      || navigator.userAgent.match(/iPod/i)
+      || navigator.userAgent.match(/BlackBerry/i)
+      || navigator.userAgent.match(/Windows Phone/i)
+    ) this.removeScrollAnimation()
+  }
+
+  toggleScroll() {
+    const page = this.page
+
     const _body = document.body
     const _header = page.$el.querySelector('.Header')
     const _headerMainnav = _header.querySelector('.Header-mainnav')
     const _logo = page.$el.querySelector('.Logo')
     const _footer = page.$el.querySelector('.Footer')
     const _slides = Array.from(page.$el.querySelectorAll('.Slide, .Intermediate'))
-    const _alternatedsContent = Array.from(page.$el.querySelectorAll('.Content-alternated'))
-    const _lazyloads = Array.from(page.$el.querySelectorAll('.Lazyload'))
-    const _images = Array.from(page.$el.querySelectorAll('img'))
 
     let breakpointHeader = _headerMainnav.getBoundingClientRect().top
     let breakpoints = []
@@ -140,9 +159,9 @@ class ProjectController extends PageController {
         }
         breakpoints.push(_footerOffset)
       }
-      setTimeout(updateBreakpoints, 500)
     }
     updateBreakpoints()
+    setTimeout(updateBreakpoints, 500)
 
     const colorizeHeader = () => {
       const offsetTop = Math.abs(_body.getBoundingClientRect().top)
@@ -176,20 +195,6 @@ class ProjectController extends PageController {
       }
     }
     checkRoute()
-
-    if (_lazyloads.length > 0) this.lazyload(_lazyloads)
-    if (_alternatedsContent.length > 0) this.animateLines(_alternatedsContent)
-    if (_images.length > 0) this.checkImages(_images)
-
-    if (
-      navigator.userAgent.match(/Android/i)
-      || navigator.userAgent.match(/webOS/i)
-      || navigator.userAgent.match(/iPhone/i)
-      || navigator.userAgent.match(/iPad/i)
-      || navigator.userAgent.match(/iPod/i)
-      || navigator.userAgent.match(/BlackBerry/i)
-      || navigator.userAgent.match(/Windows Phone/i)
-    ) this.removeScrollAnimation()
   }
 
   lazyload(_lazyloads) {
@@ -248,6 +253,7 @@ class ProjectController extends PageController {
         this.checkImages(_images)
       }, 2500)
     } else {
+      this.toggleScroll()
       AOS.refresh()
 
       if (
