@@ -248,6 +248,11 @@ export default {
         width: 100vw;
         height: .1rem;
         background-color: $grey;
+
+        @media (max-width: #{grid-media(6)}) {
+          left: -100%;
+          width: 200vw;
+        }
       }
     }
 
