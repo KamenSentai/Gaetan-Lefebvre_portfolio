@@ -35,10 +35,10 @@ class ProjectController extends PageController {
         done()
       }})
     } else if (page.$route.params.from.includes('projects-')) {
-      TweenLite.fromTo('.Carousel-neon', 1, { scale: 0 }, { scale: 1, delay: 1, ease: Power2.easeInOut })
-      TweenLite.fromTo('.Carousel-title', 1, { opacity: 0 }, { opacity: 1, delay: 1.5, ease: Power2.easeInOut })
-      TweenLite.fromTo('.Carousel-button', 1, { scale: 0 }, { scale: 1, delay: 1.5, ease: Power2.easeInOut })
-      TweenLite.fromTo('.Carousel-layer', 1, { opacity: 0 }, { opacity: 1, delay: 2, ease: Power2.easeInOut })
+      TweenLite.fromTo('.Carousel-neon', 1, { scale: 0 }, { scale: 1, delay: 0, ease: Power2.easeInOut })
+      TweenLite.fromTo('.Carousel-title', 1, { opacity: 0 }, { opacity: 1, delay: .5, ease: Power2.easeInOut })
+      TweenLite.fromTo('.Carousel-button', 1, { scale: 0 }, { scale: 1, delay: .5, ease: Power2.easeInOut })
+      TweenLite.fromTo('.Carousel-layer', 1, { opacity: 0 }, { opacity: 1, delay: .5, ease: Power2.easeInOut })
       document.body.style.pointerEvents = 'auto'
       done()
     } else {

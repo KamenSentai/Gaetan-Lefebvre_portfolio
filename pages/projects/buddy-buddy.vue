@@ -178,7 +178,7 @@ export default {
             center: "the team",
             bottom: "worked ?",
             paragraphs: [
-              "I worked in pairs on this project with a fellow comrade. We divided ourselves on project as well. First of all, we listed the strong and weak points of the website to solve the weak points. Realise a competitive benchmark. Implementing guidelines, strict enough not to be in difficulty on the other studio boxes. And finally structure the project into major parts.",
+              "I worked in pair on this project with a fellow comrade. We divided ourselves on project as well. First of all, we listed the strong and weak points of the website to solve the weak points. Realise a competitive benchmark. Implementing guidelines, strict enough not to be in difficulty on the other studio boxes. And finally structure the project into major parts.",
               "Special thanks to <a class=\"Text--hovered Text--bold Cursor-frame--reduced\" href=\"http://www.camille-pawlak.com/\" target=\"_blank\" rel=\"noopener\" title=\"Camille Pawlak\">Camille Pawlak</a> as UX / UI designer and all the Buddy Buddy team which helped me during this 4 months internship."
             ]
           }
