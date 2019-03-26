@@ -72,9 +72,8 @@
         .Hero-paragraphs.Text-group(v-for="(page, index) in data[type].pages" v-bind:class="[checkIndex(page), `Text-group--${data.colors[range]}`]")
           p.Hero-paragraph(v-for="paragraph in page.paragraphs" v-html="paragraph")
 
-    .Hero-push(v-if="type === 'home'")
-      span.Hero-heavy Push&nbsp;
-      span.Hero-thin the
+    .Hero-click(v-if="type === 'home'")
+      span.Hero-heavy Click on
       Icon(
         :color="data.colors[range]"
         :shape="data.shapes[range]"
@@ -443,7 +442,7 @@ export default {
     }
   }
 
-  &-push {
+  &-click {
     display: flex;
     align-items: center;
     flex: 1 0 auto;
