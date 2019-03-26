@@ -403,6 +403,7 @@ export default {
         color: rgba($white, .75);
         bottom: 100%;
         margin-bottom: 0;
+        pointer-events: none;
 
         @media (min-width: #{grid-media(10)}) {
           font-size: 12rem;
@@ -621,6 +622,7 @@ export default {
       left: 0;
 
       @media (max-width: #{grid-media(6)}) {
+        left: 50%;
         transform: translate(-50%, calc(-50% - #{(grid(4)+ $extraSize) / 2})) scale(0);
       }
 
@@ -642,6 +644,7 @@ export default {
       left: 100%;
 
       @media (max-width: #{grid-media(6)}) {
+        left: 50%;
         transform: translate(-50%, calc(-50% + #{(grid(4)+ $extraSize) / 2})) scale(0);
       }
 
@@ -797,6 +800,7 @@ export default {
       bottom: 100%;
       margin-bottom: 0;
       transform: translate(-50%, calc(50% + #{- $margin-b - $margin-m}));
+      pointer-events: none;
     }
 
     @media (max-width: #{grid-media(8)}) {
