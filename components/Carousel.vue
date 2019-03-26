@@ -1,5 +1,5 @@
 <template lang="pug">
-.Carousel
+.Carousel(:data-color="color")
   .Carousel-container(v-bind:class="[slide ? 'Carousel-container--case' : '', isMenu ? 'is-hidden': '']" ref="container")
     .Carousel-buttons(v-bind:class="isMenu ? 'is-hidden': ''")
       svg.Carousel-button.Carousel-button--left.Cursor-frame--reduced(ref="leftButton" width="40px" height="40px" viewBox="0 0 40 40" @click="turnLeft")
@@ -181,6 +181,7 @@ export default {
     if (this.slide === undefined || !this.$route.params.from) this.isLabelized = false
   },
   props: [
+    'color',
     'isMenu',
     'range',
     'slide'
@@ -324,6 +325,15 @@ export default {
   width: 100%;
   height: 100%;
 
+  @each $key, $value in $colors {
+    &[data-color="#{$key}"] {
+      *::selection {
+        color: $white;
+        background-color: $value;
+      }
+    }
+  }
+
   &-container {
     position: relative;
     width: 100%;
@@ -426,6 +436,7 @@ export default {
       #{$rootCarousel}-subtitle {
         #{$rootCarousel}-additional {
           user-select: auto;
+
         @media (max-width: #{grid-media(8)}) {
             user-select: none;
           }
@@ -559,7 +570,6 @@ export default {
 
     &.is-hidden {
       opacity: 0;
-      user-select: none;
       pointer-events: none;
     }
   }
@@ -598,6 +608,7 @@ export default {
 
       + #{$rootCarousel}-label {
         opacity: 1;
+        pointer-events: auto;
       }
 
       #{$rootCarousel}-extra {
@@ -741,7 +752,7 @@ export default {
     opacity: 0;
     transition: opacity $easing-duration, transform $easing-duration;
     will-change: opacity, transform;
-    user-select: none;
+    pointer-events: none;
 
     &.is-hidden {
       opacity: 0 !important;
@@ -764,7 +775,6 @@ export default {
     font-weight: 700;
     letter-spacing: .0625em;
     text-transform: uppercase;
-    pointer-events: none;
     transition: all $easing-duration;
     transform: translateX(-50%);
     will-change: transform;
@@ -833,7 +843,6 @@ export default {
     opacity: 0;
     transition: opacity $easing-duration;
     will-change: opacity;
-    pointer-events: none;
   }
 
   &-buttons {

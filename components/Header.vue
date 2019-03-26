@@ -43,6 +43,7 @@ header.Header(v-bind:class="[`Header--${color || data.colors[range]}`, `Header--
     )
     Carousel.Header-carousel(
       v-if="jumbotron === 'carousel'"
+      :color="color || data.colors[range]"
       :isMenu="isMenu"
       :range="parseInt(slide) || range"
       :slide="slide"
