@@ -25,7 +25,7 @@
             Glitch.Carousel-neon(
               path="assets/images/Projects/"
               :image="{ src: 'pocketcare', alt: 'Pocketcare circle' }"
-              :isPlaying="modulo(range, 4) === 0 ? true : false"
+              :isPlaying="modulo(range, 4) === 0"
             )
             img.Carousel-layer.Carousel-layer--front(v-lazy="require('~/assets/images/Projects/pocketcare_front.png')" alt="Pocketcare front visual" draggable="false")
             img.Carousel-extra.is-hidden.Absolute.Absolute--p1(v-lazy="require('~/assets/images/Projects/pocketcare_extra.png')" alt="Pocketcare lights" draggable="false")
@@ -58,7 +58,7 @@
             Glitch.Carousel-neon(
               path="assets/images/Projects/"
               :image="{ src: 'tesla', alt: 'Tesla triangle' }"
-              :isPlaying="modulo(range - 1, 4) === 0 ? true : false"
+              :isPlaying="modulo(range - 1, 4) === 0"
             )
             img.Carousel-layer.Carousel-layer--front(v-lazy="require('~/assets/images/Projects/tesla_front.png')" alt="Tesla front visual" draggable="false")
             img.Carousel-extra.is-hidden.Absolute.Absolute--p2(v-lazy="require('~/assets/images/Projects/tesla_extra.png')" alt="Tesla lights" draggable="false")
@@ -91,7 +91,7 @@
             Glitch.Carousel-neon(
               path="assets/images/Projects/"
               :image="{ src: 'buddy-buddy', alt: 'Buddy Buddy square' }"
-              :isPlaying="modulo(range - 2, 4) === 0 ? true : false"
+              :isPlaying="modulo(range - 2, 4) === 0"
             )
             img.Carousel-layer.Carousel-layer--front(v-lazy="require('~/assets/images/Projects/buddy-buddy_front.png')" alt="Buddy Buddy front visual" draggable="false")
             img.Carousel-extra.is-hidden.Absolute.Absolute--p3(v-lazy="require('~/assets/images/Projects/buddy-buddy_extra.png')" alt="Buddy Buddy lights" draggable="false")
@@ -124,7 +124,7 @@
             Glitch.Carousel-neon(
               path="assets/images/Projects/"
               :image="{ src: 'personal', alt: 'Personal pentagone' }"
-              :isPlaying="modulo(range - 3, 4) === 0 ? true : false"
+              :isPlaying="modulo(range - 3, 4) === 0"
             )
             img.Carousel-layer.Carousel-layer--front(v-lazy="require('~/assets/images/Projects/personal_front.png')" alt="Personal front visual" draggable="false")
             Lock.Carousel-lock(v-bind:class="!isLocked ? 'is-hidden' : ''")
