@@ -30,9 +30,6 @@ module.exports = {
       { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon/favicon-16x16.png' },
       { rel: 'manifest', href: '/favicon/site.webmanifest' },
       { rel: 'mask-icon', href: '/favicon/safari-pinned-tab.svg', color: '#141414' }
-    ],
-    script: [
-      { src: 'https://code.createjs.com/1.0.0/preloadjs.min.js' }
     ]
   },
   /*
