@@ -1,14 +1,11 @@
 <template lang="pug">
-.Glitch
-  img.Glitch-original(v-bind:class="!isGlitching ? 'is-active' : ''" v-lazy="require(`~/${path}${image.src}.png`)"  :alt="capitalizeFirstLetter(image.alt)" draggable="false")
-  img.Glitch-effect(v-bind:class="isGlitching ? 'is-active' : ''" :src="require(`../${path}${src}.png`)"  :alt="capitalizeFirstLetter(alt)" draggable="false")
+img.Glitch(:src="require(`../${path}${src}.png`)"  :alt="capitalizeFirstLetter(alt)" draggable="false")
 </template>
 
 <script>
 export default {
   data() {
     return {
-      isGlitching: false,
       number: 0,
       total: 10,
       frequency: 75,
@@ -31,7 +28,6 @@ export default {
   methods: {
     glitchPeriodic() {
       if (this.number < this.total) {
-        this.isGlitching = true
         this.src = `${this.image.src}/${this.image.src}_${this.number}`
         this.alt = `${this.image.src} glitch`
         ++this.number
@@ -39,7 +35,6 @@ export default {
           this.glitchPeriodic()
         }, this.frequency)
       } else {
-        this.isGlitching = false
         this.src = this.image.src
         this.alt = this.image.alt
         this.number = 0
@@ -74,18 +69,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.Glitch {
-  &-original,
-  &-effect {
-    display: none;
-    width: 100%;
-    height: auto;
-
-    &.is-active {
-      display: block;
-    }
-  }
-}
-</style>
