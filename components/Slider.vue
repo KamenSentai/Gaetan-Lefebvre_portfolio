@@ -9,7 +9,7 @@
   .Slider-content(v-if="mockup" @touchstart="touchStart" @touchmove="touchMove" ref="content")
     img.Slider-mockup(v-lazy="require(`~/assets/images/${folder}/${mockup.src}.png`)" :alt="mockup.alt" draggable="false")
     .Slider-images
-      img.Slider-image.Shadow--image(v-for="image in images" v-lazy="require(`~/assets/images/${folder}/${image.src}.png`)" :alt="image.alt" ref="images")
+      img.Slider-image.Shadow--image(v-for="image in images" :src="require(`~/assets/images/${folder}/${image.src}.png`)" :alt="image.alt" ref="images")
 
   .Slider-images.Slider-images--pushed(v-else @touchstart="touchStart" @touchmove="touchMove")
     img.Slider-image.Shadow(v-for="image in images" v-lazy="require(`~/assets/images/${folder}/${image.src}.png`)" :alt="image.alt" ref="images")
