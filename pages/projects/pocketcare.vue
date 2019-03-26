@@ -127,7 +127,7 @@ export default {
           {
             top: "What",
             center: "is the",
-            bottom: "projet ?",
+            bottom: "project ?",
             paragraphs: [
               "Pocketcare was born from a student project. The aim was to design an innovative solution concerning the medical field.",
               "After several interviews, we noticed a problem with prescription loss. Moreover, we found that the “Carte Vital” and the mutual card could be used in a more effective way. Pocketcare is therefore the solution to these problems."
