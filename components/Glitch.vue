@@ -1,5 +1,5 @@
 <template lang="pug">
-img.Glitch(:src="require(`../${path}${src}.png`)"  :alt="capitalizeFirstLetter(alt)" draggable="false")
+img.Glitch(:src="require(`../${path}${src}.png`)" v-lazy="require(`../${path}${src}.png`)"  :alt="capitalizeFirstLetter(alt)" draggable="false")
 </template>
 
 <script>
