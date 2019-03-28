@@ -5,7 +5,7 @@ header.Header(:data-color="color || data.colors[range]" :data-shape="shape || da
       .Header-subnav
         .Header-tree
           span.Header-branch(v-bind:class="$nuxt.$route.path === '/' ? `is-active--${color || data.colors[range]}` : ''")
-            a.Header-leaf.Cursor-frame--increase(href="/" title="Home" v-on:click="navigationClick($event, 'index')") Home
+            a.Header-leaf.Cursor-frame--increase(href="/" title="Gaëtan Lefebvre" v-on:click="navigationClick($event, 'index')") Home
           span.Header-branch(v-bind:class="$nuxt.$route.path === '/projects' ? `is-active--${color || data.colors[range]}` : ''")
             a.Header-leaf.Cursor-frame--increase(href="/projects" title="Projects" v-on:click="navigationClick($event, 'projects')") Projects
           span.Header-branch(v-bind:class="$nuxt.$route.path === '/about' ? `is-active--${color || data.colors[range]}` : ''")
@@ -17,7 +17,7 @@ header.Header(:data-color="color || data.colors[range]" :data-shape="shape || da
             a.Cursor-frame--increase(href="https://www.behance.net/gaetanlefebvre" title="Behance" target="_blank" rel="noopener") Behance
 
     .Header-mainnav(v-bind:class="[isNavigating ? 'is-toggled' : '', isMenu ? 'is-hidden': '']" :data-navigating="isNavigating ? 'true' : 'false'")
-      nuxt-link.Header-logo(v-bind:class="isNavigating ? 'is-toggled' : 'is-untoggled'" :to="{ name: 'index', params: sendData() }" title="Home")
+      nuxt-link.Header-logo(v-bind:class="isNavigating ? 'is-toggled' : 'is-untoggled'" :to="{ name: 'index', params: sendData() }" title="Gaëtan Lefebvre")
         Logo(:color="color || data.colors[range]")
       ul.Header-navbar
         li.Header-item.Cursor-frame--increase(:class="hasProject ? '': 'is-hidden'")
@@ -26,7 +26,7 @@ header.Header(:data-color="color || data.colors[range]" :data-shape="shape || da
         li.Header-item.Cursor-frame--increase(:class="hasAbout ? '': 'is-hidden'")
           nuxt-link.Cursor-frame--increase(:to="{ name: 'about', params: sendData() }" title="About") About
         li.Header-item.Cursor-frame--increase(:class="hasHome ? '': 'is-hidden'")
-          nuxt-link.Cursor-frame--increase(:to="{ name: 'index', params: sendData() }" title="Home") Return home
+          nuxt-link.Cursor-frame--increase(:to="{ name: 'index', params: sendData() }" title="Gaëtan Lefebvre") Return home
       .Header-burger.Cursor-frame--increase(v-bind:class="isNavigating ? 'is-active' : ''" @click="toggleNavigation")
         .Header-stripe
         .Header-stripe
