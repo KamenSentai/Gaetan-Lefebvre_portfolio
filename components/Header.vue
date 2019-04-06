@@ -20,13 +20,13 @@ header.Header(:data-color="color || data.colors[range]" :data-shape="shape || da
       nuxt-link.Header-logo(v-bind:class="isNavigating ? 'is-toggled' : 'is-untoggled'" :to="{ name: 'index', params: sendData() }" title="Gaëtan Lefebvre")
         Logo(:color="color || data.colors[range]")
       ul.Header-navbar
-        li.Header-item.Cursor-frame--increase(:class="hasProject ? '': 'is-hidden'")
-          h1(v-if="hasProject")
+        li.Header-item.Cursor-frame--increase(v-if="$route.name === 'projects'")
+          h1
             a.Cursor-frame--increase(href="#" @click="toggleMenu") All projects
-        li.Header-item.Cursor-frame--increase(:class="hasAbout ? '': 'is-hidden'")
+        li.Header-item.Cursor-frame--increase(v-if="$route.name !== 'about'")
           nuxt-link.Cursor-frame--increase(:to="{ name: 'about', params: sendData() }" title="About") About
-        li.Header-item.Cursor-frame--increase(:class="hasHome ? '': 'is-hidden'")
-          nuxt-link.Cursor-frame--increase(:to="{ name: 'index', params: sendData() }" title="Gaëtan Lefebvre") Return home
+        li.Header-item.Cursor-frame--increase(v-if="$route.name === 'about'")
+          nuxt-link.Cursor-frame--increase(:to="{ name: $route.params.from || 'index', params: sendData() }" title="Gaëtan Lefebvre") Return {{ rewriteRoute }}
       .Header-burger.Cursor-frame--increase(v-bind:class="isNavigating ? 'is-active' : ''" @click="toggleNavigation")
         .Header-stripe
         .Header-stripe
@@ -53,7 +53,7 @@ header.Header(:data-color="color || data.colors[range]" :data-shape="shape || da
       v-else-if="jumbotron === 'error'"
       :shape="shape"
     )
-  Menu(v-if="hasProject" ref="menu")
+  Menu(v-if="$route.name === 'projects'" ref="menu")
 </template>
 
 <script>
@@ -86,9 +86,6 @@ export default {
     'index',
     'jumbotron',
     'type',
-    'hasProject',
-    'hasAbout',
-    'hasHome',
     'data',
     'slide'
   ],
@@ -99,6 +96,24 @@ export default {
     Hero,
     Carousel,
     Error
+  },
+
+  computed: {
+    rewriteRoute() {
+      if (!this.$route.params.from || this.$route.params.from === 'index') return 'home'
+      else if (!this.$route.params.from.includes('projects-')) return this.$route.params.from
+      else {
+        const toTitleCase = phrase => {
+          return phrase
+            .toLowerCase()
+            .split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ')
+        }
+
+        return toTitleCase(this.$route.params.from.replace('projects-', '').replace('-', ' '))
+      }
+    }
   },
 
   methods: {
@@ -511,17 +526,6 @@ export default {
 
     &:first-child {
       margin-left: 0;
-    }
-
-    &.is-hidden {
-      width: 0;
-      margin: 0;
-      opacity: 0;
-      pointer-events: none;
-
-      a {
-        cursor: default;
-      }
     }
   }
 

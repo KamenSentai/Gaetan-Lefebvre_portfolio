@@ -18,7 +18,7 @@
         polyline.Carousel-shape.Carousel-shape--arrow.is-active(points="25,22.5 20,17.5 15,22.5")
 
     .Carousel-content(v-bind:class="isMenu ? 'is-hidden': ''")
-      .Content-group
+      .Carousel-group
         nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" :data-index="modulo(range, 4)" :to="{ name: 'projects-pocketcare', params: { from: $route.name } }" title="Pocketcare")
           .Carousel-image
             img.Carousel-layer.Carousel-layer--back(v-lazy="require('~/assets/images/Projects/pocketcare_back.png')" alt="Pocketcare back visual" draggable="false")
@@ -47,7 +47,7 @@
               span.Text--bold Skills :
               span.Text--light &nbsp;Branding, Illustration, Interactive design
 
-      .Content-group
+      .Carousel-group
         nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" :data-index="modulo(range - 1, 4)" :to="{ name: 'projects-tesla', params: { from: $route.name } }" title="Tesla")
           .Carousel-image
             img.Carousel-layer.Carousel-layer--back(v-lazy="require('~/assets/images/Projects/tesla_back.png')" alt="Tesla back visual" draggable="false")
@@ -76,7 +76,7 @@
               span.Text--bold Skills :
               span.Text--light &nbsp;Branding, Illustration, Interactive design
 
-      .Content-group
+      .Carousel-group
         nuxt-link.Carousel-item.Cursor-frame--text(v-if="!slide" :data-index="modulo(range - 2, 4)" :to="{ name: 'projects-buddy-buddy', params: { from: $route.name } }" title="Buddy Buddy")
           .Carousel-image
             img.Carousel-layer.Carousel-layer--back(v-lazy="require('~/assets/images/Projects/buddy-buddy_back.png')" alt="Buddy Buddy back visual" draggable="false")
@@ -105,7 +105,7 @@
               span.Text--bold Skills :
               span.Text--light &nbsp;Branding, Illustration, Interactive design
 
-      .Content-group
+      .Carousel-group
         span.Carousel-item.Carousel-item--forbidden(v-if="!slide || parseInt(slide) === 3" :data-index="modulo(range - 3, 4)")
           .Carousel-image
             img.Carousel-layer.Carousel-layer--back(v-lazy="require('~/assets/images/Projects/personal_back.png')" alt="Personal back visual" draggable="false")
@@ -391,7 +391,7 @@ export default {
         color: rgba($white, .75);
         bottom: 100%;
         margin-bottom: 0;
-        pointer-events: none;
+        pointer-events: auto;
 
         @media (min-width: #{grid-media(10)}) {
           font-size: 12rem;

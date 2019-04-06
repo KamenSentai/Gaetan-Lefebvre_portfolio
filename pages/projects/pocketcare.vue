@@ -3,9 +3,6 @@ div
   Header(
     :color="data.color"
     :shape="data.shape"
-    :hasProject="false"
-    :hasAbout="true"
-    :hasHome="false"
     jumbotron="carousel"
     slide="0"
   )

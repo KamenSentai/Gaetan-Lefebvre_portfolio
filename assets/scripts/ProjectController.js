@@ -22,12 +22,13 @@ class ProjectController extends PageController {
     el.querySelector('.Header-navigation').dataset.forced = ''
     el.querySelector('.Header-mainnav').dataset.forced = ''
 
-    if (!page.$route.params.from) {
+    if (!page.$route.params.from || page.$route.params.from === 'about') {
+      TweenLite.fromTo('.Carousel-group', .5, { opacity: 0 }, { opacity: 1, delay: 1, ease: Power2.easeInOut })
+      TweenLite.fromTo('.Carousel-container', 1, { scale: 0, y: - window.innerHeight / 2 }, { scale: 1, y: 0, delay: 0, ease: Power2.easeInOut })
+      TweenLite.fromTo('.Carousel-button', 1, { scale: 0 }, { scale: 1, delay: 1, ease: Power2.easeInOut })
+      TweenLite.fromTo('.Carousel-image', 1, { opacity: 0 }, { opacity: 1, delay: 1, ease: Power2.easeInOut })
       TweenLite.fromTo('.Carousel-title', 1, { opacity: 0 }, { opacity: 1, delay: 1.5, ease: Power2.easeInOut })
       TweenLite.fromTo('.Carousel-subtitle', 1, { opacity: 0 }, { opacity: 1, delay: 1.5, ease: Power2.easeInOut })
-      TweenLite.fromTo('.Carousel-container', 1, { scale: 0, y: - window.innerHeight / 2, delay: 0 }, { scale: 1, y: 0, delay: 0, ease: Power2.easeInOut })
-      TweenLite.fromTo('.Carousel-button', 1, { scale: 0, delay: 1 }, { scale: 1, delay: 1, ease: Power2.easeInOut })
-      TweenLite.fromTo('.Carousel-image', 1, { opacity: 0, delay: 1 }, { opacity: 1, delay: 1, ease: Power2.easeInOut })
       TweenLite.fromTo('.Page', 1, { opacity: 0, y: 30 }, { opacity: 1, y: 0, delay: 1.5, ease: Power2.easeInOut })
       TweenLite.fromTo('.Footer', 1, { opacity: 0, y: 30 }, { opacity: 1, y: 0, delay: 1.5, ease: Power2.easeInOut })
       TweenLite.fromTo('.Header-navbar', 1, { opacity: 0 }, { opacity: 1, delay: 2, ease: Power2.easeInOut, onComplete: () => {
@@ -71,11 +72,19 @@ class ProjectController extends PageController {
       TweenLite.to('.Footer', 1, { opacity: 0, y: 30, delay: 0, ease: Power2.easeInOut })
       TweenLite.to('.Carousel-image', 1, { opacity: 0, delay: .5, ease: Power2.easeInOut })
       TweenLite.to('.Carousel-button', 1, { scale: 0, delay: .5, ease: Power2.easeInOut })
-      TweenLite.to('.Carousel-container', 1, { scale: 0, y: - window.innerHeight / 2, delay: 1.5, ease: Power2.easeInOut, onComplete: ()  => {
-        document.body.style.pointerEvents = 'auto'
-        done()
-      }})
-    } else if (page.$route.params.from) {
+      if (page.$route.name === 'index') {
+        TweenLite.to('.Carousel-container', 1, { scale: 0, y: - window.innerHeight / 2, delay: 1.5, ease: Power2.easeInOut, onComplete: ()  => {
+          document.body.style.pointerEvents = 'auto'
+          done()
+        }})
+      } else {
+        TweenLite.to('.Carousel-container', 1, { scale: 0, y: - window.innerHeight / 2, delay: 1.5, ease: Power2.easeInOut })
+        TweenLite.to('.Header-navbar', 1, { opacity: 0, delay: 2.5, ease: Power2.easeInOut, onComplete: () => {
+          document.body.style.pointerEvents = 'auto'
+          done()
+        }})
+      }
+    } else {
       const _logo = el.querySelector('.Logo')
       const _footer = el.querySelector('.Footer')
       const _footerTop = _footer.getBoundingClientRect().top
@@ -95,13 +104,11 @@ class ProjectController extends PageController {
           done()
         }, 1500)
       }})
-    } else {
-      document.body.style.pointerEvents = 'auto'
-      done()
     }
   }
 
   init() {
+    AOS.refreshHard()
     AOS.init({
       disable: 'mobile',
       once: false,
