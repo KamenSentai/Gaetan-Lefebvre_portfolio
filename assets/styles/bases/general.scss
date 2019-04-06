@@ -8,6 +8,7 @@ body {
   @include full-size();
   position: relative;
   font-family: $font;
+  font-display: block;
   color: $white;
   overflow: hidden;
 
